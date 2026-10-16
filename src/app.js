@@ -47,6 +47,10 @@
     revealed: { key: "revealed", view: "story", title: function (x) { return x.title; }, sub: function (x) { return x.ref; }, label: "Fully revealed" },
     apostle: { key: "apostles", view: "apostles", title: function (x) { return x.name; }, sub: function (x) { return x.writings; }, label: "Apostle" },
     act: { key: "trinityActs", view: "trinity", title: function (x) { return x.moment; }, sub: function (x) { return x.ref; }, label: "The Trinity at work" },
+    lovePassage: { key: "lovePassages", view: "love", title: function (x) { return x.ref; }, sub: function (x) { return x.testament === "OT" ? "Old Testament" : "New Testament"; }, label: "Justice passage" },
+    loveObj: { key: "loveObjections", view: "love", title: function (x) { return strip(x.q); }, sub: function () { return "Objection answered"; }, label: "Love & justice" },
+    loveWord: { key: "justiceWords", view: "love", title: function (x) { return x.word + " · " + x.translit; }, sub: function (x) { return x.lang + " · " + x.original; }, label: "Word study" },
+    loveVoice: { key: "loveVoices", view: "love", title: function (x) { return x.name; }, sub: function (x) { return x.source; }, label: "Voice on love & justice" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var FAMILY = { atonement: "Atonement", salvation: "Salvation", hell: "Judgement & hell", scripture: "Scripture", "end-times": "End times", "law-covenant": "Law & covenant" };
@@ -56,7 +60,7 @@
   /* ---------- navigation model ---------- */
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
-    { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
+    { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
     { group: "Trinity & union", items: [["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
@@ -171,6 +175,7 @@
       ["read", "How to read", "Jesus is the Word; the Bible is the witness to him."],
       ["story", "How God met humanity", "From a garden to a face: the light rising through the ages."],
       ["theme.perfect-theology", "Jesus, perfect theology", "If you have seen him, you have seen the Father."],
+      ["love", "God is love, one nature", "Why justice is love setting things right, not a rival nature."],
       ["apostles", "Did the apostles see it?", "Witnesses who grew into the light."],
       ["journey", "How people misread God", "From Eden's hiding to Peter's sword."],
       ["violence", "The violent passages", "Reading the war stories through the cross."],
@@ -199,6 +204,7 @@
         ["sayings", A("sayings").length + " sayings of Jesus", "The setting that makes each one land"],
         ["violence", A("violence").length + " hard passages", A("frameworks").length + " ways Christians reconcile them"],
         ["debate", A("strawmen").length + " strawmen, " + A("arguments").length + " debates", "Arguments and counter-arguments, side by side"],
+        ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
         ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
         ["models", A("models").length + " frameworks compared", "Atonement, salvation, hell, Scripture, end times"],
@@ -390,6 +396,62 @@
       "</div>";
   };
 
+
+  /* ---------- God is love: one nature ---------- */
+  var loveTab = "passages", loveTest = "all", scaleMode = "two";
+  V.love = function () {
+    var C = A("loveCase");
+    return head("One nature, not two", "God is love", "Many teach that God holds love and justice in tension, and that the cross settled the conflict. The relational gospel answers that God has one nature, love, and that his justice is love setting the world right. Here is the case, the passages people bring against it, and the strongest objections, answered.") +
+      scalesHTML() +
+      (C.length ? '<section class="section"><h2>The case, step by step</h2><div class="chips" id="casenav">' + C.map(function (c, i) { return '<button class="chip" type="button" data-case="' + c.id + '">' + (i + 1) + ". " + esc(c.title) + "</button>"; }).join("") + '</div><div class="case">' +
+        C.map(function (c, i) {
+          return '<article class="case-step" id="case-' + c.id + '"><div class="case-num" aria-hidden="true">' + String(i + 1).padStart(2, "0") + '</div><div class="case-body"><div class="label">' + esc(c.kicker) + "</div><h3>" + esc(c.title) + '</h3><div class="prose">' + c.body.map(function (p) { return "<p>" + p + "</p>"; }).join("") + '</div><div class="ref">' + esc((c.refs || []).join(" · ")) + "</div></div></article>";
+        }).join("") + "</div></section>" : "") +
+      '<section class="section"><h2>Go deeper</h2><div class="chips" id="lovetabs">' +
+      [["passages", "Passages answered (" + A("lovePassages").length + ")"], ["objections", "Objections (" + A("loveObjections").length + ")"], ["words", "Word studies (" + A("justiceWords").length + ")"], ["voices", "Voices (" + A("loveVoices").length + ")"]].map(function (t) { return '<button class="chip" type="button" data-lt="' + t[0] + '" aria-pressed="' + (loveTab === t[0]) + '">' + t[1] + "</button>"; }).join("") +
+      '</div><div id="lovepane">' + lovePane() + "</div></section>";
+  };
+  function scalesHTML() {
+    return '<section class="scales" id="scales"><div class="row" style="justify-content:space-between"><div class="label">Two pictures of God</div><div class="su-toggle" role="group" aria-label="Choose a picture"><button type="button" class="s" data-scale="two" aria-pressed="true">Two natures</button><button type="button" class="u" data-scale="one" aria-pressed="false">One nature</button></div></div>' +
+      '<div class="scales-stage"><svg viewBox="0 0 640 300" aria-hidden="true"><defs><radialGradient id="flame"><stop offset="0" stop-color="#fff6dc"/><stop offset=".35" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      '<g class="sc-two"><path d="M320 60 V250 M270 262 H370" stroke="var(--muted)" stroke-width="3" fill="none"/><polygon points="308,60 332,60 320,44" fill="var(--muted)"/>' +
+      '<g class="beam"><line x1="150" y1="64" x2="490" y2="64" stroke="var(--ink)" stroke-width="3"/>' +
+      '<g class="pan-l"><path d="M150 64 L110 150 M150 64 L190 150" stroke="var(--muted)" fill="none"/><path d="M100 150 H200 Q150 185 100 150z" fill="var(--dawn-soft)" stroke="var(--dawn)"/><text x="150" y="210" text-anchor="middle" class="sc-t" style="fill:var(--dawn)">LOVE</text><text x="150" y="228" text-anchor="middle" class="sc-s">wants to forgive</text></g>' +
+      '<g class="pan-r"><path d="M490 64 L450 150 M490 64 L530 150" stroke="var(--muted)" fill="none"/><path d="M440 150 H540 Q490 185 440 150z" fill="var(--wine-soft)" stroke="var(--wine)"/><text x="490" y="210" text-anchor="middle" class="sc-t" style="fill:var(--wine)">JUSTICE</text><text x="490" y="228" text-anchor="middle" class="sc-s">demands punishment</text></g></g></g>' +
+      '<g class="sc-one"><circle cx="320" cy="140" r="120" fill="url(#flame)" class="sc-glow"/><circle cx="320" cy="140" r="34" fill="#e0ae55"/><text x="320" y="146" text-anchor="middle" class="sc-t" style="fill:#1a1408">LOVE</text>' +
+      [["Justice", "love setting things right", 320, 20], ["Holiness", "love's purity", 520, 110], ["Wrath", "love against what destroys", 500, 250], ["Mercy", "love toward the undeserving", 140, 250], ["Judgement", "love exposing and healing", 120, 110]].map(function (r) {
+        return '<line x1="320" y1="140" x2="' + r[2] + '" y2="' + (r[3] + (r[3] < 140 ? 14 : -14)) + '" stroke="var(--gold)" stroke-opacity=".5" stroke-dasharray="3 5"/><text x="' + r[2] + '" y="' + r[3] + '" text-anchor="middle" class="sc-t" style="font-size:13px">' + r[0].toUpperCase() + '</text><text x="' + r[2] + '" y="' + (r[3] + 16) + '" text-anchor="middle" class="sc-s">' + r[1] + "</text>";
+      }).join("") + "</g></svg></div>" +
+      '<p class="su-text" id="scale-text"></p></section>';
+  }
+  var SCALE = {
+    two: "In the two-natures picture, God's love and God's justice pull against each other. Love wants to forgive; justice demands that someone be punished. The cross tips the balance by punishing the Son so that love may go free.",
+    one: "In the one-nature picture there is nothing to balance. God is love, and every other word describes love in action: justice is love setting things right, holiness is love's purity, wrath is love's fire against what destroys the beloved, and judgement is love exposing evil in order to heal."
+  };
+  function setScale(m) {
+    var root = $("#scales"); if (!root) return;
+    scaleMode = m;
+    $$("[data-scale]", root).forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.scale === m)); });
+    root.classList.toggle("one", m === "one");
+    $("#scale-text").textContent = SCALE[m];
+  }
+  function lovePane() {
+    if (loveTab === "passages") {
+      return '<div class="toolbar">' + field("lp-q", "Search passages, e.g. vengeance, Nahum, Lamb, Gehenna") + '<span class="count" id="lp-count"></span></div><div class="chips">' +
+        [["all", "Whole Bible"], ["OT", "Old Testament"], ["NT", "New Testament"]].map(function (t) { return '<button class="chip" type="button" data-lpt="' + t[0] + '" aria-pressed="' + (loveTest === t[0]) + '">' + t[1] + "</button>"; }).join("") + '</div><div class="grid" id="lpgrid"></div>';
+    }
+    if (loveTab === "objections") return '<div class="qa">' + A("loveObjections").map(function (o) { return "<details><summary>" + o.q + '</summary><div class="ans"><p>' + o.a + '</p><div class="ref">' + esc((o.refs || []).join(" · ")) + "</div></div></details>"; }).join("") + "</div>";
+    if (loveTab === "words") return '<div class="grid">' + A("justiceWords").map(function (w) { return '<div class="card" role="button" tabindex="0" data-open="loveWord.' + w.id + '"><div class="label">' + esc(w.lang) + '</div><div class="orig">' + esc(w.original) + "</div><h3>" + esc(w.word) + ' <span class="ref">' + esc(w.translit) + "</span></h3><p>" + clip(w.meaning, 140) + "</p></div>"; }).join("") + "</div>";
+    return '<div class="grid">' + A("loveVoices").map(function (v) { return '<div class="voicecard ' + (v.side === "traditional" ? "trad" : "rel") + '"><div class="label">' + (v.side === "traditional" ? "Traditional view" : "Relational view") + '</div><blockquote>' + v.text + "</blockquote><b>" + esc(v.name) + '</b><span class="ref">' + esc(v.source) + "</span>" + (v.note ? '<p class="note">' + v.note + "</p>" : "") + "</div>"; }).join("") + "</div>";
+  }
+  function lpGrid() {
+    if (!$("#lpgrid")) return;
+    var q = (($("#lp-q") || {}).value || "").toLowerCase().trim();
+    var list = A("lovePassages").filter(function (p) { return (loveTest === "all" || p.testament === loveTest) && (!q || [p.ref, p.text, p.claim, p.response].join(" ").toLowerCase().indexOf(q) > -1); });
+    $("#lpgrid").innerHTML = list.map(function (p) { return card("lovePassage", p, { top: '<div class="label">' + (p.testament === "OT" ? "Old Testament" : "New Testament") + "</div>", text: "<em>" + clip(p.text, 120) + "</em>" }); }).join("") || '<p class="count">No passage matches. Try a book name.</p>';
+    $("#lp-count").textContent = list.length + " of " + A("lovePassages").length;
+  }
+
   /* ---------- How God met humanity ---------- */
   var ageIdx = 0, revTab = 0;
   V.story = function () {
@@ -537,6 +599,10 @@
     revealed: function (x) { return revPane(x); },
     apostle: function (x) { return '<div class="ref">' + esc("Writings: " + x.writings) + "</div>" + panel("uni", "What they grasped", x.grasped) + panel("sep", "Where they struggled", x.struggled) + panel("gold", "How they grew", x.growth) + blk("Key passages", esc((x.keyRefs || []).join(" · "))); },
     act: function (x) { return '<div class="ref">' + esc(x.ref) + "</div>" + panel("gold", "The Father", x.father) + blk("The Son", x.son) + panel("uni", "The Spirit", x.spirit) + blk("For us", x.us); },
+    lovePassage: function (x) { return '<div class="verse"><span class="ref">' + esc(x.ref) + "</span>" + x.text + "</div>" + blk("Context", x.context) + panel("sep", "How it is used to argue for retribution", x.claim) + panel("uni", "The relational reading", x.response) + panel("gold", "What remains strong in the objection", x.fair); },
+    loveObj: function (x) { return blk("The answer", x.a) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    loveWord: function (x) { return '<div class="orig" style="font-size:40px">' + esc(x.original) + '</div><div class="ref">' + esc(x.lang + " · " + x.translit) + "</div>" + blk("Meaning", x.meaning) + panel("uni", "Why it matters here", x.insight) + blk("Where it appears", esc((x.refs || []).join(" · "))); },
+    loveVoice: function (x) { return '<div class="verse"><span class="ref">' + esc(x.source) + "</span>" + x.text + "</div>" + blk("Note", x.note); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -623,7 +689,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["love", "God is love"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -697,6 +763,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "love") { setScale(scaleMode); lpGrid(); }
     bindSU();
     if (r.item) openSheet(r.item.type, r.item.id);
     var ttl = route.view === "theme" ? (find("theme", route.id) || {}).title : null;
@@ -718,6 +785,10 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var sc = t.closest("[data-scale]"); if (sc) { setScale(sc.dataset.scale); return; }
+    var cs = t.closest("[data-case]"); if (cs) { var el2 = $("#case-" + cs.dataset.case); if (el2) el2.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var lt = t.closest("[data-lt]"); if (lt) { loveTab = lt.dataset.lt; $$("[data-lt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lt)); }); $("#lovepane").innerHTML = lovePane(); lpGrid(); return; }
+    var lpt = t.closest("[data-lpt]"); if (lpt) { loveTest = lpt.dataset.lpt; $$("[data-lpt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lpt)); }); lpGrid(); return; }
     var rv = t.closest("[data-rev]"); if (rv) { revTab = +rv.dataset.rev; $$("[data-rev]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === rv)); }); $("#revpane").innerHTML = revPane(A("revealed")[revTab]); return; }
     var ac = t.closest("[data-act]"); if (ac) { actIdx = +ac.dataset.act; showAct(); return; }
     var am = t.closest("[data-actmove]"); if (am) { var n = A("trinityActs").length; actIdx = (actIdx + +am.dataset.actmove + n) % n; showAct(); return; }
@@ -738,6 +809,7 @@
     else if (id === "cul-q") culGrid();
     else if (id === "say-q") sayGrid();
     else if (id === "voice-q") voiceGrid();
+    else if (id === "lp-q") lpGrid();
     else if (id === "age-range") { ageIdx = +ev.target.value; showAge(); }
     else if (id === "passage") { notes.passage = ev.target.value; store("rga.notes", notes); }
     else if (id === "ans") {

@@ -396,6 +396,38 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
   .miss-arrow { transform: rotate(90deg); justify-self: center; }
 }
 
+
+/* ---------- God is love ---------- */
+.scales { display: grid; gap: 14px; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.scales-stage { width: 100%; max-width: 680px; justify-self: center; aspect-ratio: 640 / 300; }
+.scales-stage svg { width: 100%; height: 100%; overflow: visible; }
+.sc-t { font-family: var(--mono); font-size: 14px; letter-spacing: .14em; fill: var(--ink); }
+.sc-s { font-family: var(--body); font-size: 13px; fill: var(--muted); }
+.beam { transform-origin: 320px 64px; animation: teeter 4.5s ease-in-out infinite; }
+.beam .pan-l { transform-origin: 150px 64px; animation: counter 4.5s ease-in-out infinite; }
+.beam .pan-r { transform-origin: 490px 64px; animation: counter 4.5s ease-in-out infinite; }
+@keyframes counter { 0%, 100% { transform: rotate(7deg); } 50% { transform: rotate(-7deg); } }
+@keyframes teeter { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+.sc-two, .sc-one { transition: opacity .8s ease, transform .8s ease; transform-origin: 320px 150px; }
+.sc-one { opacity: 0; transform: scale(.7); }
+.scales.one .sc-two { opacity: 0; transform: scale(1.15); }
+.scales.one .sc-one { opacity: 1; transform: none; }
+.sc-glow { animation: glow 4s ease-in-out infinite; transform-origin: 320px 140px; }
+@keyframes glow { 50% { transform: scale(1.12); opacity: .8; } }
+.case { display: grid; gap: 14px; }
+.case-step { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); scroll-margin-top: 80px; }
+.case-num { font-family: var(--mono); font-size: 28px; color: var(--gold); line-height: 1; }
+.case-body { display: grid; gap: 10px; min-width: 0; }
+.case-body h3 { font-size: 24px; }
+.orig { font-size: 30px; line-height: 1.2; color: var(--gold); font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif; }
+.voicecard { display: grid; gap: 8px; align-content: start; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); min-width: 0; }
+.voicecard.rel { border-top: 2px solid var(--dawn); }
+.voicecard.trad { border-top: 2px solid var(--wine); }
+.voicecard.rel .label { color: var(--dawn); } .voicecard.trad .label { color: var(--wine); }
+.voicecard blockquote { margin: 0; font-style: italic; font-size: 17px; }
+.voicecard b { font-weight: 600; }
+@media (max-width: 720px) { .case-step { grid-template-columns: minmax(0, 1fr); } .case-num { font-size: 20px; } }
+
 @media (max-width: 980px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
   .rail { display: none; }
@@ -5674,6 +5706,164 @@ RG.models = [
     relational: "This is the relational stream’s own view: God says “I have forgiven you; therefore repent”, not “repent, and then I will forgive”. Critics reply that Scripture does contain conditional covenant language (blessings and curses, “if you obey”), and that the relational reading must explain it rather than set it aside."
   }
 ];
+
+;
+window.RG = window.RG || {};
+var RG = window.RG;
+
+/* The core argument of the "God is love" section, step by step. */
+RG.loveCase = [
+  {
+    id: "the-claim",
+    kicker: "The claim",
+    title: "God is love",
+    refs: ["1 John 4:8", "1 John 4:16", "1 Cor 13:4-8"],
+    body: [
+      "John does not say that God <em>has</em> love, or that love is one of God's moods. He says, twice, \"God is love\" (1 John 4:8, 16). It is a statement about what God is, not only about what God does.",
+      "Scripture never says \"God is justice\" or \"God is wrath\". It does say \"God is light\" (1 John 1:5), \"God is spirit\" (John 4:24) and \"our God is a consuming fire\" (Heb 12:29). The relational gospel reads these as descriptions of what love is like: love is light because it hides nothing, spirit because it gives life, fire because it burns away whatever harms the beloved. John's own letter explains light by love: whoever loves his brother lives in the light (1 John 2:10).",
+      "So the claim is not that God is soft. It is that everything God is and does flows from one nature, and that nature is love. Holiness is love's purity, justice is love setting things right, and wrath is love's resistance to whatever destroys the beloved. They are not rival forces inside God waiting to be balanced."
+    ]
+  },
+  {
+    id: "two-natures",
+    kicker: "The opposing view, fairly stated",
+    title: "The evangelical model of love and justice",
+    refs: ["Rom 3:25-26", "Ex 34:6-7", "Isa 6:3", "Hab 1:13"],
+    body: [
+      "Many evangelical teachers describe God as holding together attributes that pull in different directions. God's love wants to forgive. God's holiness and justice require that sin be punished. Without a solution, God would face a dilemma.",
+      "In this model the cross is the solution. The Son bears the punishment that justice demands, so God can be \"just, and the justifier\" (Rom 3:26) of sinners. The Gospel Coalition's essay on wrath defines God's wrath as \"the holy action of retributive justice towards persons whose actions deserve eternal condemnation\", and calls the cross \"divine satisfaction through divine substitution\". A 2017 Southern Baptist resolution summarises it: God's perfect love applies his perfect justice to satisfy his perfect holiness in redeeming sinners.",
+      "Its defenders make serious points. They warn that love cut off from holiness shrinks into mere affirmation. They insist that God takes evil seriously and that victims matter. They point to many texts about wrath, judgement and punishment. Those concerns deserve a real answer, not a dismissal.",
+      "The relational gospel agrees that God takes evil with total seriousness. It disagrees about what God's justice is, and so about what the cross was for."
+    ]
+  },
+  {
+    id: "trinity",
+    kicker: "Why it fails · 1",
+    title: "Before there was sin, there was love",
+    refs: ["John 17:24", "John 17:5", "Eph 1:4"],
+    body: [
+      "Jesus speaks of the glory he shared with the Father \"before the world existed\" and says, \"you loved me before the foundation of the world\" (John 17:5, 24). Before creation, and long before any sin, the life of God was love: the Father loving the Son in the Spirit.",
+      "Retributive justice, by definition, is a response to wrongdoing. It needs a wrongdoer. If punishment were part of God's eternal nature, then God would need sin in order to be fully himself. That cannot be right. What God is eternally, with or without a fallen world, is love.",
+      "So justice cannot be a second nature standing beside love. It must be what eternal love does when it meets a broken world: it moves to set it right."
+    ]
+  },
+  {
+    id: "simplicity",
+    kicker: "Why it fails · 2",
+    title: "Classical theism never split God in two",
+    refs: ["Deut 6:4", "James 1:17", "Ps 62:12"],
+    body: [
+      "The picture of love and justice as two forces in tension is a popular modern model, not the classical doctrine of God. The great tradition taught divine simplicity: God has no parts, and his attributes are not pieces that can conflict. Thomas Aquinas (Summa Theologiae I, q.3) identifies God's essence with his attributes, so his justice and his mercy are one reality seen from two sides.",
+      "Aquinas goes further. In every work of God there are both justice and mercy, and the work of divine justice always presupposes the work of mercy and is founded on it (ST I, q.21, a.4). Mercy is the ground. Justice rests on it.",
+      "George MacDonald put it plainly in his sermon \"Justice\": \"There is no opposition, no strife whatever, between mercy and justice.\" His key text was Psalm 62:12 (KJV): \"Also unto thee, O Lord, belongeth mercy: for thou renderest to every man according to his work.\" The psalmist sees no tension. God's rendering to each person is itself his mercy.",
+      "Evangelical defenders often affirm simplicity too, and say God's love simply <em>is</em> his retributive justice. The relational reply is that simplicity cuts the other way: if God is one, then the one thing he is must be the thing Scripture names, love, and justice must be understood by love, not love by a retributive idea of justice."
+    ]
+  },
+  {
+    id: "jesus",
+    kicker: "Why it fails · 3",
+    title: "Jesus never balanced the books",
+    refs: ["Heb 1:3", "John 14:9", "Mark 2:5", "Luke 7:48", "Luke 15:20", "Luke 23:34"],
+    body: [
+      "Hebrews calls the Son \"the radiance of his glory, the very image of his substance\" (Heb 1:3). Jesus says, \"He who has seen me has seen the Father\" (John 14:9). If God had two natures in tension, we would expect to see that tension in Jesus. We do not.",
+      "Jesus forgives the paralysed man before he asks (Mark 2:5). He tells a woman known as a sinner, \"Your sins are forgiven\" (Luke 7:48), without requiring a sacrifice at the temple. He eats with tax collectors before they repent, and Zacchaeus changes because he has been welcomed (Luke 19:1-10). In his story of the lost son, the father runs, embraces and restores before any payment, and the only character demanding that the books be balanced is the elder brother (Luke 15:20-30).",
+      "From the cross he prays, \"Father, forgive them, for they don't know what they are doing\" (Luke 23:34; this line is missing from some early manuscripts, though widely accepted as authentic). Jesus does not appease an angry Father. He reveals a forgiving one.",
+      "Jesus does confront evil fiercely: he overturns the money-changers' tables and warns the powerful. But every confrontation aims at rescue, of the exploited and of the exploiters too. That is what justice looks like when it has a face."
+    ]
+  },
+  {
+    id: "words",
+    kicker: "Why it fails · 4",
+    title: "Biblical justice means setting things right",
+    refs: ["Isa 1:17", "Ps 146:7-9", "Isa 30:18", "Isa 42:1-4", "Ps 96:11-13"],
+    body: [
+      "The Hebrew words for justice, <em>mishpat</em> and <em>tsedaqah</em>, are relational and active. They mean putting things right: defending the widow and orphan, freeing prisoners, lifting the bowed down, feeding the hungry (Isa 1:17; Ps 146:7-9). Justice in the prophets is something the poor long for, not something they dread.",
+      "Isaiah 30:18 joins justice and grace in one sentence: \"Therefore the LORD will wait, that he may be gracious to you... for the LORD is a God of justice.\" God's justice is the reason for his grace, not the obstacle to it.",
+      "The servant of the Lord \"will bring justice to the nations\", yet \"a bruised reed he will not break\" (Isa 42:1-4; Matt 12:18-21). And in the psalms the whole creation sings for joy because God is coming to judge the earth (Ps 96:11-13; 98:7-9). People do not sing about a sentence of execution. They sing because the Judge is coming to make everything right.",
+      "The Greek <em>dikaiosynē</em> (righteousness, justice) and <em>dikaioō</em> (to justify, to make right) carry the same idea. In Romans 3:26 God is \"just and the justifier\": his justice is shown precisely in making the unrighteous right. Christopher Marshall's study <em>Beyond Retribution</em> concludes that restoration, not retribution, is the hallmark of God's justice and his final word."
+    ]
+  },
+  {
+    id: "imitate",
+    kicker: "Why it fails · 5",
+    title: "God asks us to be like him in this",
+    refs: ["Matt 5:43-48", "Luke 6:35-36", "Rom 12:17-21", "Eph 4:32-5:1"],
+    body: [
+      "Jesus tells us to love our enemies \"that you may be children of your Father who is in heaven. For he makes his sun to rise on the evil and the good\" (Matt 5:44-45). Then he says, \"Therefore you shall be perfect, just as your Father in heaven is perfect\" (5:48). In Luke the same line reads, \"Be merciful, even as your Father is also merciful\" (Luke 6:36).",
+      "The logic is clear. We are told to forgive without payment and to refuse retaliation because that is what God is like. If God's deepest perfection were retribution, Jesus would be asking us to be better than the Father. MacDonald made the same point: if a person could be more merciful than God, then mercy would not be divine at all.",
+      "Paul says the same: \"Be kind to one another, tender hearted, forgiving each other, just as God also in Christ forgave you. Be therefore imitators of God\" (Eph 4:32-5:1)."
+    ]
+  },
+  {
+    id: "forgiveness",
+    kicker: "Why it fails · 6",
+    title: "A debt that is paid is not forgiven",
+    refs: ["Matt 18:27", "Col 2:13-14", "Luke 7:41-43"],
+    body: [
+      "The Greek word for forgiveness, <em>aphesis</em>, means release. In Jesus' parable the king \"released him, and forgave him the debt\" (Matt 18:27). He did not collect it from someone else. The cost of forgiveness is absorbed by the one who forgives.",
+      "If God must receive full payment before he can forgive, then strictly speaking he never forgives at all. He is paid. Jesus' parable of the two debtors makes forgiveness a free cancellation, and love the response to it (Luke 7:41-43).",
+      "This is why the relational gospel reads the cross as God himself absorbing the cost of our sin and violence in Christ, and answering it with forgiveness, rather than as one person of the Trinity collecting a debt from another."
+    ]
+  },
+  {
+    id: "mercy-triumphs",
+    kicker: "Why it fails · 7",
+    title: "Mercy triumphs over judgement",
+    refs: ["James 2:13", "Lam 3:31-33", "Ezek 33:11", "Mic 7:18", "Hos 11:8-9"],
+    body: [
+      "Scripture does not present love and justice as equal weights. \"Mercy triumphs over judgement\" (James 2:13). \"The Lord will not cast off forever... For he does not afflict willingly\" (Lam 3:31-33). \"I have no pleasure in the death of the wicked, but that the wicked turn from his way and live\" (Ezek 33:11).",
+      "Micah asks, \"Who is a God like you, who pardons iniquity... He doesn't retain his anger forever, because he delights in loving kindness\" (Mic 7:18). In Hosea God refuses to destroy Israel, and gives the reason: \"for I am God, and not man\" (Hos 11:8-9). The reason God does not act on his anger is that he is God.",
+      "Isaac the Syrian, as he is usually translated, compared all the sin of humanity next to God's mercy to a handful of sand thrown into the sea."
+    ]
+  },
+  {
+    id: "what-justice-is",
+    kicker: "What justice is",
+    title: "Justice is love setting things right",
+    refs: ["Isa 26:9", "John 3:17-19", "John 12:31-32", "Luke 1:51-53", "Rev 21:4-5"],
+    body: [
+      "If justice is not retribution, it is not nothing. Restorative justice is demanding. It tells the truth about evil. It confronts and stops oppressors. It vindicates victims and lifts the lowly (Luke 1:51-53). It requires repentance and, where possible, restitution. And it aims to heal the wrongdoer too.",
+      "Isaiah says, \"When your judgements are in the earth, the inhabitants of the world learn righteousness\" (Isa 26:9). Judgement, in this light, is a classroom, not a slaughterhouse. In John's gospel, judgement (<em>krisis</em>) is exposure: \"the light has come into the world\" (John 3:19). Jesus says the judgement of this world happens at the cross, where he draws all people to himself (John 12:31-32).",
+      "MacDonald, in \"Justice\", wrote that \"repentance removes the offence which no suffering could\", and that God is not bound to punish sin but to destroy it. Punishment may do good to the one who did wrong, but suffering as such never puts the wrong right. Only a restored relationship does.",
+      "The end of the story is not a balanced ledger but a healed world: \"He will wipe away every tear... Behold, I am making all things new\" (Rev 21:4-5)."
+    ]
+  },
+  {
+    id: "what-wrath-is",
+    kicker: "What wrath is",
+    title: "Wrath is love against what destroys",
+    refs: ["Rom 1:18-28", "Rom 2:4", "Heb 12:6-11", "Rev 5:6"],
+    body: [
+      "The relational gospel does not deny God's wrath. It asks what it is. In Romans 1 Paul describes wrath being revealed as God \"gave them up\" to the consequences of their choices, three times (Rom 1:24, 26, 28). Wrath here is God letting the self-destruction of sin run its course, not God inflicting extra pain.",
+      "A parent's anger at the drug that is killing their child is not the opposite of love. It is love on fire. God's wrath is aimed at sin, which destroys his children, and it never cancels his love for the sinner. Paul says it is God's kindness that leads to repentance (Rom 2:4).",
+      "Discipline in Scripture aims at the good of the one disciplined: God disciplines \"for our profit, that we may be partakers of his holiness\" (Heb 12:10). That is restorative by definition.",
+      "And Revelation's \"wrath of the Lamb\" (Rev 6:16) is the wrath of a Lamb \"standing, as though it had been slain\" (Rev 5:6). The image of God's judgement at the centre of the Bible's last book is a slaughtered, forgiving Lamb."
+    ]
+  },
+  {
+    id: "the-cross",
+    kicker: "The cross",
+    title: "God was in Christ, not against Christ",
+    refs: ["2 Cor 5:19", "John 3:16-17", "Col 2:15", "1 John 4:9-10", "Rom 5:8"],
+    body: [
+      "\"God was in Christ reconciling the world to himself, not counting their trespasses against them\" (2 Cor 5:19). The Father is not on the other side of the cross, punishing. He is in Christ, reconciling. In the New Testament God is always the one doing the reconciling and humanity the one being reconciled. God never needs to be reconciled to us.",
+      "\"God so loved the world that he gave his one and only Son\" (John 3:16). Love is the cause of the cross, not its result. \"God commends his own love toward us, in that while we were yet sinners, Christ died for us\" (Rom 5:8).",
+      "On the cross humanity poured out its violence, religion and empire on the Son of God, and he answered with forgiveness. He disarmed the powers (Col 2:15), exposed the lie of violent religion, entered death and broke it from the inside. His blood speaks a better word than Abel's (Heb 12:24): not a cry for vengeance but a word of mercy.",
+      "1 John 4:10 calls Christ the <em>hilasmos</em> for our sins. Traditional readers translate it \"propitiation\" (appeasing wrath). Many others translate it \"atoning sacrifice\" or \"expiation\" (removing sin), and note that in the same verse love is the source: \"not that we loved God, but that he loved us, and sent his Son\"."
+    ]
+  },
+  {
+    id: "honest-limits",
+    kicker: "Honest limits",
+    title: "What remains debated",
+    refs: ["Matt 25:46", "2 Thess 1:9", "Rom 3:25", "Heb 10:31"],
+    body: [
+      "This section argues one side of a real debate. Thoughtful Christians across history have read texts like Romans 3:25, Matthew 25:46 and 2 Thessalonians 1:9 as teaching retributive judgement, and the passages and objections pages present their reading at full strength.",
+      "Some points are genuinely open: how to translate <em>hilastērion</em> and <em>hilasmos</em>, what <em>aiōnios</em> and <em>kolasis</em> mean, and how the Old Testament's judgement narratives relate to the revelation in Jesus. Relational teachers hold their reading with conviction, while acknowledging that faithful people disagree.",
+      "What the relational gospel will not concede is that God's deepest nature includes a need to punish, or that the Father of Jesus has a second face that Jesus did not show."
+    ]
+  }
+];
 </script>
 <script>(function () {
   "use strict";
@@ -5724,6 +5914,10 @@ RG.models = [
     revealed: { key: "revealed", view: "story", title: function (x) { return x.title; }, sub: function (x) { return x.ref; }, label: "Fully revealed" },
     apostle: { key: "apostles", view: "apostles", title: function (x) { return x.name; }, sub: function (x) { return x.writings; }, label: "Apostle" },
     act: { key: "trinityActs", view: "trinity", title: function (x) { return x.moment; }, sub: function (x) { return x.ref; }, label: "The Trinity at work" },
+    lovePassage: { key: "lovePassages", view: "love", title: function (x) { return x.ref; }, sub: function (x) { return x.testament === "OT" ? "Old Testament" : "New Testament"; }, label: "Justice passage" },
+    loveObj: { key: "loveObjections", view: "love", title: function (x) { return strip(x.q); }, sub: function () { return "Objection answered"; }, label: "Love & justice" },
+    loveWord: { key: "justiceWords", view: "love", title: function (x) { return x.word + " · " + x.translit; }, sub: function (x) { return x.lang + " · " + x.original; }, label: "Word study" },
+    loveVoice: { key: "loveVoices", view: "love", title: function (x) { return x.name; }, sub: function (x) { return x.source; }, label: "Voice on love & justice" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var FAMILY = { atonement: "Atonement", salvation: "Salvation", hell: "Judgement & hell", scripture: "Scripture", "end-times": "End times", "law-covenant": "Law & covenant" };
@@ -5733,7 +5927,7 @@ RG.models = [
   /* ---------- navigation model ---------- */
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
-    { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
+    { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
     { group: "Trinity & union", items: [["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
@@ -5848,6 +6042,7 @@ RG.models = [
       ["read", "How to read", "Jesus is the Word; the Bible is the witness to him."],
       ["story", "How God met humanity", "From a garden to a face: the light rising through the ages."],
       ["theme.perfect-theology", "Jesus, perfect theology", "If you have seen him, you have seen the Father."],
+      ["love", "God is love, one nature", "Why justice is love setting things right, not a rival nature."],
       ["apostles", "Did the apostles see it?", "Witnesses who grew into the light."],
       ["journey", "How people misread God", "From Eden's hiding to Peter's sword."],
       ["violence", "The violent passages", "Reading the war stories through the cross."],
@@ -5876,6 +6071,7 @@ RG.models = [
         ["sayings", A("sayings").length + " sayings of Jesus", "The setting that makes each one land"],
         ["violence", A("violence").length + " hard passages", A("frameworks").length + " ways Christians reconcile them"],
         ["debate", A("strawmen").length + " strawmen, " + A("arguments").length + " debates", "Arguments and counter-arguments, side by side"],
+        ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
         ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
         ["models", A("models").length + " frameworks compared", "Atonement, salvation, hell, Scripture, end times"],
@@ -6067,6 +6263,62 @@ RG.models = [
       "</div>";
   };
 
+
+  /* ---------- God is love: one nature ---------- */
+  var loveTab = "passages", loveTest = "all", scaleMode = "two";
+  V.love = function () {
+    var C = A("loveCase");
+    return head("One nature, not two", "God is love", "Many teach that God holds love and justice in tension, and that the cross settled the conflict. The relational gospel answers that God has one nature, love, and that his justice is love setting the world right. Here is the case, the passages people bring against it, and the strongest objections, answered.") +
+      scalesHTML() +
+      (C.length ? '<section class="section"><h2>The case, step by step</h2><div class="chips" id="casenav">' + C.map(function (c, i) { return '<button class="chip" type="button" data-case="' + c.id + '">' + (i + 1) + ". " + esc(c.title) + "</button>"; }).join("") + '</div><div class="case">' +
+        C.map(function (c, i) {
+          return '<article class="case-step" id="case-' + c.id + '"><div class="case-num" aria-hidden="true">' + String(i + 1).padStart(2, "0") + '</div><div class="case-body"><div class="label">' + esc(c.kicker) + "</div><h3>" + esc(c.title) + '</h3><div class="prose">' + c.body.map(function (p) { return "<p>" + p + "</p>"; }).join("") + '</div><div class="ref">' + esc((c.refs || []).join(" · ")) + "</div></div></article>";
+        }).join("") + "</div></section>" : "") +
+      '<section class="section"><h2>Go deeper</h2><div class="chips" id="lovetabs">' +
+      [["passages", "Passages answered (" + A("lovePassages").length + ")"], ["objections", "Objections (" + A("loveObjections").length + ")"], ["words", "Word studies (" + A("justiceWords").length + ")"], ["voices", "Voices (" + A("loveVoices").length + ")"]].map(function (t) { return '<button class="chip" type="button" data-lt="' + t[0] + '" aria-pressed="' + (loveTab === t[0]) + '">' + t[1] + "</button>"; }).join("") +
+      '</div><div id="lovepane">' + lovePane() + "</div></section>";
+  };
+  function scalesHTML() {
+    return '<section class="scales" id="scales"><div class="row" style="justify-content:space-between"><div class="label">Two pictures of God</div><div class="su-toggle" role="group" aria-label="Choose a picture"><button type="button" class="s" data-scale="two" aria-pressed="true">Two natures</button><button type="button" class="u" data-scale="one" aria-pressed="false">One nature</button></div></div>' +
+      '<div class="scales-stage"><svg viewBox="0 0 640 300" aria-hidden="true"><defs><radialGradient id="flame"><stop offset="0" stop-color="#fff6dc"/><stop offset=".35" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      '<g class="sc-two"><path d="M320 60 V250 M270 262 H370" stroke="var(--muted)" stroke-width="3" fill="none"/><polygon points="308,60 332,60 320,44" fill="var(--muted)"/>' +
+      '<g class="beam"><line x1="150" y1="64" x2="490" y2="64" stroke="var(--ink)" stroke-width="3"/>' +
+      '<g class="pan-l"><path d="M150 64 L110 150 M150 64 L190 150" stroke="var(--muted)" fill="none"/><path d="M100 150 H200 Q150 185 100 150z" fill="var(--dawn-soft)" stroke="var(--dawn)"/><text x="150" y="210" text-anchor="middle" class="sc-t" style="fill:var(--dawn)">LOVE</text><text x="150" y="228" text-anchor="middle" class="sc-s">wants to forgive</text></g>' +
+      '<g class="pan-r"><path d="M490 64 L450 150 M490 64 L530 150" stroke="var(--muted)" fill="none"/><path d="M440 150 H540 Q490 185 440 150z" fill="var(--wine-soft)" stroke="var(--wine)"/><text x="490" y="210" text-anchor="middle" class="sc-t" style="fill:var(--wine)">JUSTICE</text><text x="490" y="228" text-anchor="middle" class="sc-s">demands punishment</text></g></g></g>' +
+      '<g class="sc-one"><circle cx="320" cy="140" r="120" fill="url(#flame)" class="sc-glow"/><circle cx="320" cy="140" r="34" fill="#e0ae55"/><text x="320" y="146" text-anchor="middle" class="sc-t" style="fill:#1a1408">LOVE</text>' +
+      [["Justice", "love setting things right", 320, 20], ["Holiness", "love's purity", 520, 110], ["Wrath", "love against what destroys", 500, 250], ["Mercy", "love toward the undeserving", 140, 250], ["Judgement", "love exposing and healing", 120, 110]].map(function (r) {
+        return '<line x1="320" y1="140" x2="' + r[2] + '" y2="' + (r[3] + (r[3] < 140 ? 14 : -14)) + '" stroke="var(--gold)" stroke-opacity=".5" stroke-dasharray="3 5"/><text x="' + r[2] + '" y="' + r[3] + '" text-anchor="middle" class="sc-t" style="font-size:13px">' + r[0].toUpperCase() + '</text><text x="' + r[2] + '" y="' + (r[3] + 16) + '" text-anchor="middle" class="sc-s">' + r[1] + "</text>";
+      }).join("") + "</g></svg></div>" +
+      '<p class="su-text" id="scale-text"></p></section>';
+  }
+  var SCALE = {
+    two: "In the two-natures picture, God's love and God's justice pull against each other. Love wants to forgive; justice demands that someone be punished. The cross tips the balance by punishing the Son so that love may go free.",
+    one: "In the one-nature picture there is nothing to balance. God is love, and every other word describes love in action: justice is love setting things right, holiness is love's purity, wrath is love's fire against what destroys the beloved, and judgement is love exposing evil in order to heal."
+  };
+  function setScale(m) {
+    var root = $("#scales"); if (!root) return;
+    scaleMode = m;
+    $$("[data-scale]", root).forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.scale === m)); });
+    root.classList.toggle("one", m === "one");
+    $("#scale-text").textContent = SCALE[m];
+  }
+  function lovePane() {
+    if (loveTab === "passages") {
+      return '<div class="toolbar">' + field("lp-q", "Search passages, e.g. vengeance, Nahum, Lamb, Gehenna") + '<span class="count" id="lp-count"></span></div><div class="chips">' +
+        [["all", "Whole Bible"], ["OT", "Old Testament"], ["NT", "New Testament"]].map(function (t) { return '<button class="chip" type="button" data-lpt="' + t[0] + '" aria-pressed="' + (loveTest === t[0]) + '">' + t[1] + "</button>"; }).join("") + '</div><div class="grid" id="lpgrid"></div>';
+    }
+    if (loveTab === "objections") return '<div class="qa">' + A("loveObjections").map(function (o) { return "<details><summary>" + o.q + '</summary><div class="ans"><p>' + o.a + '</p><div class="ref">' + esc((o.refs || []).join(" · ")) + "</div></div></details>"; }).join("") + "</div>";
+    if (loveTab === "words") return '<div class="grid">' + A("justiceWords").map(function (w) { return '<div class="card" role="button" tabindex="0" data-open="loveWord.' + w.id + '"><div class="label">' + esc(w.lang) + '</div><div class="orig">' + esc(w.original) + "</div><h3>" + esc(w.word) + ' <span class="ref">' + esc(w.translit) + "</span></h3><p>" + clip(w.meaning, 140) + "</p></div>"; }).join("") + "</div>";
+    return '<div class="grid">' + A("loveVoices").map(function (v) { return '<div class="voicecard ' + (v.side === "traditional" ? "trad" : "rel") + '"><div class="label">' + (v.side === "traditional" ? "Traditional view" : "Relational view") + '</div><blockquote>' + v.text + "</blockquote><b>" + esc(v.name) + '</b><span class="ref">' + esc(v.source) + "</span>" + (v.note ? '<p class="note">' + v.note + "</p>" : "") + "</div>"; }).join("") + "</div>";
+  }
+  function lpGrid() {
+    if (!$("#lpgrid")) return;
+    var q = (($("#lp-q") || {}).value || "").toLowerCase().trim();
+    var list = A("lovePassages").filter(function (p) { return (loveTest === "all" || p.testament === loveTest) && (!q || [p.ref, p.text, p.claim, p.response].join(" ").toLowerCase().indexOf(q) > -1); });
+    $("#lpgrid").innerHTML = list.map(function (p) { return card("lovePassage", p, { top: '<div class="label">' + (p.testament === "OT" ? "Old Testament" : "New Testament") + "</div>", text: "<em>" + clip(p.text, 120) + "</em>" }); }).join("") || '<p class="count">No passage matches. Try a book name.</p>';
+    $("#lp-count").textContent = list.length + " of " + A("lovePassages").length;
+  }
+
   /* ---------- How God met humanity ---------- */
   var ageIdx = 0, revTab = 0;
   V.story = function () {
@@ -6214,6 +6466,10 @@ RG.models = [
     revealed: function (x) { return revPane(x); },
     apostle: function (x) { return '<div class="ref">' + esc("Writings: " + x.writings) + "</div>" + panel("uni", "What they grasped", x.grasped) + panel("sep", "Where they struggled", x.struggled) + panel("gold", "How they grew", x.growth) + blk("Key passages", esc((x.keyRefs || []).join(" · "))); },
     act: function (x) { return '<div class="ref">' + esc(x.ref) + "</div>" + panel("gold", "The Father", x.father) + blk("The Son", x.son) + panel("uni", "The Spirit", x.spirit) + blk("For us", x.us); },
+    lovePassage: function (x) { return '<div class="verse"><span class="ref">' + esc(x.ref) + "</span>" + x.text + "</div>" + blk("Context", x.context) + panel("sep", "How it is used to argue for retribution", x.claim) + panel("uni", "The relational reading", x.response) + panel("gold", "What remains strong in the objection", x.fair); },
+    loveObj: function (x) { return blk("The answer", x.a) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    loveWord: function (x) { return '<div class="orig" style="font-size:40px">' + esc(x.original) + '</div><div class="ref">' + esc(x.lang + " · " + x.translit) + "</div>" + blk("Meaning", x.meaning) + panel("uni", "Why it matters here", x.insight) + blk("Where it appears", esc((x.refs || []).join(" · "))); },
+    loveVoice: function (x) { return '<div class="verse"><span class="ref">' + esc(x.source) + "</span>" + x.text + "</div>" + blk("Note", x.note); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -6300,7 +6556,7 @@ RG.models = [
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["love", "God is love"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -6374,6 +6630,7 @@ RG.models = [
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "love") { setScale(scaleMode); lpGrid(); }
     bindSU();
     if (r.item) openSheet(r.item.type, r.item.id);
     var ttl = route.view === "theme" ? (find("theme", route.id) || {}).title : null;
@@ -6395,6 +6652,10 @@ RG.models = [
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var sc = t.closest("[data-scale]"); if (sc) { setScale(sc.dataset.scale); return; }
+    var cs = t.closest("[data-case]"); if (cs) { var el2 = $("#case-" + cs.dataset.case); if (el2) el2.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var lt = t.closest("[data-lt]"); if (lt) { loveTab = lt.dataset.lt; $$("[data-lt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lt)); }); $("#lovepane").innerHTML = lovePane(); lpGrid(); return; }
+    var lpt = t.closest("[data-lpt]"); if (lpt) { loveTest = lpt.dataset.lpt; $$("[data-lpt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lpt)); }); lpGrid(); return; }
     var rv = t.closest("[data-rev]"); if (rv) { revTab = +rv.dataset.rev; $$("[data-rev]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === rv)); }); $("#revpane").innerHTML = revPane(A("revealed")[revTab]); return; }
     var ac = t.closest("[data-act]"); if (ac) { actIdx = +ac.dataset.act; showAct(); return; }
     var am = t.closest("[data-actmove]"); if (am) { var n = A("trinityActs").length; actIdx = (actIdx + +am.dataset.actmove + n) % n; showAct(); return; }
@@ -6415,6 +6676,7 @@ RG.models = [
     else if (id === "cul-q") culGrid();
     else if (id === "say-q") sayGrid();
     else if (id === "voice-q") voiceGrid();
+    else if (id === "lp-q") lpGrid();
     else if (id === "age-range") { ageIdx = +ev.target.value; showAge(); }
     else if (id === "passage") { notes.passage = ev.target.value; store("rga.notes", notes); }
     else if (id === "ans") {

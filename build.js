@@ -6,7 +6,7 @@ const path = require("path");
 const src = (p) => fs.readFileSync(path.join(__dirname, "src", p), "utf8");
 const safe = (js) => js.replace(/<\/script/gi, "<\\/script");
 
-const order = ["themes", "themes2", "journey", "law", "culture", "debate", "story", "voices"];
+const order = ["themes", "themes2", "journey", "law", "culture", "debate", "story", "voices", "lovecase", "love"];
 const data = order
   .map((n) => path.join("data", n + ".js"))
   .filter((p) => fs.existsSync(path.join(__dirname, "src", p)))
