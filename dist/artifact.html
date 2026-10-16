@@ -454,7 +454,7 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 #spine-card .panel { background: var(--surface); animation: rise .35s both; }
 .sc { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
 .sc p { font-size: 16.5px; }
-.sc .chip.right { border-color: var(--dawn); }
+.sc.answered .chip.right { border-color: var(--dawn); }
 .sc .chip[aria-pressed="true"]:not(.right) { border-color: var(--wine); color: var(--wine); background: var(--wine-soft); }
 .sc .chip.right[aria-pressed="true"] { color: var(--dawn); background: var(--dawn-soft); }
 .sc-out[hidden] { display: none; }
@@ -14565,7 +14565,7 @@ RG.lifeEvidence2 = [
       var x = A("lifeScenarios").filter(function (y) { return y.id === scb.dataset.sc; })[0]; if (!x) return;
       lifeAns[x.id] = scb.dataset.ans; var box = $("#sc-" + x.id);
       $$("[data-sc]", box).forEach(function (b) { b.setAttribute("aria-pressed", String(b === scb)); b.classList.toggle("right", b.dataset.ans === x.answer); });
-      var o = $(".sc-out", box); o.hidden = false;
+      box.classList.add("answered"); var o = $(".sc-out", box); o.hidden = false;
       o.innerHTML = '<div class="label">' + (scb.dataset.ans === x.answer ? "You match the study" : "The study answers: " + ({ loving: "Loving", unloving: "Not loving", depends: "It depends" })[x.answer]) + "</div><p>" + x.why + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div>";
       lifeScore(); return;
     }

@@ -1018,7 +1018,7 @@
       var x = A("lifeScenarios").filter(function (y) { return y.id === scb.dataset.sc; })[0]; if (!x) return;
       lifeAns[x.id] = scb.dataset.ans; var box = $("#sc-" + x.id);
       $$("[data-sc]", box).forEach(function (b) { b.setAttribute("aria-pressed", String(b === scb)); b.classList.toggle("right", b.dataset.ans === x.answer); });
-      var o = $(".sc-out", box); o.hidden = false;
+      box.classList.add("answered"); var o = $(".sc-out", box); o.hidden = false;
       o.innerHTML = '<div class="label">' + (scb.dataset.ans === x.answer ? "You match the study" : "The study answers: " + ({ loving: "Loving", unloving: "Not loving", depends: "It depends" })[x.answer]) + "</div><p>" + x.why + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div>";
       lifeScore(); return;
     }
