@@ -1,4 +1,5 @@
 window.RG = window.RG || {};
+var RG = window.RG;
 
 RG.themes = [
   {
@@ -528,4 +529,173 @@ RG.themes = [
   }
 ];
 
-RG.teachings = [];
+RG.teachings = [
+  {
+    id: "god-is-not-angry",
+    title: "God Is Not Angry at You",
+    summary: "Many people carry a picture of God as frowning and disappointed. Relational teachers say the Father’s posture toward humanity, revealed in Jesus, is love and kindness, and it is his kindness that leads us to change. God hates what destroys us, but he is not against us.",
+    refs: ["Rom 2:4", "Rom 8:31", "Isa 54:9–10", "2 Cor 5:19"],
+    pushback: "Scripture speaks clearly of God’s wrath against sin and sinners (John 3:36; Rom 1:18), so critics say this message can soften a real warning."
+  },
+  {
+    id: "repentance-metanoia",
+    title: "Repentance Is a Change of Mind",
+    summary: "The New Testament word for repentance, <em>metanoia</em>, literally means a change of mind or perception. Relational teachers stress that repentance is less about grovelling and more about seeing God and ourselves differently in the light of Christ. True change of life flows from this new seeing.",
+    refs: ["Mark 1:15", "Rom 12:2", "Acts 3:19", "Rom 2:4"],
+    pushback: "Traditional teachers note that biblical repentance includes sorrow for sin and turning from it (2 Cor 7:10; Acts 26:20), and that word roots alone do not define meaning."
+  },
+  {
+    id: "forgiveness-before-repentance",
+    title: "Forgiveness Came First",
+    summary: "Jesus prayed for his killers’ forgiveness while they were still killing him, and Paul says God was reconciling the world, not counting their trespasses. Relational teachers conclude that God’s forgiveness is not purchased by our repentance; repentance is our response to a forgiveness already given. Note that Luke 23:34 is missing from some early manuscripts, though many scholars accept it.",
+    refs: ["Luke 23:34", "2 Cor 5:19", "Col 2:13", "Rom 5:8"],
+    pushback: "Other texts tie forgiveness to repentance and confession (Acts 2:38; 1 John 1:9), so critics argue forgiveness is offered to all but received only through response."
+  },
+  {
+    id: "faith-of-christ",
+    title: "The Faith of Christ",
+    summary: "Several passages use the Greek phrase <em>pistis Christou</em>, which can mean ‘faith in Christ’ or ‘the faith (faithfulness) of Christ’. The KJV often has ‘the faith of Jesus Christ’. Relational teachers favour the second reading: we are saved by Jesus’ own faithfulness, and our faith shares in his. Scholars such as Richard Hays have argued for this view, while others such as James Dunn defended the traditional reading; the debate is ongoing.",
+    refs: ["Gal 2:16", "Gal 2:20", "Rom 3:22", "Phil 3:9"],
+    pushback: "Many scholars argue the phrase means faith in Christ, noting that Paul elsewhere clearly calls people to believe in Jesus (Gal 2:16b)."
+  },
+  {
+    id: "wrath-as-giving-over",
+    title: "Wrath as Giving Over",
+    summary: "In Romans 1 God’s wrath is described three times as God ‘giving people over’ to what they have chosen. Relational teachers read wrath as God reluctantly allowing the natural consequences of turning from him, rather than God actively lashing out. It is the pain of love respecting our freedom.",
+    refs: ["Rom 1:24", "Rom 1:26", "Rom 1:28", "Hos 11:8"],
+    pushback: "Critics say this underplays texts where God acts directly in judgment, such as the flood or Revelation, and turns wrath into an impersonal process."
+  },
+  {
+    id: "satan-the-accuser",
+    title: "Satan Is the Accuser, Not God",
+    summary: "Scripture names Satan ‘the accuser of our brothers’ and Jesus calls him a liar and murderer. Relational teachers say the voice of condemnation does not come from the Father. In Christ there is no condemnation, and the Spirit’s work is to convict us of truth, not to crush us with shame.",
+    refs: ["Rev 12:10", "John 8:44", "Rom 8:1", "Rom 8:33–34"],
+    pushback: "Traditional teachers note that God does judge and the Spirit does convict of sin (John 16:8), so not every sense of guilt should be blamed on the devil."
+  },
+  {
+    id: "the-mirror",
+    title: "The Mirror",
+    summary: "Paul says that as we behold the Lord’s glory as in a mirror, we are transformed into the same image. James speaks of looking into the ‘perfect law of freedom’ like a mirror. Relational teachers, notably Francois du Toit in the <em>Mirror Bible</em>, stress that in Jesus we see not only God but our own true face.",
+    refs: ["2 Cor 3:18", "Jas 1:23–25", "Col 3:10", "1 John 3:2"],
+    pushback: "Critics say the Mirror Bible is a paraphrase that reads its theology into the text, and that James 1 uses the mirror to call for obedience, not identity."
+  },
+  {
+    id: "identity-before-behaviour",
+    title: "Identity Before Behaviour",
+    summary: "Paul’s letters usually tell us who we are in Christ before telling us how to live. Relational teachers say behaviour flows from identity: you do not become a child of God by acting right; you act right by learning who you already are. ‘Be what you are’ is a common summary.",
+    refs: ["Eph 4:1", "Col 3:1–5", "Rom 6:11", "Gal 5:25"],
+    pushback: "Some worry this can make holiness optional; they stress that Scripture also commands effort and warns about ongoing sin (Heb 12:14; 1 Cor 9:27)."
+  },
+  {
+    id: "sonship-not-orphan",
+    title: "Sons and Daughters, Not Orphans",
+    summary: "Jesus promised, ‘I will not leave you orphans’, and the Spirit leads us to cry ‘Abba! Father!’ Relational teachers contrast an orphan mindset (striving, fearful, competitive) with a sonship mindset (secure, receiving, generous). Healing often comes as people experience the Father’s love personally.",
+    refs: ["John 14:18", "Rom 8:15", "Gal 4:6–7", "1 John 3:1"],
+    pushback: "Traditional readers stress that sonship is by adoption through faith (John 1:12), not a status everyone already holds."
+  },
+  {
+    id: "rest",
+    title: "Entering Rest",
+    summary: "Hebrews speaks of a ‘sabbath rest’ for the people of God, entered by faith, in which we cease from our own works as God did from his. Relational teachers see this as resting in Christ’s finished work rather than striving to earn God’s favour. Rest is not laziness but trust.",
+    refs: ["Heb 4:9–11", "Matt 11:28–30", "John 19:30", "Ps 46:10"],
+    pushback: "Hebrews 4:11 also says ‘let us labour to enter that rest’, which critics note includes real perseverance and warnings against falling away."
+  },
+  {
+    id: "grace-not-licence",
+    title: "Grace Is Not Licence",
+    summary: "A common objection to grace teaching is that it will make people careless about sin. Paul faced the same objection and answered ‘May it never be!’ Titus says grace itself trains us to say no to ungodliness. Relational teachers insist that real grace produces real transformation.",
+    refs: ["Titus 2:11–12", "Rom 6:1–2", "Gal 5:13", "Jude 4"],
+    pushback: "Critics argue that some ‘hyper-grace’ preaching in practice neglects confession and moral teaching, whatever its intent."
+  },
+  {
+    id: "union-not-performance",
+    title: "Union, Not Performance",
+    summary: "The Christian life is not a performance for an audience of one, but a shared life with the Father, Son and Spirit. Jesus pictured it as branches abiding in a vine. Fruit comes from connection, not from trying harder to impress God.",
+    refs: ["John 15:4–5", "Gal 2:20", "Phil 2:13", "1 Cor 6:17"],
+    pushback: "Some point out that the New Testament also calls for discipline, training and effort (1 Tim 4:7; Phil 2:12), which is more than passive abiding."
+  },
+  {
+    id: "prayer-as-communion",
+    title: "Prayer as Communion",
+    summary: "Relational teachers see prayer less as persuading a reluctant God and more as sharing in Jesus’ own communion with the Father by the Spirit. The Spirit prays within us when we do not know how, and Jesus ‘always lives to make intercession’. Prayer includes listening, silence and simply being with God.",
+    refs: ["Rom 8:26", "Heb 7:25", "Matt 6:6–8", "1 Thess 5:17"],
+    pushback: "Traditional voices note that Jesus also taught persistent asking (Luke 18:1–8) and that petition and intercession are central to biblical prayer."
+  },
+  {
+    id: "church-as-family",
+    title: "Church as Family, Not Institution",
+    summary: "The New Testament often describes the church as a household and family of brothers and sisters. Relational teachers stress shared life, mutual care and meals over programmes, buildings and hierarchy. Church is people who belong to each other because they belong to the Father.",
+    refs: ["Eph 2:19", "Acts 2:42–47", "1 Tim 3:15", "Mark 3:35"],
+    pushback: "Critics note that the New Testament also establishes leaders, order and discipline (1 Tim 3; Titus 1), so structure is not opposed to family."
+  },
+  {
+    id: "tithing-under-grace",
+    title: "Giving Under Grace",
+    summary: "Many relational teachers say the tithe belonged to the Mosaic Law and the temple system, and that the New Testament never commands Christians to tithe. Instead, it calls for generous, cheerful, willing giving. Malachi 3, they say, was addressed to Israel under the old covenant.",
+    refs: ["2 Cor 9:7", "Mal 3:10", "Matt 23:23", "Heb 7:1–10"],
+    pushback: "Defenders of tithing note that Abraham tithed before the Law (Gen 14:20) and that Jesus affirmed it in Matthew 23:23, treating it as a baseline for generosity."
+  },
+  {
+    id: "cross-verdict-reversed",
+    title: "Humanity’s Verdict Reversed",
+    summary: "At the cross, religious and political authorities declared Jesus guilty and cursed. In raising him, God overturned that verdict. Relational teachers, drawing on writers like Brian Zahnd and René Girard, say the cross reveals humanity’s judgment on God, and the resurrection reveals God’s answer: forgiveness and vindication.",
+    refs: ["Acts 2:23–24", "Acts 3:14–15", "1 Cor 2:8", "Rom 1:4"],
+    pushback: "Critics insist the cross is also God’s own judgment on sin (Rom 3:25–26; Isa 53:10), not only humanity’s judgment on God."
+  },
+  {
+    id: "judgement-sets-right",
+    title: "Judgement Sets Things Right",
+    summary: "In the Psalms the coming of God’s judgment is a cause for joy, because judgment means God putting the world right. The Hebrew idea of justice (<em>mishpat</em>) is restorative as well as punitive. Relational teachers say God’s judgment is aimed at healing and restoration.",
+    refs: ["Ps 96:12–13", "Isa 1:27", "Ps 98:9", "John 12:31–32"],
+    pushback: "Traditional teachers point out that biblical judgment also includes punishment and final separation (Matt 25:31–46; 2 Thess 1:9)."
+  },
+  {
+    id: "fire-of-love",
+    title: "Hell as the Fire of Love",
+    summary: "Hebrews says ‘our God is a consuming fire’. Many relational teachers, following Isaac the Syrian and George MacDonald, read this fire as God’s love itself, experienced as joy by those who embrace it and as torment by those who resist it. Isaac wrote that those in Gehenna are scourged by love. On this view fire purifies rather than merely punishes.",
+    refs: ["Heb 12:29", "1 Cor 3:13–15", "Mal 3:2–3", "Mark 9:49"],
+    pushback: "Critics argue that texts such as Matthew 25:41 describe fire prepared for the devil as destructive punishment, not a purifying love."
+  },
+  {
+    id: "christ-in-you",
+    title: "Christ in You",
+    summary: "Paul calls it a mystery hidden for ages: ‘Christ in you, the hope of glory.’ Relational teachers emphasise that Christ is not distant, but lives within his people, and that the Christian life is Christ living his life through us. Some extend this to say Christ is hidden in every person, waiting to be recognised.",
+    refs: ["Col 1:27", "Gal 2:20", "John 14:20", "Gal 1:15–16"],
+    pushback: "Traditional readers note that Colossians 1:27 is addressed to believers, and that extending ‘Christ in you’ to all people goes beyond the text."
+  },
+  {
+    id: "spirit-on-all-flesh",
+    title: "The Spirit Poured on All Flesh",
+    summary: "At Pentecost Peter quoted Joel: God pours out his Spirit ‘on all flesh’. Relational teachers celebrate that God’s Spirit is not limited by age, gender or social class, and some see in this a sign that the Spirit is at work in all people, drawing them to Christ.",
+    refs: ["Acts 2:17", "Joel 2:28", "John 16:8", "Acts 17:27–28"],
+    pushback: "Critics say the context of Acts 2 links the gift to repentance and baptism (2:38), and that ‘all flesh’ means all kinds of people rather than every individual."
+  },
+  {
+    id: "new-creation",
+    title: "New Creation",
+    summary: "‘If anyone is in Christ, he is a new creation.’ Relational teachers stress that in Christ the old has truly passed away and something genuinely new has begun, both in us and in the cosmos. The Greek can be read as ‘there is new creation’, pointing beyond the individual to God’s new world.",
+    refs: ["2 Cor 5:17", "Gal 6:15", "Rev 21:5", "Isa 43:19"],
+    pushback: "Traditional readers emphasise the ‘if anyone is in Christ’ condition and the ongoing struggle with sin in believers (Gal 5:17)."
+  },
+  {
+    id: "love-casts-out-fear",
+    title: "Love Casts Out Fear",
+    summary: "John writes that there is no fear in love, because perfect love casts out fear, and fear has to do with punishment. Relational teachers say a gospel built on fear of punishment cannot produce mature love. Knowing that God is love frees us to love him and others.",
+    refs: ["1 John 4:18", "Rom 8:15", "2 Tim 1:7", "Heb 2:15"],
+    pushback: "Others point to the ‘fear of the Lord’ as the beginning of wisdom (Prov 9:10) and Jesus’ command to fear God (Luke 12:5), arguing reverent fear still has a place."
+  },
+  {
+    id: "the-fathers-heart",
+    title: "The Father’s Heart",
+    summary: "In the parable of the prodigal son, the father runs to meet his son before he can finish his apology, and pleads with the resentful elder brother too. Relational teachers see this as Jesus’ clearest portrait of the Father: watching, running, embracing, restoring and celebrating.",
+    refs: ["Luke 15:20–24", "Luke 15:28–32", "Luke 15:4–7", "Hos 11:1–4"],
+    pushback: "Some note that a parable makes one main point and should not be pressed into a full doctrine of salvation, and that the son did come home."
+  },
+  {
+    id: "kingdom-within",
+    title: "The Kingdom Within and Among You",
+    summary: "Jesus said the kingdom of God does not come with observable signs, but is <em>entos hymōn</em>, translated ‘within you’ (KJV) or ‘in your midst’ / ‘among you’ (many modern versions). Relational teachers use both senses: God’s reign is present in Jesus and also an inner reality we can awaken to now.",
+    refs: ["Luke 17:20–21", "Matt 6:10", "Rom 14:17", "Mark 1:15"],
+    pushback: "Many scholars note Jesus was speaking to Pharisees, so ‘among you’ (present in Jesus himself) is more likely than ‘inside you’, and the kingdom also has a future, visible coming."
+  }
+];

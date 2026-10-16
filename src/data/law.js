@@ -1,6 +1,6 @@
 window.RG = window.RG || {};
 
-RG.lawCategories = [
+window.RG.lawCategories = [
   { id: "sacrifice", name: "Sacrifice & Offerings", blurb: "The offerings, feasts of blood and fire, and rites of atonement that let a holy God and a fragile people share life together. Christians read them as pictures finally gathered up in the self-giving of Jesus (Hebrews 8–10)." },
   { id: "purity", name: "Purity & Impurity", blurb: "Laws about clean and unclean states: skin disease, bodily flows, contact with death. Impurity was usually not sin, but a condition that kept death and disorder away from the sanctuary. Jesus touched what was unclean, and it became clean." },
   { id: "food", name: "Food Laws", blurb: "What Israel could and could not eat, and how to treat blood. These laws marked Israel as a distinct people at every meal. The New Testament declares all foods clean while honouring the love that lay behind the rules (Mark 7:19; Acts 10; Romans 14)." },
@@ -13,7 +13,7 @@ RG.lawCategories = [
   { id: "boundaries", name: "Boundaries & Distinctions", blurb: "Laws of separation: no mixed fabrics, no mixed seeds, signs on the body that set Israel apart from the nations. They taught a people to see the world as ordered and themselves as set apart. In Christ the dividing wall between peoples comes down (Ephesians 2:14)." }
 ];
 
-RG.laws = [
+window.RG.laws = [
   // ---------------- TEN COMMANDMENTS ----------------
   { id: "no-other-gods", name: "Ten Commandments 1: No Other Gods", category: "worship", ref: "Exodus 20:2–3; Deuteronomy 5:6–7",
     text: "“I am Yahweh your God, who brought you out of the land of Egypt, out of the house of bondage. You shall have no other gods before me.”",
