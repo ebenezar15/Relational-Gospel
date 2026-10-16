@@ -441,6 +441,21 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
 
+/* ---------- ekklesia & kingdom ---------- */
+.foot { display: grid; gap: 16px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); transition: box-shadow .8s; }
+.foot.done { box-shadow: 0 0 0 1px var(--gold), 0 0 60px var(--gold-soft); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.foot-throne, .foot-field, .foot-body { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.foot-throne { padding: 16px; border-radius: 10px; background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 50%, var(--line)); text-align: center; }
+.foot-throne span { color: var(--muted); font-size: 14.5px; font-style: italic; }
+.foot-crown { font-size: 34px; color: var(--gold); line-height: 1; }
+.foot-stool { margin-top: 6px; padding: 12px; border-radius: 8px; border: 1px dashed var(--gold); background: var(--surface); display: grid; gap: 8px; min-height: 80px; text-align: left; }
+#k-under, #k-left { display: flex; flex-wrap: wrap; gap: 6px; }
+.k-chip { font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--wine); color: var(--wine); background: var(--wine-soft); animation: rise .45s both; }
+.k-chip.next { box-shadow: 0 0 0 2px var(--wine-soft); font-weight: 500; }
+.k-chip.under { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--gold) 60%, transparent); }
+.foot-end { display: grid; gap: 4px; text-align: center; padding: 14px; border-radius: 10px; background: var(--gold-soft); animation: rise .6s both; }
+@media (max-width: 900px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } }
 /* ---------- embodied gospel & deep study ---------- */
 .steps { margin: 0; padding-left: 22px; display: grid; gap: 8px; font-size: 16.5px; }
 .evidence { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }

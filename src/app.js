@@ -56,6 +56,9 @@
     cmp: { key: "compare", view: "compare", title: function (x) { return x.topic; }, sub: function (x) { return x.group; }, label: "Legal vs relational" },
     mconcept: { key: "embConcepts", view: "embodied", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Embodied gospel · concept" },
     msermon: { key: "embStudies", view: "embodied", title: function (x) { return x.title; }, sub: function (x) { return x.theme; }, label: "Embodied gospel · study" },
+    kconcept: { key: "kingConcepts", view: "kingdom", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Ekklesia & kingdom" },
+    kpractice: { key: "kingPractice", view: "kingdom", title: function (x) { return x.title; }, sub: function () { return "What we do"; }, label: "Kingdom practice" },
+    kview: { key: "kingViews", view: "kingdom", title: function (x) { return x.name; }, sub: function () { return "View of the end"; }, label: "Eschatology" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -67,7 +70,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -192,6 +195,7 @@
       ["newcreation", "New creation & the old self", "Why Adam's race had to die, and what rose with Christ."],
       ["compare", "Legal vs relational", "How two gospels read baptism, tithe, prayer, the cross and more."],
       ["trinity", "The Trinity at work", "Father, Son and Spirit engaged in our restoration."],
+      ["kingdom", "Ekklesia & the Kingdom", "Seated with Christ, reigning in life, until the last enemy is under his feet."],
       ["theme.union-sonship", "Union & sonship", "From orphan to beloved child."],
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
@@ -215,6 +219,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["kingdom", "Ekklesia & the Kingdom", A("kingConcepts").length + " concepts, " + A("kingPractice").length + " practices, " + A("kingViews").length + " views of the end"],
         ["embodied", "The Embodied Gospel", A("embStudies").length + " in-depth studies, " + A("embConcepts").length + " key concepts"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
         ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
@@ -527,6 +532,39 @@
   }
 
 
+
+  /* ---------- Ekklesia & the Kingdom ---------- */
+  var kStep = 0, kGroup = "all";
+  V.kingdom = function () {
+    var C = A("kingCase"), E = A("kingEnemies"), groups = [];
+    A("kingConcepts").forEach(function (c) { if (groups.indexOf(c.group) === -1) groups.push(c.group); });
+    return head("Seated, sent and reigning", "Ekklesia & the Kingdom", "Christ is seated at the Father's right hand \"until his enemies are made a footstool for his feet\". His ekklesia is the body through which the Head acts. Here is what the church is, how the kingdom works now, how its enemies are subdued, and what we are meant to do.") +
+      '<div class="prose">' + A("kingIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
+      (E.length ? '<section class="foot" id="foot"><div class="row" style="justify-content:space-between"><div><div class="label">Psalm 110:1 · Hebrews 10:12-13 · 1 Corinthians 15:25-26</div><h2 style="font-size:26px;margin-top:4px">Until his enemies are his footstool</h2></div><div class="row"><button class="btn ghost" type="button" data-kmove="-1">← Back</button><button class="btn" type="button" data-kmove="1" id="k-next">Subdue the next enemy</button></div></div>' +
+        '<div class="foot-grid"><div class="foot-throne"><div class="foot-crown" aria-hidden="true">♔</div><b>Christ, seated</b><span>"Sit at my right hand until I make your enemies your footstool."</span><div class="foot-stool" id="k-stool"><div class="label">Under his feet</div><div id="k-under"></div></div></div>' +
+        '<div class="foot-body"><div class="label">His body, the ekklesia</div><div id="k-card" class="dawn-card"></div></div>' +
+        '<div class="foot-field"><div class="label">Still resisting</div><div id="k-left"></div></div></div><div class="foot-end" id="k-end" hidden><b>"Then the end comes… that God may be all in all."</b><span class="ref">1 Cor 15:24-28 · Acts 3:21 · Rev 21:3-5</span></div></section>' : "") +
+      (C.length ? '<section class="section"><h2>The case, step by step</h2><div class="chips">' + C.map(function (c, i) { return '<button class="chip" type="button" data-case="' + c.id + '">' + (i + 1) + ". " + esc(c.title) + "</button>"; }).join("") + '</div><div class="case">' +
+        C.map(function (c, i) { return '<article class="case-step" id="case-' + c.id + '"><div class="case-num" aria-hidden="true">' + String(i + 1).padStart(2, "0") + '</div><div class="case-body"><div class="label">' + esc(c.kicker) + "</div><h3>" + esc(c.title) + '</h3><div class="prose">' + c.body.map(function (p) { return "<p>" + p + "</p>"; }).join("") + '</div><div class="ref">' + esc((c.refs || []).join(" · ")) + "</div></div></article>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><h2>What we are meant to do</h2><div class="grid">' + A("kingPractice").map(function (k) { return card("kpractice", k, { text: clip(k.how, 140) }); }).join("") + "</div></section>" +
+      '<section class="section"><h2>Key concepts</h2><div class="chips">' + ["all"].concat(groups).map(function (g) { return '<button class="chip" type="button" data-kg="' + esc(g) + '" aria-pressed="' + (kGroup === g) + '">' + (g === "all" ? "Every concept" : esc(g)) + "</button>"; }).join("") + '</div><div class="grid" id="kgrid"></div></section>' +
+      '<section class="section"><h2>How Christians read the "until" texts</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))">' + A("kingViews").map(function (v) { return '<article class="scale"><div class="row" style="justify-content:space-between"><h3>' + esc(v.name) + '</h3><button class="chip" type="button" data-open="kview.' + v.id + '">Details</button></div><p>' + v.summary + '</p><p class="note"><strong>Reads the texts:</strong> ' + clip(v.reads, 220) + "</p></article>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>Hard questions</h2><div class="qa">' + A("kingQA").map(function (q) { return "<details><summary>" + esc(strip(q.q)) + '</summary><div class="ans"><p>' + q.a + "</p></div></details>"; }).join("") + "</div></section>" +
+      (A("kingEvidence").length ? '<section class="section"><h2>Evidence and sources</h2><div class="evidence">' + A("kingEvidence").map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips">' + ["church-now", "manifest-sons", "apokatastasis", "life-immortality", "union-sonship", "across-all-worlds"].map(function (id) { var x = find("theme", id); return x ? '<a class="chip" href="#theme.' + id + '">' + esc(x.title) + "</a>" : ""; }).join("") + '<a class="chip" href="#embodied">The Embodied Gospel</a><a class="chip" href="#models">End-times frameworks</a></div></section>';
+  };
+  function showK() {
+    var E = A("kingEnemies"); if (!E.length || !$("#foot")) return;
+    kStep = Math.max(0, Math.min(E.length, kStep));
+    $("#k-under").innerHTML = E.slice(0, kStep).map(function (e) { return '<span class="k-chip under">' + esc(e.enemy) + "</span>"; }).join("") || '<span class="note">Nothing yet. Step through the enemies.</span>';
+    $("#k-left").innerHTML = E.slice(kStep).map(function (e, i) { return '<span class="k-chip' + (i === 0 ? " next" : "") + '">' + esc(e.enemy) + "</span>"; }).join("") || '<span class="note">No enemy remains.</span>';
+    var cur = E[Math.min(kStep, E.length - 1)], done = kStep >= E.length, shown = done ? E[E.length - 1] : E[kStep];
+    $("#k-card").innerHTML = '<div class="label">' + (done ? "The last enemy" : "Enemy " + (kStep + 1) + " of " + E.length) + '</div><h3 style="font-size:24px">' + esc(shown.enemy) + "</h3><p>" + shown.how + '</p><div class="ref">' + esc((shown.refs || []).join(" · ")) + "</div>";
+    $("#k-end").hidden = !done; $("#k-next").textContent = done ? "Start again" : "Subdue the next enemy";
+    $("#foot").classList.toggle("done", done);
+  }
+  function kGrid() { if (!$("#kgrid")) return; $("#kgrid").innerHTML = A("kingConcepts").filter(function (c) { return kGroup === "all" || c.group === kGroup; }).map(function (c) { return card("kconcept", c, { top: '<div class="label">' + esc(c.group) + "</div>", text: c.simple }); }).join(""); }
+
   /* ---------- The Embodied Gospel ---------- */
   var mOrder = "adam", mGroup = "all";
   V.embodied = function () {
@@ -738,6 +776,9 @@
         ((x.lines || []).length ? '<div class="blk"><div class="label">Key lines</div>' + x.lines.map(function (l) { return '<div class="verse">' + esc(l) + "</div>"; }).join("") + "</div>" : "") +
         panel("uni", "Living it out", x.practice) + (x.evidence ? panel("", "Supporting evidence", x.evidence) : "");
     },
+    kconcept: function (x) { return panel("gold", "In one line", x.simple) + '<div class="prose">' + x.explain.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" + blk("Scriptures", esc((x.refs || []).join(" · "))) + panel("uni", "Connections", x.connects); },
+    kpractice: function (x) { return panel("gold", "How", x.how) + panel("uni", "An everyday example", x.example) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    kview: function (x) { return blk("The view", x.summary) + panel("gold", "How it reads Psalm 110, 1 Corinthians 15 and Acts 3:21", x.reads) + panel("uni", "Strengths", x.strengths) + panel("sep", "Critiques", x.critiques); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -824,7 +865,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -898,6 +939,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "kingdom") { showK(); kGrid(); }
     if (route.view === "embodied") { setMO(mOrder); mGrid(); }
     if (route.view === "newcreation") { showNC(); ncList(); }
     if (route.view === "compare") cmpList();
@@ -923,6 +965,8 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var km = t.closest("[data-kmove]"); if (km) { var nE = A("kingEnemies").length; if (+km.dataset.kmove > 0 && kStep >= nE) kStep = 0; else kStep += +km.dataset.kmove; showK(); return; }
+    var kg = t.closest("[data-kg]"); if (kg) { kGroup = kg.dataset.kg; $$("[data-kg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === kg)); }); kGrid(); return; }
     var mo = t.closest("[data-mo]"); if (mo) { setMO(mo.dataset.mo); return; }
     var mg = t.closest("[data-mg]"); if (mg) { mGroup = mg.dataset.mg; $$("[data-mg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === mg)); }); mGrid(); return; }
     var mv = t.closest("[data-mv]"); if (mv) { $$("[data-mv]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === mv)); }); $("#mtable").className = "cmp-list mode-" + ({ tragic: "legal", salvific: "relational", both: "both" })[mv.dataset.mv]; return; }
