@@ -448,9 +448,10 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 #spine-card .panel { background: var(--surface); animation: rise .35s both; }
 .sc { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
 .sc p { font-size: 16.5px; }
-.sc .chip.right[aria-pressed="true"], .sc-out:not([hidden]) ~ * .right { border-color: var(--dawn); }
+.sc .chip.right { border-color: var(--dawn); }
 .sc .chip[aria-pressed="true"]:not(.right) { border-color: var(--wine); color: var(--wine); background: var(--wine-soft); }
 .sc .chip.right[aria-pressed="true"] { color: var(--dawn); background: var(--dawn-soft); }
+.sc-out[hidden] { display: none; }
 .sc-out { display: grid; gap: 6px; padding: 12px; border-radius: 8px; background: var(--bg-2); font-size: 15.5px; animation: rise .35s both; }
 /* ---------- ekklesia & kingdom ---------- */
 .foot { display: grid; gap: 16px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); transition: box-shadow .8s; }
