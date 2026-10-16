@@ -440,6 +440,25 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .su-toggle button[aria-pressed="true"]:not(.s):not(.u) { background: var(--gold-soft); color: var(--gold); }
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
+
+/* ---------- Tommy Miller ---------- */
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 12px; }
+.book { display: grid; align-content: start; gap: 6px; text-align: left; padding: 16px 14px 18px; min-height: 190px; border-radius: 4px 10px 10px 4px; border: 1px solid var(--line); border-left: 6px solid var(--gold); background: linear-gradient(135deg, var(--surface), var(--bg-2)); cursor: pointer; transition: transform .25s, box-shadow .25s; }
+.book:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: var(--shadow); }
+.book b { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.book span { color: var(--muted); font-size: 14px; line-height: 1.4; }
+.book .book-year { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--gold); }
+.mo { display: grid; gap: 14px; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.mo-stack { display: flex; flex-direction: column; gap: 8px; max-width: 520px; width: 100%; justify-self: center; }
+.mo-layer { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); transition: transform .8s cubic-bezier(.3,.7,.2,1), background .6s, border-color .6s; }
+.mo-layer b { font-size: 18px; } .mo-layer span { color: var(--muted); font-size: 14px; text-align: right; }
+.mo-stack .mo-body { order: 1; border-color: var(--wine); background: var(--wine-soft); }
+.mo-stack .mo-soul { order: 2; } .mo-stack .mo-spirit { order: 3; opacity: .6; } .mo-stack .mo-creation { order: 4; }
+.mo-stack.divine .mo-spirit { order: 1; opacity: 1; border-color: var(--dawn); background: var(--dawn-soft); }
+.mo-stack.divine .mo-soul { order: 2; } .mo-stack.divine .mo-body { order: 3; border-color: var(--line); background: var(--surface); } .mo-stack.divine .mo-creation { order: 4; border-color: var(--gold); background: var(--gold-soft); }
+.ot { display: grid; gap: 12px; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); overflow-x: auto; }
+.ot svg { width: 100%; min-width: 560px; height: auto; display: block; }
+
 @media (max-width: 980px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
   .rail { display: none; }
