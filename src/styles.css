@@ -422,6 +422,24 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .voicecard b { font-weight: 600; }
 @media (max-width: 720px) { .case-step { grid-template-columns: minmax(0, 1fr); } .case-num { font-size: 20px; } }
 
+
+/* ---------- new creation ---------- */
+.nc { display: grid; gap: 14px; }
+.nc-stage { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); padding: 10px; overflow-x: auto; }
+.nc-stage svg { width: 100%; min-width: 520px; height: auto; display: block; }
+.nc-trail { transition: stroke-dashoffset 1.2s cubic-bezier(.3,.7,.2,1); }
+.nc-dot { transition: opacity .6s; }
+/* ---------- legal vs relational ---------- */
+.cmp-list { display: grid; gap: 14px; }
+.cmp { display: grid; gap: 10px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.cmp h3 { font-size: 22px; }
+.cmp-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.cmp-l, .cmp-r { transition: opacity .35s, filter .35s; }
+.mode-legal .cmp-pair, .mode-relational .cmp-pair { grid-template-columns: minmax(0, 1fr); }
+.mode-legal .cmp-r, .mode-relational .cmp-l { display: none; }
+.su-toggle button[aria-pressed="true"]:not(.s):not(.u) { background: var(--gold-soft); color: var(--gold); }
+@media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
+
 @media (max-width: 980px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
   .rail { display: none; }

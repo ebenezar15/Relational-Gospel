@@ -51,8 +51,12 @@
     loveObj: { key: "loveObjections", view: "love", title: function (x) { return strip(x.q); }, sub: function () { return "Objection answered"; }, label: "Love & justice" },
     loveWord: { key: "justiceWords", view: "love", title: function (x) { return x.word + " · " + x.translit; }, sub: function (x) { return x.lang + " · " + x.original; }, label: "Word study" },
     loveVoice: { key: "loveVoices", view: "love", title: function (x) { return x.name; }, sub: function (x) { return x.source; }, label: "Voice on love & justice" },
+    ncq: { key: "ncQuestions", view: "newcreation", title: function (x) { return x.q; }, sub: function (x) { return NCG[x.group] || x.group; }, label: "New creation study" },
+    ncterm: { key: "ncTerms", view: "newcreation", title: function (x) { return x.term + " · " + x.translit; }, sub: function (x) { return x.original; }, label: "Key term" },
+    cmp: { key: "compare", view: "compare", title: function (x) { return x.topic; }, sub: function (x) { return x.group; }, label: "Legal vs relational" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
+  var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
   var FAMILY = { atonement: "Atonement", salvation: "Salvation", hell: "Judgement & hell", scripture: "Scripture", "end-times": "End times", "law-covenant": "Law & covenant" };
   var ERA = { early: "Early church", medieval: "Medieval", reformation: "Reformation", modern: "Modern", contemporary: "Contemporary" };
   function find(type, id) { var t = TYPES[type]; return t ? A(t.key).filter(function (x) { return x.id === id; })[0] : null; }
@@ -61,7 +65,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["models", "Frameworks compared"]] },
@@ -183,6 +187,8 @@
       ["culture", "Culture decoder", "Sandals, hair, veils, and what they meant."],
       ["sayings", "The words of Jesus", "The cultural world behind his sayings."],
       ["theme.separation-union", "Separation or union", "The fork where two gospels part ways."],
+      ["newcreation", "New creation & the old self", "Why Adam's race had to die, and what rose with Christ."],
+      ["compare", "Legal vs relational", "How two gospels read baptism, tithe, prayer, the cross and more."],
       ["trinity", "The Trinity at work", "Father, Son and Spirit engaged in our restoration."],
       ["theme.union-sonship", "Union & sonship", "From orphan to beloved child."],
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
@@ -205,6 +211,8 @@
         ["violence", A("violence").length + " hard passages", A("frameworks").length + " ways Christians reconcile them"],
         ["debate", A("strawmen").length + " strawmen, " + A("arguments").length + " debates", "Arguments and counter-arguments, side by side"],
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
+        ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
+        ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
         ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
         ["models", A("models").length + " frameworks compared", "Atonement, salvation, hell, Scripture, end times"],
@@ -452,6 +460,62 @@
     $("#lp-count").textContent = list.length + " of " + A("lovePassages").length;
   }
 
+
+  /* ---------- New creation & the old self ---------- */
+  var ncStage = 0, ncGroup = "all";
+  V.newcreation = function () {
+    var S = A("ncStages");
+    return head("Death, resurrection, new creation", "New creation & the old self", "If the old self died with Christ, why do we still need a healed heart and a renewed mind? Why did God make us new instead of repairing Adam? Was the Incarnation an afterthought? Walk through the story, then study each question.") +
+      (S.length ? '<section class="nc" id="nc"><div class="nc-stage"><svg viewBox="0 0 760 200" aria-hidden="true">' +
+        '<path d="M40 150 C180 150 230 150 300 150 C330 150 350 60 380 60 C410 60 430 150 460 150 C540 150 600 110 720 70" fill="none" stroke="var(--line)" stroke-width="2"/>' +
+        '<path class="nc-trail" d="M40 150 C180 150 230 150 300 150 C330 150 350 60 380 60 C410 60 430 150 460 150 C540 150 600 110 720 70" fill="none" stroke="var(--gold)" stroke-width="3" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>' +
+        '<g transform="translate(380 40)"><path d="M0 -24 V44 M-18 -6 H18" stroke="var(--ink)" stroke-width="3"/></g>' +
+        S.map(function (st, i) { var xy = [[60, 150], [380, 60], [470, 150], [710, 74]][i] || [60, 150]; return '<g class="nc-pt" data-ncs="' + i + '" style="cursor:pointer"><circle cx="' + xy[0] + '" cy="' + xy[1] + '" r="13" fill="var(--bg)" stroke="' + (i === 0 ? "var(--wine)" : "var(--dawn)") + '" stroke-width="2"/><circle class="nc-dot" cx="' + xy[0] + '" cy="' + xy[1] + '" r="6" fill="' + (i === 0 ? "var(--wine)" : "var(--dawn)") + '"/><text x="' + xy[0] + '" y="' + (xy[1] + 34) + '" text-anchor="middle" class="tl">' + esc(st.title.toUpperCase()) + "</text></g>"; }).join("") +
+        '</svg></div><div class="chips">' + S.map(function (st, i) { return '<button class="chip" type="button" data-ncs="' + i + '" aria-pressed="' + (i === ncStage) + '">' + (i + 1) + ". " + esc(st.title) + "</button>"; }).join("") + '</div><article class="dawn-card" id="nc-card"></article></section>' : "") +
+      '<section class="section"><h2>Study questions</h2><div class="toolbar">' + field("nc-q", "Search, e.g. old self, Romans 7, Scotus, born again") + '<span class="count" id="nc-count"></span></div><div class="chips">' +
+      [["all", "Every question"]].concat(Object.keys(NCG).map(function (k) { return [k, NCG[k]]; })).map(function (g) { return '<button class="chip" type="button" data-ncg="' + g[0] + '" aria-pressed="' + (ncGroup === g[0]) + '">' + g[1] + "</button>"; }).join("") +
+      '</div><div class="qa" id="nc-list"></div></section>' +
+      (A("ncTerms").length ? '<section class="section"><h2>The words that matter</h2><p class="note">How a legal gospel and a relational gospel read the key terms of biblical anthropology.</p><div class="grid">' + A("ncTerms").map(function (t) { return '<div class="card" role="button" tabindex="0" data-open="ncterm.' + t.id + '"><div class="orig">' + esc(t.original) + "</div><h3>" + esc(t.term) + ' <span class="ref">' + esc(t.translit) + "</span></h3><p>" + clip(t.relational, 130) + "</p></div>"; }).join("") + "</div></section>" : "");
+  };
+  function showNC() {
+    var S = A("ncStages"), st = S[ncStage]; if (!st || !$("#nc")) return;
+    $$("#nc .chip[data-ncs]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.ncs === ncStage)); });
+    $$("#nc .nc-dot").forEach(function (d, i) { d.setAttribute("opacity", i <= ncStage ? "1" : ".25"); });
+    $(".nc-trail").style.strokeDashoffset = String(100 - [8, 45, 62, 100][ncStage]);
+    $("#nc-card").innerHTML = '<div class="label">Stage ' + (ncStage + 1) + " of " + S.length + " · " + esc(st.ref) + '</div><h3 style="font-size:26px">' + esc(st.title) + "</h3><p>" + st.text + "</p>";
+  }
+  function ncList() {
+    if (!$("#nc-list")) return;
+    var q = (($("#nc-q") || {}).value || "").toLowerCase().trim();
+    var list = A("ncQuestions").filter(function (x) { return (ncGroup === "all" || x.group === ncGroup) && (!q || [x.q, x.short, (x.answer || []).join(" "), (x.refs || []).join(" ")].join(" ").toLowerCase().indexOf(q) > -1); });
+    $("#nc-list").innerHTML = list.map(function (x) {
+      return '<details><summary><span class="label" style="display:block;margin-bottom:2px">' + esc(NCG[x.group] || x.group) + "</span>" + esc(x.q) + '</summary><div class="ans"><p style="color:var(--ink)"><strong>' + x.short + "</strong></p>" + (x.answer || []).map(function (p) { return "<p>" + p + "</p>"; }).join("") +
+        '<div class="ref">' + esc((x.refs || []).join(" · ")) + "</div>" + (x.objection ? '<div class="panel sep"><div class="label">Pushback: ' + esc(strip(x.objection.q)) + "</div><p>" + x.objection.a + "</p></div>" : "") + "</div></details>";
+    }).join("") || '<p class="count">No question matches. Try a broader word.</p>';
+    $("#nc-count").textContent = list.length + " of " + A("ncQuestions").length;
+  }
+
+  /* ---------- Legal vs relational ---------- */
+  var cmpGroup = "all", cmpMode = "both";
+  V.compare = function () {
+    var groups = []; A("compare").forEach(function (c) { if (groups.indexOf(c.group) === -1) groups.push(c.group); });
+    return head("Two gospels, every topic", "Legal vs relational gospel", "The same words, baptism, faith, grace, the cross, the tithe, mean different things depending on which story they belong to. Compare how a legal, transactional gospel and a relational, union gospel read each one.") +
+      '<div class="toolbar">' + field("cmp-q", "Search topics, e.g. baptism, tithe, self-love, prayer") + '<div class="su-toggle" role="group" aria-label="Choose a view"><button type="button" class="s" data-cm="legal" aria-pressed="' + (cmpMode === "legal") + '">Legal</button><button type="button" data-cm="both" aria-pressed="' + (cmpMode === "both") + '">Side by side</button><button type="button" class="u" data-cm="relational" aria-pressed="' + (cmpMode === "relational") + '">Relational</button></div></div>' +
+      '<div class="chips">' + ["all"].concat(groups).map(function (g) { return '<button class="chip" type="button" data-cg="' + esc(g) + '" aria-pressed="' + (cmpGroup === g) + '">' + (g === "all" ? "Every topic" : esc(g)) + "</button>"; }).join("") + '<span class="count" id="cmp-count"></span></div>' +
+      '<div class="cmp-list" id="cmp-list"></div>';
+  };
+  function cmpList() {
+    if (!$("#cmp-list")) return;
+    var q = (($("#cmp-q") || {}).value || "").toLowerCase().trim();
+    var list = A("compare").filter(function (c) { return (cmpGroup === "all" || c.group === cmpGroup) && (!q || [c.topic, c.legal, c.relational, (c.refs || []).join(" ")].join(" ").toLowerCase().indexOf(q) > -1); });
+    $("#cmp-list").className = "cmp-list mode-" + cmpMode;
+    $("#cmp-list").innerHTML = list.map(function (c) {
+      return '<article class="cmp"><div class="row" style="justify-content:space-between"><div><div class="label">' + esc(c.group) + "</div><h3>" + esc(c.topic) + "</h3></div>" + saveBtn("cmp", c.id) + '</div><div class="cmp-pair"><div class="panel sep cmp-l"><div class="label">Legal gospel</div><p>' + c.legal + '</p></div><div class="panel uni cmp-r"><div class="label">Relational gospel</div><p>' + c.relational + "</p></div></div>" +
+        (c.practice ? '<p class="note"><strong>In practice:</strong> ' + c.practice + "</p>" : "") + '<div class="row" style="justify-content:space-between"><span class="ref">' + esc((c.refs || []).join(" · ")) + '</span><button class="chip" type="button" data-open="cmp.' + c.id + '">Fair point & details</button></div></article>';
+    }).join("") || '<p class="count">No topic matches. Try another word.</p>';
+    $("#cmp-count").textContent = list.length + " of " + A("compare").length;
+  }
+
   /* ---------- How God met humanity ---------- */
   var ageIdx = 0, revTab = 0;
   V.story = function () {
@@ -603,6 +667,9 @@
     loveObj: function (x) { return blk("The answer", x.a) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     loveWord: function (x) { return '<div class="orig" style="font-size:40px">' + esc(x.original) + '</div><div class="ref">' + esc(x.lang + " · " + x.translit) + "</div>" + blk("Meaning", x.meaning) + panel("uni", "Why it matters here", x.insight) + blk("Where it appears", esc((x.refs || []).join(" · "))); },
     loveVoice: function (x) { return '<div class="verse"><span class="ref">' + esc(x.source) + "</span>" + x.text + "</div>" + blk("Note", x.note); },
+    ncq: function (x) { return panel("gold", "In short", x.short) + '<div class="prose">' + (x.answer || []).map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" + blk("Scriptures", esc((x.refs || []).join(" · "))) + (x.objection ? panel("sep", "Pushback: " + esc(strip(x.objection.q)), x.objection.a) : ""); },
+    ncterm: function (x) { return '<div class="orig" style="font-size:40px">' + esc(x.original) + '</div><div class="ref">' + esc(x.translit) + "</div>" + panel("sep", "Read through a legal gospel", x.legal) + panel("uni", "Read through the relational gospel", x.relational) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    cmp: function (x) { return '<div class="ref">' + esc(x.group) + "</div>" + panel("sep", "Legal gospel", x.legal) + panel("uni", "Relational gospel", x.relational) + blk("In practice", x.practice) + panel("gold", "A fair point", x.fair) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -689,7 +756,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["love", "God is love"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -763,6 +830,8 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "newcreation") { showNC(); ncList(); }
+    if (route.view === "compare") cmpList();
     if (route.view === "love") { setScale(scaleMode); lpGrid(); }
     bindSU();
     if (r.item) openSheet(r.item.type, r.item.id);
@@ -785,6 +854,10 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var ns = t.closest("[data-ncs]"); if (ns) { ncStage = +ns.dataset.ncs; showNC(); return; }
+    var ng = t.closest("[data-ncg]"); if (ng) { ncGroup = ng.dataset.ncg; $$("[data-ncg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === ng)); }); ncList(); return; }
+    var cm = t.closest("[data-cm]"); if (cm) { cmpMode = cm.dataset.cm; $$("[data-cm]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cm)); }); cmpList(); return; }
+    var cg = t.closest("[data-cg]"); if (cg) { cmpGroup = cg.dataset.cg; $$("[data-cg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cg)); }); cmpList(); return; }
     var sc = t.closest("[data-scale]"); if (sc) { setScale(sc.dataset.scale); return; }
     var cs = t.closest("[data-case]"); if (cs) { var el2 = $("#case-" + cs.dataset.case); if (el2) el2.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
     var lt = t.closest("[data-lt]"); if (lt) { loveTab = lt.dataset.lt; $$("[data-lt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lt)); }); $("#lovepane").innerHTML = lovePane(); lpGrid(); return; }
@@ -810,6 +883,8 @@
     else if (id === "say-q") sayGrid();
     else if (id === "voice-q") voiceGrid();
     else if (id === "lp-q") lpGrid();
+    else if (id === "nc-q") ncList();
+    else if (id === "cmp-q") cmpList();
     else if (id === "age-range") { ageIdx = +ev.target.value; showAge(); }
     else if (id === "passage") { notes.passage = ev.target.value; store("rga.notes", notes); }
     else if (id === "ans") {
