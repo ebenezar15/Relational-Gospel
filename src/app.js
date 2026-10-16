@@ -59,6 +59,9 @@
     kconcept: { key: "kingConcepts", view: "kingdom", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Ekklesia & kingdom" },
     kpractice: { key: "kingPractice", view: "kingdom", title: function (x) { return x.title; }, sub: function () { return "What we do"; }, label: "Kingdom practice" },
     kview: { key: "kingViews", view: "kingdom", title: function (x) { return x.name; }, sub: function () { return "View of the end"; }, label: "Eschatology" },
+    ldesign: { key: "lifeDesign", view: "life", title: function (x) { return x.feature; }, sub: function () { return "Human design"; }, label: "Designed to live" },
+    ltrait: { key: "lifeTraits", view: "life", title: function (x) { return x.trait; }, sub: function () { return "A trait of Jesus"; }, label: "The way of Jesus" },
+    lsit: { key: "lifeSituations", view: "life", title: function (x) { return x.situation; }, sub: function () { return "How Jesus handled it"; }, label: "The way of Jesus" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -70,7 +73,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -196,6 +199,7 @@
       ["compare", "Legal vs relational", "How two gospels read baptism, tithe, prayer, the cross and more."],
       ["trinity", "The Trinity at work", "Father, Son and Spirit engaged in our restoration."],
       ["kingdom", "Ekklesia & the Kingdom", "Seated with Christ, reigning in life, until the last enemy is under his feet."],
+      ["life", "Love with a spine", "Boundaries, dignity and self-worth, and how Jesus lived them."],
       ["theme.union-sonship", "Union & sonship", "From orphan to beloved child."],
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
@@ -219,6 +223,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["life", "Designed to live", A("lifeMyths").length + " myths, " + A("lifeTraits").length + " traits of Jesus, " + A("lifeSituations").length + " situations he handled"],
         ["kingdom", "Ekklesia & the Kingdom", A("kingConcepts").length + " concepts, " + A("kingPractice").length + " practices, " + A("kingViews").length + " views of the end"],
         ["embodied", "The Embodied Gospel", A("embStudies").length + " in-depth studies, " + A("embConcepts").length + " key concepts"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
@@ -533,6 +538,46 @@
 
 
 
+
+  /* ---------- Designed to live: love with a spine ---------- */
+  var spine = 1, lifeAns = {};
+  var SPINE = [
+    { name: "Passive", tone: "sep", line: "Love without a spine", text: "Says yes to everything, cannot confront, absorbs mistreatment, hides needs and calls it humility. It looks gentle but it feeds resentment, enables harm and leaves the other person unchanged. This is not the love of 1 Corinthians 13, which \"does not rejoice in unrighteousness, but rejoices with the truth\".", refs: "1 Cor 13:6 · Prov 25:26 · Gal 1:10" },
+    { name: "Christlike", tone: "uni", line: "Love with a spine", text: "Open-hearted and kind, but self-possessed. Speaks the truth in love, says no without guilt, rests, confronts what harms, protects the vulnerable, forgives freely yet trusts wisely, and lays down life as a free gift, not under compulsion. This is how Jesus lived.", refs: "Eph 4:15 · Matt 10:16 · John 10:18 · Mark 1:35-38 · John 2:24-25" },
+    { name: "Aggressive", tone: "sep", line: "A spine without love", text: "Defends itself by attacking, controls others, punishes and keeps score. It protects the self but wounds others and the relationship. Jesus rebuked this too when the disciples wanted fire from heaven.", refs: "Luke 9:54-55 · Jas 1:20 · Rom 12:17-21" }
+  ];
+  V.life = function () {
+    var C = A("lifeCase"), S = A("lifeScenarios");
+    return head("Love with a spine", "Designed to live", "Were you taught that saying no, confronting or protecting yourself is unloving? This study looks at why, what the heart of God is really like, how God designed humans to live, and how Jesus handled people and pressure.") +
+      '<div class="prose">' + A("lifeIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
+      '<div class="panel gold"><div class="label">If you are in danger</div><p>Your safety comes first. Forgiveness never requires you to stay in harm or trust an unsafe person. If you are at risk, contact local emergency services or a domestic-abuse helpline, and tell someone you trust.</p></div>' +
+      '<section class="spine" id="spine"><div class="label">Where does love sit?</div><input type="range" id="spine-r" min="0" max="2" step="1" value="' + spine + '" aria-label="Move between passive, Christlike and aggressive"><div class="spine-scale"><span>Passive</span><span>Christlike</span><span>Aggressive</span></div><div id="spine-card"></div></section>' +
+      (C.length ? '<section class="section"><h2>The case, step by step</h2><div class="chips">' + C.map(function (c, i) { return '<button class="chip" type="button" data-case="' + c.id + '">' + (i + 1) + ". " + esc(c.title) + "</button>"; }).join("") + '</div><div class="case">' +
+        C.map(function (c, i) { return '<article class="case-step" id="case-' + c.id + '"><div class="case-num" aria-hidden="true">' + String(i + 1).padStart(2, "0") + '</div><div class="case-body"><div class="label">' + esc(c.kicker) + "</div><h3>" + esc(c.title) + '</h3><div class="prose">' + c.body.map(function (p) { return "<p>" + p + "</p>"; }).join("") + '</div><div class="ref">' + esc((c.refs || []).join(" · ")) + "</div></div></article>"; }).join("") + "</div></section>" : "") +
+      (S.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Is this love?</h2><span class="count" id="life-score"></span></div><p class="note">Read each situation and choose. Then see the reasoning.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr))">' +
+        S.map(function (x) { return '<article class="sc" id="sc-' + x.id + '"><p>' + x.scenario + '</p><div class="chips">' + [["loving", "Loving"], ["unloving", "Not loving"], ["depends", "It depends"]].map(function (o) { return '<button class="chip" type="button" data-sc="' + x.id + '" data-ans="' + o[0] + '">' + o[1] + "</button>"; }).join("") + '</div><div class="sc-out" hidden></div></article>'; }).join("") + "</div></section>" : "") +
+      '<section class="section"><h2>Myths we were taught</h2><p class="note">Tap a card to see the truth.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + A("lifeMyths").map(function (m) {
+        return '<button type="button" class="flip" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front"><div class="label">The myth</div><h3>' + esc(m.myth) + '</h3><span class="note" style="font-size:14px">' + clip(m.origin, 150) + '</span></div><div class="flip-face back"><div class="label">The truth</div><p>' + m.truth + '</p><span class="ref">' + esc((m.refs || []).join(" · ")) + "</span></div></div></button>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>Is it selfish? Ten distinctions</h2><div class="grid">' + A("lifeSelfish").map(function (d) { return '<article class="scale"><h3>' + esc(d.term) + '</h3><div class="panel uni"><div class="label">It is</div><p>' + d.is + '</p></div><div class="panel sep"><div class="label">It is not</div><p>' + d.isnot + '</p></div><div class="ref">' + esc((d.refs || []).join(" · ")) + "</div></article>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>When you are exploited or mistreated</h2><div class="timeline">' + A("lifeSteps").map(function (x, i) { return '<article class="t-item"><div class="label">Step ' + (i + 1) + "</div><h3>" + esc(x.step) + "</h3><p>" + x.how + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div></article>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>How God designed us, and why</h2><div class="grid">' + A("lifeDesign").map(function (d) { return card("ldesign", d, { text: clip(d.why, 130) }); }).join("") + "</div></section>" +
+      '<section class="section"><h2>The traits of Jesus</h2><div class="grid">' + A("lifeTraits").map(function (d) { return card("ltrait", d, { text: clip(d.desc, 130) }); }).join("") + "</div></section>" +
+      '<section class="section"><h2>How Jesus handled it</h2><div class="qa">' + A("lifeSituations").map(function (x) { return "<details><summary>" + esc(x.situation) + '</summary><div class="ans"><p style="color:var(--ink)">' + x.did + '</p><div class="panel gold"><div class="label">The principle</div><p>' + x.principle + '</p></div><p><strong>Today:</strong> ' + x.today + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div></div></details>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>Hard questions</h2><div class="qa">' + A("lifeQA").map(function (q) { return "<details><summary>" + esc(strip(q.q)) + '</summary><div class="ans"><p>' + q.a + "</p></div></details>"; }).join("") + "</div></section>" +
+      (A("lifeEvidence").concat(A("lifeEvidence2")).length ? '<section class="section"><h2>Evidence and sources</h2><div class="evidence">' + A("lifeEvidence").concat(A("lifeEvidence2")).map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips">' + ["designed-for-connection", "union-sonship", "nature-of-god", "sacred-biology", "church-now"].map(function (id) { var x = find("theme", id); return x ? '<a class="chip" href="#theme.' + id + '">' + esc(x.title) + "</a>" : ""; }).join("") + '<a class="chip" href="#sayings">The words of Jesus</a><a class="chip" href="#love">God is love</a></div></section>';
+  };
+  function showSpine() {
+    if (!$("#spine")) return; var x = SPINE[spine];
+    $("#spine-card").innerHTML = '<div class="panel ' + x.tone + '"><div class="label">' + x.name + " · " + x.line + "</div><p>" + x.text + '</p><div class="ref">' + x.refs + "</div></div>";
+    $("#spine").dataset.pos = String(spine);
+  }
+  function lifeScore() {
+    var S = A("lifeScenarios"), n = 0, right = 0;
+    S.forEach(function (x) { if (lifeAns[x.id]) { n++; if (lifeAns[x.id] === x.answer) right++; } });
+    if ($("#life-score")) $("#life-score").textContent = n ? right + " of " + n + " match the study" : S.length + " situations";
+  }
+
   /* ---------- Ekklesia & the Kingdom ---------- */
   var kStep = 0, kGroup = "all";
   V.kingdom = function () {
@@ -779,6 +824,9 @@
     kconcept: function (x) { return panel("gold", "In one line", x.simple) + '<div class="prose">' + x.explain.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" + blk("Scriptures", esc((x.refs || []).join(" · "))) + panel("uni", "Connections", x.connects); },
     kpractice: function (x) { return panel("gold", "How", x.how) + panel("uni", "An everyday example", x.example) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     kview: function (x) { return blk("The view", x.summary) + panel("gold", "How it reads Psalm 110, 1 Corinthians 15 and Acts 3:21", x.reads) + panel("uni", "Strengths", x.strengths) + panel("sep", "Critiques", x.critiques); },
+    ldesign: function (x) { return panel("gold", "Why God designed it", x.why) + panel("uni", "How it reflects God", x.reflects) + panel("sep", "How it goes wrong", x.distortion) + blk("Healthy expression", x.healthy) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    ltrait: function (x) { return blk("The trait", x.desc) + '<div class="blk"><div class="label">Scenes</div><div class="links">' + (x.scenes || []).map(function (sc) { return '<div><span class="ref">' + esc(sc.ref) + "</span> " + sc.note + "</div>"; }).join("") + "</div></div>" + panel("uni", "The Father's heart", x.father); },
+    lsit: function (x) { return blk("What Jesus did", x.did) + panel("gold", "The principle", x.principle) + panel("uni", "Today", x.today) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -865,7 +913,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -939,6 +987,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "life") { showSpine(); lifeScore(); }
     if (route.view === "kingdom") { showK(); kGrid(); }
     if (route.view === "embodied") { setMO(mOrder); mGrid(); }
     if (route.view === "newcreation") { showNC(); ncList(); }
@@ -965,6 +1014,14 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var scb = t.closest("[data-sc]"); if (scb) {
+      var x = A("lifeScenarios").filter(function (y) { return y.id === scb.dataset.sc; })[0]; if (!x) return;
+      lifeAns[x.id] = scb.dataset.ans; var box = $("#sc-" + x.id);
+      $$("[data-sc]", box).forEach(function (b) { b.setAttribute("aria-pressed", String(b === scb)); b.classList.toggle("right", b.dataset.ans === x.answer); });
+      var o = $(".sc-out", box); o.hidden = false;
+      o.innerHTML = '<div class="label">' + (scb.dataset.ans === x.answer ? "You match the study" : "The study answers: " + ({ loving: "Loving", unloving: "Not loving", depends: "It depends" })[x.answer]) + "</div><p>" + x.why + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div>";
+      lifeScore(); return;
+    }
     var km = t.closest("[data-kmove]"); if (km) { var nE = A("kingEnemies").length; if (+km.dataset.kmove > 0 && kStep >= nE) kStep = 0; else kStep += +km.dataset.kmove; showK(); return; }
     var kg = t.closest("[data-kg]"); if (kg) { kGroup = kg.dataset.kg; $$("[data-kg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === kg)); }); kGrid(); return; }
     var mo = t.closest("[data-mo]"); if (mo) { setMO(mo.dataset.mo); return; }
@@ -1001,6 +1058,7 @@
     else if (id === "voice-q") voiceGrid();
     else if (id === "lp-q") lpGrid();
     else if (id === "nc-q") ncList();
+    else if (id === "spine-r") { spine = +ev.target.value; showSpine(); }
     else if (id === "cmp-q") cmpList();
     else if (id === "age-range") { ageIdx = +ev.target.value; showAge(); }
     else if (id === "passage") { notes.passage = ev.target.value; store("rga.notes", notes); }

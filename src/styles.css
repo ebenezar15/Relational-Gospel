@@ -441,6 +441,17 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
 
+/* ---------- designed to live ---------- */
+.spine { display: grid; gap: 12px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(90deg, var(--wine-soft), var(--dawn-soft) 50%, var(--wine-soft)); }
+.spine input { width: 100%; accent-color: var(--gold); }
+.spine-scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+#spine-card .panel { background: var(--surface); animation: rise .35s both; }
+.sc { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.sc p { font-size: 16.5px; }
+.sc .chip.right[aria-pressed="true"], .sc-out:not([hidden]) ~ * .right { border-color: var(--dawn); }
+.sc .chip[aria-pressed="true"]:not(.right) { border-color: var(--wine); color: var(--wine); background: var(--wine-soft); }
+.sc .chip.right[aria-pressed="true"] { color: var(--dawn); background: var(--dawn-soft); }
+.sc-out { display: grid; gap: 6px; padding: 12px; border-radius: 8px; background: var(--bg-2); font-size: 15.5px; animation: rise .35s both; }
 /* ---------- ekklesia & kingdom ---------- */
 .foot { display: grid; gap: 16px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); transition: box-shadow .8s; }
 .foot.done { box-shadow: 0 0 0 1px var(--gold), 0 0 60px var(--gold-soft); }
