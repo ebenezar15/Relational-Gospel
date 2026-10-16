@@ -1,4 +1,5 @@
 window.RG = window.RG || {};
+var RG = window.RG;
 
 /* ------------------------------------------------------------------
    1) Frameworks: seven ways Christians read the violent passages
@@ -475,5 +476,151 @@ RG.misunderstandings = [
     thought: `Some early Jewish believers were tempted to return to the old ways, as if the fearsome mountain of Sinai were still the main picture of how to approach God: fire, darkness, storm and a voice so terrifying that the people begged it to stop (12:19).`,
     revealed: `Hebrews says, "You have not come to a mountain that might be touched... but you have come to Mount Zion, to the city of the living God" (12:18, 22). There, there are angels in festive gathering, the church of the firstborn, "God the Judge of all", and "Jesus, the mediator of a new covenant", whose blood "speaks better than that of Abel" (12:23-24).`,
     jesus: `Jesus is the one who makes the difference between Sinai and Zion. Where Sinai said "keep away", Zion says "come". Hebrews still warns, "our God is a consuming fire" (12:29); relational readers hear this as a refining fire of love (compare Malachi 3:2-3), traditional readers as a real warning of judgement. Both agree that in Jesus we approach God through grace.`
+  }
+];
+
+/* ------------------------------------------------------------------
+   4) Contrasts: Old and New Testament tensions people notice
+   ------------------------------------------------------------------ */
+RG.contrasts = [
+  {
+    id: "eye-for-an-eye",
+    topic: "Retaliation",
+    ot: { ref: "Exodus 21:24", text: "Eye for eye, tooth for tooth, hand for hand, foot for foot. (KJV)" },
+    nt: { ref: "Matthew 5:38-39", text: "Whosoever shall smite thee on thy right cheek, turn to him the other also. (KJV)" },
+    note: `The law of retaliation was itself a limit on violence: no more than an eye for an eye, and it was administered by judges, not by private revenge. Jesus goes further and calls his followers to absorb harm without returning it. Traditional readers harmonise the two by saying the Old Testament rule governs courts while Jesus addresses personal relationships. A Christ-centred reading sees Jesus completing the law's direction, from limiting revenge to ending it. Walter Wink's popular reading of the backhand slap as a form of creative resistance is a scholarly interpretation, not settled fact.`
+  },
+  {
+    id: "hate-your-enemy",
+    topic: "Enemies",
+    ot: { ref: "Psalm 139:21-22; Deuteronomy 23:6", text: "Do not I hate them, O LORD, that hate thee?... I hate them with perfect hatred. / Thou shalt not seek their peace nor their prosperity all thy days for ever. (KJV)" },
+    nt: { ref: "Matthew 5:43-44", text: "Ye have heard that it hath been said, Thou shalt love thy neighbour, and hate thine enemy. But I say unto you, Love your enemies. (KJV)" },
+    note: `"Hate your enemy" is not a direct quote from the Old Testament, but texts like Psalm 139 and Deuteronomy 23 point in that direction, and the Dead Sea Scrolls' Community Rule speaks of hating the "sons of darkness". The Old Testament also says, "If thine enemy be hungry, give him bread" (Proverbs 25:21), so the picture was already mixed. Traditional readers say the psalmist hates God's enemies as enemies of righteousness, not with personal spite. Jesus grounds enemy-love in the Father himself, who "maketh his sun to rise on the evil and on the good" (Matthew 5:45). In Christ, love for enemies is not a new rule but a revelation of what God is like.`
+  },
+  {
+    id: "stoning-the-adulteress",
+    topic: "Adultery and condemnation",
+    ot: { ref: "Leviticus 20:10", text: "The adulterer and the adulteress shall surely be put to death. (KJV)" },
+    nt: { ref: "John 8:11", text: "Neither do I condemn thee: go, and sin no more. (KJV)" },
+    note: `The law prescribed death for both parties in adultery; the accusers in John 8 brought only the woman. Jesus neither denies the seriousness of sin ("sin no more") nor allows the punishment ("he that is without sin among you, let him first cast a stone"). Traditional readers note that Jesus did not abolish the law here but exposed the accusers' hypocrisy and offered forgiveness. Honesty requires noting that John 7:53-8:11 is missing from the earliest manuscripts, though many scholars think it records a genuine early tradition. A Christ-centred reading sees here the Father's heart: mercy that refuses to condemn and invites new life.`
+  },
+  {
+    id: "sins-of-the-fathers",
+    topic: "Inherited guilt",
+    ot: { ref: "Exodus 20:5", text: "Visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate me. (KJV)" },
+    nt: { ref: "John 9:3 (with Ezekiel 18:20)", text: "Neither hath this man sinned, nor his parents. / The son shall not bear the iniquity of the father. (KJV)" },
+    note: `Exodus speaks of consequences rippling through a family, while Ezekiel 18 and Deuteronomy 24:16 insist each person answers for their own sin. Already the Old Testament balances the line: punishment to the third and fourth generation, but mercy "unto thousands" (Exodus 20:6). Traditional readers harmonise them by saying Exodus describes how sin's effects spread in families "of them that hate me", while Ezekiel addresses personal guilt. Jesus refuses to read a man's blindness as punishment for anyone's sin. In Christ, inherited patterns can be broken, and no one is condemned for what their parents did.`
+  },
+  {
+    id: "god-tests-abraham",
+    topic: "Does God tempt?",
+    ot: { ref: "Genesis 22:1", text: "God did tempt Abraham. (KJV)" },
+    nt: { ref: "James 1:13", text: "God cannot be tempted with evil, neither tempteth he any man. (KJV)" },
+    note: `The Hebrew word in Genesis 22:1 (<em>nissah</em>) means 'test' or 'prove', and modern translations including the WEB say God "tested" Abraham, so part of the tension is a matter of old English. James distinguishes a test, which aims at growth, from a temptation, which lures toward evil. Traditional readers rest the case there. Relational readers add that the story itself ends with God stopping the sacrifice, revealing a God who does not want to harm Abraham's son. In Jesus we see a Father who gives good gifts, not stones or snakes (Matthew 7:9-11).`
+  },
+  {
+    id: "who-incited-david",
+    topic: "Who incited David's census?",
+    ot: { ref: "2 Samuel 24:1", text: "The anger of the LORD was kindled against Israel, and he moved David against them to say, Go, number Israel. (KJV)" },
+    nt: { ref: "1 Chronicles 21:1 (with James 1:13)", text: "Satan stood up against Israel, and provoked David to number Israel. (KJV)" },
+    note: `Both texts are in the Old Testament, but Chronicles was written centuries after Samuel, and it changes who did the inciting. The Hebrew in Chronicles lacks the article, so it may mean "an adversary"; whether a personal Satan is meant is debated. Traditional readers harmonise the two by saying God permitted Satan to tempt David, as in Job 1-2. Others see the Bible's own understanding developing: what was once credited to God is later recognised as the work of the accuser. The New Testament completes the move: God "tempteth no man" (James 1:13), and Jesus came to undo the devil's works (1 John 3:8).`
+  },
+  {
+    id: "seeing-god",
+    topic: "Has anyone seen God?",
+    ot: { ref: "Exodus 24:10-11; 33:11", text: "And they saw the God of Israel... also they saw God, and did eat and drink. / The LORD spake unto Moses face to face, as a man speaketh unto his friend. (KJV)" },
+    nt: { ref: "John 1:18", text: "No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him. (KJV)" },
+    note: `Exodus says the elders saw God and Moses spoke with him face to face, yet in the same chapter God tells Moses, "there shall no man see me, and live" (33:20). Traditional readers harmonise this by saying the elders saw a vision or a partial glory, and that 'face to face' means intimate speech, not a full sight of God's being. Many early church writers, such as Justin Martyr and Irenaeus, argued that whenever God was 'seen' in the Old Testament, it was the Word, the Son, before his incarnation. John's point is that all earlier glimpses were partial, and that Jesus alone fully makes the Father known. To see God's face, look at Jesus (2 Corinthians 4:6).`
+  },
+  {
+    id: "eunuchs-excluded",
+    topic: "Eunuchs and the assembly",
+    ot: { ref: "Deuteronomy 23:1", text: "He that is wounded in the stones, or hath his privy member cut off, shall not enter into the congregation of the LORD. (KJV)" },
+    nt: { ref: "Acts 8:36-38 (with Isaiah 56:3-5)", text: "See, here is water; what doth hinder me to be baptized? ... and he baptized him. (KJV)" },
+    note: `Deuteronomy excludes eunuchs from the assembly, but Isaiah 56 already promises them "a place and a name better than of sons and of daughters" in God's house. In Acts, the first Gentile convert named in detail is an Ethiopian eunuch, who was reading Isaiah when Philip met him. Traditional readers explain the exclusion as part of Israel's temporary purity laws, fulfilled and set aside in Christ. The arc runs within Scripture itself, from exclusion to welcome. In Jesus no one is shut out because of what has been done to their body.`
+  },
+  {
+    id: "moabites-excluded",
+    topic: "Moabites and Ruth",
+    ot: { ref: "Deuteronomy 23:3", text: "An Ammonite or Moabite shall not enter into the congregation of the LORD; even to their tenth generation. (KJV)" },
+    nt: { ref: "Matthew 1:5", text: "Booz begat Obed of Ruth. (KJV)" },
+    note: `Ruth is a Moabite, yet she becomes the great-grandmother of King David and is named in Jesus' genealogy. Jewish tradition harmonised this by reading the law as applying to Moabite men, not women (Mishnah Yevamot 8:3), and traditional Christian readers often note that Ruth joined Israel by faith ("thy God my God", Ruth 1:16). The book of Ruth itself seems to be a gentle protest, holding up a Moabite woman as a model of covenant love. Matthew's genealogy deliberately includes outsiders like Tamar, Rahab and Ruth. In Christ, God's family was always wider than its boundary laws.`
+  },
+  {
+    id: "unclean-foods",
+    topic: "Clean and unclean foods",
+    ot: { ref: "Leviticus 11:7-8", text: "And the swine... he is unclean to you. Of their flesh shall ye not eat. (KJV)" },
+    nt: { ref: "Mark 7:18-19", text: "It doesn't go into his heart, but into his stomach, then into the latrine, making all foods clean? (WEB)" },
+    note: `The food laws marked Israel out as a distinct, holy people. Jesus teaches that what defiles a person comes from the heart, not the stomach, and Mark adds the comment that he declared all foods clean (the KJV renders this "purging all meats", and translations differ on the phrase). Traditional readers usually place food laws in the 'ceremonial law', fulfilled in Christ, though that three-part division of the law is a later Christian categorisation; Jewish tradition counts 613 commandments without it. Peter's vision in Acts 10 confirms the change. A Christ-centred reading sees holiness moving from the plate to the heart.`
+  },
+  {
+    id: "sabbath-death-penalty",
+    topic: "The Sabbath",
+    ot: { ref: "Exodus 31:15", text: "Whosoever doeth any work in the sabbath day, he shall surely be put to death. (KJV)" },
+    nt: { ref: "Mark 2:27", text: "The sabbath was made for man, and not man for the sabbath. (KJV)" },
+    note: `In Exodus the Sabbath is the sign of the covenant, and breaking it is a capital offence (see Numbers 15:32-36). Jesus heals on the Sabbath, defends his hungry disciples, and calls himself "Lord also of the sabbath". Traditional readers say Jesus did not abolish the Sabbath but restored its true purpose, and many apply its principle to the Lord's Day. Christ-centred readers add that the death penalty shows how far the law could be from the Sabbath's purpose of rest and freedom (Deuteronomy 5:15). In Jesus, the Sabbath becomes a person: "Come unto me... and I will give you rest" (Matthew 11:28).`
+  },
+  {
+    id: "sacrifice-or-mercy",
+    topic: "Sacrifice",
+    ot: { ref: "Leviticus 17:11", text: "For the life of the flesh is in the blood... it is the blood that maketh an atonement for the soul. (KJV)" },
+    nt: { ref: "Matthew 9:13", text: "Go ye and learn what that meaneth, I will have mercy, and not sacrifice. (KJV)" },
+    note: `Leviticus sets out a detailed sacrificial system, yet Jesus is quoting the Old Testament itself (Hosea 6:6), and many prophets and psalms say God desires mercy and a broken heart more than offerings. Traditional readers see no contradiction: Hosea means "mercy more than sacrifice", and the sacrifices pointed forward to Christ's once-for-all sacrifice (Hebrews 10:10). Relational readers read the prophets as revealing that God never needed blood to love us, and the cross as God giving himself rather than receiving a payment. Both agree that in Christ the sacrificial system ends (Hebrews 10:18). How exactly the cross 'works' is one of the most debated questions in theology.`
+  },
+  {
+    id: "fire-from-heaven",
+    topic: "Fire from heaven",
+    ot: { ref: "2 Kings 1:10", text: "If I be a man of God, then let fire come down from heaven, and consume thee and thy fifty. (KJV)" },
+    nt: { ref: "Luke 9:55", text: "But he turned, and rebuked them. (KJV)" },
+    note: `James and John explicitly appeal to Elijah's example, and Jesus rebukes them. The KJV adds, "Ye know not what manner of spirit ye are of", though this is missing from the earliest manuscripts. Traditional readers say Elijah acted rightly in his time as God's prophet, but the disciples' situation and spirit were different. Christ-centred readers see Jesus refusing to let an Old Testament precedent define God's response to rejection. The gospel later reaches that very region of Samaria with joy (Acts 8).`
+  },
+  {
+    id: "holy-war",
+    topic: "Holy war",
+    ot: { ref: "Deuteronomy 20:16", text: "Thou shalt save alive nothing that breatheth. (KJV)" },
+    nt: { ref: "John 18:36", text: "My kingdom is not of this world: if my kingdom were of this world, then would my servants fight. (KJV)" },
+    note: `The conquest commands envisage Israel fighting for God, while Jesus says his kingdom does not advance by fighting at all. Traditional readers explain the conquest as a unique act of judgement tied to Israel's land and time, never meant as a pattern for the church. Some evangelical scholars also argue its language is hyperbolic war rhetoric. Christ-centred readers see Jesus redefining the enemy: "we wrestle not against flesh and blood" (Ephesians 6:12). Either way, the New Testament gives Christians no warrant for holy war.`
+  },
+  {
+    id: "where-to-worship",
+    topic: "Where God is worshipped",
+    ot: { ref: "Deuteronomy 12:5", text: "Unto the place which the LORD your God shall choose out of all your tribes to put his name there... thither thou shalt come. (KJV)" },
+    nt: { ref: "John 4:21, 23", text: "The hour cometh, when ye shall neither in this mountain, nor yet at Jerusalem, worship the Father... the true worshippers shall worship the Father in spirit and in truth. (KJV)" },
+    note: `Israel's worship was centred on one chosen place, which became the temple in Jerusalem. Jesus tells a Samaritan woman that place will no longer matter. Traditional readers see the temple as a temporary shadow pointing to Christ, the true temple (John 2:19-21). Even Solomon admitted, "the heaven and heaven of heavens cannot contain thee; how much less this house" (1 Kings 8:27). In Christ, and by his Spirit in his people (1 Corinthians 3:16), God dwells wherever people worship in spirit and truth.`
+  },
+  {
+    id: "vengeance-or-forgiveness",
+    topic: "Vengeance",
+    ot: { ref: "Nahum 1:2", text: "God is jealous, and the LORD revengeth; the LORD revengeth, and is furious. (KJV)" },
+    nt: { ref: "Luke 23:34", text: "Father, forgive them; for they know not what they do. (KJV)" },
+    note: `Nahum celebrates God's vengeance on Nineveh, the capital of the brutal Assyrian empire. Jesus, being crucified by an empire, prays for his killers' forgiveness. This prayer is absent from some early manuscripts, though most scholars consider it an authentic early tradition. Traditional readers say both are true: God avenges injustice, and the cross is where vengeance and forgiveness meet as Christ bears judgement. Christ-centred readers notice that Jonah, set in the same city, already shows God sparing Nineveh, and see the cross as God's final answer to violence.`
+  },
+  {
+    id: "cursed-on-a-tree",
+    topic: "The curse of the tree",
+    ot: { ref: "Deuteronomy 21:23", text: "He that is hanged is accursed of God. (KJV)" },
+    nt: { ref: "Galatians 3:13", text: "Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree. (KJV)" },
+    note: `For a first-century Jew, a crucified Messiah seemed impossible, because the law said one hanged on a tree was cursed. Paul does not deny the text; he turns it inside out: Christ entered the place of the curse to redeem those under it. Traditional readers see this as penal substitution, Christ bearing the curse God's law pronounced. Relational readers see God himself entering the deepest place of human rejection and shame, so that no one is beyond his reach. Either way, the one the law called cursed turns out to be the source of blessing for the nations (Galatians 3:14).`
+  },
+  {
+    id: "man-of-war-prince-of-peace",
+    topic: "Warrior or peacemaker",
+    ot: { ref: "Exodus 15:3", text: "The LORD is a man of war: the LORD is his name. (KJV)" },
+    nt: { ref: "Ephesians 2:14, 17", text: "For he is our peace... and came and preached peace to you which were afar off, and to them that were nigh. (KJV)" },
+    note: `The Song of Moses praises God as a warrior who drowned Pharaoh's army. Yet the title "Prince of Peace" is itself from the Old Testament (Isaiah 9:6), and Isaiah also foresees swords beaten into ploughshares (Isaiah 2:4), so the tension runs inside the Old Testament too. Traditional readers say God is both: a warrior against evil and the giver of peace, and that Christ still wages war against sin and death. Christ-centred readers see the warrior image transformed: Jesus fights by dying, and "made peace through the blood of his cross" (Colossians 1:20). He is still a victor, but his victory is reconciliation.`
+  },
+  {
+    id: "israel-or-all-nations",
+    topic: "Chosen people or all nations",
+    ot: { ref: "Deuteronomy 7:6", text: "The LORD thy God hath chosen thee to be a special people unto himself, above all people that are upon the face of the earth. (KJV)" },
+    nt: { ref: "Matthew 28:19", text: "Go ye therefore, and teach all nations. (KJV)" },
+    note: `The Old Testament speaks of Israel as God's special, chosen people, which can sound as if God loved one nation and not the others. Yet from the start, God chose Abraham so that "in thee shall all families of the earth be blessed" (Genesis 12:3), and the prophets foresee the nations streaming to God (Isaiah 2:2-3; 49:6). Traditional readers see election as God's plan to save the world through Israel, culminating in Christ. Relational readers stress that Israel was chosen not instead of the nations but for them. In Christ the purpose of election is revealed: one family for every nation.`
+  },
+  {
+    id: "oaths",
+    topic: "Oaths and vows",
+    ot: { ref: "Numbers 30:2", text: "If a man vow a vow unto the LORD, or swear an oath to bind his soul with a bond; he shall not break his word. (KJV)" },
+    nt: { ref: "Matthew 5:34, 37", text: "Swear not at all... But let your communication be, Yea, yea; Nay, nay. (KJV)" },
+    note: `The law regulated oaths and required that vows be kept, while Jesus tells his followers not to swear at all (see also James 5:12). Traditional readers have often said Jesus forbids casual or evasive oaths, not solemn ones in court, noting that Paul calls God as witness (2 Corinthians 1:23); Quakers and Anabaptists, by contrast, have taken Jesus' words literally. The law aimed at honesty by binding words with oaths; Jesus aims at hearts so honest that oaths become unnecessary. This fits the pattern of Matthew 5, where Jesus does not loosen the law but goes beneath it. In him, every word becomes as trustworthy as an oath.`
   }
 ];
