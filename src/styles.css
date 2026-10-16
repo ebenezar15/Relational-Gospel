@@ -441,7 +441,11 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
 
-/* ---------- Tommy Miller ---------- */
+/* ---------- embodied gospel & deep study ---------- */
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 8px; font-size: 16.5px; }
+.evidence { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.ev { padding: 12px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); display: grid; gap: 6px; font-size: 15.5px; align-content: start; }
+.ev a { font-family: var(--mono); font-size: 12px; }
 .shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 12px; }
 .book { display: grid; align-content: start; gap: 6px; text-align: left; padding: 16px 14px 18px; min-height: 190px; border-radius: 4px 10px 10px 4px; border: 1px solid var(--line); border-left: 6px solid var(--gold); background: linear-gradient(135deg, var(--surface), var(--bg-2)); cursor: pointer; transition: transform .25s, box-shadow .25s; }
 .book:hover { transform: translateY(-4px) rotate(-1deg); box-shadow: var(--shadow); }

@@ -56,3 +56,16 @@ To ADD items to an existing array (e.g. themes) use `RG.themes = (RG.themes || [
   - Derek Flood, *Healing the Gospel* (Cascade, 2012): restorative justice, a nonviolent atonement, a gospel of enemy-love rather than retribution.
   - Brad Jersak: wrath as the intrinsic consequence of refusing God's mercy, not retributive punishment; the cross as identification rather than substitution; *A More Christlike God* (2015).
   - Isaac the Syrian (Homily 51 as usually translated): as a handful of sand thrown into the sea, so is the sin of all flesh compared with the mind of God; and justice cannot counterbalance his mercy (paraphrase, mark as "as usually translated").
+
+## Round 4: deep studies with sources
+Each theme page gets a "Deep study" block. Write file `src/data/deepN.js` with the round-2 header, then:
+```js
+RG.deep = RG.deep || {};
+RG.deep["theme-id"] = {
+  sections: [ { title: "...", body: ["paragraph", ...], refs: ["Rom 6:6", ...] }, ... ],   // 5–7 sections
+  evidence: [ { text: "a short verified quote or fact", source: "Author, Work, section", url: "https://..." }, ... ] // 5–10 items
+};
+```
+- Sections go deeper than the existing theme page (read `src/data/themes.js` / `themes2.js` first so you do not repeat it): word studies (Hebrew/Greek), close reading of the key passages in context, how the early church read them, the strongest counter-reading and a response, and practical meaning. Simple language, short paragraphs, many Scripture references.
+- **Evidence must be real and checked.** Use WebSearch / WebFetch (prefer these; Firecrawl is rate-limited and shared) to find primary or reliable sources online — e.g. CCEL / New Advent for church fathers, Bible Hub / Blue Letter Bible lexicons for word meanings, reputable scholarly or publisher pages. Only include a quote if you saw its wording on the page you cite; put that page's URL in `url`. If you cannot verify, paraphrase and say "Paraphrase:".
+- No details about any living preacher's church, family or location.

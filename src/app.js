@@ -54,9 +54,8 @@
     ncq: { key: "ncQuestions", view: "newcreation", title: function (x) { return x.q; }, sub: function (x) { return NCG[x.group] || x.group; }, label: "New creation study" },
     ncterm: { key: "ncTerms", view: "newcreation", title: function (x) { return x.term + " · " + x.translit; }, sub: function (x) { return x.original; }, label: "Key term" },
     cmp: { key: "compare", view: "compare", title: function (x) { return x.topic; }, sub: function (x) { return x.group; }, label: "Legal vs relational" },
-    mconcept: { key: "millerConcepts", view: "miller", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Tommy Miller · concept" },
-    msermon: { key: "millerSermons", view: "miller", title: function (x) { return x.title; }, sub: function (x) { return x.series + " · " + x.date; }, label: "Tommy Miller · sermon" },
-    mbook: { key: "millerBooks", view: "miller", title: function (x) { return x.title; }, sub: function (x) { return x.subtitle; }, label: "Tommy Miller · book" },
+    mconcept: { key: "embConcepts", view: "embodied", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Embodied gospel · concept" },
+    msermon: { key: "embStudies", view: "embodied", title: function (x) { return x.title; }, sub: function (x) { return x.theme; }, label: "Embodied gospel · study" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -71,7 +70,7 @@
     { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
-    { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["miller", "Tommy Miller's teaching"], ["models", "Frameworks compared"]] },
+    { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
     { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved"]] }
   ];
   var PINNED = ["perfect-theology", "bible-narratives", "undiluted-gospel", "trinitarian-gospel", "union-sonship", "designed-for-connection", "church-now"];
@@ -216,7 +215,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
-        ["miller", "Tommy Miller's teaching", A("millerBooks").length + " books, " + A("millerSermons").length + " sermons, " + A("millerConcepts").length + " key concepts"],
+        ["embodied", "The Embodied Gospel", A("embStudies").length + " in-depth studies, " + A("embConcepts").length + " key concepts"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
         ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
         ["models", A("models").length + " frameworks compared", "Atonement, salvation, hell, Scripture, end times"],
@@ -244,10 +243,17 @@
       '<div class="split">' + panel("sep", "The gospel of separation says", t.separation) + panel("uni", "The gospel of union says", t.union) + "</div>" +
       ((t.voices || []).length ? '<section class="section"><h2>Voices through history</h2><div class="voices">' + t.voices.map(function (v) { return '<div class="voice"><b>' + esc(v.name) + "</b><span>" + v.note + "</span></div>"; }).join("") + "</div></section>" : "") +
       ((t.objections || []).length ? '<section class="section"><h2>Objections, honestly answered</h2><div class="qa">' + t.objections.map(function (o) { return "<details><summary>" + o.q + '</summary><div class="ans"><p>' + o.a + "</p></div></details>"; }).join("") + "</div></section>" : "") +
+      deepHTML(t.id) +
       ((t.related || []).length ? '<section class="section"><div class="label">Connected stars</div><div class="chips">' + t.related.map(function (r) { var x = find("theme", r); return x ? '<a class="chip" href="#theme.' + r + '">' + esc(x.title) + "</a>" : ""; }).join("") + "</div></section>" : "") +
       '<div class="row" style="justify-content:space-between">' + (prev ? '<a class="btn ghost" href="#theme.' + prev.id + '">← ' + esc(prev.title) + "</a>" : "<span></span>") + (next ? '<a class="btn ghost" href="#theme.' + next.id + '">' + esc(next.title) + " →</a>" : "") + "</div>";
   };
 
+  function deepHTML(id) {
+    var d = (RG.deep || {})[id]; if (!d) return "";
+    return '<section class="section deep"><div class="row" style="justify-content:space-between"><h2>Deep study</h2><span class="label">' + (d.sections || []).length + " sections · " + (d.evidence || []).length + ' sources</span></div><div class="qa">' +
+      (d.sections || []).map(function (sec, i) { return "<details" + (i === 0 ? " open" : "") + '><summary>' + esc(sec.title) + '</summary><div class="ans">' + sec.body.map(function (p) { return '<p style="color:var(--ink)">' + p + "</p>"; }).join("") + (sec.refs && sec.refs.length ? '<div class="ref">' + esc(sec.refs.join(" · ")) + "</div>" : "") + "</div></details>"; }).join("") + "</div>" +
+      ((d.evidence || []).length ? '<div class="blk"><div class="label">Evidence and sources</div><div class="evidence">' + d.evidence.map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></div>" : "") + "</section>";
+  }
   V.lens = function () {
     var pt = find("theme", "perfect-theology");
     return head("The lens", "Old & New Testament tensions", "Some passages pull against each other. Hebrews 1 says God spoke in many portions and many ways, but has now spoken in a Son. Turn the lens on each pair to see the earlier word in the light of the later one.") +
@@ -521,32 +527,31 @@
   }
 
 
-  /* ---------- Tommy Miller ---------- */
-  var mOrder = "adam", mGroup = "all", mView = "both";
-  V.miller = function () {
-    var P = RG.millerProfile || { summary: [] }, groups = [];
-    A("millerConcepts").forEach(function (c) { if (groups.indexOf(c.group) === -1) groups.push(c.group); });
-    var Z = RG.millerAssess || { strengths: [], questions: [] };
-    return head("A teacher of the new creation", "Tommy Miller's teaching", "Salvific ontology, Sacred Biology, Deathless, the kingdom now. A study of the books, sermons and key ideas of Tommy Miller of Legacy Church International, with diagrams, simple explanations, scripture and an honest assessment.") +
-      '<div class="prose">' + P.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
-      '<section class="section"><h2>The books</h2><div class="shelf">' + A("millerBooks").map(function (b) { return '<button class="book" type="button" data-open="mbook.' + b.id + '"><span class="book-year">' + esc(b.year || "—") + "</span><b>" + esc(b.title) + "</b><span>" + esc(b.subtitle) + "</span></button>"; }).join("") + "</div></section>" +
+  /* ---------- The Embodied Gospel ---------- */
+  var mOrder = "adam", mGroup = "all";
+  V.embodied = function () {
+    var groups = [];
+    A("embConcepts").forEach(function (c) { if (groups.indexOf(c.group) === -1) groups.push(c.group); });
+    var Z = RG.embAssess || { strengths: [], questions: [] };
+    return head("Spirit, soul, body and new creation", "The Embodied Gospel", "God's plan was never to rescue souls out of bodies, but to fill human bodies with his own life. This study works through being and identity, the body, regeneration, the blood, immortality and the kingdom now, with diagrams, simple explanations and the scriptures behind each claim.") +
+      '<div class="prose">' + A("embIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
       '<section class="section"><h2>Diagram: two orders of being</h2><div class="mo" id="mo"><div class="row" style="justify-content:space-between"><div class="label">Who governs whom?</div><div class="su-toggle" role="group" aria-label="Choose an order"><button type="button" class="s" data-mo="adam" aria-pressed="true">Adamic order</button><button type="button" class="u" data-mo="divine" aria-pressed="false">Divine order</button></div></div>' +
       '<div class="mo-stack" id="mo-stack">' + [["spirit", "Spirit", "Union with God; Christ in you"], ["soul", "Soul", "Mind, will, emotions"], ["body", "Body", "A perceiver, not a decider"], ["creation", "Creation", "Waits for the sons of God"]].map(function (l) { return '<div class="mo-layer mo-' + l[0] + '"><b>' + l[1] + "</b><span>" + l[2] + "</span></div>"; }).join("") +
-      '</div><p class="su-text" id="mo-text"></p></div></section>' +
+      '</div><p class="su-text" id="mo-text"></p><div class="ref">1 Thess 5:23 · Rom 8:5-11 · 1 Cor 9:27 · Rom 8:19-21 · Gen 1:28</div></div></section>' +
       '<section class="section"><h2>Diagram: ontological transfer</h2><div class="ot" id="ot"><svg viewBox="0 0 760 210" aria-hidden="true">' +
       '<text x="20" y="34" class="tl" style="fill:var(--wine)">ADAM\'S LINEAGE · "LIVING SOUL"</text><path class="ot-old" d="M20 70 H360" stroke="var(--wine)" stroke-width="4" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>' +
       '<g transform="translate(380 105)"><circle r="44" fill="var(--gold-soft)" stroke="var(--gold)"/><path d="M0 -26 V30 M-16 -8 H16" stroke="var(--gold)" stroke-width="3"/></g><text x="380" y="180" text-anchor="middle" class="tl">INCARNATION · CROSS · RESURRECTION</text>' +
       '<path class="ot-in" d="M300 70 Q350 70 360 95" fill="none" stroke="var(--wine)" stroke-width="3" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>' +
       '<path class="ot-new" d="M400 115 Q420 140 470 140 H740" fill="none" stroke="var(--dawn)" stroke-width="4" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>' +
       '<text x="740" y="128" text-anchor="end" class="tl" style="fill:var(--dawn)">CHRIST\'S LINEAGE · "LIFE-GIVING SPIRIT"</text></svg>' +
-      '<div class="row" style="justify-content:space-between"><p class="note" style="max-width:60ch">1 Corinthians 15:45-49 and 2 Corinthians 5:14-17: humanity is moved from Adam\'s headship into Christ\'s. Miller calls this an ontological transfer: not an improved Adam, but a new source of existence.</p><button class="btn" type="button" id="ot-play">Play the transfer</button></div></div></section>' +
-      '<section class="section"><h2>Tragic or salvific? Side by side</h2><div class="toolbar"><p class="note" style="margin:0">Rows marked <em>Salvific Ontology</em> come from his minibook; the others are drawn from the church\'s sermon guides.</p><div class="su-toggle" role="group" aria-label="Choose a view"><button type="button" class="s" data-mv="tragic" aria-pressed="false">Tragic</button><button type="button" data-mv="both" aria-pressed="true">Both</button><button type="button" class="u" data-mv="salvific" aria-pressed="false">Salvific</button></div></div><div class="cmp-list mode-both" id="mtable">' +
-      A("millerTable").map(function (r) { return '<article class="cmp"><div><div class="label">' + esc(r.source) + "</div><h3>" + esc(r.area) + '</h3></div><div class="cmp-pair"><div class="panel sep cmp-l"><div class="label">Tragic ontology</div><p>' + r.tragic + '</p></div><div class="panel uni cmp-r"><div class="label">Salvific ontology</div><p>' + r.salvific + "</p></div></div></article>"; }).join("") + "</div></section>" +
+      '<div class="row" style="justify-content:space-between"><p class="note" style="max-width:60ch">1 Corinthians 15:45-49 and 2 Corinthians 5:14-17: humanity is moved from Adam\'s headship into Christ\'s. Not an improved Adam, but a new source of existence.</p><button class="btn" type="button" id="ot-play">Play the transfer</button></div></div></section>' +
+      '<section class="section"><h2>Tragic or salvific? Side by side</h2><div class="toolbar"><p class="note" style="margin:0">A tragic ontology starts the human story at the Fall. A salvific ontology starts it with Christ.</p><div class="su-toggle" role="group" aria-label="Choose a view"><button type="button" class="s" data-mv="tragic" aria-pressed="false">Tragic</button><button type="button" data-mv="both" aria-pressed="true">Both</button><button type="button" class="u" data-mv="salvific" aria-pressed="false">Salvific</button></div></div><div class="cmp-list mode-both" id="mtable">' +
+      A("embTable").map(function (r) { return '<article class="cmp"><h3>' + esc(r.area) + '</h3><div class="cmp-pair"><div class="panel sep cmp-l"><div class="label">Tragic ontology</div><p>' + r.tragic + '</p></div><div class="panel uni cmp-r"><div class="label">Salvific ontology</div><p>' + r.salvific + "</p></div></div>" + (r.refs ? '<div class="ref">' + esc(r.refs.join(" · ")) + "</div>" : "") + "</article>"; }).join("") + "</div></section>" +
       '<section class="section"><h2>Key concepts, simply explained</h2><div class="chips">' + ["all"].concat(groups).map(function (g) { return '<button class="chip" type="button" data-mg="' + esc(g) + '" aria-pressed="' + (mGroup === g) + '">' + (g === "all" ? "Every concept" : esc(g)) + "</button>"; }).join("") + '</div><div class="grid" id="mgrid"></div></section>' +
-      '<section class="section"><h2>The Biodivine sermons</h2><p class="note">Legacy Church\'s sermon series, Nov 2025 to Feb 2026, from the church\'s published discussion guides.</p><div class="timeline">' +
-      A("millerSermons").map(function (m) { return '<article class="t-item"><div class="row" style="justify-content:space-between"><div><div class="label">' + esc(m.series + " · " + m.date) + "</div><h3>" + esc(m.title) + '</h3></div><button class="chip" type="button" data-open="msermon.' + m.id + '">Key points</button></div><p>' + m.summary + '</p><div class="ref">' + esc(m.verses.join(" · ")) + "</div></article>"; }).join("") + "</div></section>" +
-      '<section class="section"><h2>An honest assessment</h2><div class="split"><div class="panel uni"><div class="label">Strengths</div><ul>' + Z.strengths.map(function (x) { return "<li>" + x + "</li>"; }).join("") + '</ul></div><div class="panel"><div class="label">How to read this</div><p>' + (Z.note || "") + '</p></div></div><div class="qa">' + Z.questions.map(function (q) { return "<details><summary>" + esc(q.q) + '</summary><div class="ans"><p>' + q.a + "</p></div></details>"; }).join("") + "</div></section>" +
-      '<section class="section"><div class="label">Related in this atlas</div><div class="chips">' + ["sacred-biology", "salvific-ontology", "life-immortality", "union-sonship", "manifest-sons"].map(function (id) { var x = find("theme", id); return x ? '<a class="chip" href="#theme.' + id + '">' + esc(x.title) + "</a>" : ""; }).join("") + '<a class="chip" href="#newcreation">New creation & the old self</a><a class="chip" href="#compare">Legal vs relational</a></div></section>';
+      '<section class="section"><h2>The studies</h2><p class="note">Each study works through one passage or idea in depth: its thesis, the teaching step by step, the scriptures, the original words and the practical outworking.</p><div class="timeline">' +
+      A("embStudies").map(function (m) { return '<article class="t-item"><div class="row" style="justify-content:space-between"><div><div class="label">' + esc(m.theme) + "</div><h3>" + esc(m.title) + '</h3></div><button class="chip" type="button" data-open="msermon.' + m.id + '">Open the study</button></div><p>' + m.thesis + '</p><div class="ref">' + esc((m.verses || []).slice(0, 8).join(" · ")) + "</div></article>"; }).join("") + "</div></section>" +
+      '<section class="section"><h2>Testing it honestly</h2><div class="panel uni"><div class="label">Strengths</div><ul>' + Z.strengths.map(function (x) { return "<li>" + x + "</li>"; }).join("") + '</ul></div><div class="qa">' + Z.questions.map(function (q) { return "<details><summary>" + esc(q.q) + '</summary><div class="ans"><p>' + q.a + "</p></div></details>"; }).join("") + "</div></section>" +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips">' + ["sacred-biology", "salvific-ontology", "life-immortality", "union-sonship", "manifest-sons", "incarnation", "resurrection"].map(function (id) { var x = find("theme", id); return x ? '<a class="chip" href="#theme.' + id + '">' + esc(x.title) + "</a>" : ""; }).join("") + '<a class="chip" href="#newcreation">New creation & the old self</a><a class="chip" href="#compare">Legal vs relational</a></div></section>';
   };
   var MO = {
     adam: "In the Adamic order the body governs the soul. Life runs on threat-detection: fear, craving and circumstance decide who we are, and creation hears our fear.",
@@ -560,7 +565,7 @@
   }
   function mGrid() {
     if (!$("#mgrid")) return;
-    $("#mgrid").innerHTML = A("millerConcepts").filter(function (c) { return mGroup === "all" || c.group === mGroup; }).map(function (c) { return card("mconcept", c, { top: '<div class="label">' + esc(c.group) + "</div>", text: c.simple }); }).join("");
+    $("#mgrid").innerHTML = A("embConcepts").filter(function (c) { return mGroup === "all" || c.group === mGroup; }).map(function (c) { return card("mconcept", c, { top: '<div class="label">' + esc(c.group) + "</div>", text: c.simple }); }).join("");
   }
   function playOT() {
     var o = $(".ot-old"), i = $(".ot-in"), n = $(".ot-new"); if (!o) return;
@@ -725,8 +730,14 @@
     ncterm: function (x) { return '<div class="orig" style="font-size:40px">' + esc(x.original) + '</div><div class="ref">' + esc(x.translit) + "</div>" + panel("sep", "Read through a legal gospel", x.legal) + panel("uni", "Read through the relational gospel", x.relational) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     cmp: function (x) { return '<div class="ref">' + esc(x.group) + "</div>" + panel("sep", "Legal gospel", x.legal) + panel("uni", "Relational gospel", x.relational) + blk("In practice", x.practice) + panel("gold", "A fair point", x.fair) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     mconcept: function (x) { return panel("gold", "In one line", x.simple) + '<div class="prose">' + x.explain.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" + blk("Scriptures", esc((x.refs || []).join(" · "))) + panel("uni", "Connections in the tradition", x.connects); },
-    msermon: function (x) { return '<div class="ref">' + esc(x.series + " · " + x.date) + "</div>" + blk("Summary", x.summary) + '<div class="blk"><div class="label">Key points</div><div class="links">' + x.points.map(function (p) { return "<div>" + p + "</div>"; }).join("") + "</div></div>" + blk("Key verses", esc(x.verses.join(" · "))) + '<p class="note">Source: Legacy Church sermon discussion guide.</p>'; },
-    mbook: function (x) { return '<div class="ref">' + esc((x.year ? x.year + " · " : "") + x.subtitle) + "</div>" + blk("About the book", x.summary) + blk("Themes", esc(x.themes.join(" · "))) + '<p class="note">Summarised from the publisher\'s description.</p>'; },
+    msermon: function (x) {
+      return '<div class="ref">' + esc(x.theme) + "</div>" + panel("gold", "Thesis", x.thesis) +
+        '<div class="blk"><div class="label">The teaching, step by step</div><ol class="steps">' + (x.points || []).map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ol></div>" +
+        ((x.scriptures || []).length ? '<div class="blk"><div class="label">Scriptures and how they are used</div><div class="links">' + x.scriptures.map(function (r) { return '<div><span class="ref">' + esc(r.ref) + "</span> " + r.use + "</div>"; }).join("") + "</div></div>" : "") +
+        ((x.words || []).length ? '<div class="blk"><div class="label">Original words</div><div class="links">' + x.words.map(function (w) { return "<div><strong>" + esc(w.word) + "</strong> " + w.meaning + "</div>"; }).join("") + "</div></div>" : "") +
+        ((x.lines || []).length ? '<div class="blk"><div class="label">Key lines</div>' + x.lines.map(function (l) { return '<div class="verse">' + esc(l) + "</div>"; }).join("") + "</div>" : "") +
+        panel("uni", "Living it out", x.practice) + (x.evidence ? panel("", "Supporting evidence", x.evidence) : "");
+    },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -813,7 +824,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["miller", "Tommy Miller"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -887,7 +898,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
-    if (route.view === "miller") { setMO(mOrder); mGrid(); }
+    if (route.view === "embodied") { setMO(mOrder); mGrid(); }
     if (route.view === "newcreation") { showNC(); ncList(); }
     if (route.view === "compare") cmpList();
     if (route.view === "love") { setScale(scaleMode); lpGrid(); }
