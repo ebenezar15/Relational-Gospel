@@ -14,8 +14,8 @@
   --dawn: #79c7bd;
   --dawn-soft: rgba(121, 199, 189, 0.14);
   --shadow: 0 18px 50px rgba(2, 5, 15, 0.55);
-  --display: "Marcellus", "Trajan Pro", "Palatino Linotype", Georgia, serif;
-  --body: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --display: "Avenir Next", "Avenir", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Avenir Next", "Avenir", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --radius: 10px;
   --rail: 240px;
@@ -40,14 +40,15 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--body); font-size: 18px; line-height: 1.6;
+  font-family: var(--body); font-size: 17px; line-height: 1.62;
   -webkit-font-smoothing: antialiased;
 }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
 a { color: var(--gold); }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
-h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; letter-spacing: 0.01em; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; letter-spacing: -0.012em; }
+h1 { font-weight: 700; letter-spacing: -0.02em; }
 p { margin: 0; }
 em { font-style: italic; }
 strong { font-weight: 600; }
@@ -68,7 +69,7 @@ strong { font-weight: 600; }
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); min-width: 0; }
 .brand-mark { width: 30px; height: 30px; flex: none; }
-.brand-name { font-family: var(--display); font-size: 19px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-name { font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand-name span { color: var(--gold); }
 .top-actions { margin-left: auto; display: flex; gap: 6px; }
 .icon-btn {
@@ -149,7 +150,7 @@ main {
 }
 .path a::before { content: "Step " counter(step); font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
 .path a:hover { border-color: var(--gold); transform: translateY(-2px); }
-.path a b { font-family: var(--display); font-weight: 400; font-size: 21px; }
+.path a b { font-family: var(--display); font-weight: 600; font-size: 19px; }
 .path a small { color: var(--muted); font-size: 15px; line-height: 1.45; }
 
 /* ---------- generic cards ---------- */
@@ -218,7 +219,7 @@ main {
 
 .voices { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .voice { padding: 12px 14px; border-left: 2px solid var(--line); }
-.voice b { font-family: var(--display); font-weight: 400; font-size: 18px; display: block; }
+.voice b { font-family: var(--display); font-weight: 600; font-size: 17px; display: block; }
 .voice span { color: var(--muted); font-size: 15px; }
 
 /* ---------- theme hero animation ---------- */
@@ -338,6 +339,56 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .menu-sheet a { padding: 12px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); font-size: 16px; background: var(--surface); }
 
 .footer { max-width: 1060px; margin: 30px auto 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; display: grid; gap: 6px; }
+
+
+/* ---------- dawn: progressive revelation ---------- */
+.dawn { display: grid; gap: 14px; }
+.dawn-sky { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: linear-gradient(var(--bg), var(--bg-2)); aspect-ratio: 800 / 220; max-width: 100%; }
+.dawn-sky svg { width: 100%; height: 100%; display: block; }
+.dawn-sun, .dawn-wash { transition: cy .9s cubic-bezier(.3,.7,.2,1), r .9s, opacity .9s; }
+.dawn-meter { position: absolute; top: 12px; left: 14px; display: grid; gap: 2px; }
+.dawn-meter b { font-family: var(--mono); font-weight: 500; font-size: 20px; color: var(--gold); font-variant-numeric: tabular-nums; }
+.dawn-ctl input { width: 100%; accent-color: var(--gold); }
+.dawn-card { display: grid; gap: 12px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); animation: rise .4s both; }
+.lightbar { display: inline-block; width: 90px; height: 6px; border-radius: 6px; background: var(--line); overflow: hidden; flex: none; }
+.lightbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--wine), var(--gold), #fff3c9); border-radius: 6px; }
+.note { color: var(--muted); font-size: 16px; }
+.reveals { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 10px; }
+.reveals div { padding: 12px 14px; border-radius: 8px; background: var(--gold-soft); border-left: 2px solid var(--gold); font-size: 16px; }
+
+/* ---------- Trinity at work ---------- */
+.trin { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.trin-fig { position: sticky; top: 90px; max-width: 300px; width: 100%; justify-self: center; }
+.trin-fig svg { width: 100%; height: auto; overflow: visible; }
+.trin-spin { transform-origin: 150px 150px; animation: orbit 40s linear infinite; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+.tp { fill: none; stroke-width: 1.6; }
+.tp-f { stroke: var(--gold); fill: var(--gold-soft); }
+.tp-s { stroke: var(--wine); fill: var(--wine-soft); }
+.tp-p { stroke: var(--dawn); fill: var(--dawn-soft); }
+.tl { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; fill: var(--muted); }
+.trin-fig.pulse .tu { animation: beat 1.2s ease; transform-origin: 150px 150px; }
+@keyframes beat { 30% { transform: scale(1.8); } }
+.trin-side { display: grid; gap: 16px; min-width: 0; }
+.trin-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+/* ---------- what religion misses ---------- */
+.misses { display: grid; gap: 14px; }
+.miss { display: grid; gap: 10px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.miss h3 { font-size: 21px; }
+.miss-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: stretch; }
+.miss-arrow { align-self: center; color: var(--gold); font-size: 22px; }
+.miss .sep, .miss .uni { transition: opacity .4s, filter .4s, box-shadow .4s; }
+.miss.lit .sep { opacity: .4; filter: saturate(.3); }
+.miss.lit .uni { box-shadow: 0 0 0 1px var(--dawn), 0 0 26px var(--dawn-soft); }
+
+@media (max-width: 820px) {
+  .trin { grid-template-columns: minmax(0, 1fr); }
+  .trin-fig { position: static; max-width: 220px; }
+  .trin-grid { grid-template-columns: minmax(0, 1fr); }
+  .miss-pair { grid-template-columns: minmax(0, 1fr); }
+  .miss-arrow { transform: rotate(90deg); justify-self: center; }
+}
 
 @media (max-width: 980px) {
   .shell { grid-template-columns: minmax(0, 1fr); }
