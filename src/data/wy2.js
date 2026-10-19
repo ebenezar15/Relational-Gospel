@@ -266,8 +266,316 @@ RG.wyQA2 = [
         "url": "https://history.hanover.edu/courses/excerpts/163luth3.html"
       }
     ]
+  },
+  {
+    "id": "protection-tragedy",
+    "q": "Why does God protect some people from accidents and tragedy and not others, even when both are believers? What factors play a part?",
+    "short": "Scripture refuses simple answers. Jesus denies that victims of disaster were worse sinners, and the early church saw James killed and Peter freed in the same week. Many factors are involved: other people’s choices, the natural order, spiritual conflict, prayer, wisdom and mystery. Through all of it, God’s love and presence never change.",
+    "sections": [
+      {
+        "title": "What many of us were taught",
+        "body": [
+          "When tragedy strikes, people reach for explanations. “Everything happens for a reason.” “God needed another angel.” “God took her home.” Or, more harshly: “There must have been sin in his life,” or “They didn’t have enough faith.” Someone survives a crash and says, “God protected me,” and the family of the person who died in the next car wonders why God did not protect their child.",
+          "These sayings try to keep God in control and life meaningful. But they often wound grieving people, either by making God the author of the horror or by blaming the victim. Kate Bowler, after a cancer diagnosis at 35, wrote a memoir titled <em>Everything Happens for a Reason: And Other Lies I’ve Loved</em> (2018) to name how painful these explanations can be."
+        ]
+      },
+      {
+        "title": "Scripture in context: Jesus refuses the easy answer",
+        "body": [
+          "In Luke 13:1-5 people told Jesus about Galileans killed by Pilate while offering sacrifices. Jesus asked, “Do you think that these Galileans were worse sinners than all the other Galileans, because they suffered such things? I tell you, no.” Then he raised an accident: eighteen people killed when the tower in Siloam fell. Again: “Do you think that they were worse offenders…? I tell you, no.” One tragedy was human violence, the other a structural collapse; in neither did Jesus treat the victims as specially guilty. His call to “repent” was for the listeners, not a verdict on the dead.",
+          "In John 9:1-3 the disciples assumed a man’s blindness came from his or his parents’ sin, and Jesus said, “Neither.” Ecclesiastes 9:11 observes that “the race is not to the swift … but time and chance happen to them all” (Hebrew <em>pega‘</em>, an occurrence or mishap). In Acts 12 King Herod killed James with the sword, and soon after an angel freed Peter from prison while the church prayed earnestly for him (Acts 12:1-11). Both were apostles; both were loved; the church surely prayed for James too. Scripture records the difference without explaining it. Hebrews 11 likewise lists people who “escaped the edge of the sword” and others who “were killed with the sword” (Heb 11:34, 37), all commended for faith."
+        ]
+      },
+      {
+        "title": "Factors that play a part (and their limits)",
+        "body": [
+          "<strong>Other people’s free choices.</strong> A drunk driver, a violent attacker or a negligent builder can cause harm that God did not will. God made a world of real persons, and love that is real cannot be forced. <strong>The natural order.</strong> Gravity, viruses and weather follow regular patterns that make life possible; the same rain that grows crops can flood a town (Matt 5:45). <strong>Spiritual conflict.</strong> Scripture speaks of opposing powers (Eph 6:12; Dan 10:12-13). Greg Boyd’s “warfare worldview” argues that much evil comes from a cosmic conflict, not from a hidden divine blueprint. This is one view among several.",
+          "<strong>Prayer.</strong> Prayer genuinely matters (Jas 5:16; Acts 12:5), but it is not a formula, and unanswered prayer is not proof that someone prayed wrongly. <strong>Wisdom and choices.</strong> “A prudent man sees danger and hides himself” (Prov 22:3); seat belts, medical check-ups and safe buildings are ways of loving life. <strong>Faith.</strong> Trust opens us to God’s help, yet Hebrews 11 shows faith-filled people who were not rescued. <strong>Mystery.</strong> Job was never told about the scene in heaven (Job 1–2), and God’s answer from the whirlwind gave presence, not an explanation (Job 38–42).",
+          "No single factor explains why one person was spared and another was not. Honest faith can say: many factors were at work, and we do not see them all."
+        ]
+      },
+      {
+        "title": "A case study and the relational answer",
+        "body": [
+          "Greg Boyd’s ministry ReKnew tells of a couple, Jessica and Ian, whose four-year-old son Henry was diagnosed with a brain tumour. They prayed intensely for healing, and Henry died. Because the pastors they knew would frame his death “along the lines of the blueprint worldview”, they asked Boyd to speak at the memorial. He said he had “a strong sense that although God never intended for Henry to die this way, he wants to use this terrible tragedy” to show his loving character. Jessica Kelley later wrote a book called <em>Lord Willing?</em> about this journey.",
+          "The relational gospel begins with Jesus as the clearest picture of God (John 14:9; Heb 1:3). Jesus healed, wept at a tomb (John 11:35) and suffered unjust death himself. So we do not say God sent the tragedy; we say God is present in it, suffers with us and will finally undo it. “When you pass through the waters, I will be with you” (Isa 43:2) promises presence, not that we never pass through water. Nothing, including “peril, or sword”, can separate us from his love (Rom 8:35-39). Romans 8:28 says God works together for good in all things, not that all things are good."
+        ]
+      },
+      {
+        "title": "A fair counter-view and a response",
+        "body": [
+          "Reformed theology teaches meticulous providence: God ordains whatever comes to pass, so no tragedy is random. Supporters cite Joseph’s words, “you meant evil against me, but God meant it for good” (Gen 50:20), and texts like Lamentations 3:37-38, Amos 3:6 and Ephesians 1:11. Many grieving people find deep comfort in believing that even this was inside God’s wise plan. Molinists and classical Arminians hold that God foreknows and permits evil without directly willing it, while open theists like Boyd say the future is partly open and God responds to real choices.",
+          "These views deserve respect; sincere Christians hold each one. The relational view notes that Genesis 50:20 shows God bringing good out of evil that humans meant, not God planning the evil itself, and that Jesus never told sufferers their pain was God’s design. Whatever your view of providence, all sides can agree on the pastoral rule: do not explain tragedy to the grieving, and never blame them."
+        ]
+      },
+      {
+        "title": "What to do",
+        "body": [
+          "When others suffer, be present more than you explain. Job’s friends did best when they sat with him in silence for seven days (Job 2:13); things went wrong when they started talking. “Weep with those who weep” (Rom 12:15). Say “I am so sorry” and “I am here,” not “God has a reason.”",
+          "When you suffer, let yourself lament. Many of the Psalms are laments, complaint and protest addressed to God (for example Ps 13; 22; 88). Be careful with “God protected me” stories in front of people who lost someone. Grief and trauma are real and can be heavy: lean on trusted friends, and seek a grief counsellor or professional help when you need it."
+        ]
+      }
+    ],
+    "refs": ["Luke 13:1-5", "John 9:1-3", "Eccl 9:11", "Acts 12:1-11", "Heb 11:32-38", "Matt 5:45", "Eph 6:12", "Dan 10:12-13", "Jas 5:16", "Prov 22:3", "Job 1-2", "Job 38-42", "John 11:35", "Isa 43:2", "Rom 8:28", "Rom 8:35-39", "Gen 50:20", "Lam 3:37-38", "Rom 12:15", "Job 2:13", "Ps 13", "Ps 88"],
+    "evidence": [
+      {
+        "text": "Boyd writes that the couple asked him to speak because “all the pastors they knew would have framed Henry’s death along the lines of the blueprint worldview that most Christians implicitly, if not explicitly, espouse”, and that he had “a strong sense that although God never intended for Henry to die this way, he wants to use this terrible tragedy to impact many people with the truth of his loving character.”",
+        "source": "Greg Boyd, “Reflecting on Henry and the Heart of God”, ReKnew (December 31, 2012)",
+        "url": "https://reknew.org/2012/12/reflecting-on-henry-and-the-heart-of-god"
+      },
+      {
+        "text": "Bowler’s memoir explores “the American belief that all tragedies are tests of character” and a type of Christianity “that sees fortune as a blessing from God and misfortune as a mark of God’s disapproval”.",
+        "source": "Duke Divinity School, faculty book page: Kate Bowler, Everything Happens for a Reason: And Other Lies I’ve Loved (Random House, 2018)",
+        "url": "https://divinity.duke.edu/news/books/everything-happens-reason-and-other"
+      }
+    ]
+  },
+  {
+    "id": "faith-and-safety",
+    "q": "Do our belief and faith play a role in protection and healing?",
+    "short": "Yes, faith matters: Jesus often said “your faith has made you well”, and in Nazareth unbelief limited what he did. But faith is trust in a Person, not a force that guarantees outcomes. Hebrews 11 honours people of faith who were rescued and people of faith who were not, so no one should ever blame the sick or the bereaved for “weak faith”.",
+    "sections": [
+      {
+        "title": "What many of us were taught",
+        "body": [
+          "Some churches teach that if you believe strongly enough, confess the right words and claim Psalm 91, no harm or sickness can touch you. If harm comes, the conclusion is that faith was lacking, doubt crept in, or a negative word was spoken. Other churches react by saying faith has nothing to do with healing or protection at all; we should simply accept whatever happens.",
+          "The first view can crush people. Imagine a mother whose child is ill being told that her doubt is keeping him sick. The second view can make prayer timid. Scripture walks a path between them."
+        ]
+      },
+      {
+        "title": "Psalm 91 in context",
+        "body": [
+          "Psalm 91 is a beautiful song of trust: “He who dwells in the secret place of the Most High will rest in the shadow of the Almighty … A thousand may fall at your side … but it will not come near you” (Ps 91:1, 7). It is poetry, using images of wings, shields and fortresses, meant to be prayed in fear. It expresses God’s faithful care; it is not a legal contract promising that believers never suffer harm.",
+          "The clearest commentary comes from the Gospels. In the wilderness the devil quoted Psalm 91:11-12 to Jesus: throw yourself down, for angels will catch you (Matt 4:6). Jesus refused, answering, “You shall not test the Lord, your God” (Deut 6:16). And the one person who trusted the Father perfectly was arrested, beaten and crucified. The psalm’s deepest fulfilment is resurrection: God did not keep Jesus from death, but brought him through it (Acts 2:24-27)."
+        ]
+      },
+      {
+        "title": "Mark 6 and Hebrews 11: faith is real, and not a guarantee",
+        "body": [
+          "In his hometown, Mark says, Jesus “could do no mighty work there, except that he laid his hands on a few sick people, and healed them. He marveled because of their unbelief” (Mark 6:5-6). The Greek <em>ouk edynato</em> means “he was not able”. This is not because Jesus lacked power, but because healing in the Gospels is relational: he did not force himself on a closed-hearted town. Even so, he still healed a few. Elsewhere Jesus heals in response to faith (Mark 5:34; 10:52), the faith of friends (Mark 2:5), and with no mention of faith at all (Luke 7:11-15; Luke 22:51; John 11).",
+          "Hebrews 11:32-40 lists those who by faith “escaped the edge of the sword” and “from weakness were made strong”, and in the same breath “others were tortured … were sawn apart … were killed with the sword”. Then it says, “These all, having had testimony given to them through their faith, didn’t receive the promise” (Heb 11:39). The same faith led to rescue for some and martyrdom for others. Paul, a man of great faith, left Trophimus sick at Miletus (2 Tim 4:20), saw Epaphroditus nearly die (Phil 2:27) and lived with a “thorn in the flesh” (2 Cor 12:7-10)."
+        ]
+      },
+      {
+        "title": "The relational answer: faith as openness, never as blame",
+        "body": [
+          "In the relational gospel, faith is trust and openness toward a Father who is already for us. It matters because relationships are two-way: God does not override our hearts, and a heart open to him is more able to receive what he gives. That is why Jesus could say “your faith has made you well” without implying that the faith earned the healing. Faith is like opening the curtains: it does not create the sunlight, but it lets it in.",
+          "At the same time, our bodies still live in a world that “groans” and waits for redemption (Rom 8:22-23). Healing now is real but partial; full healing is resurrection. So when protection or healing does not come, the explanation must never be “you didn’t believe enough”. Jesus never said that to a sick person, and we should not either. Kate Bowler’s memoir names the cruelty of a faith culture in which misfortune looks like “a mark of God’s disapproval”."
+        ]
+      },
+      {
+        "title": "A fair counter-view and a response",
+        "body": [
+          "Word of Faith teachers argue that healing is always God’s will, pointing to Isaiah 53:5 and 1 Peter 2:24 (“by his stripes you were healed”), to Mark 11:23-24 (believing that you have received), and to Jesus healing all who came to him (Matt 8:16). They say Christians accept sickness too easily. On the other side, some cessationists say miraculous healing was mainly for the apostolic age.",
+          "Both have a point to hear. Expectant faith honours a God who heals, and many churches pray too little. But 1 Peter 2:24 in context is about being healed from sin so that we “might live to righteousness”, and Scripture’s own examples (Paul, Trophimus, Hebrews 11) show that faithful people are not always healed in this life. The New Testament gives no sign that God has stopped healing, yet it never makes healing a reward for believing hard enough."
+        ]
+      },
+      {
+        "title": "What to do",
+        "body": [
+          "Pray boldly and specifically for protection and healing, and ask others to pray with you (Jas 5:14-16). At the same time, use every wise means: see the doctor, take the treatment, wear the seat belt. When Nehemiah faced danger, “we made our prayer to our God, and set a watch” (Neh 4:9).",
+          "Never tell a suffering person their faith is the problem. If healing does not come, keep trusting God’s love, keep receiving care, and let yourself lament. Hope does not depend on today’s outcome; it rests on the risen Christ (1 Cor 15:20)."
+        ]
+      }
+    ],
+    "refs": ["Ps 91", "Matt 4:5-7", "Deut 6:16", "Acts 2:24-27", "Mark 6:5-6", "Mark 5:34", "Mark 10:52", "Mark 2:5", "Luke 7:11-15", "Heb 11:32-40", "2 Tim 4:20", "Phil 2:25-27", "2 Cor 12:7-10", "Rom 8:22-23", "Isa 53:5", "1 Pet 2:24", "Mark 11:23-24", "Jas 5:14-16", "Neh 4:9", "1 Cor 15:20"],
+    "evidence": [
+      {
+        "text": "Mark 6:5: “kai ouk edynato ekei poiēsai oudemian dynamin”: “and He was not able there to do any work of power”, except that he laid hands on a few sick people and healed them.",
+        "source": "Bible Hub, Mark 6:5 Greek Text Analysis",
+        "url": "https://biblehub.com/text/mark/6-5.htm"
+      },
+      {
+        "text": "Mark 6:6: “kai ethaumazen dia tēn apistian autōn”: “and He was amazed because of their unbelief”, and he went around the villages teaching.",
+        "source": "Bible Hub, Mark 6:6 Greek Text Analysis",
+        "url": "https://biblehub.com/text/mark/6-6.htm"
+      },
+      {
+        "text": "Bowler shares “her struggles with the implication that if you succumb to illness or misfortune, you are a failure.”",
+        "source": "Duke Divinity School, faculty book page: Kate Bowler, Everything Happens for a Reason: And Other Lies I’ve Loved (Random House, 2018)",
+        "url": "https://divinity.duke.edu/news/books/everything-happens-reason-and-other"
+      }
+    ]
+  },
+  {
+    "id": "objective-subjective",
+    "q": "What are objective truths and subjective reality in the gospel, and how are they related?",
+    "short": "Objective truth is what God has done in Christ, which is true whether or not we feel or know it. Subjective reality is our personal awareness, trust and experience of it. The objective comes first and grounds the subjective; the subjective is how what is true becomes lived and enjoyed.",
+    "sections": [
+      {
+        "title": "What many of us were taught",
+        "body": [
+          "Many believers live as if their feelings decide what is true. On a good day of worship they feel close to God; after a failure they feel cut off and assume God has withdrawn. Others were taught that their salvation began only at the moment they made a decision, so everything depends on whether that decision was sincere enough. Both patterns make the subjective side carry weight it was never designed to bear.",
+          "The opposite mistake is to talk only about doctrine, as if knowing true facts were the same as knowing God. Then faith becomes dry agreement without joy or change."
+        ]
+      },
+      {
+        "title": "The objective: what God has done",
+        "body": [
+          "The objective side is everything that happened in Jesus: the Son became human (John 1:14), lived in perfect communion with the Father, died, rose and ascended, carrying our humanity with him. Paul writes, “one died for all, therefore all died” (2 Cor 5:14); “God was in Christ reconciling the world to himself, not reckoning to them their trespasses” (2 Cor 5:19); through Christ God reconciled “all things to himself” (Col 1:20); and one act of righteousness led to “justification of life” for all people (Rom 5:18).",
+          "Theologians in the stream of T.F. Torrance and C. Baxter Kruger stress that this is true before and apart from our response, because it rests on who Jesus is. Kruger puts it plainly: “Jesus Christ has laid hold of the whole human race, cleansed us in his death, lifted us up in his resurrection and has given us a place in his relationship with his Father and Spirit in his Ascension.” Athanasius said the Word was “made man that we might be made God”: the change was first made in Christ’s own humanity."
+        ]
+      },
+      {
+        "title": "The subjective: knowing, trusting and experiencing",
+        "body": [
+          "The subjective side is our personal participation: hearing, believing, repenting (changing our mind), being filled with the Spirit and growing in love. Paul, right after saying God has reconciled the world, pleads, “be reconciled to God” (2 Cor 5:20). He prays that believers might be “strengthened with power through his Spirit in the inner person” and “know Christ’s love which surpasses knowledge” (Eph 3:16-19). The Spirit cries “Abba, Father” in our hearts (Gal 4:6), turning a fact into a felt relationship.",
+          "An analogy helps. The Emancipation Proclamation took effect in 1863, but many enslaved people in Texas learned of their freedom only on June 19, 1865, when Union troops announced it in Galveston. Their freedom was legally real before they knew it; yet until they heard and believed it, they still lived in bondage. Hearing the news did not create their freedom; it allowed them to live in it."
+        ]
+      },
+      {
+        "title": "How they relate: indicative before imperative",
+        "body": [
+          "Paul’s letters follow a pattern scholars call indicative and imperative: first what is true, then how to live. “You died, and your life is hidden with Christ in God … Put to death therefore” (Col 3:3, 5). “Consider yourselves also to be dead to sin, but alive to God in Christ Jesus” (Rom 6:11). We are told to become what we already are. The objective is the foundation; the subjective is the house built on it.",
+          "This frees us in two ways. On bad days, our feelings do not cancel what God has done; “if our heart condemns us, God is greater than our heart” (1 John 3:20). On good days, our experience does not become a trophy; it is simply enjoying a gift. And because the subjective matters, we do not shrug at it: God wants us to know, taste and live his love, not merely have it written about us."
+        ]
+      },
+      {
+        "title": "A fair counter-view and a response",
+        "body": [
+          "Traditional evangelical and Reformed theology also distinguishes accomplishment and application: Christ accomplished redemption, and the Spirit applies it through faith. But it usually limits the objective inclusion to the elect, or says no one is “in Christ” until they believe, pointing to texts such as Ephesians 2:12 (“without Christ … without God in the world”), Ephesians 2:3 (“children of wrath”) and Romans 16:7 (Andronicus and Junia “were in Christ before me”). Critics worry that a universal objective inclusion makes faith pointless or leads to universalism.",
+          "The relational view replies that the “all” texts (2 Cor 5:14; Rom 5:18; Col 1:20) are real and must be given their weight, and that Ephesians 2 describes the human condition as experienced in blindness, not God’s attitude. It also admits honestly that relational-gospel voices disagree about final outcomes, and that Torrance, who stressed the objective work, still rejected universalism. Faith is not pointless: it is the difference between owning a fortune and living from it."
+        ]
+      },
+      {
+        "title": "What to do",
+        "body": [
+          "Learn to tell the difference between a fact and a feeling. Write two columns: “What God says is true in Christ” and “What I feel today”. Do not ignore the second column; bring it honestly to God. But let the first column have the final word.",
+          "Then make room for the subjective to grow: unhurried prayer, worship, Scripture read as love letters, the Lord’s Table, honest friendships and acts of love. Over time, what you know about God becomes what you know of God."
+        ]
+      }
+    ],
+    "refs": ["John 1:14", "2 Cor 5:14-20", "Col 1:20", "Rom 5:18", "Eph 3:16-19", "Gal 4:6", "Col 3:1-5", "Rom 6:11", "1 John 3:20", "Eph 2:3", "Eph 2:12", "Rom 16:7", "Eph 1:4"],
+    "evidence": [
+      {
+        "text": "“In the light of the fact that Jesus Christ has laid hold of the whole human race, cleansed us in his death, lifted us up in his resurrection and has given us a place in his relationship with his Father and Spirit in his Ascension, we’ve got to rethink everything we thought we knew about ourselves and others and our ordinary human life.”",
+        "source": "C. Baxter Kruger, interview “Perichor…what?”, Christian Odyssey (Grace Communion International)",
+        "url": "https://gci.org/articles/perichor-what"
+      },
+      {
+        "text": "“For He was made man that we might be made God; and He manifested Himself by a body that we might receive the idea of the unseen Father; and He endured the insolence of men that we might inherit immortality.”",
+        "source": "Athanasius, On the Incarnation, 54.3",
+        "url": "https://www.newadvent.org/fathers/2802.htm"
+      },
+      {
+        "text": "Luther contrasts real faith with a mental concept: some “make for themselves with their own powers a concept in their hearts which says, ‘I believe.’ … But since it is a human fabrication and thought and not an experience of the heart, it accomplishes nothing.”",
+        "source": "Martin Luther, Preface to the Epistle to the Romans (1522), trans. Andrew Thornton",
+        "url": "https://history.hanover.edu/courses/excerpts/163luth3.html"
+      }
+    ]
+  },
+  {
+    "id": "experience-manifest",
+    "q": "How do we come to experience and “manifest” what is objectively true? Practical steps.",
+    "short": "In Scripture, to “manifest” is for Christ’s life to become visible in ordinary bodies and relationships, not to attract outcomes by thought power. It happens as we behold Christ, renew our minds, heal our hearts, use the means of grace, belong to a community and practise love, with the Spirit working in us.",
+    "sections": [
+      {
+        "title": "What many of us were taught",
+        "body": [
+          "Today the word “manifest” often means using thoughts, visualisation and positive words to attract money, a partner or success. This comes from New Thought and “law of attraction” teaching, and it has seeped into some Christian preaching as “speak it into being”. Others were taught that experiencing God is for spiritual elites, or that it depends on intense effort: more hours of prayer, more fasting, more discipline.",
+          "Both approaches put the weight on our technique. The first treats God almost like an impersonal force; the second makes experience a reward for performance. The New Testament uses “manifest” very differently."
+        ]
+      },
+      {
+        "title": "Scripture in context: what “manifest” means",
+        "body": [
+          "The Greek verb is <em>phaneroō</em>, “to make visible, reveal”. Paul writes that we carry the dying of Jesus “that the life of Jesus may also be revealed in our body” (2 Cor 4:10-11). “When Christ, our life, is revealed, then you will also be revealed with him in glory” (Col 3:4). John says, “it is not yet revealed what we will be … we will be like him” (1 John 3:2). The focus is Christ’s life showing through us, especially in weakness, not getting what we want.",
+          "Romans 8:19 says creation waits for “the revealing (<em>apokalypsis</em>) of the children of God”. That is a hope for all believers in the resurrection age, and it should be distinguished from the 1940s–50s Latter Rain “Manifest Sons of God” movement, which taught that an elite group would attain immortality before Christ’s return. And the main way Christ becomes visible is love: “No one has seen God at any time. If we love one another, God remains in us” (1 John 4:12)."
+        ]
+      },
+      {
+        "title": "The relational answer: beholding and participating",
+        "body": [
+          "Paul gives the core process: “we all, with unveiled face seeing the glory of the Lord as in a mirror, are transformed into the same image from glory to glory, even as from the Lord, the Spirit” (2 Cor 3:18). We become like what we behold. The Spirit does the transforming; our part is to look, to trust and to say yes. Paul holds both sides together: “work out your own salvation … for it is God who works in you both to will and to work” (Phil 2:12-13). Fruit grows from abiding in the vine (John 15:4-5), not from straining.",
+          "John Wesley called prayer, Scripture and the Lord’s Supper “means of grace”, “ordinary channels” through which God meets us, while insisting that “there is no power in this” in itself and “God is above all means”. That is the balance: practices are not ladders to reach God but places where we receive from a God who has already come to us.",
+          "Case study: Grace was raised to believe that she was a disappointment. She could recite verses about being God’s beloved, yet felt nothing. What helped was not louder declarations but a slow combination: a counsellor who helped her grieve her childhood, a small group where she was known, a daily habit of reading one Gospel story and noticing how Jesus treated people, and weekly communion. Over two years the truth moved from her head into her heart. She did not “manifest” love by thinking hard; she let love reach the places that had been closed."
+        ]
+      },
+      {
+        "title": "A fair counter-view and a response",
+        "body": [
+          "Some evangelical critics warn that talk of “experiencing” union can become experience-chasing, where feelings replace Scripture and people judge their faith by emotional highs. Others, especially critics of Word of Faith teaching, say that “manifesting” language easily slides into prosperity thinking and blaming those who do not see results. Contemplative traditions add a different caution: God is not reached by any technique, and dry seasons (“dark nights”) are part of genuine faith.",
+          "These warnings are wise. The relational view does not promise constant feelings, wealth or health. It says Christ’s life becomes visible mainly as love, joy, peace and patience (Gal 5:22-23), often in ordinary days and hard seasons. Experience is a gift to enjoy, not a proof of maturity, and believers who feel little are not second class. The measure of every experience is Jesus."
+        ]
+      },
+      {
+        "title": "Practical steps",
+        "body": [
+          "<strong>1. Behold Christ daily.</strong> Read a short Gospel passage and ask, “What does this show me about the Father, and about me?” <strong>2. Receive with gratitude.</strong> Name three gifts each evening. <strong>3. Renew the mind.</strong> Notice lies (“I’m alone”, “I’m not enough”) and answer them with what is true in Christ (Rom 12:2; 2 Cor 10:5). <strong>4. Let the heart heal.</strong> Bring memories and wounds to God in prayer, and get skilled help when needed; declarations do not replace healing.",
+          "<strong>5. Use the means of grace.</strong> Pray, take the Lord’s Supper, remember your baptism, sing. <strong>6. Belong.</strong> Share life with a few people who know you; Christ often becomes visible to us through others. <strong>7. Practise love.</strong> Obedience is participation, not payment: forgive, serve, give, speak truth. <strong>8. Be patient.</strong> Growth is “from glory to glory”; expect seasons, and judge progress by love, not by feelings or outcomes."
+        ]
+      }
+    ],
+    "refs": ["2 Cor 4:10-11", "Col 3:4", "1 John 3:2", "Rom 8:19", "1 John 4:12", "2 Cor 3:18", "Phil 2:12-13", "John 15:4-5", "Gal 5:22-23", "Rom 12:2", "2 Cor 10:5", "Heb 5:14", "Eph 3:16-19"],
+    "evidence": [
+      {
+        "text": "Wesley defines “means of grace” as “outward signs, words, or actions, ordained of God, and appointed for this end, to be the ordinary channels whereby he might convey to men, preventing, justifying, or sanctifying grace.” The chief are prayer, “searching the Scriptures” and “receiving the Lord’s Supper”.",
+        "source": "John Wesley, Sermon 16, “The Means of Grace”, II.1",
+        "url": "http://wesley.nnu.edu/john-wesley/the-sermons-of-john-wesley-1872-edition/sermon-16-the-means-of-grace/"
+      },
+      {
+        "text": "“Before you use any means, let it be deeply impressed on your soul; there is no power in this. It is, in itself, a poor, dead, empty thing.” And: “always to retain a lively sense, that God is above all means.”",
+        "source": "John Wesley, Sermon 16, “The Means of Grace”, V.4",
+        "url": "http://wesley.nnu.edu/john-wesley/the-sermons-of-john-wesley-1872-edition/sermon-16-the-means-of-grace/"
+      },
+      {
+        "text": "“The Triune God meets us not in the sky or in our self-generated religions, but in our ‘ordinary’ human existence.”",
+        "source": "C. Baxter Kruger, interview “Perichor…what?”, Christian Odyssey (Grace Communion International)",
+        "url": "https://gci.org/articles/perichor-what"
+      }
+    ]
   }
-  /*__MORE__*/
 ];
 
-/*__EVIDENCE__*/
+RG.wyEvidence2 = [
+  {
+    "text": "“Let every good and true Christian understand that wherever truth may be found, it belongs to his Master.”",
+    "source": "Augustine, On Christian Doctrine, Book II, ch. 18 (28)",
+    "url": "https://www.newadvent.org/fathers/12022.htm"
+  },
+  {
+    "text": "“If we reflect that the Spirit of God is the only fountain of truth, we will be careful, as we would avoid offering insult to him, not to reject or condemn truth wherever it appears. In despising the gifts, we insult the Giver.”",
+    "source": "John Calvin, Institutes of the Christian Religion, II.2.15",
+    "url": "https://ccel.org/ccel/calvin/institutes.iv.iii.html"
+  },
+  {
+    "text": "“Since therefore grace does not destroy nature but perfects it, natural reason should minister to faith as the natural bent of the will ministers to charity.”",
+    "source": "Thomas Aquinas, Summa Theologiae I, q.1, a.8, reply to objection 2",
+    "url": "https://www.newadvent.org/summa/1001.htm"
+  },
+  {
+    "text": "“The general or average effects of psychotherapy are widely accepted to be significant and large.”",
+    "source": "American Psychological Association, Resolution on the Recognition of Psychotherapy Effectiveness (adopted 2012)",
+    "url": "https://societyforpsychotherapy.org/wp-content/uploads/2014/06/APA-Resolution-Recognition-of-Psychotherapy-Effectiveness.pdf"
+  },
+  {
+    "text": "“For He was made man that we might be made God.”",
+    "source": "Athanasius, On the Incarnation, 54.3",
+    "url": "https://www.newadvent.org/fathers/2802.htm"
+  },
+  {
+    "text": "“Faith is a living, unshakeable confidence in God’s grace … It is as impossible to separate works from faith as burning and shining from fire.”",
+    "source": "Martin Luther, Preface to the Epistle to the Romans (1522), trans. Andrew Thornton",
+    "url": "https://history.hanover.edu/courses/excerpts/163luth3.html"
+  },
+  {
+    "text": "“Jesus Christ has laid hold of the whole human race, cleansed us in his death, lifted us up in his resurrection and has given us a place in his relationship with his Father and Spirit in his Ascension.” Kruger also admits: “As to why we don’t experience our life in Christ more fully, that is a question for another day.”",
+    "source": "C. Baxter Kruger, interview “Perichor…what?”, Christian Odyssey (Grace Communion International)",
+    "url": "https://gci.org/articles/perichor-what"
+  },
+  {
+    "text": "Wesley calls prayer, Scripture and the Lord’s Supper “the ordinary channels of conveying his grace to the souls of men”, yet warns, “there is no power in this” and “God is above all means.”",
+    "source": "John Wesley, Sermon 16, “The Means of Grace”, II.1 and V.4",
+    "url": "http://wesley.nnu.edu/john-wesley/the-sermons-of-john-wesley-1872-edition/sermon-16-the-means-of-grace/"
+  },
+  {
+    "text": "Boyd describes a couple whose four-year-old son died of a brain tumour despite intense prayer, and says that “although God never intended for Henry to die this way, he wants to use this terrible tragedy to impact many people with the truth of his loving character.”",
+    "source": "Greg Boyd, “Reflecting on Henry and the Heart of God”, ReKnew (December 31, 2012)",
+    "url": "https://reknew.org/2012/12/reflecting-on-henry-and-the-heart-of-god"
+  },
+  {
+    "text": "Kate Bowler’s memoir, written after a Stage IV cancer diagnosis at 35, examines a Christianity “that sees fortune as a blessing from God and misfortune as a mark of God’s disapproval”.",
+    "source": "Duke Divinity School, faculty book page: Kate Bowler, Everything Happens for a Reason: And Other Lies I’ve Loved (Random House, 2018)",
+    "url": "https://divinity.duke.edu/news/books/everything-happens-reason-and-other"
+  }
+];
