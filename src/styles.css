@@ -743,3 +743,47 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .lvpp-row { display: grid; gap: 4px; }
 .lvpp-row p { font-size: 15.5px; }
 .lvv, .lvv .flip-inner { min-height: 330px; }
+
+/* ---------- Ancient paths & encounters ---------- */
+.pa-road { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.pa-road svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pa-track { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 2 14; }
+.pa-done { fill: none; stroke: var(--gold); stroke-width: 4; stroke-linecap: round; opacity: .8; }
+.pa-trav { fill: var(--gold); filter: drop-shadow(0 0 8px var(--gold)); }
+.pa-stn { cursor: pointer; outline: none; }
+.pa-stn circle { fill: var(--surface); stroke: var(--line); stroke-width: 2; transition: fill .4s, stroke .4s; }
+.pa-stn text { font-family: var(--mono); font-size: 12px; fill: var(--muted); pointer-events: none; }
+.pa-stn.past circle { stroke: var(--gold); }
+.pa-stn.on circle, .pa-stn:hover circle, .pa-stn:focus-visible circle { fill: var(--gold-soft); stroke: var(--gold); }
+.pa-stn.on text { fill: var(--ink); }
+.pa-tl { display: flex; gap: 0; overflow-x: auto; padding: 18px 4px 8px; scroll-snap-type: x proximity; position: relative; background: linear-gradient(var(--line), var(--line)) 0 31px / 100% 2px no-repeat; }
+.pa-dot { flex: 0 0 104px; display: grid; justify-items: center; gap: 6px; border: 0; background: none; cursor: pointer; font: inherit; color: var(--muted); text-align: center; scroll-snap-align: center; transition: opacity .3s; padding: 0 4px; }
+.pa-dot i { width: 18px; height: 18px; border-radius: 50%; background: var(--surface); border: 2px solid var(--gold); transition: transform .3s, box-shadow .3s; }
+.pa-dot.church i { border-color: var(--dawn); }
+.pa-dot b { font-size: 13px; line-height: 1.2; color: var(--ink); font-weight: 600; }
+.pa-dot small { font-family: var(--mono); font-size: 11px; }
+.pa-dot.on i { transform: scale(1.4); background: var(--gold); box-shadow: 0 0 16px var(--gold); }
+.pa-dot.church.on i { background: var(--dawn); box-shadow: 0 0 16px var(--dawn); }
+.pa-dot.dim { opacity: .25; pointer-events: none; }
+.pa-enc.church { border-color: color-mix(in srgb, var(--dawn) 40%, var(--line)); }
+.pa-guide { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 20px; align-items: center; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+@media (max-width: 640px) { .pa-guide { grid-template-columns: minmax(0, 1fr); justify-items: center; } }
+.pa-breath { width: 180px; aspect-ratio: 1; display: grid; place-items: center; }
+.pa-breath span { width: 40%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, var(--gold) 0%, var(--gold-soft) 60%, transparent 72%); }
+.pa-breath.go span { animation: breathe 10s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: scale(1); opacity: .65; } 45%, 55% { transform: scale(2.3); opacity: 1; } }
+.pa-gtext { display: grid; gap: 12px; width: 100%; }
+.pa-gtext p { font-size: 18px; line-height: 1.55; animation: rise .5s both; }
+.pa-prog { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.pa-prog i { display: block; height: 100%; background: var(--gold); width: 0; }
+.pa-sp { background: linear-gradient(90deg, var(--wine-soft), var(--gold), var(--dawn-soft)); }
+.pa-meter { height: 12px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.pa-meter i { display: block; height: 100%; width: 0; background: var(--wine); transition: width .6s cubic-bezier(.3,1.2,.4,1), background .5s; }
+.pa-meter i.good { background: var(--gold); }
+.pa-meter i.full { background: var(--dawn); box-shadow: 0 0 14px var(--dawn); }
+.pa-tests { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.pa-test { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); cursor: pointer; transition: border-color .3s, background .3s; }
+.pa-test:has(input:checked) { border-color: var(--dawn); background: var(--dawn-soft); }
+.pa-test input { width: 20px; height: 20px; accent-color: var(--dawn); margin-top: 2px; }
+.pa-test small { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; line-height: 1.45; }
+.pa-obj, .pa-obj .flip-inner { min-height: 380px; }
