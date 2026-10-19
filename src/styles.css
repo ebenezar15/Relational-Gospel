@@ -443,6 +443,37 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
 
+/* ---------- big questions ---------- */
+.flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.flow.lane-legal { grid-template-columns: minmax(0, 1fr); } .flow.lane-legal .relational { display: none; }
+.flow.lane-relational { grid-template-columns: minmax(0, 1fr); } .flow.lane-relational .legal { display: none; }
+.flow-lane { display: grid; gap: 4px; justify-items: center; align-content: start; }
+.flow-lane .label { margin-bottom: 6px; }
+.fnode { width: 100%; max-width: 420px; display: flex; gap: 10px; align-items: center; text-align: left; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; opacity: .55; transition: opacity .4s, border-color .4s, transform .4s, box-shadow .4s; }
+.fnode b { font-size: 15px; font-weight: 600; }
+.fn-n { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; border: 1px solid currentColor; }
+.fnode.sep { color: var(--wine); } .fnode.uni { color: var(--dawn); }
+.fnode b { color: var(--ink); }
+.fnode.lit { opacity: 1; }
+.fnode.sep.lit { border-color: var(--wine); background: var(--wine-soft); }
+.fnode.uni.lit { border-color: var(--dawn); background: var(--dawn-soft); }
+.fnode.cur { transform: scale(1.03); box-shadow: var(--shadow); }
+.fnode:hover { opacity: 1; }
+.farrow { font-style: normal; color: var(--line); font-size: 16px; line-height: 1; transition: color .4s; }
+.farrow.lit { color: var(--gold); }
+#flow-detail { min-height: 10px; }
+.acc { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.acc h3 { font-size: 18px; }
+.acc-body { animation: rise .3s both; }
+.gloss { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 12px; }
+.gterm { display: grid; gap: 10px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); animation: rise .4s both; }
+.gterm h3 { font-size: 22px; }
+.gorig { font-family: var(--mono); font-size: 12.5px; color: var(--gold); }
+.gpair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.gpair .panel p { font-size: 15px; }
+.gloss.view-legal .g-r, .gloss.view-relational .g-l { display: none; }
+.gloss.view-legal .gpair, .gloss.view-relational .gpair { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 720px) { .flow { grid-template-columns: minmax(0, 1fr); } .gpair { grid-template-columns: minmax(0, 1fr); } }
 /* ---------- the why of design ---------- */
 .wx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 16px; align-items: start; }
 .wx-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
