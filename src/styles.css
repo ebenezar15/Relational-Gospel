@@ -830,3 +830,48 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .idl-ring.on circle { fill: var(--gold-soft); stroke: var(--gold); }
 .idl-ring.on text { fill: var(--ink); }
 .idl-ring:last-child circle { animation: glow 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+/* ---------- Why a Saviour? ---------- */
+.svf-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); }
+.svf { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--wine) 40%, var(--line)); background: var(--wine-soft); color: var(--ink); font: inherit; font-size: 15px; cursor: pointer; transition: background .5s, border-color .5s, transform .3s; }
+.svf:hover { transform: translateY(-2px); }
+.svf-ch { position: relative; width: 30px; height: 16px; flex: 0 0 30px; }
+.svf-ch i { position: absolute; top: 0; width: 18px; height: 14px; border: 3px solid var(--wine); border-radius: 8px; transition: transform .7s cubic-bezier(.3,1.5,.4,1), border-color .5s; }
+.svf-ch i:first-child { left: 0; }
+.svf-ch i:last-child { left: 11px; }
+.svf.broken { background: var(--dawn-soft); border-color: color-mix(in srgb, var(--dawn) 50%, var(--line)); }
+.svf.broken .svf-ch i { border-color: var(--dawn); }
+.svf.broken .svf-ch i:first-child { transform: translate(-6px, 4px) rotate(-35deg); }
+.svf.broken .svf-ch i:last-child { transform: translate(6px, -4px) rotate(35deg); }
+.svf.on { box-shadow: 0 0 0 2px var(--gold); }
+.svfl { display: grid; gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 12px; }
+@media (max-width: 700px) { .svfl { grid-template-columns: minmax(0, 1fr); } }
+.svfl-col { display: grid; gap: 4px; align-content: start; padding: 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.svfl-col.legal > .label { color: var(--wine); }
+.svfl-col.rel > .label { color: var(--dawn); }
+.svfl-step { display: grid; gap: 4px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); opacity: .12; transform: translateY(8px); transition: opacity .6s, transform .6s; }
+.svfl-step.in { opacity: 1; transform: none; }
+.svfl-step b { font-size: 16px; }
+.svfl-step p { font-size: 14.5px; color: var(--muted); }
+.svfl-step .pill { color: var(--muted); background: var(--bg-2); }
+.svfl-step.k-decision { border-style: dashed; border-color: var(--gold); }
+.svfl-step.k-tension { border-color: var(--wine); background: var(--wine-soft); }
+.svfl-step.k-tension.in { animation: tpulse 2s ease-in-out 2; }
+.svfl-step.k-tension .pill { color: var(--wine); }
+.svfl-step.k-rest { border-color: var(--dawn); background: var(--dawn-soft); }
+.svfl-step.k-rest.in { box-shadow: 0 0 18px color-mix(in srgb, var(--dawn) 40%, transparent); }
+.svfl-step.k-rest .pill { color: var(--dawn); }
+@keyframes tpulse { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--wine) 30%, transparent); } }
+.svfl-arrow { text-align: center; color: var(--muted); font-size: 16px; line-height: 1.1; opacity: .12; transition: opacity .6s; }
+.svfl-arrow.in { opacity: 1; }
+.sv-not, .sv-not .flip-inner { min-height: 330px; }
+.svw-wrap { display: grid; gap: 18px; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: start; }
+@media (max-width: 860px) { .svw-wrap { grid-template-columns: minmax(0, 1fr); } }
+.svw { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1; justify-self: center; }
+.svw-ring { position: absolute; inset: 9%; border-radius: 50%; border: 2px dashed var(--line); animation: orbit 80s linear infinite; }
+.svw-c { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 30%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; text-align: center; font-weight: 700; background: radial-gradient(circle, var(--gold-soft), transparent 75%); border: 2px solid var(--gold); color: var(--ink); box-shadow: 0 0 30px color-mix(in srgb, var(--gold) 40%, transparent); }
+.svw-b { position: absolute; transform: translate(-50%, -50%); width: 25%; min-height: 54px; padding: 6px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 13px; line-height: 1.2; cursor: pointer; transition: background .3s, border-color .3s, transform .3s; }
+.svw-b:hover { border-color: var(--gold); transform: translate(-50%, -50%) scale(1.06); }
+.svw-b.on { background: var(--gold-soft); border-color: var(--gold); box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 40%, transparent); }
+@media (max-width: 480px) { .svw-b { font-size: 11.5px; min-height: 46px; width: 27%; padding: 4px; } .svw-c { font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { .svw-ring { animation: none; } }
