@@ -371,7 +371,7 @@ RG.lifeSteps = [
   {
     id: "safety-first",
     step: "Put safety first and get help",
-    how: "If you or a child are in danger, contact your local emergency number now (for example 911 in the US, 999 in the UK, 112 across Europe). Abuse and crisis hotlines can help you plan safely, for example the US National Domestic Violence Hotline (1-800-799-7233) or the UK National Domestic Abuse Helpline (0808 2000 247). If you can, tell a trusted person and consider using a device the other person cannot check. God is not asking you to stay in danger.",
+    how: "If you or a child are in danger, contact your local emergency number now. Abuse and crisis hotlines can help you plan safely. If you can, tell a trusted person and consider using a device the other person cannot check. God is not asking you to stay in danger.",
     refs: ["Prov 22:3", "Ps 82:3-4", "Matt 10:23"]
   },
   {

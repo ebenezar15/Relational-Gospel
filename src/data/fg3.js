@@ -264,8 +264,8 @@ RG.fgTree = {
     "r-get-safe": {
       "result": "Get safe first",
       "tone": "safe",
-      "steps": ["Call your local emergency number if you are in immediate danger.", "Go to a safe place: a friend’s home, a public place, a shelter, or a locked room with a phone.", "When you can, contact a domestic abuse hotline to make a safety plan (in the US, 1-800-799-7233 or text START to 88788).", "Keep important documents, medication, a phone charger and some money somewhere you can reach quickly."],
-      "text": "Your safety matters more than any conversation about forgiveness. If you are in immediate danger, call your local emergency number (for example 911 in the US, 999 in the UK, 112 in much of Europe) and get to a safe place. When you can, contact a domestic abuse hotline or a trusted person who can help you plan your next steps. Forgiveness can wait; it never requires you to stay in danger.",
+      "steps": ["Call your local emergency number if you are in immediate danger.", "Go to a safe place: a friend’s home, a public place, a shelter, or a locked room with a phone.", "When you can, contact a domestic abuse hotline to make a safety plan.", "Keep important documents, medication, a phone charger and some money somewhere you can reach quickly."],
+      "text": "Your safety matters more than any conversation about forgiveness. If you are in immediate danger, call your local emergency number and get to a safe place. When you can, contact a domestic abuse hotline or a trusted person who can help you plan your next steps. Forgiveness can wait; it never requires you to stay in danger.",
       "refs": ["Prov 22:3", "Ps 18:2", "Matt 10:23", "Acts 9:23-25", "Ps 46:1"]
     },
     "r-unsure-safety": {
@@ -278,8 +278,8 @@ RG.fgTree = {
     "r-counselling": {
       "result": "Get counselling support",
       "tone": "caution",
-      "steps": ["Contact your doctor or a qualified, trauma-informed counsellor; ask a friend to help you find one if that feels too much.", "If you are thinking of harming yourself, call or text a crisis line now (988 in the US) or your local emergency number.", "Look after your body: sleep, food, gentle movement and safe company help the nervous system settle.", "Pray honestly, even if all you can say is “help”, and let others pray for you."],
-      "text": "When pain floods everything, the first need is care, not a forgiveness decision. A qualified counsellor or trauma-informed therapist, your doctor, and trusted people can help your body and mind settle enough to think. If you have thoughts of harming yourself, contact a crisis line now (in the US, call or text 988). You can return to these questions later; God is close to the brokenhearted.",
+      "steps": ["Contact your doctor or a qualified, trauma-informed counsellor; ask a friend to help you find one if that feels too much.", "If you are thinking of harming yourself, call or text a crisis line now or your local emergency number.", "Look after your body: sleep, food, gentle movement and safe company help the nervous system settle.", "Pray honestly, even if all you can say is “help”, and let others pray for you."],
+      "text": "When pain floods everything, the first need is care, not a forgiveness decision. A qualified counsellor or trauma-informed therapist, your doctor, and trusted people can help your body and mind settle enough to think. If you have thoughts of harming yourself, contact a crisis line now. You can return to these questions later; God is close to the brokenhearted.",
       "refs": ["Ps 34:18", "Ps 147:3", "1 Kings 19:4-8", "Matt 11:28-30", "Gal 6:2"]
     },
     "r-report": {
@@ -609,7 +609,7 @@ RG.fgAbuse = {
       "fromOthers": "As a child or a dependent adult, your basic needs were or are not met; you are left alone, unsafe or without medical care; nobody responds to your distress. Neglect often leaves invisible wounds that are just as real as visible ones."
     }
   ],
-  "note": "If you are in immediate danger, call your local emergency number (for example 911 in the US, 999 in the UK, 112 in much of the EU). In the US, the National Domestic Violence Hotline is available 24/7 at 1-800-799-7233 (or text START to 88788), and the 988 Suicide and Crisis Lifeline can be reached by calling or texting 988; most countries have similar domestic abuse and crisis lines, which a quick search or your doctor can help you find. If you are worried your devices are monitored, use a safer phone or computer. This list is general information, not a diagnosis; a counsellor, advocate or doctor can help you understand your situation. Children and vulnerable adults should be reported to the police or child-protection services.",
+  "note": "If you are in immediate danger, call your local emergency number. Most countries have domestic abuse and crisis lines, which a quick search or your doctor can help you find. If you are worried your devices are monitored, use a safer phone or computer. This list is general information, not a diagnosis; a counsellor, advocate or doctor can help you understand your situation. Children and vulnerable adults should be reported to the police or child-protection services.",
   "source": "The National Domestic Violence Hotline (US), “Types of Abuse”: abuse as a pattern of behaviours used to gain or maintain power and control, with physical, emotional (including verbal), sexual, financial, technology-facilitated and spiritual abuse. The “self” column and the neglect row are general descriptions added here, not from that page.",
   "url": "https://www.thehotline.org/resources/types-of-abuse/"
 };

@@ -54,7 +54,7 @@ RG.bigQA2 = [
         body: [
           "Sometimes the most loving thing looks, from outside, like rejection. Paul told the Corinthians to remove a man from fellowship who was openly sleeping with his father's wife, yet the goal was restoration, “that the spirit may be saved in the day of the Lord Jesus” (1 Cor 5:5); later he urged them to forgive and comfort someone who had been disciplined, “so that he would not be swallowed up with his excessive sorrow” (2 Cor 2:7-8). Consequences were for healing, not for revenge. In both letters the same church that was told to act firmly was also told to keep its heart soft toward the person.",
           "Jesus' own steps in Matthew 18:15-17 begin privately and gently, and only widen if the person refuses to listen. Even the last step, to treat someone “as a Gentile or a tax collector”, is striking when we remember how Jesus treated Gentiles and tax collectors: he kept pursuing them. Distance can be a door left open, not a door slammed shut. Some people outside the church also hear “consequences” as rejection. It can help to say clearly: “I love you, and that is why I can't keep doing this with you.”",
-          "Where there is abuse, violence or danger, distance is not only allowed; it is wise and right. Safety comes first. Forgiveness never requires staying, trusting or reconnecting with someone who is still harming you. “As much as it is up to you, be at peace with all men” (Rom 12:18) admits that sometimes it is <em>not</em> up to you. If you are in danger, contact local emergency services, a trusted person, or an abuse hotline (in the US, the National Domestic Violence Hotline is 1-800-799-7233). In every case, the hope is the same as God's own: restoration, not ruin.",
+          "Where there is abuse, violence or danger, distance is not only allowed; it is wise and right. Safety comes first. Forgiveness never requires staying, trusting or reconnecting with someone who is still harming you. “As much as it is up to you, be at peace with all men” (Rom 12:18) admits that sometimes it is <em>not</em> up to you. If you are in danger, contact local emergency services, a trusted person, or an abuse hotline. In every case, the hope is the same as God's own: restoration, not ruin.",
           "The tradition has sometimes got this badly wrong in both directions. Some churches have used “discipline” to shame and control people, cutting them off without any real goal of restoration. Others have refused to name harm at all, leaving victims unprotected and abusers unchallenged. Both betray love. The pattern of Scripture is that consequences serve the person and the community: they protect the vulnerable, they tell the truth about harm, and they keep the door open for return. A useful question is: “Is this distance designed to punish, or to protect and to heal?” If it is for protection and healing, it can be an act of deep love, even when it hurts. If you are unsure, talk it through with a wise, safe friend, a pastor who understands abuse, or a counsellor. You do not have to work out every boundary alone."
         ]
       },
@@ -79,11 +79,6 @@ RG.bigQA2 = [
         text: "The Word of God, our Lord Jesus Christ, “who did, through His transcendent love, become what we are, that He might bring us to be even what He is Himself.”",
         source: "Irenaeus, Against Heresies, Book V, Preface (ANF vol. 1)",
         url: "https://www.newadvent.org/fathers/0103500.htm"
-      },
-      {
-        text: "The US National Domestic Violence Hotline is free, confidential and 24/7: call 1.800.799.SAFE (7233) or text “START” to 88788; it advises contacting 911 if you are in immediate danger.",
-        source: "The National Domestic Violence Hotline, home page",
-        url: "https://www.thehotline.org/"
       }
     ]
   },
@@ -326,8 +321,8 @@ RG.bigAccept = [
     accept: "Your spouse is still a human being made in God's image, and you may pray for them and hope for their change. But accepting them as a person never requires you to accept abuse. Your safety, and your children's safety, come first. You can pray for your spouse's repentance and healing from a safe distance. Some abusers do change, usually through long-term, specialised help and full accountability; such change is shown over time, not promised in a moment. Hoping for their good and protecting yourself are not opposites.",
     reject: "Abuse is sin against you, not a cross God asks you to carry quietly. Forgiveness does not require staying, trusting or reconciling while the abuse continues. Separation for safety is not a lack of faith or love. Do not accept pressure from anyone, including church leaders, to stay in danger. Abuse can be physical, sexual, emotional, financial or spiritual (using Scripture to control). None of it is a marriage “problem” to be fixed by trying harder; it is a pattern of power and control. The marriage covenant has already been broken by the violence, not by the victim who seeks safety. Couples counselling is generally not advised while abuse is ongoing; individual, specialised support is safer. Write down incidents and keep important documents and a little money somewhere safe if you can, as part of a safety plan.",
     handle: [
-      "If you are in immediate danger, call your local emergency number (911 in the US).",
-      "Contact a domestic abuse hotline for confidential help and a safety plan (US: 1-800-799-7233, or text START to 88788).",
+      "If you are in immediate danger, call your local emergency number.",
+      "Contact a domestic abuse hotline for confidential help and a safety plan.",
       "Tell a trusted person, and seek help from counsellors, legal advice and, if appropriate, a safe pastor who understands abuse.",
       "Only consider any reconnection with professional guidance, after sustained, proven change; you are never obliged to return."
     ],
@@ -603,11 +598,6 @@ RG.bigEvidence2 = [
     text: "proslambanō in Romans 14:1 and 15:7: “to receive, i. e. grant one access to one's heart; to take into friendship and contact”; God and Christ are said to have received those who, “formerly estranged from them, they have reunited to themselves”.",
     source: "Thayer's Greek Lexicon, G4355 (Bible Hub)",
     url: "https://biblehub.com/greek/4355.htm"
-  },
-  {
-    text: "The National Domestic Violence Hotline (US) offers free, confidential, 24/7 help: call 1.800.799.SAFE (7233), chat online, or text “START” to 88788; contact 911 if in immediate danger.",
-    source: "The National Domestic Violence Hotline",
-    url: "https://www.thehotline.org/"
   },
   {
     text: "“For we cast blame upon Him, because we have not been made gods from the beginning, but at first merely men, then at length gods; although God has adopted this course out of His pure benevolence.”",
