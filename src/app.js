@@ -589,14 +589,14 @@
     $("#stairs").className = "stairs p-" + fPath;
     $("#stairs").innerHTML = S.map(function (st, i) { return '<button type="button" class="stair' + (i <= fStep ? " lit" : "") + (i === fStep ? " cur" : "") + '" data-st="' + i + '" style="--i:' + i + '"><span class="who w-' + st.who + '">' + (WHO[st.who] || st.who) + "</span><b>" + esc(st.step) + "</b></button>"; }).join("");
     var st = S[fStep]; if (!st) return;
-    $("#stair-card").innerHTML = '<div class="panel ' + (fPath === "victim" ? "uni" : "sep") + '" style="animation:rise .35s both"><div class="label">Step ' + (fStep + 1) + " of " + S.length + " · in " + (WHO[st.who] || st.who).toLowerCase() + "'s hands</div><h3>" + esc(st.step) + "</h3><p>" + st.text + '</p><div class="ref">' + esc((st.refs || []).join(" · ")) + "</div></div>";
+    $("#stair-card").innerHTML = '<div class="panel ' + (fPath === "victim" ? "uni" : "sep") + '" style="animation:rise .35s both"><div class="label">Step ' + (fStep + 1) + " of " + S.length + " · in " + (WHO[st.who] || st.who).toLowerCase() + "'s hands</div><h3>" + esc(st.step) + "</h3><p>" + st.text + "</p>" + (st.oneSided ? '<p class="note"><strong>One-sided:</strong> this step does not depend on the other person.</p>' : "") + (st.note ? "<p>" + st.note + "</p>" : "") + (st.pitfall ? '<p class="note"><strong>Watch out:</strong> ' + st.pitfall + "</p>" : "") + '<div class="ref">' + esc((st.refs || []).join(" · ")) + "</div></div>";
   }
   function showTree() {
     var T = RG.fgTree; if (!T || !$("#tree")) return;
     if (!fNode) fNode = T.start;
     var n = T.nodes[fNode]; if (!n) return;
     var crumbs = fTrail.map(function (c) { return '<span class="crumb">' + esc(c.q) + " → <b>" + esc(c.a) + "</b></span>"; }).join("");
-    $("#tree").innerHTML = (crumbs ? '<div class="crumbs">' + crumbs + "</div>" : "") + (n.result ? '<article class="tree-card res-' + (n.tone || "hope") + '"><div class="label">Guidance</div><h3>' + esc(n.result) + "</h3><p>" + n.text + '</p><div class="ref">' + esc((n.refs || []).join(" · ")) + "</div></article>" : '<article class="tree-card"><div class="label">Question ' + (fTrail.length + 1) + "</div><h3>" + esc(n.q) + '</h3><div class="row">' + (n.options || []).map(function (o, i) { return '<button class="btn ghost" type="button" data-tn="' + i + '">' + esc(o.label) + "</button>"; }).join("") + "</div></article>") +
+    $("#tree").innerHTML = (crumbs ? '<div class="crumbs">' + crumbs + "</div>" : "") + (n.result ? '<article class="tree-card res-' + (n.tone || "hope") + '"><div class="label">Guidance</div><h3>' + esc(n.result) + "</h3><p>" + n.text + "</p>" + ((n.steps || []).length ? '<ol class="steps">' + n.steps.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ol>" : "") + '<div class="ref">' + esc((n.refs || []).join(" · ")) + "</div></article>" : '<article class="tree-card"><div class="label">Question ' + (fTrail.length + 1) + "</div><h3>" + esc(n.q) + '</h3><div class="row">' + (n.options || []).map(function (o, i) { return '<button class="btn ghost" type="button" data-tn="' + i + '">' + esc(o.label) + "</button>"; }).join("") + "</div></article>") +
       '<div class="row">' + (fTrail.length ? '<button class="chip" type="button" id="tree-back">← Back</button><button class="chip" type="button" id="tree-restart">Start again</button>' : "") + "</div>";
   }
   function fqShow() {
@@ -1286,7 +1286,7 @@
       feScore(); return;
     }
     var abb = t.closest("[data-ab]"); if (abb) { $$("[data-ab]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === abb)); }); $("#abm").className = "abm ab-" + abb.dataset.ab; return; }
-    var dvb = t.closest("[data-dv]"); if (dvb) { var dd = A("fgDavid")[+dvb.dataset.dv]; $$("[data-dv]").forEach(function (b) { b.classList.toggle("on", b === dvb); }); $("#dv-note").innerHTML = '<div class="panel" style="animation:rise .3s both"><div class="label">' + esc(dd.ref) + " · " + esc(dd.kind) + "</div><h3>" + esc(dd.event) + "</h3><p>" + dd.note + "</p></div>"; return; }
+    var dvb = t.closest("[data-dv]"); if (dvb) { var dd = A("fgDavid")[+dvb.dataset.dv]; $$("[data-dv]").forEach(function (b) { b.classList.toggle("on", b === dvb); }); $("#dv-note").innerHTML = '<div class="panel" style="animation:rise .3s both"><div class="label">' + esc(dd.ref) + " · " + esc(dd.kind) + "</div><h3>" + esc(dd.event) + "</h3><p>" + dd.note + "</p>" + (dd.lesson ? '<p class="note"><strong>Lesson:</strong> ' + dd.lesson + "</p>" : "") + "</div>"; return; }
     var apb = t.closest("[data-apo]"); if (apb) { fApo += +apb.dataset.apo; showApo(); return; }
     var ln = t.closest("[data-lane]"); if (ln) { bLane = ln.dataset.lane; $$("[data-lane]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === ln)); }); showFlow(); return; }
     if (t.closest("#flow-play")) { playFlow(); return; }
