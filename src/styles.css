@@ -473,7 +473,7 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .dv-e { position: relative; flex: 0 0 150px; display: grid; gap: 4px; align-content: start; text-align: left; padding: 24px 10px 8px; border: 0; background: none; cursor: pointer; animation: rise .5s both; }
 .dv-e b { font-size: 14px; font-weight: 600; }
 .dv-dot { position: absolute; top: 3px; left: 10px; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--bg); }
-.k-sin .dv-dot { background: var(--wine); } .k-forgiveness .dv-dot { background: var(--dawn); box-shadow: 0 0 12px var(--dawn); } .k-consequence .dv-dot { background: #c0392b; } .k-mercy .dv-dot { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.k-sin .dv-dot { background: var(--wine); } .k-forgiveness .dv-dot { background: var(--dawn); box-shadow: 0 0 12px var(--dawn); } .k-consequence .dv-dot { background: #d9822b; } .k-mercy .dv-dot { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
 .dv-e.on { background: var(--gold-soft); border-radius: 10px; }
 .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
 .apo { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 20px; align-items: start; }
