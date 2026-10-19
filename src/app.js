@@ -66,6 +66,9 @@
     ssermon: { key: "shareSermons", view: "share", title: function (x) { return x.speaker + ", " + x.ref; }, sub: function (x) { return x.audience; }, label: "Sermon in Acts" },
     sjesus: { key: "shareJesus", view: "share", title: function (x) { return x.person; }, sub: function (x) { return x.ref; }, label: "How Jesus shared" },
     saccuse: { key: "shareAccusations", view: "share", title: function (x) { return x.accusation; }, sub: function () { return "Accusation answered"; }, label: "Sharing the gospel" },
+    wdesign: { key: "whyDesign", view: "why", title: function (x) { return x.area; }, sub: function (x) { return x.group; }, label: "The why of design" },
+    wcf: { key: "whyCounterfeits", view: "why", title: function (x) { return x.design + " → " + x.counterfeit; }, sub: function () { return "Counterfeit"; }, label: "The why of design" },
+    wq: { key: "whyQuestions", view: "why", title: function (x) { return x.q; }, sub: function () { return "Hard question"; }, label: "The why of design" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -77,7 +80,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -205,6 +208,7 @@
       ["kingdom", "Ekklesia & the Kingdom", "Seated with Christ, reigning in life, until the last enemy is under his feet."],
       ["life", "Love with a spine", "Boundaries, dignity and self-worth, and how Jesus lived them."],
       ["share", "Sharing the good news", "How Jesus and the apostles announced it, and how we can."],
+      ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["theme.union-sonship", "Union & sonship", "From orphan to beloved child."],
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
@@ -228,6 +232,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["why", "The why of design", A("whyDesign").length + " designs explained, " + A("whyCounterfeits").length + " counterfeits, " + A("whyQuestions").length + " hard questions"],
         ["share", "Sharing the good news", A("shareSermons").length + " Acts sermons mapped, " + A("shareHistory").length + " moments in history, " + A("shareAccusations").length + " accusations answered"],
         ["life", "Designed to live", A("lifeMyths").length + " myths, " + A("lifeTraits").length + " traits of Jesus, " + A("lifeSituations").length + " situations he handled"],
         ["kingdom", "Ekklesia & the Kingdom", A("kingConcepts").length + " concepts, " + A("kingPractice").length + " practices, " + A("kingViews").length + " views of the end"],
@@ -545,6 +550,53 @@
 
 
 
+
+
+  /* ---------- The why of design ---------- */
+  var wGroup = "all", wSel = null, wTab = "why", wQ = 0, wAns = {};
+  var W_TABS = [["why", "Why"], ["mechanism", "How it works"], ["reflects", "Reflects God"], ["counterfeit", "Counterfeit"], ["toxic", "Toxic vs healthy"], ["science", "Science"]];
+  V.why = function () {
+    var D = A("whyDesign"), groups = [], T = RG.whyToxic || {};
+    D.forEach(function (d) { if (groups.indexOf(d.group) === -1) groups.push(d.group); });
+    if (!wSel && D.length) wSel = D[0].id;
+    return head("Reason and mechanism", "The why of design", "Why did God make bodies, nerves, needs, families, money, work, rest and play? How does each one work, what does it show about him, what have we built to replace it, and how does it turn toxic? Explore every design, then the hard questions.") +
+      '<div class="prose">' + A("whyIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
+      (D.length ? '<section class="section"><h2>Design explorer</h2><div class="chips">' + ["all"].concat(groups).map(function (g) { return '<button class="chip" type="button" data-wg="' + esc(g) + '" aria-pressed="' + (wGroup === g) + '">' + (g === "all" ? "Everything (" + D.length + ")" : esc(g)) + "</button>"; }).join("") +
+        '</div><div class="wx"><div class="wx-tiles" id="wx-tiles"></div><div class="wx-panel" id="wx-panel"></div></div></section>' : "") +
+      (A("whyCounterfeits").length ? '<section class="section"><h2>God\'s design and our counterfeits</h2><p class="note">Each card shows the original. Tap to see what we built instead, and the way back.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + A("whyCounterfeits").map(function (c) {
+        return '<button type="button" class="flip" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front cf-front"><div class="label">The design</div><h3>' + esc(c.design) + '</h3><span class="note" style="font-size:14px">Tap to see the counterfeit</span></div><div class="flip-face back"><div class="label" style="color:var(--wine)">Counterfeit · ' + esc(c.counterfeit) + "</div><p>" + c.why + "</p><p><strong>Cost:</strong> " + c.cost + '</p><p style="color:var(--dawn)"><strong>The way back:</strong> ' + c.return + "</p></div></div></button>"; }).join("") + "</div></section>" : "") +
+      (A("whyQuestions").length ? '<section class="section"><h2>Hard questions</h2><div class="compass"><div class="compass-list" id="wq-list"></div><div id="wq-card"></div></div></section>' : "") +
+      (T.definition ? '<section class="section"><h2>What does "toxic" mean?</h2><div class="prose">' + T.definition.map(function (p) { return "<p>" + p + "</p>"; }).join("") + '</div><div class="label">Signs to recognise</div><div class="grid">' + (T.signs || []).map(function (x) { return '<article class="scale"><h3>' + esc(x.sign) + '</h3><p><strong>Looks like:</strong> ' + x.looks + '</p><p class="note"><strong>Driven by:</strong> ' + x.why + '</p><div class="ref">' + esc((x.refs || []).join(" · ")) + "</div></article>"; }).join("") + "</div>" +
+        '<div class="split"><div class="panel uni"><div class="label">How not to be toxic</div><ol class="steps">' + (T.notMe || []).map(function (x) { return "<li><strong>" + esc(x.step) + ".</strong> " + x.how + ' <span class="ref">' + esc((x.refs || []).join(" · ")) + "</span></li>"; }).join("") + '</ol></div><div class="panel gold"><div class="label">How to handle toxic people</div><ol class="steps">' + (T.handle || []).map(function (x) { return "<li><strong>" + esc(x.step) + ".</strong> " + x.how + ' <span class="ref">' + esc((x.refs || []).join(" · ")) + "</span></li>"; }).join("") + "</ol></div></div>" +
+        '<div class="panel sep"><div class="label">A caution</div>' + (T.caution || []).map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div></section>" : "") +
+      (A("whyCheck").length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Toxic or healthy?</h2><span class="count" id="wc-score"></span></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr))">' + A("whyCheck").map(function (x) { return '<article class="sc" id="wc-' + x.id + '"><p>' + x.behaviour + '</p><div class="chips">' + [["healthy", "Healthy"], ["toxic", "Toxic"], ["depends", "It depends"]].map(function (o) { return '<button class="chip" type="button" data-wc="' + x.id + '" data-ans="' + o[0] + '">' + o[1] + "</button>"; }).join("") + '</div><div class="sc-out" hidden></div></article>'; }).join("") + "</div></section>" : "") +
+      (A("whyEvidence").length ? '<section class="section"><h2>Evidence and sources</h2><div class="evidence">' + A("whyEvidence").map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#life">Love with a spine</a><a class="chip" href="#embodied">The Embodied Gospel</a>' + ["designed-for-connection", "sacred-biology", "sacred-secular", "triune-dance"].map(function (id) { var x = find("theme", id); return x ? '<a class="chip" href="#theme.' + id + '">' + esc(x.title) + "</a>" : ""; }).join("") + "</div></section>";
+  };
+  function wxTiles() {
+    if (!$("#wx-tiles")) return;
+    var D = A("whyDesign").filter(function (d) { return wGroup === "all" || d.group === wGroup; });
+    if (D.length && !D.some(function (d) { return d.id === wSel; })) wSel = D[0].id;
+    $("#wx-tiles").innerHTML = D.map(function (d, i) { return '<button type="button" class="wx-tile' + (d.id === wSel ? " on" : "") + '" data-wsel="' + d.id + '" style="animation-delay:' + (i * 0.025).toFixed(3) + 's"><span class="label">' + esc(d.group) + "</span><b>" + esc(d.area) + "</b></button>"; }).join("");
+    wxPanel();
+  }
+  function wxPanel() {
+    var d = A("whyDesign").filter(function (x) { return x.id === wSel; })[0]; if (!d || !$("#wx-panel")) return;
+    var body = wTab === "toxic" ? '<div class="split"><div class="panel sep"><div class="label">When it turns toxic</div><p>' + d.toxic + '</p></div><div class="panel uni"><div class="label">Living it well</div><p>' + d.healthy + "</p></div></div>"
+      : wTab === "science" ? (d.science ? "<p>" + d.science + "</p>" + (d.scienceUrl ? '<a href="' + esc(d.scienceUrl) + '" target="_blank" rel="noopener" class="ref">Open source ↗</a>' : "") : '<p class="note">This design is described from Scripture and the tradition rather than from a specific scientific finding.</p>')
+      : "<p>" + (d[wTab] || "") + "</p>";
+    $("#wx-panel").innerHTML = '<div class="label">' + esc(d.group) + '</div><h3 style="font-size:28px">' + esc(d.area) + '</h3><div class="tabs">' + W_TABS.map(function (t) { return '<button class="chip" type="button" data-wtab="' + t[0] + '" aria-pressed="' + (wTab === t[0]) + '">' + t[1] + "</button>"; }).join("") + '</div><div class="wx-body" key="' + wTab + '">' + body + '</div><div class="ref">' + esc((d.refs || []).join(" · ")) + "</div>";
+    $$("#wx-tiles .wx-tile").forEach(function (b) { b.classList.toggle("on", b.dataset.wsel === wSel); });
+  }
+  function wqShow() {
+    var Q = A("whyQuestions"); if (!Q.length || !$("#wq-list")) return;
+    $("#wq-list").innerHTML = Q.map(function (q, i) { return '<button type="button" data-wq="' + i + '" aria-current="' + (i === wQ) + '"><b>' + String(i + 1).padStart(2, "0") + "</b>" + esc(q.q) + "</button>"; }).join("");
+    var q = Q[wQ];
+    $("#wq-card").innerHTML = '<article class="compass-card"><div class="label">Question ' + (wQ + 1) + " of " + Q.length + "</div><h2>" + esc(q.q) + '</h2><div class="panel gold"><div class="label">In short</div><p>' + q.short + '</p></div><div class="qa">' + (q.sections || []).map(function (sec, i) { return "<details" + (i === 0 ? " open" : "") + "><summary>" + esc(sec.title) + '</summary><div class="ans">' + sec.body.map(function (p) { return '<p style="color:var(--ink)">' + p + "</p>"; }).join("") + "</div></details>"; }).join("") + '</div><div class="ref">' + esc((q.refs || []).join(" · ")) + "</div>" +
+      ((q.evidence || []).length ? '<div class="evidence">' + q.evidence.map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div>" : "") +
+      '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-wqm="-1"' + (wQ === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-wqm="1"' + (wQ === Q.length - 1 ? " disabled" : "") + ">Next question →</button></div></article>";
+  }
+  function wcScore() { var C = A("whyCheck"), n = 0, r = 0; C.forEach(function (x) { if (wAns[x.id]) { n++; if (wAns[x.id] === x.answer) r++; } }); if ($("#wc-score")) $("#wc-score").textContent = n ? r + " of " + n + " match the study" : C.length + " behaviours"; }
 
   /* ---------- Sharing the good news ---------- */
   var SH_THEMES = [["resurrection", "Resurrection"], ["lordship", "Jesus is Lord"], ["crossDeath", "His death"], ["forgiveness", "Forgiveness"], ["repentance", "Turn / repent"], ["spirit", "The Spirit"], ["scripture", "Scripture fulfilled"], ["restoration", "Restoration"], ["kingdom", "Kingdom"], ["creator", "God the Creator"], ["faith", "Faith"], ["sin", "Sin named"], ["judgment", "Judgment"], ["hell", "Hell"]];
@@ -904,6 +956,9 @@
     ssermon: function (x) { return '<div class="ref">' + esc(x.audience) + "</div>" + blk("Opening", x.opening) + panel("gold", "Core message", x.core) + '<div class="blk"><div class="label">Themes present</div><div class="chips">' + SH_THEMES.map(function (t) { var on = x.themes && x.themes[t[0]]; return '<span class="chip" style="' + (on ? "border-color:var(--gold);color:var(--ink)" : "opacity:.45;text-decoration:line-through") + '">' + t[1] + "</span>"; }).join("") + "</div></div>" + panel("uni", "The response asked", x.call) + blk("Note", x.note); },
     sjesus: function (x) { return '<div class="ref">' + esc(x.ref) + "</div>" + panel("gold", "First move", x.firstMove) + blk("Key words", x.words) + blk("Approach", x.approach) + blk("Outcome", x.outcome) + panel("uni", "Lesson", x.lesson); },
     saccuse: function (x) { return panel("sep", "Why they stress it", x.why) + panel("uni", "The answer", x.answer) + blk("Scriptures", esc((x.refs || []).join(" · "))) + panel("gold", "Common ground", x.common); },
+    wdesign: function (x) { return '<div class="ref">' + esc(x.group) + "</div>" + panel("gold", "Why God designed it", x.why) + blk("How it works", x.mechanism) + panel("uni", "How it reflects God", x.reflects) + blk("The counterfeit", x.counterfeit) + panel("sep", "When it turns toxic", x.toxic) + panel("uni", "Living it well", x.healthy) + (x.science ? blk("Science", x.science + (x.scienceUrl ? ' <a href="' + esc(x.scienceUrl) + '" target="_blank" rel="noopener">source ↗</a>' : "")) : "") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    wcf: function (x) { return blk("The design", esc(x.design)) + panel("sep", "The counterfeit: " + esc(x.counterfeit), x.why) + blk("What it costs", x.cost) + panel("uni", "The way back", x.return) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    wq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(esc(sec.title), sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -990,7 +1045,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -1064,6 +1119,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "why") { wxTiles(); wqShow(); wcScore(); }
     if (route.view === "share") { showDialog(false); showRiver(); showWheel(); }
     if (route.view === "life") { showSpine(); lifeScore(); }
     if (route.view === "kingdom") { showK(); kGrid(); }
@@ -1092,6 +1148,19 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var wg = t.closest("[data-wg]"); if (wg) { wGroup = wg.dataset.wg; $$("[data-wg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === wg)); }); wxTiles(); return; }
+    var ws = t.closest("[data-wsel]"); if (ws) { wSel = ws.dataset.wsel; wxPanel(); if (window.innerWidth < 900) $("#wx-panel").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var wt = t.closest("[data-wtab]"); if (wt) { wTab = wt.dataset.wtab; wxPanel(); return; }
+    var wqb = t.closest("[data-wq]"); if (wqb) { wQ = +wqb.dataset.wq; wqShow(); return; }
+    var wqm = t.closest("[data-wqm]"); if (wqm) { wQ = Math.max(0, Math.min(A("whyQuestions").length - 1, wQ + +wqm.dataset.wqm)); wqShow(); $("#wq-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var wcb = t.closest("[data-wc]"); if (wcb) {
+      var cx = A("whyCheck").filter(function (y) { return y.id === wcb.dataset.wc; })[0]; if (!cx) return;
+      wAns[cx.id] = wcb.dataset.ans; var cbox = $("#wc-" + cx.id); cbox.classList.add("answered");
+      $$("[data-wc]", cbox).forEach(function (b) { b.setAttribute("aria-pressed", String(b === wcb)); b.classList.toggle("right", b.dataset.ans === cx.answer); });
+      var co = $(".sc-out", cbox); co.hidden = false;
+      co.innerHTML = '<div class="label">' + (wcb.dataset.ans === cx.answer ? "You match the study" : "The study answers: " + ({ healthy: "Healthy", toxic: "Toxic", depends: "It depends" })[cx.answer]) + "</div><p>" + cx.why + '</p><div class="ref">' + esc((cx.refs || []).join(" · ")) + "</div>";
+      wcScore(); return;
+    }
     var dl = t.closest("[data-dlg]"); if (dl) { shDialog = +dl.dataset.dlg; showDialog(false); return; }
     if (t.closest("#dlg-play")) { showDialog(true); return; }
     var shc = t.closest("[data-shc]"); if (shc) { $$("[data-shc]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === shc)); }); $("#tri").className = "tri focus-" + shc.dataset.shc; return; }

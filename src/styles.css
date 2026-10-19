@@ -443,6 +443,19 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 720px) { .cmp-pair { grid-template-columns: minmax(0, 1fr); } }
 
 
+/* ---------- the why of design ---------- */
+.wx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 16px; align-items: start; }
+.wx-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.wx-tile { display: grid; gap: 2px; text-align: left; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; animation: pop .45s both; transition: border-color .2s, transform .2s, background .2s; }
+.wx-tile .label { font-size: 9.5px; }
+.wx-tile b { font-size: 15px; font-weight: 600; line-height: 1.25; }
+.wx-tile:hover { transform: translateY(-2px); border-color: var(--gold); }
+.wx-tile.on { background: var(--gold-soft); border-color: var(--gold); }
+.wx-panel { position: sticky; top: 80px; display: grid; gap: 12px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.wx-body { animation: rise .35s both; font-size: 17px; }
+.cf-front { background: var(--gold-soft) !important; border-color: color-mix(in srgb, var(--gold) 45%, var(--line)) !important; }
+.cf-front .label { color: var(--gold) !important; }
+@media (max-width: 900px) { .wx { grid-template-columns: minmax(0, 1fr); } .wx-panel { position: static; } }
 /* ---------- sharing the good news ---------- */
 .hm-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .hm { border-collapse: collapse; min-width: 760px; width: 100%; }
