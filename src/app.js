@@ -654,7 +654,7 @@
     root.classList.toggle("centred", lvBal === (B.length - 1) / 2);
     $("#lvb-r").value = lvBal;
     $$("[data-lvb]").forEach(function (x, i) { x.classList.toggle("on", i === lvBal); });
-    $("#lvb-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(b.label) + "</div><h3>" + esc(b.title) + "</h3><p>" + b.text + '</p><ul class="lvb-signs">' + (b.signs || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + '</ul><div class="ref">' + esc((b.refs || []).join(" · ")) + "</div></article>";
+    $("#lvb-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(b.label) + "</div><h3>" + b.title + "</h3><p>" + b.text + '</p><ul class="lvb-signs">' + (b.signs || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + '</ul><div class="ref">' + esc((b.refs || []).join(" · ")) + "</div></article>";
   }
   function showResp() {
     var R = A("lvRespond"), r = R[lvR]; if (!r || !$("#lvr-card")) return;
