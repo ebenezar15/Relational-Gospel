@@ -709,3 +709,37 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- Living it out ---------- */
+.lvb { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.lvb svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lvb-post { fill: var(--surface); stroke: var(--line); stroke-width: 2; }
+.lvb-beam { transform-box: view-box; transform-origin: 320px 92px; transition: transform .8s cubic-bezier(.3,1.4,.4,1); }
+.lvb-beam rect { fill: var(--muted); }
+.lvb-pan { transition: transform .8s cubic-bezier(.3,1.4,.4,1); }
+.lvb-pan line { stroke: var(--muted); stroke-width: 1.5; }
+.lvb-pan path { fill: var(--surface); stroke: var(--line); stroke-width: 2; transition: fill .6s, stroke .6s; }
+.lvb-heart { fill: var(--wine); transition: fill .6s, r .6s; transform-box: fill-box; transform-origin: center; }
+.lvb.centred .lvb-heart { fill: var(--gold); r: 13px; animation: glow 3s ease-in-out infinite; }
+.lvb.centred .lvb-pan path { fill: var(--gold-soft); stroke: var(--gold); }
+.lvb.centred .lvb-beam rect { fill: var(--gold); }
+#lvb-r { width: 100%; accent-color: var(--gold); }
+.lvb-ticks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.lvb-ticks button { border: 0; background: none; font: inherit; font-size: 13px; color: var(--muted); cursor: pointer; padding: 4px 2px; border-radius: 6px; text-align: center; }
+.lvb-ticks button.on { color: var(--ink); background: var(--gold-soft); }
+.lvb-signs { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.lvr-opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.lvr-opts .chip { text-align: left; white-space: normal; height: auto; padding: 10px 14px; display: grid; gap: 4px; line-height: 1.35; }
+.lvr-k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lvr-k.k-christ { color: var(--dawn); }
+.lvr-k.k-fight { color: var(--wine); }
+.lvr { animation: rise .35s both; }
+.lvp { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.lvp-track { position: relative; height: 10px; border-radius: 99px; margin: 8px 12px; background: linear-gradient(90deg, var(--wine-soft), var(--gold), var(--wine-soft)); }
+.lvp-track i { position: absolute; top: 50%; width: 24px; height: 24px; border-radius: 50%; background: var(--wine); transform: translate(-50%, -50%); transition: left .7s cubic-bezier(.3,1.4,.4,1), background .5s; box-shadow: 0 0 0 4px var(--bg-2); }
+.lvp-track i.mid { background: var(--gold); box-shadow: 0 0 0 4px var(--bg-2), 0 0 18px var(--gold); }
+.lvp-stops { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.lvpp { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); animation: rise .4s both; }
+.lvpp-row { display: grid; gap: 4px; }
+.lvpp-row p { font-size: 15.5px; }
+.lvv, .lvv .flip-inner { min-height: 330px; }
