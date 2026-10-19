@@ -72,6 +72,7 @@
     bq: { key: "bigAllQA", view: "big", title: function (x) { return x.q; }, sub: function () { return "Big question"; }, label: "Big questions" },
     bterm: { key: "bigGlossary", view: "big", title: function (x) { return x.term; }, sub: function (x) { return x.group; }, label: "Two gospels glossary" },
     bacc: { key: "bigAccept", view: "big", title: function (x) { return x.situation; }, sub: function () { return "Accept the person"; }, label: "Accepting people" },
+    fq: { key: "fgAllQA", view: "forgive", title: function (x) { return x.q; }, sub: function () { return "Forgiveness & repair"; }, label: "Forgiveness & repair" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -83,7 +84,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -213,6 +214,7 @@
       ["share", "Sharing the good news", "How Jesus and the apostles announced it, and how we can."],
       ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["big", "Big questions", "Why we need God, the devil, the finished work, Adam, and every term defined."],
+      ["forgive", "Forgiveness & repair", "Forgiving, repairing, boundaries, and living after harm."],
       ["theme.union-sonship", "Union & sonship", "From orphan to beloved child."],
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
@@ -236,6 +238,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["forgive", "Forgiveness & repair", A("fgAllQA").length + " questions, two paths of healing, a decision guide, David's story mapped"],
         ["big", "Big questions", A("bigAllQA").length + " deep answers, a two-gospel flowchart, " + A("bigGlossary").length + " terms defined both ways"],
         ["why", "The why of design", A("whyDesign").length + " designs explained, " + A("whyCounterfeits").length + " counterfeits, " + A("whyQuestions").length + " hard questions"],
         ["share", "Sharing the good news", A("shareSermons").length + " Acts sermons mapped, " + A("shareHistory").length + " moments in history, " + A("shareAccusations").length + " accusations answered"],
@@ -557,6 +560,61 @@
 
 
 
+
+
+  /* ---------- Forgiveness & repair ---------- */
+  var fPath = "victim", fStep = 0, fTimer = null, fNode = null, fTrail = [], fQ = 0, fAns = {}, fApo = 0;
+  var WHO = { me: "You", them: "Them", both: "Both", community: "Community", God: "God" };
+  V.forgive = function () {
+    RG.fgAllQA = A("fgQA1").concat(A("fgQA2"));
+    var S = RG.fgStairs || {}, T = RG.fgTree, Ab = RG.fgAbuse || {};
+    return head("Release, repair, rebuild", "Forgiveness & repair", "Forgiving people, repairing harm, keeping boundaries, and how both the hurt and the one who did harm can live afterwards. Walk the two paths, use the decision guide, and work through every hard question.") +
+      '<div class="prose">' + A("fgIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
+      '<div class="panel gold"><div class="label">Safety first</div><p>Forgiveness never requires you to stay in danger, keep quiet, or trust someone again. Forgiving does not cancel reporting, legal accountability or consequences. If you are at risk, contact local emergency services or a domestic-abuse helpline.</p></div>' +
+      ((S.victim || []).length ? '<section class="section"><h2>Two paths</h2><div class="row" style="justify-content:space-between"><div class="su-toggle" role="group" aria-label="Choose a path"><button type="button" class="u" data-fp="victim" aria-pressed="true">If you were hurt</button><button type="button" class="s" data-fp="offender" aria-pressed="false">If you did harm</button></div><button class="btn" type="button" id="fp-play">Walk the path</button></div><div class="stairs" id="stairs"></div><div id="stair-card"></div></section>' : "") +
+      (T && T.nodes ? '<section class="section"><h2>What should I do?</h2><p class="note">A guide, not a verdict. Answer honestly; you can go back at any time.</p><div class="tree" id="tree"></div></section>' : "") +
+      (RG.fgAllQA.length ? '<section class="section"><h2>The questions</h2><div class="compass"><div class="compass-list" id="fq-list"></div><div id="fq-card"></div></div></section>' : "") +
+      (A("fgEgo").length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Ego or self-respect?</h2><span class="count" id="fe-score"></span></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr))">' + A("fgEgo").map(function (x) { return '<article class="sc" id="fe-' + x.id + '"><p>' + x.behaviour + '</p><div class="chips">' + [["self-respect", "Self-respect"], ["ego", "Ego"], ["depends", "It depends"]].map(function (o) { return '<button class="chip" type="button" data-fe="' + x.id + '" data-ans="' + o[0] + '">' + o[1] + "</button>"; }).join("") + '</div><div class="sc-out" hidden></div></article>'; }).join("") + "</div></section>" : "") +
+      (A("fgHonor").length ? '<section class="section"><h2>What looks like honour, and what it really is</h2><p class="note">Tap a card.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + A("fgHonor").map(function (h) { return '<button type="button" class="flip" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front cf-front"><div class="label">Looks like honour</div><h3>' + esc(strip(h.looksLike)) + '</h3><span class="note" style="font-size:14px">Tap to see what it really is</span></div><div class="flip-face back"><div class="label" style="color:var(--wine)">Really</div><p>' + h.actually + '</p><div class="label">True honour</div><p>' + h.true + '</p><span class="ref">' + esc((h.refs || []).join(" · ")) + "</span></div></div></button>"; }).join("") + "</div></section>" : "") +
+      ((Ab.types || []).length ? '<section class="section"><h2>Recognising abuse</h2><div class="su-toggle" role="group" aria-label="Choose a direction"><button type="button" data-ab="all" aria-pressed="true">All</button><button type="button" data-ab="self" aria-pressed="false">To yourself</button><button type="button" data-ab="others" aria-pressed="false">To others</button><button type="button" data-ab="fromOthers" aria-pressed="false">From others</button></div><div class="tri-wrap"><table class="abm ab-all" id="abm"><thead><tr><th>Type</th><th class="c-self">To yourself</th><th class="c-others">To others</th><th class="c-fromOthers">From others: signs</th></tr></thead><tbody>' + Ab.types.map(function (t) { return "<tr><th>" + esc(t.type) + '</th><td class="c-self">' + t.self + '</td><td class="c-others">' + t.others + '</td><td class="c-fromOthers">' + t.fromOthers + "</td></tr>"; }).join("") + '</tbody></table></div>' + (Ab.note ? '<div class="panel gold"><div class="label">If this is happening</div><p>' + Ab.note + "</p>" + (Ab.url ? '<a class="ref" href="' + esc(Ab.url) + '" target="_blank" rel="noopener">' + esc(Ab.source || "Source") + " ↗</a>" : "") + "</div>" : "") + "</section>" : "") +
+      (A("fgDavid").length ? '<section class="section"><h2>David: forgiven, yet the story unfolds</h2><div class="legend label"><span><i style="background:var(--wine)"></i>Sin</span><span><i style="background:var(--dawn)"></i>Forgiveness</span><span><i style="background:#c0392b"></i>Consequence</span><span><i style="background:var(--gold)"></i>Mercy</span></div><div class="river-wrap"><div class="dv" id="dv">' + A("fgDavid").map(function (d, i) { return '<button type="button" class="dv-e k-' + d.kind + '" data-dv="' + i + '" style="animation-delay:' + (i * 0.06).toFixed(2) + 's"><span class="dv-dot"></span><span class="ref">' + esc(d.ref) + "</span><b>" + esc(d.event) + "</b></button>"; }).join("") + '</div></div><div id="dv-note"></div></section>' : "") +
+      (A("fgApology").length ? '<section class="section"><h2>Anatomy of a real apology</h2><div class="apo"><div class="apo-stack" id="apo-stack"></div><div class="apo-side"><div id="apo-text"></div><div class="row"><button class="btn ghost" type="button" data-apo="-1">← Remove</button><button class="btn" type="button" data-apo="1">Add the next part →</button></div></div></div></section>' : "") +
+      (A("fgModels").length ? '<section class="section"><h2>Models from research and practice</h2><div class="grid">' + A("fgModels").map(function (m) { return '<article class="scale"><div class="label">' + esc(m.source) + "</div><h3>" + esc(m.name) + '</h3><ol class="steps">' + (m.steps || []).map(function (s2) { return "<li>" + s2 + "</li>"; }).join("") + "</ol>" + (m.note ? '<p class="note">' + m.note + "</p>" : "") + (m.url ? '<a class="ref" href="' + esc(m.url) + '" target="_blank" rel="noopener">Source ↗</a>' : "") + "</article>"; }).join("") + "</div></section>" : "") +
+      (A("fgEvidence1").concat(A("fgEvidence2"), A("fgEvidence3")).length ? '<section class="section"><h2>Evidence and sources</h2><div class="evidence">' + A("fgEvidence1").concat(A("fgEvidence2"), A("fgEvidence3")).map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#life">Love with a spine</a><a class="chip" href="#why">The why of design</a><a class="chip" href="#love">God is love</a><a class="chip" href="#big">Big questions</a></div></section>';
+  };
+  function showStairs() {
+    var S = (RG.fgStairs || {})[fPath] || []; if (!$("#stairs")) return;
+    $$("[data-fp]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.fp === fPath)); });
+    $("#stairs").className = "stairs p-" + fPath;
+    $("#stairs").innerHTML = S.map(function (st, i) { return '<button type="button" class="stair' + (i <= fStep ? " lit" : "") + (i === fStep ? " cur" : "") + '" data-st="' + i + '" style="--i:' + i + '"><span class="who w-' + st.who + '">' + (WHO[st.who] || st.who) + "</span><b>" + esc(st.step) + "</b></button>"; }).join("");
+    var st = S[fStep]; if (!st) return;
+    $("#stair-card").innerHTML = '<div class="panel ' + (fPath === "victim" ? "uni" : "sep") + '" style="animation:rise .35s both"><div class="label">Step ' + (fStep + 1) + " of " + S.length + " · in " + (WHO[st.who] || st.who).toLowerCase() + "'s hands</div><h3>" + esc(st.step) + "</h3><p>" + st.text + '</p><div class="ref">' + esc((st.refs || []).join(" · ")) + "</div></div>";
+  }
+  function showTree() {
+    var T = RG.fgTree; if (!T || !$("#tree")) return;
+    if (!fNode) fNode = T.start;
+    var n = T.nodes[fNode]; if (!n) return;
+    var crumbs = fTrail.map(function (c) { return '<span class="crumb">' + esc(c.q) + " → <b>" + esc(c.a) + "</b></span>"; }).join("");
+    $("#tree").innerHTML = (crumbs ? '<div class="crumbs">' + crumbs + "</div>" : "") + (n.result ? '<article class="tree-card res-' + (n.tone || "hope") + '"><div class="label">Guidance</div><h3>' + esc(n.result) + "</h3><p>" + n.text + '</p><div class="ref">' + esc((n.refs || []).join(" · ")) + "</div></article>" : '<article class="tree-card"><div class="label">Question ' + (fTrail.length + 1) + "</div><h3>" + esc(n.q) + '</h3><div class="row">' + (n.options || []).map(function (o, i) { return '<button class="btn ghost" type="button" data-tn="' + i + '">' + esc(o.label) + "</button>"; }).join("") + "</div></article>") +
+      '<div class="row">' + (fTrail.length ? '<button class="chip" type="button" id="tree-back">← Back</button><button class="chip" type="button" id="tree-restart">Start again</button>' : "") + "</div>";
+  }
+  function fqShow() {
+    var Q = RG.fgAllQA || []; if (!Q.length || !$("#fq-list")) return;
+    $("#fq-list").innerHTML = Q.map(function (q, i) { return '<button type="button" data-fq="' + i + '" aria-current="' + (i === fQ) + '"><b>' + String(i + 1).padStart(2, "0") + "</b>" + esc(q.q) + "</button>"; }).join("");
+    var q = Q[fQ];
+    $("#fq-card").innerHTML = '<article class="compass-card"><div class="label">Question ' + (fQ + 1) + " of " + Q.length + "</div><h2>" + esc(q.q) + '</h2><div class="panel gold"><div class="label">In short</div><p>' + q.short + '</p></div><div class="qa">' + (q.sections || []).map(function (sec, i) { return "<details" + (i === 0 ? " open" : "") + "><summary>" + esc(sec.title) + '</summary><div class="ans">' + sec.body.map(function (p) { return '<p style="color:var(--ink)">' + p + "</p>"; }).join("") + "</div></details>"; }).join("") + '</div><div class="ref">' + esc((q.refs || []).join(" · ")) + "</div>" +
+      ((q.evidence || []).length ? '<div class="evidence">' + q.evidence.map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div>" : "") +
+      '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-fqm="-1"' + (fQ === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-fqm="1"' + (fQ === Q.length - 1 ? " disabled" : "") + ">Next question →</button></div></article>";
+  }
+  function feScore() { var C = A("fgEgo"), n = 0, r = 0; C.forEach(function (x) { if (fAns[x.id]) { n++; if (fAns[x.id] === x.answer) r++; } }); if ($("#fe-score")) $("#fe-score").textContent = n ? r + " of " + n + " match the study" : C.length + " behaviours"; }
+  function showApo() {
+    var P = A("fgApology"); if (!P.length || !$("#apo-stack")) return;
+    fApo = Math.max(0, Math.min(P.length, fApo));
+    $("#apo-stack").innerHTML = P.map(function (p, i) { return '<div class="apo-b' + (i < fApo ? " in" : "") + '" style="--i:' + i + '"><span>' + (i + 1) + "</span>" + esc(p.part) + "</div>"; }).join("");
+    var p = P[Math.max(0, fApo - 1)];
+    $("#apo-text").innerHTML = fApo === 0 ? '<p class="note">Build an apology one part at a time.</p>' : '<div class="label">Part ' + fApo + " of " + P.length + '</div><h3 style="font-size:24px">' + esc(p.part) + "</h3><p>" + p.text + '</p><div class="verse"><span class="ref">For example</span>' + p.example + '</div><div class="ref">' + esc((p.refs || []).join(" · ")) + "</div>" + (fApo === P.length ? '<div class="panel uni"><p>That is a complete apology. It names the harm, owns it, and offers repair without demanding forgiveness.</p></div>' : "");
+  }
 
   /* ---------- Big questions ---------- */
   var bQ = 0, bFlow = -1, bFlowTimer = null, bLane = "both", bGlossGroup = "all", bGlossView = "both", bAccTab = {};
@@ -1017,6 +1075,7 @@
     bq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(esc(sec.title), sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     bterm: function (x) { return '<div class="ref">' + esc(x.group) + "</div>" + (x.original ? blk("Original word", x.original) : "") + panel("sep", "Legal gospel", x.legal) + panel("uni", "Relational gospel", x.relational) + blk("Note", x.note) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     bacc: function (x) { return panel("uni", "Accept the person", x.accept) + panel("sep", "Decline the action", x.reject) + '<div class="blk"><div class="label">How to handle</div><ol class="steps">' + (x.handle || []).map(function (h) { return "<li>" + h + "</li>"; }).join("") + "</ol></div>" + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    fq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(esc(sec.title), sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -1049,6 +1108,7 @@
   /* ================= SEARCH ================= */
   var INDEX = null;
   function buildIndex() {
+    RG.fgAllQA = A("fgQA1").concat(A("fgQA2"));
     RG.bigAllQA = A("bigQA").concat(A("bigQA2"));
     INDEX = [];
     Object.keys(TYPES).forEach(function (type) {
@@ -1104,7 +1164,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -1178,6 +1238,7 @@
     if (route.view === "story") showAge();
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
+    if (route.view === "forgive") { showStairs(); showTree(); fqShow(); feScore(); showApo(); }
     if (route.view === "big") { showFlow(); bqShow(); glossShow(); }
     if (route.view === "why") { wxTiles(); wqShow(); wcScore(); }
     if (route.view === "share") { showDialog(false); showRiver(); showWheel(); }
@@ -1208,6 +1269,25 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var fp = t.closest("[data-fp]"); if (fp) { fPath = fp.dataset.fp; fStep = 0; clearInterval(fTimer); showStairs(); return; }
+    if (t.closest("#fp-play")) { clearInterval(fTimer); fStep = 0; showStairs(); var nS = ((RG.fgStairs || {})[fPath] || []).length; fTimer = setInterval(function () { fStep++; if (fStep >= nS) { clearInterval(fTimer); fStep = nS - 1; } showStairs(); }, reduced ? 60 : 1500); return; }
+    var stb = t.closest("[data-st]"); if (stb) { clearInterval(fTimer); fStep = +stb.dataset.st; showStairs(); return; }
+    var tn = t.closest("[data-tn]"); if (tn) { var nd = RG.fgTree.nodes[fNode], op = nd.options[+tn.dataset.tn]; fTrail.push({ node: fNode, q: nd.q, a: op.label }); fNode = op.next; showTree(); return; }
+    if (t.closest("#tree-back")) { var last = fTrail.pop(); if (last) fNode = last.node; showTree(); return; }
+    if (t.closest("#tree-restart")) { fTrail = []; fNode = RG.fgTree.start; showTree(); return; }
+    var fqb = t.closest("[data-fq]"); if (fqb) { fQ = +fqb.dataset.fq; fqShow(); if (window.innerWidth < 980) $("#fq-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var fqm = t.closest("[data-fqm]"); if (fqm) { fQ = Math.max(0, Math.min((RG.fgAllQA || []).length - 1, fQ + +fqm.dataset.fqm)); fqShow(); $("#fq-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var feb = t.closest("[data-fe]"); if (feb) {
+      var fx = A("fgEgo").filter(function (y) { return y.id === feb.dataset.fe; })[0]; if (!fx) return;
+      fAns[fx.id] = feb.dataset.ans; var fbox = $("#fe-" + fx.id); fbox.classList.add("answered");
+      $$("[data-fe]", fbox).forEach(function (b) { b.setAttribute("aria-pressed", String(b === feb)); b.classList.toggle("right", b.dataset.ans === fx.answer); });
+      var fo = $(".sc-out", fbox); fo.hidden = false;
+      fo.innerHTML = '<div class="label">' + (feb.dataset.ans === fx.answer ? "You match the study" : "The study answers: " + ({ "self-respect": "Self-respect", ego: "Ego", depends: "It depends" })[fx.answer]) + "</div><p>" + fx.why + '</p><div class="ref">' + esc((fx.refs || []).join(" · ")) + "</div>";
+      feScore(); return;
+    }
+    var abb = t.closest("[data-ab]"); if (abb) { $$("[data-ab]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === abb)); }); $("#abm").className = "abm ab-" + abb.dataset.ab; return; }
+    var dvb = t.closest("[data-dv]"); if (dvb) { var dd = A("fgDavid")[+dvb.dataset.dv]; $$("[data-dv]").forEach(function (b) { b.classList.toggle("on", b === dvb); }); $("#dv-note").innerHTML = '<div class="panel" style="animation:rise .3s both"><div class="label">' + esc(dd.ref) + " · " + esc(dd.kind) + "</div><h3>" + esc(dd.event) + "</h3><p>" + dd.note + "</p></div>"; return; }
+    var apb = t.closest("[data-apo]"); if (apb) { fApo += +apb.dataset.apo; showApo(); return; }
     var ln = t.closest("[data-lane]"); if (ln) { bLane = ln.dataset.lane; $$("[data-lane]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === ln)); }); showFlow(); return; }
     if (t.closest("#flow-play")) { playFlow(); return; }
     var fn = t.closest("[data-fn]"); if (fn) { clearInterval(bFlowTimer); var fp = fn.dataset.fn.split(":"); bFlow = +fp[1]; showFlow(); flowDetail(fp[0], +fp[1]); return; }
