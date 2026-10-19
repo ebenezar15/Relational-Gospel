@@ -864,7 +864,7 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @keyframes tpulse { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--wine) 30%, transparent); } }
 .svfl-arrow { text-align: center; color: var(--muted); font-size: 16px; line-height: 1.1; opacity: .12; transition: opacity .6s; }
 .svfl-arrow.in { opacity: 1; }
-.sv-not, .sv-not .flip-inner { min-height: 330px; }
+.sv-not, .sv-not .flip-inner { min-height: 380px; }
 .svw-wrap { display: grid; gap: 18px; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: start; }
 @media (max-width: 860px) { .svw-wrap { grid-template-columns: minmax(0, 1fr); } }
 .svw { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1; justify-self: center; }
