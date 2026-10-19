@@ -1151,7 +1151,7 @@
     var wg = t.closest("[data-wg]"); if (wg) { wGroup = wg.dataset.wg; $$("[data-wg]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === wg)); }); wxTiles(); return; }
     var ws = t.closest("[data-wsel]"); if (ws) { wSel = ws.dataset.wsel; wxPanel(); if (window.innerWidth < 900) $("#wx-panel").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
     var wt = t.closest("[data-wtab]"); if (wt) { wTab = wt.dataset.wtab; wxPanel(); return; }
-    var wqb = t.closest("[data-wq]"); if (wqb) { wQ = +wqb.dataset.wq; wqShow(); return; }
+    var wqb = t.closest("[data-wq]"); if (wqb) { wQ = +wqb.dataset.wq; wqShow(); if (window.innerWidth < 980) $("#wq-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
     var wqm = t.closest("[data-wqm]"); if (wqm) { wQ = Math.max(0, Math.min(A("whyQuestions").length - 1, wQ + +wqm.dataset.wqm)); wqShow(); $("#wq-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
     var wcb = t.closest("[data-wc]"); if (wcb) {
       var cx = A("whyCheck").filter(function (y) { return y.id === wcb.dataset.wc; })[0]; if (!cx) return;
