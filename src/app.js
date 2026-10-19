@@ -688,7 +688,7 @@
   }
   function rbvShow() {
     var VW = A("rbViews"); if (!$("#rbv")) return;
-    function card(v) { return '<article class="vph-card"><div class="label">' + esc(v.when) + "</div><h3>" + esc(v.tradition) + "</h3><p>" + v.how + '</p><p style="font-size:15px"><strong>Sign:</strong> ' + v.sign + '</p><div class="verse">' + v.scripture + '</div><div class="panel uni"><div class="label">Strength</div><p>' + v.strength + '</p></div><div class="panel sep"><div class="label">Critique</div><p>' + v.critique + "</p></div></article>"; }
+    function card(v) { return '<article class="vph-card"><div class="label">' + v.when + "</div><h3>" + esc(v.tradition) + "</h3><p>" + v.how + '</p><p style="font-size:15px"><strong>Sign:</strong> ' + v.sign + '</p><div class="verse">' + v.scripture + '</div><div class="panel uni"><div class="label">Strength</div><p>' + v.strength + '</p></div><div class="panel sep"><div class="label">Critique</div><p>' + v.critique + "</p></div></article>"; }
     $("#rbv").innerHTML = (VW[rbA] ? card(VW[rbA]) : "") + (VW[rbB] ? card(VW[rbB]) : "");
   }
 
@@ -1518,7 +1518,7 @@
     sobj: function (x) { return blk("Who says it", x.who) + blk("Scriptures used", x.scripture) + panel("gold", "What it gets right", x.concede) + panel("uni", "The relational response", x.response); },
     safter: function (x) { return blk("What", x.what) + panel("uni", "Why, in union", x.why) + panel("sep", "What it is not", x.not) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     rq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
-    rview: function (x) { return '<div class="ref">' + esc(x.when) + "</div>" + blk("How new birth happens", x.how) + blk("Sign", x.sign) + panel("gold", "Scripture", x.scripture) + panel("uni", "Strength", x.strength) + panel("sep", "Critique", x.critique); },
+    rview: function (x) { return '<div class="ref">' + x.when + "</div>" + blk("How new birth happens", x.how) + blk("Sign", x.sign) + panel("gold", "Scripture", x.scripture) + panel("uni", "Strength", x.strength) + panel("sep", "Critique", x.critique); },
     dq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     drel: function (x) { return DSF.map(function (f) { return blk(f[1], x[f[0]]); }).join("") + panel("sep", "Humanity’s alternative", x.corruption) + panel("uni", "Restored in Christ", x.restored) + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     dex: function (x) { return '<div class="ref">' + esc(x.ref + " · " + x.kind + " · " + x.relation) + "</div>" + blk("The story", x.story) + panel("uni", "Through the relational lens", x.lens) + panel("gold", "For us", x.lesson); },

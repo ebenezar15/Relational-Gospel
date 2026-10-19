@@ -908,7 +908,7 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 
 /* ---------- Made for each other ---------- */
 .dsr { display: grid; gap: 12px; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); margin-top: 12px; }
-.dsr-facets { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.dsr-facets { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); }
 .dsr-f { padding: 12px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); animation: rise .5s both; }
 .dsr-f p { font-size: 15.5px; }
 .ds-tri, .ds-tri .flip-inner { min-height: 220px; }
