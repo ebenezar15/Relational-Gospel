@@ -729,7 +729,7 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .lvb-ticks button.on { color: var(--ink); background: var(--gold-soft); }
 .lvb-signs { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
 .lvr-opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
-.lvr-opts .chip { text-align: left; white-space: normal; height: auto; padding: 10px 14px; display: grid; gap: 4px; line-height: 1.35; }
+.lvr-opts .chip { font-family: var(--body); font-size: 15px; letter-spacing: 0; text-transform: none; text-align: left; white-space: normal; height: auto; padding: 10px 14px; display: grid; gap: 4px; line-height: 1.35; }
 .lvr-k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .lvr-k.k-christ { color: var(--dawn); }
 .lvr-k.k-fight { color: var(--wine); }

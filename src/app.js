@@ -627,7 +627,7 @@
     var B = A("lvBalance"), R = A("lvRespond"), P = A("lvPrayer"), PP = A("lvPrayerPairs"), VA = A("lvValues"), WR = A("lvWorthRole"), F = A("lvFaith"), M = A("lvManners"), L = A("lvLend");
     var E = A("lvEvidence1").concat(A("lvEvidence2"), A("lvEvidence3"), A("lvEvidence4"), A("lvEvidence5"));
     return head("Love in everyday life", "Living it out", "Service and profit, sacrifice and comfort, respect and exploitation, rules and hierarchy, prayer and action, fear and faith. How self-giving Triune love actually lives on a Monday, with Scripture, history and honest answers.") +
-      (B.length ? '<section class="section"><h2>The love balance</h2><p class="note">Drag the slider. Jesus said to love your neighbour <em>as yourself</em> (Mark 12:31): not instead of yourself, and not only yourself.</p><div class="lvb" id="lvb"><svg viewBox="0 0 640 230" aria-hidden="true">' +
+      (B.length ? '<section class="section"><h2>The love balance</h2><p class="note">Drag the slider. Jesus said to love your neighbour <em>as yourself</em> (Mark 12:31): not instead of yourself, and not only yourself.</p><div class="lvb" id="lvb"><svg viewBox="0 0 640 250" aria-hidden="true">' +
         '<path d="M320 96 L290 200 L350 200 Z" class="lvb-post"/><circle class="lvb-heart" cx="320" cy="92" r="9"/>' +
         '<g class="lvb-beam"><rect x="96" y="88" width="448" height="8" rx="4"/></g>' +
         '<g class="lvb-pan lvb-l"><line x1="0" y1="0" x2="-30" y2="56"/><line x1="0" y1="0" x2="30" y2="56"/><path d="M-46 56 Q0 92 46 56 Z"/><text y="112" text-anchor="middle" class="tl">OTHERS</text></g>' +
@@ -647,7 +647,7 @@
   };
   function showBal() {
     var B = A("lvBalance"), b = B[lvBal], root = $("#lvb"); if (!b || !root) return;
-    var th = (lvBal - (B.length - 1) / 2) * 7, rad = th * Math.PI / 180;
+    var th = (lvBal - (B.length - 1) / 2) * 5, rad = th * Math.PI / 180;
     $(".lvb-beam", root).style.transform = "rotate(" + th + "deg)";
     $(".lvb-l", root).style.transform = "translate(" + (320 - 210 * Math.cos(rad)) + "px," + (92 - 210 * Math.sin(rad)) + "px)";
     $(".lvb-r", root).style.transform = "translate(" + (320 + 210 * Math.cos(rad)) + "px," + (92 + 210 * Math.sin(rad)) + "px)";
