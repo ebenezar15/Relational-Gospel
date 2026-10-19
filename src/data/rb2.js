@@ -246,7 +246,7 @@ RG.rbImages = [
     image: "Brought forth by truth",
     ref: "Jas 1:18",
     original: "ἀπεκύησεν (apekyēsen), “he brought forth, gave birth”",
-    meaning: "James uses a verb normally used of a mother giving birth: “Of his own will he gave birth to us by the word of truth” (WEB). It is God’s free choice and loving labour.",
+    meaning: "James uses a verb normally used of a mother giving birth: “Of his own will begat he us with the word of truth” (KJV). It is God’s free choice and loving labour.",
     relational: "Scripture dares to picture God as a mother in labour. We are wanted children, brought to life by a true word about who God is and who we are."
   },
   {
@@ -270,7 +270,7 @@ RG.rbImages = [
     image: "Circumcision of the heart",
     ref: "Deut 30:6; Rom 2:29",
     original: "וּמָל … אֶת־לְבָבְךָ (umal … et-levavkha); περιτομὴ καρδίας (peritomē kardias)",
-    meaning: "Moses promised that God himself would circumcise his people’s hearts “to love the LORD your God with all your heart” (Deut 30:6). Paul says true circumcision is “of the heart, in the spirit” (Rom 2:29).",
+    meaning: "Moses promised that God himself would circumcise his people’s hearts “to love Yahweh your God with all your heart” (Deut 30:6, WEB). Paul says true circumcision is “of the heart, in the spirit” (Rom 2:29).",
     relational: "The covenant sign moves inward: God removes what hardens us so that love can flow. The goal of new birth is love."
   },
   {
@@ -278,7 +278,7 @@ RG.rbImages = [
     image: "Firstborn and adoption",
     ref: "Col 1:18; Gal 4:4-7; Rom 8:29",
     original: "πρωτότοκος ἐκ τῶν νεκρῶν (prōtotokos ek tōn nekrōn); υἱοθεσία (huiothesia), “adoption as sons”",
-    meaning: "Christ is “the firstborn from the dead” (Col 1:18), the first of a new humanity, and God sent his Son “that we might receive the adoption of children” (Gal 4:5). Birth and adoption are two pictures of one family belonging.",
+    meaning: "Christ is “the firstborn from the dead” (Col 1:18), the first of a new humanity, and God sent his Son “that we might receive the adoption of sons” (Gal 4:5, KJV). Birth and adoption are two pictures of one family belonging.",
     relational: "Jesus is the elder brother who goes first through death into new life. The Spirit of the Son in our hearts cries “Abba, Father!” (Gal 4:6), and we find we are home."
   }
 ];
@@ -294,7 +294,7 @@ RG.rbStages = [
   },
   {
     id: "darkness-and-the-lie",
-    label: "Darkness and lie",
+    label: "Darkness and the lie",
     title: "Blinded by the lie",
     text: "In Adam, humanity believed a lie about God and about itself, and hid in fear (Gen 3:8-10). Our minds became darkened and alienated (Col 1:21; Eph 4:18), and we could no longer see the love we came from. Flesh could only give birth to more flesh (John 3:6).",
     refs: ["Gen 3:8-10", "Col 1:21", "Eph 4:18", "2 Cor 4:4", "John 3:6"]
@@ -308,15 +308,15 @@ RG.rbStages = [
   },
   {
     id: "awakened-by-the-spirit",
-    label: "Spirit awakening",
-    title: "Awakened by the Spirit",
+    label: "Awakened by the Spirit",
+    title: "The Spirit wakes us",
     text: "What is true in Christ becomes alive in me when the Spirit opens my eyes to see the Kingdom (John 3:3). Like the wind, he comes freely; I hear, trust and receive (John 1:12). The Spirit of the Son in my heart cries “Abba, Father!” (Gal 4:6), and I know I belong.",
     refs: ["John 3:3-8", "John 1:12-13", "Gal 4:6", "Rom 8:15-16"]
   },
   {
     id: "growing-up-into-him",
-    label: "Growing up",
-    title: "Growing up into him",
+    label: "Growing up into him",
+    title: "From newborn to grown",
     text: "Birth is a beginning, not the finish line. Like newborn babies we long for pure spiritual milk and grow (1 Pet 2:2), and speaking truth in love we “grow up in all things into him” (Eph 4:15). Healing, learning and love take time, and the Father is patient with his children.",
     refs: ["1 Pet 2:2", "Eph 4:15", "2 Pet 3:18", "Phil 1:6"]
   }
