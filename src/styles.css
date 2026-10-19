@@ -875,3 +875,48 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .svw-b.on { background: var(--gold-soft); border-color: var(--gold); box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 40%, transparent); }
 @media (max-width: 480px) { .svw-b { font-size: 11px; min-height: 44px; width: 25%; padding: 4px; } .svw-c { font-size: 14px; } }
 @media (prefers-reduced-motion: reduce) { .svw-ring { animation: none; } }
+
+/* ---------- Born again ---------- */
+.rbs { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.rbs svg { width: 100%; height: auto; display: block; border-radius: 16px; }
+.rbs-dark { fill: #0b1020; opacity: .15; transition: opacity 1.2s; }
+.rbs-rays line { stroke: var(--gold); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200; opacity: 0; transition: stroke-dashoffset 1.4s ease, opacity 1s; }
+.rbs-core { transform-box: fill-box; transform-origin: center; transition: transform 1.2s cubic-bezier(.3,1.3,.4,1), opacity 1s; }
+.rbs-breath { fill: none; stroke: var(--dawn); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.rbs-grow { fill: none; stroke: var(--dawn); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 160; stroke-dashoffset: 160; transition: stroke-dashoffset 1.6s ease; }
+.rbs.st-0 .rbs-core { transform: scale(1.2); animation: beat 2.4s ease-in-out infinite; }
+.rbs.st-1 .rbs-dark { opacity: .85; }
+.rbs.st-1 .rbs-core { transform: scale(.6); opacity: .35; }
+.rbs.st-2 .rbs-core, .rbs.st-3 .rbs-core, .rbs.st-4 .rbs-core { transform: scale(4); }
+.rbs.st-2 .rbs-rays line, .rbs.st-3 .rbs-rays line, .rbs.st-4 .rbs-rays line { stroke-dashoffset: 0; opacity: .7; }
+.rbs.st-3 .rbs-breath { animation: breathring 3s ease-out infinite; }
+.rbs.st-4 .rbs-core { transform: scale(2.6) translateY(-6px); }
+.rbs.st-4 .rbs-grow { stroke-dashoffset: 0; }
+@keyframes breathring { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(2.4); } }
+@media (prefers-reduced-motion: reduce) { .rbs * { animation: none !important; transition: none !important; } }
+.rbj { display: grid; gap: 10px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); max-height: 560px; overflow-y: auto; }
+.rbj-b { display: grid; gap: 6px; max-width: 86%; text-align: left; padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; animation: rise .45s both; }
+.rbj-b.je { justify-self: end; border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); background: var(--gold-soft); border-bottom-right-radius: 4px; }
+.rbj-b.ni { justify-self: start; border-bottom-left-radius: 4px; }
+.rbj-b.na { justify-self: center; max-width: 94%; background: none; border-style: dashed; font-style: italic; }
+.rbj-t { font-size: 16.5px; line-height: 1.5; }
+.rbj-n { display: grid; gap: 4px; font-size: 14.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+.rbj-n[hidden] { display: none; }
+.rbv-pick { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.rbv-pick select { font: inherit; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); max-width: 100%; }
+.rbv { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-top: 12px; }
+
+/* ---------- Made for each other ---------- */
+.dsr { display: grid; gap: 12px; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); margin-top: 12px; }
+.dsr-facets { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.dsr-f { padding: 12px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); animation: rise .5s both; }
+.dsr-f p { font-size: 15.5px; }
+.ds-tri, .ds-tri .flip-inner { min-height: 220px; }
+.ds-cor, .ds-cor .flip-inner { min-height: 340px; }
+.dsx { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); animation: rise .4s both; border-top: 4px solid var(--line); }
+.dsx.k-beautiful { border-top-color: var(--gold); }
+.dsx.k-broken { border-top-color: var(--wine); }
+.dsx.k-redeemed { border-top-color: var(--dawn); }
+.dsx.k-beautiful .pill { color: var(--gold); background: var(--gold-soft); }
+.dsx.k-broken .pill { color: var(--wine); background: var(--wine-soft); }
+.dsx.k-redeemed .pill { color: var(--dawn); background: var(--dawn-soft); }
