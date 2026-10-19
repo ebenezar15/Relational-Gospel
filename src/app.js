@@ -688,7 +688,7 @@
     var SP = A("paSpectrum"), s = SP[paSp]; if (!s || !$("#pa-sp-card")) return;
     $$("[data-pasp]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.pasp === paSp)); });
     $("#pa-sp-dot").style.left = (SP.length > 1 ? paSp / (SP.length - 1) * 100 : 50) + "%";
-    $("#pa-sp-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(s.who) + "</div><h3>" + esc(s.label) + "</h3><p>" + s.view + '</p><div class="cmp-pair"><div class="panel uni"><div class="label">Strength</div><p>' + s.strength + '</p></div><div class="panel sep"><div class="label">Weakness</div><p>' + s.weakness + "</p></div></div></article>";
+    $("#pa-sp-card").innerHTML = '<article class="vph-card"><div class="label">' + s.who + "</div><h3>" + esc(s.label) + "</h3><p>" + s.view + '</p><div class="cmp-pair"><div class="panel uni"><div class="label">Strength</div><p>' + s.strength + '</p></div><div class="panel sep"><div class="label">Weakness</div><p>' + s.weakness + "</p></div></div></article>";
   }
   function showTests() {
     var T = A("paTests"); if (!$("#pa-meter")) return;
@@ -712,7 +712,7 @@
   var LVG = [["all", "Every question"], ["lvQA1", "Work, money & simplicity"], ["lvQA2", "Respect, love & protection"], ["lvQA3", "Values, rules & equality"], ["lvQA4", "God, sin, prayer & faith"]];
   var LVK = { silent: "Stay silent", accept: "Just accept it", fight: "Fight back", christ: "Christ's way" };
   function lvList() { return lvGrp === "all" ? RG.lvAllQA || [] : A(lvGrp); }
-  function evGrid(E) { return '<div class="evidence">' + E.map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div>"; }
+  function evGrid(E) { return '<div class="evidence">' + E.map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + e.source + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div>"; }
   function cmode(id, a, b, la, lb) { return '<div class="su-toggle" role="group" aria-label="Choose a view"><button type="button" class="s" data-cmode="' + id + '" data-m="legal" aria-pressed="false">' + la + '</button><button type="button" data-cmode="' + id + '" data-m="both" aria-pressed="true">Both</button><button type="button" class="u" data-cmode="' + id + '" data-m="relational" aria-pressed="false">' + lb + "</button></div>"; }
   V.living = function () {
     RG.lvAllQA = A("lvQA1").concat(A("lvQA2"), A("lvQA3"), A("lvQA4"));
