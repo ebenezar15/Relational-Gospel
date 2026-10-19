@@ -22238,7 +22238,7 @@ RG.fgEvidence3 = [
   function showJ4() {
     var P = A("worPlaces"), p = P[wPlace]; if (!p || !$("#j4")) return;
     $$("[data-wp]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.wp === wPlace)); });
-    $("#j4").className = "j4 st-" + wPlace;
+    $("#j4").className = "j4 st-" + wPlace; var gl = $(".j4-glow"); if (gl) gl.setAttribute("r", wPlace === 2 ? "420" : "20");
     $("#j4-text").innerHTML = '<div class="label">' + esc(p.ref) + '</div><h3 style="font-size:22px">' + esc(p.place) + "</h3><p>" + p.text + "</p>";
   }
   function showWords() {
