@@ -1039,3 +1039,4 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .de-st p { font-size: 15px; animation: rise .4s both; }
 .de-st.on { border-color: var(--gold); background: var(--gold-soft); grid-column: 1 / -1; }
 .de-search { font: inherit; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 100%; max-width: 480px; margin-bottom: 12px; }
+.de-lie:not(.flip)::after { content: "Tap to turn it around"; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); }
