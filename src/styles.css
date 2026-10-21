@@ -1087,3 +1087,4 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .bl-tm-in { display: grid; gap: 8px; margin-top: 6px; animation: rise .4s both; cursor: auto; }
 .bl-tm-in p { font-size: 15.5px; }
 .bl-track { background: linear-gradient(90deg, var(--wine-soft), #c0392b, var(--gold), var(--dawn-soft)); }
+@media (max-width: 640px) { .bl-bar { flex-direction: column; } .bl-seg { flex: none !important; min-height: 46px; grid-auto-flow: column; justify-content: space-between; padding: 8px 14px; } .bl-seg.s-plasma { min-height: 92px; } .bl-seg.s-red { min-height: 78px; } }
