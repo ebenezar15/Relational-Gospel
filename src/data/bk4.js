@@ -120,7 +120,7 @@ RG.deCh3 = [
   },
 
   {
-    "id": "ch13-all-in-one-man",
+    "id": "ch13-asia-in-one-man",
     "n": 13,
     "title": "God's strategy: Asia in one man",
     "big": "God always sees the many in the one, so the whole human race is represented in Jesus, and the good news can travel to whole cities and continents through a single person who sees it.",
