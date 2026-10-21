@@ -16,20 +16,12 @@ RG.deCh5 = [
     "summary": "This chapter asks what the good news of union looks like on an ordinary Tuesday. The book's answer is that Jesus did not come to help people slowly upgrade their behaviour; he rescued the original image and likeness of God in them, so the abundant life he promised is measured by that first blueprint. Change therefore begins with a new point of reference: we are already seated with Christ in heavenly places, so we live <em>from</em> completeness rather than towards it. The chapter then walks at length through Ephesians 4, 1 John 2, 4 and 5, Colossians 3, Romans 6, 2 Peter 1, Galatians 2, 2 Corinthians 10 and Philippians 4, reading each as practical ethics that flow out of identity. Darkness, fear, anger, greed and lying are treated as old costumes that no longer fit, not as a nature we must fight forever. The chapter closes by describing awakening to spiritual reality as immediate, refreshing and all-consuming, like falling in love.",
     "points": [
       {
-        "head": "Rescue, not renovation",
-        "text": "The book says Jesus did not sign people up for a lifelong project of gradually improving their conduct. He rescued God's image and likeness in them. The <em>life more abundantly</em> of John 10:10 is measured by Genesis 1:26 and by Christ, in whom the fulness of God dwells and in whom we are complete (Colossians 2:9-10)."
-      },
-      {
-        "head": "A new starting point: already seated",
-        "text": "Instead of wandering in a wilderness of striving, playing snakes and ladders with blessings and curses (the Deuteronomy 28 model), believers wake up to throne-room reality. We are seated with Christ in heavenly places from the start (Ephesians 2:6). The book's complaint is that we have wasted years trying to get to a place that is actually where we begin."
+        "head": "Rescue, not renovation: already seated",
+        "text": "Jesus did not sign people up for a lifelong project of self-improvement; he rescued God's image and likeness in them, so the <em>life more abundantly</em> of John 10:10 is measured by Genesis 1:26 and by Christ, in whom we are complete (Colossians 2:9-10). Instead of striving in a wilderness of blessings and curses (the Deuteronomy 28 model, played like snakes and ladders), we wake up to the fact that we are already seated with Christ in heavenly places (Ephesians 2:6). The book's complaint is that we have wasted years trying to reach the place where we actually begin."
       },
       {
         "head": "One conclusion, not a lifelong struggle",
-        "text": "The do-it-yourself, law-based mindset is undone by one simple conclusion: agreeing with God about you. On this view, unlearning and deconstruction need not be long and painful. Light pushes back darkness without effort, so the focus should be on the light, not on cataloguing the darkness."
-      },
-      {
-        "head": "Honesty about the contradiction is not the goal",
-        "text": "The book warns that any self-description that keeps pointing back to failure, even when it is dressed up as being honest, distracts from Christ's finished work. Freedom comes from knowing the truth about you, not from how you happen to feel about yourself today. Philemon 6 is read to mean that shared faith comes alive as we acknowledge every good thing that is in us in Christ."
+        "text": "The do-it-yourself, law-based mindset is undone by one conclusion: agreeing with God about you. Light dispels darkness without effort, so unlearning need not be long, and any self-description that keeps pointing back to failure, even when dressed up as honesty, distracts from Christ's finished work. Freedom comes from the truth about you, not from how you feel about yourself today, and Philemon 6 is read to mean that shared faith comes alive as we acknowledge every good thing in us in Christ."
       },
       {
         "head": "God is not a slot machine",
@@ -52,12 +44,8 @@ RG.deCh5 = [
         "text": "The book sees the heart of John's gospel in John 14:20: Jesus in the Father, us in him, and him in us. It pictures four circles nested inside one another: the Father, Jesus in the Father, us in Jesus, and the Spirit in us. Our knowing does not create this union; it wakes us up to it."
       },
       {
-        "head": "1 John: old and new at once",
-        "text": "In 1 John 2:7-8 the word usually rendered commandment (<em>entolē</em>) is read as the goal or conclusion of the whole conversation God has always been having. It is old because it was there from the beginning, and new (<em>kainos</em>, fresh, unprecedented) because what is true of Jesus is now seen to be true of us. In 1 John 5:19-21, the world lies asleep in a lost identity, the Son has come and given us understanding, and idols are any substitute image that competes with the likeness we were made in."
-      },
-      {
-        "head": "Idolatry as a false self-image",
-        "text": "Using Isaiah 40:18-21 and Acts 17:28-30, the book argues that we are God's offspring and God's idea, so we should not picture God (or ourselves) through man-made images. It describes idolatry as projecting an image of our own making, and calls it the core of religion. It also compares an idol to a casino slot machine that keeps demanding more and leaves you poorer."
+        "head": "1 John: old and new, and no substitute images",
+        "text": "In 1 John 2:7-8 the word usually rendered commandment (<em>entolē</em>) is read as the goal of the conversation God has always been having: old because it was there from the beginning, new (<em>kainos</em>) because what is true of Jesus is now seen to be true of us. In 1 John 5:19-21 the world lies asleep in a lost identity, the Son has come and given us understanding, and idols are any substitute image that competes with the likeness we were made in. Drawing on Isaiah 40:18-21 and Acts 17:28-30, the book says we are God's offspring and God's idea, so idolatry is projecting an image of our own making, which it calls the core of religion and compares to a slot machine that keeps taking until you are broke."
       },
       {
         "head": "1 John 4: love defined by God, fear expelled",
@@ -68,20 +56,12 @@ RG.deCh5 = [
         "text": "Colossians 3:1-10 calls us to see ourselves raised with Christ and to set our minds on things above. Our life is hidden, or kept as a secret, with Christ in God. The book reads verse 4 to mean that <em>every time</em> Christ is revealed we are revealed with him, rather than only at a future event. Lust, greed, rage and slander are put to death and taken off like a costume, because the new self is being renewed after the image of its Creator."
       },
       {
-        "head": "Romans 6: calculate the cross",
-        "text": "Romans 6:6-18 says our old self was crucified with him and sin's grip is broken. Christ died to sin once for all (<em>ephapax</em>) and never needs to die again. <em>Reckon</em> (<em>logizomai</em>) means to do a calculation that has only one answer: he died your death, so you are dead to sin and alive to God. Grace is not a licence to sin; it puts us in readiness for God like people raised from the dead, and the teaching we embraced becomes the mould (<em>typos</em>) that shapes our life."
+        "head": "Romans 6 and Galatians 2:20: calculate the cross",
+        "text": "Romans 6:6-18 says our old self was crucified with him; Christ died to sin once for all (<em>ephapax</em>), and to <em>reckon</em> (<em>logizomai</em>) is to do a sum with one answer: he died your death, so you are dead to sin and alive to God. Grace is no licence to sin; it puts us in readiness for God, and the teaching we embraced becomes the mould (<em>typos</em>) of our life. In Galatians 2:20 <em>crucified with Christ</em> is in the Greek perfect tense, a past event with present results: dead to the false self we tried to be and alive to the real self, Christ in us. Romans 7:6 and 1 Thessalonians 5:10 add that we serve in the newness of the Spirit and live together with him whether awake or asleep."
       },
       {
         "head": "2 Peter 1: the conductor of your own life",
         "text": "Peter writes to people who have received a faith of equal value (2 Peter 1:1), and says God's divine power has already given us everything we need for life (verse 3) and made us partakers of the divine nature (verse 4). The book reads the word in verse 5 usually rendered <em>add</em> (<em>epichorēgeō</em>) through the image of a choir conductor who studies every voice and instrument to honour the composer's score. Like a first violinist giving the orchestra its tuning note, God's faith sets the pitch. If these qualities seem absent, we have only become short-sighted and forgotten that we were cleansed (verse 9). Peter, who saw the transfiguration, urges readers to let the morning star rise in their own hearts (verses 16-19)."
-      },
-      {
-        "head": "Awakening is immediate",
-        "text": "The book insists that waking up to the spiritual dimension is not a slow evolution over time. It is as immediate as your next breath, as refreshing as diving into a cold mountain pool on a hot day, and as total as falling head over heels in love. The heavens are not a distant place in outer space but a reality that surrounds the visible world and is nearer than breath."
-      },
-      {
-        "head": "Galatians 2:20: dead and alive at once",
-        "text": "Paul says he has been crucified with Christ, and the verb is in the Greek perfect tense: a past event whose result continues now. The book reads this as being dead to the false self we tried to be and alive to the real self, Christ in us, living by the faith of the Son of God who loved us. Romans 7:6 and 1 Thessalonians 5:10 are added: we serve in the new way of the Spirit, not the old written code, and whether we are awake or asleep we live together with him."
       },
       {
         "head": "2 Corinthians 10: arresting hostile thoughts",
@@ -119,7 +99,7 @@ RG.deCh5 = [
       },
       {
         "title": "Diving into a mountain pool",
-        "text": "Waking up to spiritual reality is compared to plunging into cool mountain water on a hot summer day, or to falling deeply in love. It is not a slow process measured in years but something as immediate as the next breath."
+        "text": "The book insists that waking up to spiritual reality is not a slow process measured in years but as immediate as the next breath, as refreshing as plunging into cool mountain water on a hot summer day, and as all-consuming as falling head over heels in love. Just as galaxies dwarf the earth, the spiritual dimension dwarfs the visible world, yet it is not a distant place in outer space but nearer than breath."
       }
     ],
     "words": [
@@ -198,7 +178,35 @@ RG.deCh5 = [
         "a": "Because prayer, praise or sacrifice cannot pry blessing out of a reluctant God. In Christ God has already blessed us and made up his mind about us. Prayer then becomes conversation and trust, not a coin in a machine."
       }
     ],
-    "scriptures": ["John 10:10", "Genesis 1:26", "Colossians 2:9-10", "Ephesians 2:5-6", "Philemon 1:6", "Philippians 4:11-13", "John 8:32", "Ephesians 4:17-32", "John 7:37-38", "2 Corinthians 3:18", "John 14:20", "1 John 2:7-8", "1 John 5:19-21", "Isaiah 40:18-21", "Acts 17:28-30", "1 John 4:10-21", "1 John 2:2", "John 1:18", "Colossians 3:1-10", "Romans 6:6-18", "2 Peter 1:1-19", "Galatians 2:20", "Romans 7:6", "1 Thessalonians 5:10", "2 Corinthians 10:3-6", "Romans 5:12-21", "Philippians 4:4-9"],
+    "scriptures": [
+      "John 10:10",
+      "Genesis 1:26",
+      "Colossians 2:9-10",
+      "Ephesians 2:5-6",
+      "Philemon 1:6",
+      "Philippians 4:11-13",
+      "John 8:32",
+      "Ephesians 4:17-32",
+      "John 7:37-38",
+      "2 Corinthians 3:18",
+      "John 14:20",
+      "1 John 2:7-8",
+      "1 John 5:19-21",
+      "Isaiah 40:18-21",
+      "Acts 17:28-30",
+      "1 John 4:10-21",
+      "1 John 2:2",
+      "John 1:18",
+      "Colossians 3:1-10",
+      "Romans 6:6-18",
+      "2 Peter 1:1-19",
+      "Galatians 2:20",
+      "Romans 7:6",
+      "1 Thessalonians 5:10",
+      "2 Corinthians 10:3-6",
+      "Romans 5:12-21",
+      "Philippians 4:4-9"
+    ],
     "reflect": "Where in your life are you still trying to get to a place in God that the gospel says is where you already begin?"
   },
   {
@@ -311,7 +319,17 @@ RG.deCh5 = [
         "a": "The book says no: God provided himself as the sacrifice in Christ to change our minds about him, not to change his mind about us (2 Corinthians 5:19). Penal substitution, held by many evangelicals, says the cross also satisfied God's justice. This is one of the main points where the relational reading and traditional readings differ."
       }
     ],
-    "scriptures": ["Genesis 2:9", "Genesis 2:16-17", "Genesis 3:1-7", "Genesis 3:21-24", "2 Corinthians 5:14-21", "1 Peter 1:18-20", "Psalm 40:6", "Luke 15:17", "Colossians 3:1-4"],
+    "scriptures": [
+      "Genesis 2:9",
+      "Genesis 2:16-17",
+      "Genesis 3:1-7",
+      "Genesis 3:21-24",
+      "2 Corinthians 5:14-21",
+      "1 Peter 1:18-20",
+      "Psalm 40:6",
+      "Luke 15:17",
+      "Colossians 3:1-4"
+    ],
     "reflect": "In what area of life are you still eating from the I-am-not tree, trying to prove something God already says is true of you?"
   },
   {
@@ -323,23 +341,15 @@ RG.deCh5 = [
     "points": [
       {
         "head": "Difficulties do not define you",
-        "text": "What helps most in hard times, the book says, is knowing deeper than the senses that our difficulties are not our identity. Nor can they separate us from the affection of God, the Source of our being (Romans 8:38-39). The book also reminds readers that many people face similar or worse troubles."
-      },
-      {
-        "head": "Do not give the contradiction the loudest voice",
-        "text": "Everyone faces circumstances that contradict what God says. The temptation is to let them speak louder than they deserve. What God spoke in the incarnate Christ is true for every human life whether we believe it or not, but our circumstances can feel more real and so hide its relevance from us."
+        "text": "What helps most in hard times, the book says, is knowing deeper than the senses that our difficulties are not our identity and cannot separate us from the affection of God, the Source of our being (Romans 8:38-39). Many people face similar or worse troubles, and all of us are tempted to give the contradiction a louder voice than it deserves. What God spoke in the incarnate Christ is true for every human life, but our circumstances can feel more real and so hide its relevance from us."
       },
       {
         "head": "Immanuel to everyone equally",
         "text": "God is not nearer to some people than to others. In Acts 17 Paul quoted Greek poets (traditionally Epimenides and Aratus) to say we live and move and have our being in God and are his offspring, and that God is not far from any of us. He is as much Immanuel to the Gentile as to the Jew."
       },
       {
-        "head": "Two dimensions at once",
-        "text": "We live in the seen and unseen worlds at the same time. Technology helps here: you never see a radio, TV or internet signal until it shows up on a compatible device, yet it is real. When God calls things that are not as though they were (Romans 4:17), the book says it is because in the unseen realm they truly are, and 2 Corinthians 4:18 says the unseen things are eternal."
-      },
-      {
-        "head": "Wired to believe",
-        "text": "Walking by faith and not by sight (2 Corinthians 5:7) is not an optional extra for a few spiritual people. The book calls it the life we were designed for: we are wired to believe."
+        "head": "Two dimensions at once, and wired to believe",
+        "text": "We live in the seen and unseen worlds at the same time. You never see a radio, TV or internet signal until it shows up on a compatible device, yet it is real; when God calls things that are not as though they were (Romans 4:17), the book says it is because in the unseen realm they truly are, and 2 Corinthians 4:18 calls the unseen eternal. Walking by faith and not by sight (2 Corinthians 5:7) is therefore not an extra for a spiritual few but the life we were designed for: we are wired to believe."
       },
       {
         "head": "1 Corinthians 2: God's hidden plan revealed by the Spirit",
@@ -472,7 +482,25 @@ RG.deCh5 = [
         "a": "The book uses 2 Corinthians 4:18: what is seen is temporary and what is unseen is eternal. Like an invisible signal, God's reality is present even when our senses do not register it. This does not deny the pain; it puts it in a larger frame."
       }
     ],
-    "scriptures": ["Romans 8:38-39", "Acts 17:27-28", "Romans 4:17", "2 Corinthians 4:8", "2 Corinthians 4:18", "2 Corinthians 5:1-9", "1 Corinthians 2:9-13", "1 Corinthians 1:30", "Isaiah 64:4", "Hebrews 11:1-3", "Colossians 1:27", "James 1:2-25", "Matthew 6:13", "2 Corinthians 12:7-10", "Isaiah 40:27-31", "Romans 3:27", "Galatians 5:6"],
+    "scriptures": [
+      "Romans 8:38-39",
+      "Acts 17:27-28",
+      "Romans 4:17",
+      "2 Corinthians 4:8",
+      "2 Corinthians 4:18",
+      "2 Corinthians 5:1-9",
+      "1 Corinthians 2:9-13",
+      "1 Corinthians 1:30",
+      "Isaiah 64:4",
+      "Hebrews 11:1-3",
+      "Colossians 1:27",
+      "James 1:2-25",
+      "Matthew 6:13",
+      "2 Corinthians 12:7-10",
+      "Isaiah 40:27-31",
+      "Romans 3:27",
+      "Galatians 5:6"
+    ],
     "reflect": "Which contradiction in your life has been given the loudest voice lately, and what would it look like to let God's word about you speak louder?"
   },
   {
@@ -487,40 +515,24 @@ RG.deCh5 = [
         "text": "Luke opens by saying many have tried to write an orderly account (<em>diēgēsis</em>) of the things fulfilled among us. The book notes that writers on medicine used this word for medical treatises; the commentator Marvin Vincent observed that the physician Galen used it often of Hippocrates' writings. The book reads <em>among us</em> as <em>in us</em>, and stresses the Greek perfect tense: the work has reached its completion and its results are present, so humanity is not only the audience but the beneficiary."
       },
       {
-        "head": "Hippocrates and the rise of rational medicine",
-        "text": "The book gives background on Hippocrates of Kos (traditionally dated about 460-370 BC), the father of Western medicine. He rejected the idea that disease was a punishment from the gods or caused by evil spirits, and looked for natural causes like environment, diet and habits. Hippocratic care favoured rest, good food, fresh air, cleanliness and gentle treatment, and its writings located thought and feeling in the brain. The Hippocratic Oath still shapes medical ethics."
-      },
-      {
-        "head": "Thank God for doctors, and more",
-        "text": "The book explicitly thanks God for physicians and medicine. It adds that Jesus' ministry, as Luke the doctor emphasises, goes beyond medication, diagnosis and explanation (Luke 8:43). The chapter does not set faith against medical care; it celebrates both."
+        "head": "Hippocrates, and thank God for doctors",
+        "text": "The book gives background on Hippocrates of Kos (traditionally about 460-370 BC), the father of Western medicine, who rejected the idea that disease was punishment from the gods or the work of evil spirits and looked for natural causes like environment, diet and habits. Hippocratic care favoured rest, good food, fresh air, cleanliness and gentle treatment, its writings located thought in the brain, and the Hippocratic Oath still shapes medical ethics. The book explicitly thanks God for physicians and medicine, adding that Jesus' ministry, as Luke the doctor shows, goes beyond diagnosis and medication (Luke 8:43); it does not set faith against medical care."
       },
       {
         "head": "Healing and teaching together",
         "text": "Crowds came to hear Jesus and to be healed (Luke 5:15), yet he often withdrew to lonely places to pray (5:16). On the day of the paralysed man, the power of the Lord was present to heal while he was teaching, with Pharisees and teachers of the law in the audience (5:17). Luke always links Jesus' healing with his teaching, as he does with Paul in Acts 14:1 and 14:8-10, where Paul saw that a listener had faith to be healed."
       },
       {
-        "head": "The man through the roof",
-        "text": "Friends could not get a paralysed man through the crowd, so they climbed the roof, removed tiles and lowered him in front of Jesus (Luke 5:18-19). Luke uses a medical-sounding perfect participle for the man's paralysis, describing a lasting condition from some earlier event. The book asks why Jesus let them damage the house instead of healing from a distance, and answers that he saw a strategic chance to expose the religious system that traded in sin-consciousness."
-      },
-      {
-        "head": "Your sins are forgiven",
-        "text": "Seeing their faith, Jesus first told the man his sins were forgiven (Luke 5:20). The book says this pulled the rug out from under the religious leaders, whose leverage over people depended on sin-consciousness. It recalls Peter's earlier cry, depart from me for I am a sinful man (5:8), as the attitude Jesus was undoing. Then he healed the man to show the Son of Man has authority to forgive (5:24), and the crowd was amazed (Luke uses <em>ekstasis</em> and <em>paradoxa</em>)."
+        "head": "The man through the roof: your sins are forgiven",
+        "text": "Friends could not get a paralysed man through the crowd, so they removed roof tiles and lowered him before Jesus (Luke 5:18-19); Luke describes his paralysis with a medical-sounding perfect participle. The book asks why Jesus let them damage the house rather than heal from a distance, and answers that he saw a chance to expose a religious system that traded in sin-consciousness: seeing their faith, he first declared the man's sins forgiven (5:20), undoing the attitude of Peter's earlier cry, depart from me, for I am a sinful man (5:8). Then he healed him to show the Son of Man's authority to forgive (5:24), and the crowd was amazed (Luke uses <em>ekstasis</em> and <em>paradoxa</em>)."
       },
       {
         "head": "Sickness is not karma",
-        "text": "The book insists that the basis of Jesus' healing ministry was breaking the link people made between sin and sickness. It says illness is not a form of karma, a belief nurtured for generations; the book points to a popular musical song about having done something good to deserve love as an example of the same reward-based thinking. John 9:1-3 makes the point directly: neither the man nor his parents sinned to cause his blindness, but God's works would be shown in him."
+        "text": "The book says the basis of Jesus' healing ministry was breaking the link people made between sin and sickness, a reward-and-punishment belief nurtured for generations (it points to a popular musical song about having done something good to deserve love as the same thinking). John 9:1-3 makes the point directly: neither the blind man nor his parents sinned to cause his condition, but God's works would be shown in him. In John 9:4 the best manuscripts read <em>we</em> must work the works of him who sent me, which the book takes as Jesus inviting his followers onto his side, since grace and karma cannot pull on the same team."
       },
       {
-        "head": "We must work the works",
-        "text": "In John 9:4 the best manuscripts read <em>we</em> must work the works of him who sent me, not <em>I</em>. The book takes this as Jesus inviting his followers onto his side: you cannot pull in two directions in one team, and grace and karma do not go together."
-      },
-      {
-        "head": "Jesus the praying one",
-        "text": "Luke shows Jesus praying more than the other Gospels. In Luke 6:12 he spent the whole night in prayer, using a rare phrase that medical writers also used for all-night vigils. Luke literally says he was in <em>the prayer of God</em>; the book reads <em>proseuchē</em> as face-to-face communion, a place where desires are mirrored."
-      },
-      {
-        "head": "They came to hear and be healed",
-        "text": "On the plain, crowds came from Judea, Jerusalem, Tyre and Sidon to hear him and to be healed, and those troubled by unclean spirits were cured (Luke 6:17-18). The book notes the Greek aorist infinitives suggest people with their minds made up: they came determined to hear with understanding and be healed. Everyone tried to touch him, power came out from him, and he kept healing them all, one by one (6:19)."
+        "head": "Prayer, then crowds determined to hear",
+        "text": "Luke shows Jesus praying more than the other Gospels; in Luke 6:12 he spent the whole night <em>in the prayer of God</em>, a rare phrase, and the book reads <em>proseuchē</em> as face-to-face communion. On the plain, crowds came from Judea, Jerusalem, Tyre and Sidon to hear him and be healed (6:17-18); the book notes the Greek aorist infinitives suggest people with their minds made up. Everyone tried to touch him, power came out from him, and he kept healing them all, one by one (6:19)."
       },
       {
         "head": "Luke's interest in how healing feels",
@@ -539,12 +551,8 @@ RG.deCh5 = [
         "text": "Luke's woes (6:24-26) are read as a sigh of sadness rather than a curse: how sad that you think wealth earned by your own toil shows what you are worth, and that you have your receipt in full (<em>apechō</em>, a word used on papyrus receipts). Those satisfied with a diet of legalism will find themselves hungry, and those who chase everyone's approval repeat the flattery once given to false prophets. The book insists Jesus was not telling the Pharisees God would burn them; he goes straight on to command love for enemies (6:27)."
       },
       {
-        "head": "Jairus and the woman, both twelve years",
-        "text": "Jairus, a synagogue ruler, begged Jesus to come because his twelve-year-old daughter was dying (Luke 8:40-42). On the way a woman who had bled for twelve years and spent all she had on doctors without a cure touched the edge of his cloak and was healed at once (8:43-44). Jesus felt power go out, asked who touched him, and called her daughter, saying her faith had made her well and she could go in peace (8:45-48). The book suggests Jairus overheard her story, a twelve-year illness matching his daughter's age, and that it strengthened his faith."
-      },
-      {
-        "head": "Do not let bad news interrupt your hearing",
-        "text": "While Jesus was still speaking, word came that the girl had died. Jesus told Jairus not to fear but only believe, and she would be made well (Luke 8:49-50). He took only Peter, James, John and the parents inside, said she was sleeping, not dead, and was laughed at; then he took her hand, called her to rise, and her spirit returned, and he told them to give her something to eat (8:51-55). The book loves Luke's stress on <em>how</em> we hear: not academically, not in doubt and debate, and not letting bad news cut in."
+        "head": "Jairus and the woman: do not let bad news interrupt",
+        "text": "Jairus begged Jesus to come to his dying twelve-year-old daughter, and on the way a woman who had bled for twelve years and spent everything on doctors touched the edge of his cloak and was healed at once; Jesus felt power go out, called her daughter, and sent her in peace (Luke 8:40-48). The book suggests Jairus overheard her twelve-year story just before word came that his daughter had died, and Jesus told him not to fear but only believe (8:49-50). Inside, with Peter, James, John and the parents, Jesus said she was sleeping, was laughed at, took her hand and raised her, and told them to feed her (8:51-55). The book loves Luke's stress on <em>how</em> we hear: not academically, not in doubt, and not letting bad news cut in."
       },
       {
         "head": "Habakkuk and living by God's faith",
@@ -653,7 +661,23 @@ RG.deCh5 = [
         "a": "The book reads them as a sigh of sorrow over people trusting their own success and approval, not as a sentence of burning. Its evidence is that Jesus moves straight on to commanding love for enemies. Many interpreters read <em>woe</em> as a real warning of judgment, so this is debated."
       }
     ],
-    "scriptures": ["Luke 1:1-4", "Luke 5:8", "Luke 5:15-26", "Mark 2:1-12", "John 9:1-4", "Luke 6:12-27", "Acts 14:1", "Acts 14:8-10", "Luke 8:40-56", "Romans 1:17", "Habakkuk 2:4", "Habakkuk 3:17-19", "Luke 9:37-43", "Mark 9:14-16", "Luke 18:31-43"],
+    "scriptures": [
+      "Luke 1:1-4",
+      "Luke 5:8",
+      "Luke 5:15-26",
+      "Mark 2:1-12",
+      "John 9:1-4",
+      "Luke 6:12-27",
+      "Acts 14:1",
+      "Acts 14:8-10",
+      "Luke 8:40-56",
+      "Romans 1:17",
+      "Habakkuk 2:4",
+      "Habakkuk 3:17-19",
+      "Luke 9:37-43",
+      "Mark 9:14-16",
+      "Luke 18:31-43"
+    ],
     "reflect": "Is there any part of you that still quietly reads illness or disaster as a sign God is against you, and what would Jesus' healings say to it?"
   },
   {
@@ -665,47 +689,27 @@ RG.deCh5 = [
     "points": [
       {
         "head": "What was different about her touch",
-        "text": "Many people were pressing on Jesus, yet one woman touched him differently and was healed (Luke 8:44-46). The book says she knew Malachi 4:2, where the sun of righteousness rises with healing in its wings. The Hebrew <em>kanaph</em> means wing but also the corner or edge of a garment, where the tassels were worn, so touching his hem was an act of prophetic faith."
-      },
-      {
-        "head": "Her faith came from what she heard",
-        "text": "Jesus said, your faith has made you well (Luke 8:48). The book notes she did not approach hesitantly, planning to believe after the miracle; she had heard enough good news about Jesus as the Messiah that an unstoppable faith had already sprung up in her. Faith came by hearing before it saw anything."
+        "text": "Many pressed on Jesus, yet one woman touched him differently and was healed (Luke 8:44-48). The book says she knew Malachi 4:2, the sun of righteousness rising with healing in its wings, and the Hebrew <em>kanaph</em> means both wing and the edge of a garment. She did not plan to believe after the miracle; she had heard enough good news about Jesus as Messiah that unstoppable faith had already sprung up, which is why he said, your faith has made you well."
       },
       {
         "head": "Wired to believe, like breathing",
-        "text": "We do not invent faith through positive thinking or by trying out some new philosophy. We are faith-compatible by design and believe naturally. If breathing depended on studying how lungs work and then concentrating every moment, we would override the body's ability to breathe freely; forcing faith works the same way."
+        "text": "We do not invent faith through positive thinking or a new philosophy; we are faith-compatible by design. If breathing depended on studying lungs and concentrating on every breath, we would override the body's natural ability, and forcing faith works the same way. What makes faith invincible, the book says, is drawing it from its Source: reflect God's persuasion about you and rest your whole being in his agape (compare Matthew 9:29)."
       },
       {
-        "head": "Draw from the Source",
-        "text": "Jesus said, according to your faith let it be to you (Matthew 9:29). The book asks what makes faith invincible and answers: draw it from its true Source, reflect God's persuasion about you, and rest your whole being in his agape love."
+        "head": "Believing happens; truth is not voted in",
+        "text": "Romans 10:10 says it is with the heart that one believes, and the Greek is impersonal, literally <em>it is believed</em>: believing takes place. Faith is not something we do but what happens when we realise what God has done in restoring our innocence, and it overflows in speech (Isaiah 40:9). Something does not become true by popular vote or because we believe it; faith happens when we meet the good news of what is already true."
       },
       {
-        "head": "Believing happens in the heart",
-        "text": "Romans 10:10 says it is with the heart that one believes. The book notes the Greek is impersonal, literally <em>it is believed</em>: believing takes place. Faith is not something we do; it is what happens when we realise what God has done, restoring us to innocence, and it naturally overflows in speech (Isaiah 40:9)."
-      },
-      {
-        "head": "Truth is not decided by vote",
-        "text": "Something does not become true because many people believe it, or because we do. If it was not true to begin with, trying to believe it into being is a waste of time. Faith happens when we meet the good news of what is already true."
-      },
-      {
-        "head": "Standing on tiptoe",
-        "text": "Luke 18:8 asks whether the Son of Man will find faith on the earth. The book reads it as: will he find people standing on tiptoe in eager expectation? It argues this chapter of Luke is not about a distant future coming. The blind beggar at Jericho is the answer: he was on tiptoe for the Son of David and did not buy into the unbelief of the religious leaders."
-      },
-      {
-        "head": "Their faith and the broken roof",
-        "text": "The paralysed man's friends are revisited: when Jesus saw their faith he declared the man's sins forgiven (Luke 5:19-20). The book repeats that this dismantled the sin-consciousness on which the religious system depended, and that innocence is our design. Jesus' healings challenged the Deuteronomy 28 model of blessing and curse, and Luke never mentions anyone having to qualify, though he always ties healing to teaching (Acts 14:1, 8-10)."
+        "head": "Expectant faith: the beggar and the friends",
+        "text": "Luke 18:8 asks whether the Son of Man will find faith on earth, which the book reads as people standing on tiptoe in expectation, not a distant future event. The blind beggar at Jericho was exactly that, refusing the leaders' unbelief, and the friends who broke the roof showed the same faith, to which Jesus answered with forgiveness that dismantled sin-consciousness (Luke 5:19-20). Luke never mentions anyone having to qualify and always ties healing to teaching (Acts 14:1, 8-10), challenging the Deuteronomy 28 model of blessing and curse."
       },
       {
         "head": "Grace already given",
         "text": "Romans 5:16-17 contrasts one sin leading to condemnation with the gift that turns many trespasses into acquittal, so that those who receive abundant grace reign in life through Jesus. The book stresses that <em>those who receive</em> is simply <em>the recipients</em>: grace belongs to humanity before anyone gives permission. This does not remove faith; it gives faith its context."
       },
       {
-        "head": "From faith to faith",
-        "text": "The gospel reveals God's righteousness from faith to faith (Romans 1:17), and the preposition <em>ek</em> (from) points to source. The book reads Habakkuk 2:4 as the just living by God's faith. Habakkuk, facing disaster, saw that promise outdates performance as the ground of acquittal, and the curse is taken out of the equation (Galatians 3:13). Whether Habakkuk 2:4 means the righteous person's faith or God's faithfulness is a debated point among scholars."
-      },
-      {
-        "head": "Promise before law",
-        "text": "Galatians 3:17-18 says the covenant of promise came 430 years before the law, and the law cannot cancel it; inheritance is by promise, not by law. Galatians 3:5 asks whether the Spirit came by works of the law or by hearing with faith. The book concludes that God's faith embodied in Christ is the only basis for our acquittal, and Hebrews 12:2 calls Jesus the author and finisher of faith."
+        "head": "From faith to faith, promise before law",
+        "text": "The gospel reveals God's righteousness from faith to faith (Romans 1:17), and <em>ek</em> (from) points to source; the book reads Habakkuk 2:4 as the just living by God's faith, so that promise outdates performance and the curse is removed (Galatians 3:13). Whether Habakkuk means the believer's faith or God's faithfulness is debated among scholars. Galatians 3:17-18 adds that the promise came 430 years before the law and cannot be cancelled by it, Galatians 3:5 asks whether the Spirit came by works or by hearing with faith, and Hebrews 12:2 calls Jesus the author and finisher of faith."
       },
       {
         "head": "Faith of equal value for everyone",
@@ -724,12 +728,8 @@ RG.deCh5 = [
         "text": "2 Peter 1:10-11 urges us to make our calling and election sure, and the book reads calling as being named by our original identity and election as coming from God's word. The word for stumble (<em>ptaiō</em>) is pictured as getting out of tune or losing height. God himself is then the great conductor who leads us into the harmony of the ages. Peter, who saw Jesus transfigured and heard the Father's voice, calls his testimony a lamp until the morning star rises in our hearts (1:16-19)."
       },
       {
-        "head": "God's oath settles every dispute",
-        "text": "Hebrews 6:13-20 says God, having no one greater, swore by himself to Abraham. People use oaths to end arguments, and God confirmed his promise by an oath so that by two unchangeable things we have strong encouragement. The word for confirming (<em>mesiteuō</em>) is linked to <em>mesitēs</em>, mediator: in Christ God placed himself in the middle. With Abraham there was no human go-between (Galatians 3:20); in Jesus, God fulfils both his part and ours."
-      },
-      {
-        "head": "Our minds needed persuading",
-        "text": "The book says humanity was not redeemed from the devil, because a thief never becomes an owner, and Jesus did not die to change the Father's mind about us. It was our minds that needed persuading: God was in Christ reconciling the world to himself (2 Corinthians 5:18-20). Jesus went behind the veil as our forerunner and high priest like Melchizedek, removing every obstacle and preparing a place where we may be with him (Hebrews 6:19-20; John 14:3, 20)."
+        "head": "God's oath, and our minds persuaded",
+        "text": "Hebrews 6:13-20 says God, having no one greater, swore by himself, ending all dispute; the word for confirming (<em>mesiteuō</em>) is linked to <em>mesitēs</em>, mediator, and in Christ God placed himself in the middle, fulfilling both his part and ours (compare Galatians 3:20). The book says humanity was not redeemed from the devil, since a thief never becomes an owner, nor did Jesus die to change the Father's mind: our minds needed persuading, for God was in Christ reconciling the world to himself (2 Corinthians 5:18-20). Jesus went behind the veil as our forerunner and Melchizedek high priest, preparing a place where we may be with him (Hebrews 6:19-20; John 14:3, 20)."
       },
       {
         "head": "Jesus is God's Yes",
@@ -826,7 +826,32 @@ RG.deCh5 = [
         "a": "There is no hesitation in God about humanity: every promise finds its fulfilment in Christ (2 Corinthians 1:20). Our Amen is simply agreeing with what God has already said."
       }
     ],
-    "scriptures": ["Luke 8:43-48", "Malachi 4:2", "Matthew 9:29", "Romans 10:10", "Isaiah 40:9", "Luke 18:8", "Luke 18:35-43", "Luke 5:19-20", "Romans 5:16-17", "Romans 1:17", "Habakkuk 2:4", "Galatians 3:5", "Galatians 3:13", "Galatians 3:17-20", "Hebrews 12:2", "2 Peter 1:1-19", "James 3:9", "Jeremiah 1:5", "Hebrews 6:13-20", "2 Corinthians 5:18-20", "John 14:3", "John 14:20", "2 Corinthians 1:18-20", "John 1:12-18"],
+    "scriptures": [
+      "Luke 8:43-48",
+      "Malachi 4:2",
+      "Matthew 9:29",
+      "Romans 10:10",
+      "Isaiah 40:9",
+      "Luke 18:8",
+      "Luke 18:35-43",
+      "Luke 5:19-20",
+      "Romans 5:16-17",
+      "Romans 1:17",
+      "Habakkuk 2:4",
+      "Galatians 3:5",
+      "Galatians 3:13",
+      "Galatians 3:17-20",
+      "Hebrews 12:2",
+      "2 Peter 1:1-19",
+      "James 3:9",
+      "Jeremiah 1:5",
+      "Hebrews 6:13-20",
+      "2 Corinthians 5:18-20",
+      "John 14:3",
+      "John 14:20",
+      "2 Corinthians 1:18-20",
+      "John 1:12-18"
+    ],
     "reflect": "What would change if you stopped trying to produce faith and simply listened again to how persuaded God is about you?"
   }
 ];
