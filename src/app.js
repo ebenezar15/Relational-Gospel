@@ -677,7 +677,7 @@
   /* ---------- The Divine Embrace ---------- */
   var deC = 0, deTab = "big", deRead = {}, deLie = 0, deMir = false, deWq = "", deQq = "", deStory = -1;
   var DET = [["big", "Big idea"], ["points", "Key teachings"], ["stories", "Stories"], ["words", "Word studies"], ["questions", "Questions"], ["scriptures", "Scriptures"], ["reflect", "Reflect"]];
-  function deAll() { return A("deCh1").concat(A("deCh2"), A("deCh3"), A("deCh4"), A("deCh5")).sort(function (a, b) { return a.n - b.n; }); }
+  function deAll() { return A("deCh1").concat(A("deCh2"), A("deCh3"), A("deCh4"), A("deCh5"), A("deCh6")).sort(function (a, b) { return a.n - b.n; }); }
   V.embrace = function () {
     RG.deChapters = deAll();
     var C = RG.deChapters, I = RG.deIntro || {}, ST = [], W = [], Q = [];
