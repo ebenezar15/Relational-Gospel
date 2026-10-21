@@ -1040,3 +1040,50 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .de-st.on { border-color: var(--gold); background: var(--gold-soft); grid-column: 1 / -1; }
 .de-search { font: inherit; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 100%; max-width: 480px; margin-bottom: 12px; }
 .de-lie:not(.flip)::after { content: "Tap to turn it around"; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); }
+
+/* ---------- The life is in the blood ---------- */
+.bl-banner { display: grid; gap: 4px; margin: 0 0 18px; padding: 14px 18px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, #c0392b 45%, var(--line)); background: linear-gradient(110deg, color-mix(in srgb, #c0392b 16%, var(--surface)), var(--surface)); color: var(--ink); text-decoration: none; transition: transform .3s, box-shadow .3s; }
+.bl-banner:hover { transform: translateY(-2px); box-shadow: 0 6px 20px color-mix(in srgb, #c0392b 25%, transparent); }
+.bl-banner span { color: var(--muted); font-size: 15px; }
+.bl-map { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.bl-map svg { width: 100%; height: auto; display: block; overflow: visible; }
+.bl-loop { fill: none; stroke-width: 14; stroke-linecap: round; opacity: .28; }
+.bl-loop.body { stroke: #c0392b; }
+.bl-loop.lung { stroke: #5b8bd6; }
+.bl-cell.red { fill: #e2574c; }
+.bl-cell.blue { fill: #6f9be0; }
+.bl-st { cursor: pointer; outline: none; }
+.bl-st circle { fill: var(--surface); stroke: var(--line); stroke-width: 2.5; transition: fill .4s, stroke .4s, r .4s; }
+.bl-st text { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; fill: var(--muted); pointer-events: none; }
+.bl-st.heart circle { fill: color-mix(in srgb, #c0392b 35%, var(--surface)); stroke: #c0392b; animation: heartbeat 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.14); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+.bl-st:hover circle, .bl-st:focus-visible circle { stroke: var(--gold); }
+.bl-st.on circle { fill: var(--gold-soft); stroke: var(--gold); }
+.bl-st.on text { fill: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .bl-st.heart circle { animation: none; } .bl-cell { display: none; } }
+.bl-bar { display: flex; gap: 3px; border-radius: 14px; overflow: hidden; min-height: 76px; }
+.bl-seg { min-width: 0; display: grid; place-content: center; gap: 2px; text-align: center; padding: 8px 4px; border: 0; color: #fff; font: inherit; cursor: pointer; transition: filter .3s, transform .3s; }
+.bl-seg b { font-size: 14px; }
+.bl-seg small { font-family: var(--mono); font-size: 11px; opacity: .85; }
+.bl-seg.s-plasma { background: #d9a23d; color: #2a1d05; }
+.bl-seg.s-red { background: #b83227; }
+.bl-seg.s-white { background: #8e98a8; }
+.bl-seg.s-platelets { background: #7b4b8f; }
+.bl-seg:hover { filter: brightness(1.1); }
+.bl-seg.on { box-shadow: inset 0 0 0 3px var(--ink); }
+#bl-pcard { margin-top: 12px; }
+.bl-facts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+.bl-fact { display: grid; gap: 4px; align-content: start; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); animation: pop .5s both; }
+.bl-fact b { font-size: 30px; color: #d0463b; line-height: 1.1; }
+.bl-fact span { font-weight: 600; }
+.bl-fact p { font-size: 14.5px; color: var(--muted); }
+.bl-thread { display: grid; gap: 8px; position: relative; padding-left: 26px; }
+.bl-thread::before { content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: linear-gradient(#c0392b, #e2574c, #c0392b); }
+.bl-tm { position: relative; display: grid; gap: 4px; text-align: left; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; transition: border-color .3s, background .3s; }
+.bl-tm i { position: absolute; left: -23px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 3px solid #c0392b; transition: background .3s, box-shadow .3s; }
+.bl-tm b { font-size: 16px; }
+.bl-tm.on { border-color: color-mix(in srgb, #c0392b 55%, var(--line)); }
+.bl-tm.on i { background: #c0392b; box-shadow: 0 0 12px #c0392b; }
+.bl-tm-in { display: grid; gap: 8px; margin-top: 6px; animation: rise .4s both; cursor: auto; }
+.bl-tm-in p { font-size: 15.5px; }
+.bl-track { background: linear-gradient(90deg, var(--wine-soft), #c0392b, var(--gold), var(--dawn-soft)); }

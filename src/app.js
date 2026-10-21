@@ -106,6 +106,8 @@
     wchar: { key: "wyChar", view: "ways", title: function (x) { return "God is " + x.trait.toLowerCase(); }, sub: function () { return "Seen in Jesus"; }, label: "God’s character" },
     wcase: { key: "wyCases", view: "ways", title: function (x) { return x.title; }, sub: function () { return "Case study"; }, label: "How God works" },
     wprov: { key: "wyProvidence", view: "ways", title: function (x) { return x.label; }, sub: function () { return "View of providence"; }, label: "How God works" },
+    blq: { key: "blQA", view: "blood", title: function (x) { return x.q; }, sub: function () { return "The life is in the blood"; }, label: "The life is in the blood" },
+    blst: { key: "blStory", view: "blood", title: function (x) { return x.title; }, sub: function (x) { return x.ref; }, label: "Blood in Scripture" },
     dech: { key: "deChapters", view: "embrace", title: function (x) { return "Ch. " + x.n + ": " + x.title; }, sub: function () { return "The Divine Embrace"; }, label: "The Divine Embrace" },
     mmyth: { key: "mmMyths", view: "myths", title: function (x) { return x.myth; }, sub: function (x) { return x.kind + " #" + x.n + " · " + x.category; }, label: "Myths & mistranslations" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
@@ -119,7 +121,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -250,6 +252,7 @@
       ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["big", "Big questions", "Why we need God, the devil, the finished work, Adam, and every term defined."],
       ["forgive", "Forgiveness & repair", "Forgiving, repairing, boundaries, and living after harm."],
+      ["blood", "The life is in the blood", "Blood’s design, its meaning in the Old Testament, and how Christ’s blood cleanses."],
       ["embrace", "The Divine Embrace", "A chapter-by-chapter journey into union, the mirror and our true design."],
       ["myths", "Myths & mistranslations", "Sayings and translations many repeat without checking, busted one by one."],
       ["ways", "How God works", "His character, his boundaries, his voice, and why some are spared."],
@@ -283,6 +286,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["blood", "The life is in the blood", "An animated journey of blood, " + A("blStory").length + " moments in the scarlet thread, " + A("blQA").length + " deep questions"],
         ["embrace", "The Divine Embrace", deAll().length + " chapters with stories, word studies and questions"],
         ["myths", "Myths & mistranslations", A("mmMyths").length + " myths and mistranslations to bust, " + A("mmCannot").length + " things God cannot do"],
         ["ways", "How God works", A("wyChar").length + " traits seen in Jesus, a voice quiz, a change skeleton, " + A("wyQA1").concat(A("wyQA2")).length + " deep questions"],
@@ -672,7 +676,48 @@
       ((q.evidence || []).length ? evGrid(q.evidence) : "") +
       '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-qxm="' + p + ':-1"' + (i === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-qxm="' + p + ':1"' + (i === Q.length - 1 ? " disabled" : "") + ">Next question →</button></div></article>";
   }
-  var QXSAVE = { rbq: "rq", dsq: "dq", wyq1: "wq1", wyq2: "wq3" };
+  var QXSAVE = { rbq: "rq", dsq: "dq", wyq1: "wq1", wyq2: "wq3", blq: "blq" };
+
+  /* ---------- The life is in the blood ---------- */
+  var blS = 0, blT = null, blP = 1, blSt = 0, blV = 3;
+  var BLPOS = { heart: [320, 170], lungs: [320, 42], arteries: [520, 200], cells: [470, 318], veins: [170, 318], kidneys: [118, 205], liver: [210, 245], marrow: [430, 262], wound: [600, 300] };
+  var BLA = "M320 170 C 560 170, 590 330, 320 335 C 50 330, 80 170, 320 170", BLB = "M320 170 C 190 170, 190 42, 320 42 C 450 42, 450 170, 320 170";
+  V.blood = function () {
+    var P = A("blParts"), S = A("blStations"), F = A("blFacts"), ST = A("blStory"), W = A("blWords"), VW = A("blViews");
+    var E = A("blEvidence1").concat(A("blEvidence2"), A("blEvidence3"));
+    var tot = P.reduce(function (a, p) { return a + Math.max(p.pct, 6); }, 0);
+    return head("Design of creation", "The life is in the blood", "How blood is designed to carry life, cleanse, defend and heal every cell of the body, and why Scripture says “the life of the flesh is in the blood”. From Abel to the Passover, the Day of Atonement and the cup of the new covenant: what blood meant in its world, and how Jesus’s blood cleanses, heals and unites. (Biological parallels are offered as pictures, not proofs.)") +
+      (S.length ? '<section class="section"><h2>The journey of blood</h2><p class="note">Watch blood circulate. Tap any station, or follow one cell on its journey.</p><div class="bl-map" id="bl-map"><svg viewBox="0 0 680 370" aria-hidden="true"><path d="' + BLA + '" class="bl-loop body"/><path d="' + BLB + '" class="bl-loop lung"/>' +
+        [0, 1, 2, 3, 4, 5, 6, 7].map(function (k) { return '<circle r="5" class="bl-cell ' + (k % 2 ? "blue" : "red") + '"><animateMotion dur="9s" repeatCount="indefinite" begin="-' + (k * 1.125).toFixed(2) + 's" path="' + BLA + '"/></circle>'; }).join("") +
+        [0, 1, 2, 3].map(function (k) { return '<circle r="4.5" class="bl-cell ' + (k % 2 ? "red" : "blue") + '"><animateMotion dur="5s" repeatCount="indefinite" begin="-' + (k * 1.25).toFixed(2) + 's" path="' + BLB + '"/></circle>'; }).join("") +
+        S.map(function (s, i) { var p = BLPOS[s.id] || [320, 170]; return '<g class="bl-st' + (s.id === "heart" ? " heart" : "") + '" data-bls="' + i + '" tabindex="0" role="button" aria-label="' + esc(s.label) + '"><circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (s.id === "heart" ? 24 : 15) + '"/><text x="' + p[0] + '" y="' + (p[1] + (s.id === "heart" ? 42 : 30)) + '" text-anchor="middle">' + esc(s.label.toUpperCase()) + "</text></g>"; }).join("") +
+        '</svg><div class="row"><button class="btn" type="button" id="bl-play">Follow one cell</button><span class="count" id="bl-cnt"></span></div><div id="bl-card"></div></div></section>' : "") +
+      (P.length ? '<section class="section"><h2>What blood is made of</h2><p class="note">Tap each part. (White cells and platelets are less than 1% of the volume; they are widened here so you can tap them.)</p><div class="bl-bar">' + P.map(function (p, i) { return '<button type="button" class="bl-seg s-' + esc(p.id) + (i === blP ? " on" : "") + '" data-blp="' + i + '" style="flex:' + (Math.max(p.pct, 6) / tot * 100).toFixed(1) + '"><b>' + esc(p.label) + "</b><small>" + (p.pct >= 1 ? "~" + p.pct + "%" : "&lt;1%") + "</small></button>"; }).join("") + '</div><div id="bl-pcard"></div></section>' : "") +
+      (F.length ? '<section class="section"><h2>Wonder in numbers</h2><div class="bl-facts">' + F.map(function (f, i) { return '<article class="bl-fact" style="animation-delay:' + (i * 0.06).toFixed(2) + 's"><b>' + esc(f.num) + "</b><span>" + esc(f.label) + "</span><p>" + f.text + '</p><a class="ref" href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.source) + " ↗</a></article>"; }).join("") + "</div></section>" : "") +
+      (ST.length ? '<section class="section"><h2>The scarlet thread through Scripture</h2><p class="note">Fourteen moments where blood appears in the story. Tap one to see its world, its meaning, and how it points to Jesus.</p><div class="bl-thread">' + ST.map(function (s, i) { return '<button type="button" class="bl-tm' + (i === blSt ? " on" : "") + '" data-blt="' + i + '"><i aria-hidden="true"></i><b>' + esc(s.title) + '</b><span class="ref">' + esc(s.ref) + "</span>" + (i === blSt ? '<div class="bl-tm-in"><p>' + s.scene + '</p><div class="panel gold"><div class="label">In its world</div><p>' + s.culture + '</p></div><div class="panel uni"><div class="label">Through the relational lens</div><p>' + s.relational + '</p></div><p style="font-size:15px"><strong>In Christ:</strong> ' + s.fulfilled + "</p></div>" : "") + "</button>"; }).join("") + "</div></section>" : "") +
+      (W.length ? '<section class="section"><h2>The words</h2><div class="grid">' + W.map(function (w, i) { return '<article class="gterm" style="animation-delay:' + (i * 0.04).toFixed(2) + 's"><div class="orig">' + esc(w.word) + "</div><h3>" + esc(w.translit) + ' <span class="ref">' + esc(w.lang + " · " + w.gloss) + "</span></h3><p>" + w.meaning + '</p><div class="verse">' + w.example + "</div></article>"; }).join("") + "</div></section>" : "") +
+      (VW.length ? '<section class="section"><h2>How does the blood of Christ save?</h2><p class="note">Four readings Christians hold, each with its strength and weakness.</p><div class="lvp"><div class="lvp-track bl-track"><i id="blv-dot"></i></div><div class="lvp-stops">' + VW.map(function (v, i) { return '<button type="button" class="chip" data-blv="' + i + '" aria-pressed="' + (i === blV) + '">' + esc(v.label) + "</button>"; }).join("") + '</div><div id="blv-card"></div></div></section>' : "") +
+      qxSection("blq", A("blQA")) +
+      (E.length ? '<section class="section"><h2>Evidence and sources</h2>' + evGrid(E) + "</section>" : "") +
+      '<section class="section"><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#why">The why of design</a><a class="chip" href="#design">Made for each other</a><a class="chip" href="#law">Why God gave the Law</a><a class="chip" href="#saviour">Why a Saviour?</a><a class="chip" href="#love">God is love: one nature</a></div></section>';
+  };
+  function blShow() {
+    var S = A("blStations"), s = S[blS]; if (!s || !$("#bl-card")) { clearInterval(blT); return; }
+    $$(".bl-st").forEach(function (g, i) { g.classList.toggle("on", i === blS); });
+    $("#bl-cnt").textContent = "Station " + (blS + 1) + " of " + S.length;
+    $("#bl-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(s.label) + '</div><div class="cmp-pair"><div class="panel gold"><div class="label">The design</div><p>' + s.body + '</p></div><div class="panel uni"><div class="label">A picture of the gospel</div><p>' + s.parallel + '</p></div></div><div class="verse">' + s.ref + "</div></article>";
+  }
+  function blpShow() {
+    var P = A("blParts"), p = P[blP]; if (!p || !$("#bl-pcard")) return;
+    $$(".bl-seg").forEach(function (b, i) { b.classList.toggle("on", i === blP); });
+    $("#bl-pcard").innerHTML = '<article class="vph-card"><h3>' + esc(p.label) + "</h3><p>" + p.body + '</p><div class="panel uni"><div class="label">A picture of the gospel</div><p>' + p.parallel + '</p></div><div class="verse">' + p.ref + "</div></article>";
+  }
+  function blvShow() {
+    var VW = A("blViews"), v = VW[blV]; if (!v || !$("#blv-card")) return;
+    $$("[data-blv]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.blv === blV)); });
+    $("#blv-dot").style.left = (VW.length > 1 ? blV / (VW.length - 1) * 100 : 50) + "%";
+    $("#blv-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(strip(v.who)) + "</div><h3>" + esc(v.label) + "</h3><p>" + v.view + '</p><div class="ref">' + esc(strip(v.texts)) + '</div><div class="cmp-pair"><div class="panel uni"><div class="label">Strength</div><p>' + v.strength + '</p></div><div class="panel sep"><div class="label">Weakness</div><p>' + v.weakness + "</p></div></div></article>";
+  }
 
   /* ---------- The Divine Embrace ---------- */
   var deC = 0, deTab = "big", deRead = {}, deLie = 0, deMir = false, deWq = "", deQq = "", deStory = -1;
@@ -846,7 +891,7 @@
   var DSF = [["design", "Design"], ["reason", "Reason"], ["capacity", "Capacity"], ["responsibility", "Responsibility"], ["purpose", "Purpose"]];
   V.design = function () {
     var D = A("dsDesign"), T = A("dsTrinity"), C = A("dsCorrupt"), X = A("dsExamples"), E = A("dsEvidence1").concat(A("dsEvidence2"), A("dsEvidence3"));
-    return head("Made in love, for love", "Made for each other", "Why God created at all, and the design behind man and woman, marriage, children, family and friendship: their reason, capacity, responsibility and purpose. What humanity built instead, and how the gospel of union restores it, with the great relationship stories of the Bible read through the relational lens.") +
+    return '<a class="bl-banner" href="#blood"><b>New: The life is in the blood</b><span>How blood is designed to carry life and cleanse, and what it means from the Passover to the cross →</span></a>' + head("Made in love, for love", "Made for each other", "Why God created at all, and the design behind man and woman, marriage, children, family and friendship: their reason, capacity, responsibility and purpose. What humanity built instead, and how the gospel of union restores it, with the great relationship stories of the Bible read through the relational lens.") +
       (D.length ? '<section class="section"><h2>The design of every relationship</h2><p class="note">Choose a relationship to see its design, unfolded.</p><div class="chips">' + D.map(function (d, i) { return '<button class="chip" type="button" data-dsr="' + i + '" aria-pressed="' + (i === dsR) + '">' + esc(d.rel) + "</button>"; }).join("") + '</div><div id="dsr-card"></div></section>' : "") +
       (T.length ? '<section class="section"><h2>Mirrors of the Trinity</h2><p class="note">Human love at its best echoes the life of Father, Son and Spirit. Tap to see the reflection.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))">' + T.map(function (t) { return '<button type="button" class="flip ds-tri" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front cf-front"><div class="label">In the Trinity</div><h3>' + esc(t.trinity) + '</h3><span class="note" style="font-size:14px">Tap to see it in us</span></div><div class="flip-face back"><div class="label">In us</div><p>' + t.human + '</p><div class="ref">' + esc(t.ref) + "</div></div></div></button>"; }).join("") + "</div></section>" : "") +
       (C.length ? '<section class="section"><h2>What humanity built instead</h2><p class="note">Each counterfeit copies something good. Tap to see why we reach for it, and the way back.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + C.map(function (c) { return '<button type="button" class="flip ds-cor" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front"><div class="label">Counterfeit of ' + esc(strip(c.design)) + "</div><h3>" + esc(c.label) + '</h3><p style="font-size:15px">' + c.what + '</p><span class="note" style="font-size:14px">Tap for why, and the way back</span></div><div class="flip-face back"><div class="label" style="color:var(--wine)">Why we reach for it</div><p>' + c.why + '</p><div class="label">The way back</div><p>' + c.healing + '</p><div class="ref">' + esc((c.refs || []).join(" · ")) + "</div></div></div></button>"; }).join("") + "</div></section>" : "") +
@@ -1241,7 +1286,7 @@
     var D = A("whyDesign"), groups = [], T = RG.whyToxic || {};
     D.forEach(function (d) { if (groups.indexOf(d.group) === -1) groups.push(d.group); });
     if (!wSel && D.length) wSel = D[0].id;
-    return head("Reason and mechanism", "The why of design", "Why did God make bodies, nerves, needs, families, money, work, rest and play? How does each one work, what does it show about him, what have we built to replace it, and how does it turn toxic? Explore every design, then the hard questions.") +
+    return '<a class="bl-banner" href="#blood"><b>New: The life is in the blood</b><span>The design of blood in the body, its meaning in the Old Testament, and how Christ’s blood cleanses and heals →</span></a>' + head("Reason and mechanism", "The why of design", "Why did God make bodies, nerves, needs, families, money, work, rest and play? How does each one work, what does it show about him, what have we built to replace it, and how does it turn toxic? Explore every design, then the hard questions.") +
       '<div class="prose">' + A("whyIntro").map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" +
       (D.length ? '<section class="section"><h2>Design explorer</h2><div class="chips">' + ["all"].concat(groups).map(function (g) { return '<button class="chip" type="button" data-wg="' + esc(g) + '" aria-pressed="' + (wGroup === g) + '">' + (g === "all" ? "Everything (" + D.length + ")" : esc(g)) + "</button>"; }).join("") +
         '</div><div class="wx"><div class="wx-tiles" id="wx-tiles"></div><div class="wx-panel" id="wx-panel"></div></div></section>' : "") +
@@ -1678,6 +1723,8 @@
     wchar: function (x) { return panel("sep", "How religion often pictured it", x.distortion) + panel("uni", "Through the Jesus lens", x.jesus) + blk("See it", x.scene) + panel("gold", "Scripture", x.ref); },
     wcase: function (x) { return blk("Who", x.person) + panel("sep", "Legal gospel", x.legal) + panel("gold", "Techniques only", x.secular) + panel("uni", "Relational gospel", x.relational) + blk("Outcome", x.outcome); },
     wprov: function (x) { return blk("Who", x.who) + blk("The view", x.view) + blk("Applied", x.example) + panel("uni", "Strength", x.strength) + panel("sep", "Weakness", x.weakness); },
+    blq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    blst: function (x) { return blk("What happens", x.scene) + panel("gold", "In its world", x.culture) + panel("uni", "Through the relational lens", x.relational) + blk("In Christ", x.fulfilled); },
     dech: function (x) { return panel("gold", "Big idea", x.big) + blk("Summary", x.summary) + (x.points || []).map(function (p) { return blk(esc(p.head), p.text); }).join("") + blk("Scriptures", esc((x.scriptures || []).join(" · "))) + panel("uni", "Reflect", x.reflect); },
     mmyth: function (x) { return '<div class="ref">' + esc(x.kind + " #" + x.n + " · " + x.category) + "</div>" + panel("sep", "The myth", esc(x.myth)) + panel("uni", "What is actually true", x.truth) + blk("More", x.detail) + blk("Scriptures", esc(strip(x.scripture))) + (x.note ? blk("Note", x.note) : ""); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
@@ -1774,7 +1821,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -1850,6 +1897,8 @@
     if (route.view === "voices") voiceGrid();
     clearInterval(svTimer); svStep = -1; clearInterval(rbStT); clearInterval(rbLT); clearInterval(wyRcT);
     if (route.view === "myths") mmShow();
+    clearInterval(blT);
+    if (route.view === "blood") { blShow(); blpShow(); blvShow(); qxShow("blq", "blq"); }
     if (route.view === "embrace") { deShow(); deWordsShow(); deQsShow(); }
     if (route.view === "ways") { wyCSeen = false; wycShow(); wysShow(); wystScore(); wyvShow(); wypvShow(); qxShow("wyq1", "wq1"); wyskShow(); wycsShow(); wyrcShow(); wyfShow(); qxShow("wyq2", "wq3"); }
     if (route.view === "reborn") { rbsShow(); rbjShow(); rbvShow(); qxShow("rbq", "rq"); }
@@ -1880,7 +1929,7 @@
   document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } if (ev.target.id === "mm-q") { mmQ = ev.target.value; mmI = 0; mmShow(); } if (ev.target.id === "de-wq") { deWq = ev.target.value; deWordsShow(); } if (ev.target.id === "de-qq") { deQq = ev.target.value; deQsShow(); } });
   document.addEventListener("change", function (ev) { if (ev.target.id === "rbv-a") { rbA = +ev.target.value; rbvShow(); } if (ev.target.id === "rbv-b") { rbB = +ev.target.value; rbvShow(); } });
   document.addEventListener("change", function (ev) { var d = ev.target.dataset && ev.target.dataset.pat; if (d) { paTest[d] = ev.target.checked; showTests(); } });
-  document.addEventListener("keydown", function (ev) { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-pas]")) { ev.preventDefault(); clearInterval(paWalk); paGoStn(+ev.target.closest("[data-pas]").dataset.pas); } });
+  document.addEventListener("keydown", function (ev) { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-bls]")) { ev.preventDefault(); blS = +ev.target.closest("[data-bls]").dataset.bls; blShow(); return; } if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-pas]")) { ev.preventDefault(); clearInterval(paWalk); paGoStn(+ev.target.closest("[data-pas]").dataset.pas); } });
   document.addEventListener("click", function (ev) {
     var t = ev.target;
     var sv = t.closest("[data-save]"); if (sv) { ev.stopPropagation(); toggleSaved(sv.dataset.save); $$('[data-save="' + sv.dataset.save + '"]').forEach(function (b) { b.setAttribute("aria-pressed", String(isSaved(sv.dataset.save))); }); return; }
@@ -1895,6 +1944,11 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var blsb = t.closest("[data-bls]"); if (blsb) { clearInterval(blT); blS = +blsb.dataset.bls; blShow(); return; }
+    if (t.closest("#bl-play")) { clearInterval(blT); blS = 0; blShow(); var nB = A("blStations").length; blT = setInterval(function () { if (blS >= nB - 1) { clearInterval(blT); return; } blS++; blShow(); }, reduced ? 400 : 3400); return; }
+    var blpb = t.closest("[data-blp]"); if (blpb) { blP = +blpb.dataset.blp; blpShow(); return; }
+    var bltb = t.closest("[data-blt]"); if (bltb) { var bi = +bltb.dataset.blt; blSt = blSt === bi ? -1 : bi; var STb = A("blStory"); $$(".bl-tm").forEach(function (b, i) { var s2 = STb[i]; b.classList.toggle("on", i === blSt); b.innerHTML = '<i aria-hidden="true"></i><b>' + esc(s2.title) + '</b><span class="ref">' + esc(s2.ref) + "</span>" + (i === blSt ? '<div class="bl-tm-in"><p>' + s2.scene + '</p><div class="panel gold"><div class="label">In its world</div><p>' + s2.culture + '</p></div><div class="panel uni"><div class="label">Through the relational lens</div><p>' + s2.relational + '</p></div><p style="font-size:15px"><strong>In Christ:</strong> ' + s2.fulfilled + "</p></div>" : ""); }); return; }
+    var blvb = t.closest("[data-blv]"); if (blvb) { blV = +blvb.dataset.blv; blvShow(); return; }
     var dlb = t.closest("[data-delie]"); if (dlb) { deLie ^= +dlb.dataset.delie; dlb.classList.toggle("flip"); return; }
     if (t.closest("#de-glass")) { deMir = !deMir; $("#de-mirror").classList.toggle("on", deMir); return; }
     var dcb = t.closest("[data-dec]"); if (dcb) { deC = +dcb.dataset.dec; deShow(); return; }
