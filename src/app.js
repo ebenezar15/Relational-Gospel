@@ -106,6 +106,7 @@
     wchar: { key: "wyChar", view: "ways", title: function (x) { return "God is " + x.trait.toLowerCase(); }, sub: function () { return "Seen in Jesus"; }, label: "God’s character" },
     wcase: { key: "wyCases", view: "ways", title: function (x) { return x.title; }, sub: function () { return "Case study"; }, label: "How God works" },
     wprov: { key: "wyProvidence", view: "ways", title: function (x) { return x.label; }, sub: function () { return "View of providence"; }, label: "How God works" },
+    mmyth: { key: "mmMyths", view: "myths", title: function (x) { return x.myth; }, sub: function (x) { return x.kind + " #" + x.n + " · " + x.category; }, label: "Myths & mistranslations" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
   };
   var NCG = { "old-self": "The old self", "new-creation": "New creation", "heart-and-mind": "Heart & mind", "born-again": "Born again", cosmic: "The cosmic gospel", adam: "Adam & the plan" };
@@ -118,7 +119,7 @@
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
     { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["ways", "How God works"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
-    { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"]] },
+    { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
     { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved"]] }
@@ -248,6 +249,7 @@
       ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["big", "Big questions", "Why we need God, the devil, the finished work, Adam, and every term defined."],
       ["forgive", "Forgiveness & repair", "Forgiving, repairing, boundaries, and living after harm."],
+      ["myths", "Myths & mistranslations", "Sayings and translations many repeat without checking, busted one by one."],
       ["ways", "How God works", "His character, his boundaries, his voice, and why some are spared."],
       ["reborn", "Born again", "Born from above: John 3, why and how, and every tradition compared."],
       ["design", "Made for each other", "Man and woman, marriage, children, family and friendship by design."],
@@ -279,6 +281,7 @@
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["myths", "Myths & mistranslations", A("mmMyths").length + " myths and mistranslations to bust, " + A("mmCannot").length + " things God cannot do"],
         ["ways", "How God works", A("wyChar").length + " traits seen in Jesus, a voice quiz, a change skeleton, " + A("wyQA1").concat(A("wyQA2")).length + " deep questions"],
         ["reborn", "Born again", A("rbQA").length + " deep questions, John 3 line by line, " + A("rbViews").length + " traditions compared"],
         ["design", "Made for each other", A("dsDesign").length + " relationships by design, " + A("dsExamples").length + " Bible stories through the relational lens"],
@@ -667,6 +670,32 @@
       '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-qxm="' + p + ':-1"' + (i === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-qxm="' + p + ':1"' + (i === Q.length - 1 ? " disabled" : "") + ">Next question →</button></div></article>";
   }
   var QXSAVE = { rbq: "rq", dsq: "dq", wyq1: "wq1", wyq2: "wq3" };
+
+  /* ---------- Myths & mistranslations ---------- */
+  var mmI = 0, mmCat = "all", mmKind = "all", mmQ = "", mmBust = {}, mmBel = {}, mmShown = false;
+  function mmList() { var q = mmQ.toLowerCase(); return A("mmMyths").filter(function (m) { return (mmCat === "all" || m.category === mmCat) && (mmKind === "all" || m.kind === mmKind) && (!q || strip(m.myth + " " + m.truth + " " + m.detail + " " + m.scripture).toLowerCase().indexOf(q) !== -1); }); }
+  V.myths = function () {
+    var M = A("mmMyths"), I = RG.mmIntro || {}, CN = A("mmCannot"), CL = A("mmClosing");
+    return head("Myths and mistranslations", "Myths & mistranslations", "Sayings, traditions and translation choices many Christians repeat without checking, set beside what the text and its world actually say. Bust them one by one.") +
+      ((I.summary || []).length ? '<section class="section"><div class="panel gold"><div class="label">Why this matters</div>' + I.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div></section>" : "") +
+      (M.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Bust the myths</h2><span class="count" id="mm-score"></span></div><div class="mm-tools"><input type="search" id="mm-q" placeholder="Search the myths…" aria-label="Search the myths" value="' + esc(mmQ) + '"><div class="chips">' + ["all"].concat(uniq(M, "category")).map(function (k) { return '<button class="chip" type="button" data-mmc="' + esc(k) + '" aria-pressed="' + (mmCat === k) + '">' + (k === "all" ? "Every topic" : esc(k)) + "</button>"; }).join("") + '</div><div class="chips">' + ["all", "Myth", "Mistranslation"].map(function (k) { return '<button class="chip" type="button" data-mmk="' + k + '" aria-pressed="' + (mmKind === k) + '">' + (k === "all" ? "Both" : k + "s") + "</button>"; }).join("") + '</div></div><div id="mm-deck"></div><div class="mm-bar" aria-hidden="true"><i id="mm-bar"></i></div><details class="mm-all"><summary>See every myth at a glance</summary><div class="mm-grid" id="mm-grid"></div></details></section>' : "") +
+      (CN.length ? '<section class="section"><h2>Things God cannot do</h2><p class="note">Tap each one to see where Scripture says it.</p><div class="mm-cannot">' + CN.map(function (c, i) { return '<button type="button" class="mm-cn" data-mmcn style="animation-delay:' + (i * 0.05).toFixed(2) + 's"><b>' + esc(c.text) + "</b><small>" + esc(c.ref) + "</small></button>"; }).join("") + "</div></section>" : "") +
+      (CL.length ? '<section class="section"><div class="panel uni"><div class="label">Closing thoughts</div>' + CL.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div></section>" : "") +
+      '<section class="section"><p class="note">The contents of this section summarise a published study in our own words. Where scholars debate a point, a note says so.</p><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#culture">Culture decoder</a><a class="chip" href="#sayings">The words of Jesus</a><a class="chip" href="#debate">Debates & strawmen</a><a class="chip" href="#ways">How God works</a></div></section>';
+  };
+  function mmShow() {
+    var L = mmList(), all = A("mmMyths"); if (!$("#mm-deck")) return;
+    var nb = Object.keys(mmBust).length; $("#mm-score").textContent = nb + " of " + all.length + " busted" + (Object.keys(mmBel).length ? " · you believed " + Object.keys(mmBel).filter(function (k) { return mmBel[k]; }).length : "");
+    $("#mm-bar").style.width = (all.length ? nb / all.length * 100 : 0) + "%";
+    if (!L.length) { $("#mm-deck").innerHTML = '<p class="note">No myth matches your search.</p>'; $("#mm-grid").innerHTML = ""; return; }
+    mmI = Math.max(0, Math.min(mmI, L.length - 1));
+    var m = L[mmI], busted = !!mmBust[m.id];
+    $("#mm-deck").innerHTML = '<article class="mm-card' + (busted ? " busted" : "") + '"><div class="row" style="justify-content:space-between"><span class="pill ' + (m.kind === "Mistranslation" ? "cultural" : "principle") + '"><i></i>' + esc(m.kind) + " #" + esc(String(m.n)) + " · " + esc(m.category) + "</span>" + saveBtn("mmyth", m.id) + '</div><div class="mm-myth"><div class="label">The ' + (m.kind === "Mistranslation" ? "common reading" : "myth") + '</div><h3>“' + esc(m.myth) + '”</h3>' + (busted ? '<span class="mm-stamp" aria-hidden="true">BUSTED</span>' : "") + "</div>" +
+      (busted ? '<div class="panel uni mm-in"><div class="label">What is actually true</div><p>' + m.truth + '</p></div><div class="mm-in"><p>' + m.detail + '</p><div class="ref">' + esc(strip(m.scripture)) + "</div>" + (m.note ? '<p class="note" style="font-size:14.5px"><strong>Note:</strong> ' + m.note + "</p>" : "") + "</div>" :
+        '<div class="row"><button class="btn ghost" type="button" data-mmb="1">I believed this</button><button class="btn ghost" type="button" data-mmb="0">I never did</button><button class="btn" type="button" id="mm-bust">Bust it</button></div>') +
+      '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-mmm="-1"' + (mmI === 0 ? " disabled" : "") + '>← Previous</button><span class="count">' + (mmI + 1) + " / " + L.length + '</span><button class="btn" type="button" data-mmm="1"' + (mmI === L.length - 1 ? " disabled" : "") + ">Next →</button></div></article>";
+    $("#mm-grid").innerHTML = L.map(function (x, i) { return '<button type="button" class="mm-g' + (mmBust[x.id] ? " b" : "") + (i === mmI ? " on" : "") + '" data-mmg="' + i + '"><b>#' + esc(String(x.n)) + "</b> " + esc(x.myth) + "</button>"; }).join("");
+  }
 
   /* ---------- How God works ---------- */
   var wyC = 0, wyCSeen = false, wyAns = {}, wyS = 0, wyVQ = 0, wyVAns = {}, wyPv = 2, wyLens = "relational", wyCase = 0, wyRc = 0, wyRcT = null, wyF = 0;
@@ -1608,6 +1637,7 @@
     wchar: function (x) { return panel("sep", "How religion often pictured it", x.distortion) + panel("uni", "Through the Jesus lens", x.jesus) + blk("See it", x.scene) + panel("gold", "Scripture", x.ref); },
     wcase: function (x) { return blk("Who", x.person) + panel("sep", "Legal gospel", x.legal) + panel("gold", "Techniques only", x.secular) + panel("uni", "Relational gospel", x.relational) + blk("Outcome", x.outcome); },
     wprov: function (x) { return blk("Who", x.who) + blk("The view", x.view) + blk("Applied", x.example) + panel("uni", "Strength", x.strength) + panel("sep", "Weakness", x.weakness); },
+    mmyth: function (x) { return '<div class="ref">' + esc(x.kind + " #" + x.n + " · " + x.category) + "</div>" + panel("sep", "The myth", esc(x.myth)) + panel("uni", "What is actually true", x.truth) + blk("More", x.detail) + blk("Scriptures", esc(strip(x.scripture))) + (x.note ? blk("Note", x.note) : ""); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
   var lastFocus = null;
@@ -1701,7 +1731,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -1776,6 +1806,7 @@
     if (route.view === "trinity") showAct();
     if (route.view === "voices") voiceGrid();
     clearInterval(svTimer); svStep = -1; clearInterval(rbStT); clearInterval(rbLT); clearInterval(wyRcT);
+    if (route.view === "myths") mmShow();
     if (route.view === "ways") { wyCSeen = false; wycShow(); wysShow(); wystScore(); wyvShow(); wypvShow(); qxShow("wyq1", "wq1"); wyskShow(); wycsShow(); wyrcShow(); wyfShow(); qxShow("wyq2", "wq3"); }
     if (route.view === "reborn") { rbsShow(); rbjShow(); rbvShow(); qxShow("rbq", "rq"); }
     if (route.view === "design") { dsrShow(); dsxShow(); qxShow("dsq", "dq"); }
@@ -1802,7 +1833,7 @@
   }
 
   /* ---------- events ---------- */
-  document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } });
+  document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } if (ev.target.id === "mm-q") { mmQ = ev.target.value; mmI = 0; mmShow(); } });
   document.addEventListener("change", function (ev) { if (ev.target.id === "rbv-a") { rbA = +ev.target.value; rbvShow(); } if (ev.target.id === "rbv-b") { rbB = +ev.target.value; rbvShow(); } });
   document.addEventListener("change", function (ev) { var d = ev.target.dataset && ev.target.dataset.pat; if (d) { paTest[d] = ev.target.checked; showTests(); } });
   document.addEventListener("keydown", function (ev) { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-pas]")) { ev.preventDefault(); clearInterval(paWalk); paGoStn(+ev.target.closest("[data-pas]").dataset.pas); } });
@@ -1820,6 +1851,13 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var mmcb = t.closest("[data-mmc]"); if (mmcb) { mmCat = mmcb.dataset.mmc; mmI = 0; $$("[data-mmc]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === mmcb)); }); mmShow(); return; }
+    var mmkb = t.closest("[data-mmk]"); if (mmkb) { mmKind = mmkb.dataset.mmk; mmI = 0; $$("[data-mmk]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === mmkb)); }); mmShow(); return; }
+    var mmbb = t.closest("[data-mmb]"); if (mmbb) { var mL = mmList()[mmI]; if (mL) { mmBel[mL.id] = mmbb.dataset.mmb === "1"; mmBust[mL.id] = true; mmShow(); } return; }
+    if (t.closest("#mm-bust")) { var mL2 = mmList()[mmI]; if (mL2) { mmBust[mL2.id] = true; mmShow(); } return; }
+    var mmmb = t.closest("[data-mmm]"); if (mmmb) { mmI += +mmmb.dataset.mmm; mmShow(); return; }
+    var mmgb = t.closest("[data-mmg]"); if (mmgb) { mmI = +mmgb.dataset.mmg; mmShow(); $("#mm-deck").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var mmcn = t.closest("[data-mmcn]"); if (mmcn) { mmcn.classList.toggle("on"); return; }
     var wcb = t.closest("[data-wyc]"); if (wcb) { wyC = +wcb.dataset.wyc; wyCSeen = false; wycShow(); if (window.innerWidth < 980) $("#wyc-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" }); return; }
     if (t.closest("#wyc-see")) { wyCSeen = true; wycShow(); return; }
     var wsb = t.closest("[data-wys]"); if (wsb) { wyS = +wsb.dataset.wys; wysShow(); return; }
