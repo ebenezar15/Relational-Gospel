@@ -991,3 +991,5 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .mm-cn small { font-family: var(--mono); font-size: 12px; color: var(--gold); opacity: 0; transform: translateY(-4px); transition: opacity .4s, transform .4s; }
 .mm-cn.on { background: var(--gold-soft); border-color: var(--gold); box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 35%, transparent); }
 .mm-cn.on small { opacity: 1; transform: none; }
+.mm-card, #mm-deck { min-width: 0; }
+.mm-card .pill { width: auto; max-width: 100%; white-space: normal; line-height: 1.4; }
