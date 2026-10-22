@@ -1126,3 +1126,41 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .r-cross .jx-node.on { border-color: var(--dawn); background: var(--dawn-soft); }
 @media (max-width: 480px) { .jx-node { font-size: 11px; min-height: 46px; width: 28%; } }
 @media (prefers-reduced-motion: reduce) { .jx-orbit, .jx-core { animation: none !important; } }
+
+/* ---------- Blood: cleansing transport ---------- */
+.blw { display: grid; gap: 12px; padding: 16px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); margin-top: 10px; }
+.blw svg { width: 100%; height: auto; display: block; overflow: visible; }
+.blw-cells { fill: color-mix(in srgb, #c0392b 20%, var(--surface)); stroke: #c0392b; stroke-width: 2; }
+.blw-vessel { stroke: #c0392b; stroke-width: 16; stroke-linecap: round; opacity: .35; }
+.blw-route { fill: none; stroke: var(--line); stroke-width: 6; stroke-linecap: round; opacity: .5; transition: stroke .5s, opacity .5s; }
+.blw-route.on { stroke: #c0392b; opacity: .8; stroke-dasharray: 10 8; animation: dash 1.4s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -36; } }
+.blw-org circle { fill: var(--surface); stroke: var(--line); stroke-width: 2.5; transition: fill .5s, stroke .5s; }
+.blw-org.on circle { fill: var(--dawn-soft); stroke: var(--dawn); }
+.blw-org.on text { fill: var(--ink); }
+.blw-dot { fill: #7a5a2b; stroke: #fff6dc; stroke-width: 2; }
+.blw-flow { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.blw-flow > div { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
+.blw-flow p { font-size: 15px; margin-top: 4px; }
+.blw-organs { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); margin-top: 12px; }
+.blw-o { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); transition: border-color .4s, background .4s, transform .4s; }
+.blw-o p { font-size: 14.5px; }
+.blw-o.on { border-color: var(--dawn); background: var(--dawn-soft); transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .blw-route.on { animation: none; } }
+
+/* ---------- Man, woman & Genesis ---------- */
+.wm-banner { border-color: color-mix(in srgb, var(--dawn) 45%, var(--line)); background: linear-gradient(110deg, var(--dawn-soft), var(--surface)); }
+.wm-steps { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.wm-sd { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); color: var(--ink); font-family: var(--mono); cursor: pointer; transition: background .3s, border-color .3s; }
+.wm-sd.past { border-color: var(--dawn); }
+.wm-sd.hl { border-color: var(--gold); }
+.wm-sd.on { background: var(--gold); border-color: var(--gold); color: #1b1408; box-shadow: 0 0 12px var(--gold); }
+.wm-hl { border-color: var(--gold); box-shadow: 0 0 22px color-mix(in srgb, var(--gold) 30%, transparent); }
+.wm-hl h3 { color: var(--gold); }
+.wm-h, .wm-h .flip-inner { min-height: 300px; }
+.wm-women { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); align-items: start; margin-top: 10px; }
+.wm-w { display: grid; gap: 6px; text-align: left; padding: 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; animation: rise .4s both; transition: border-color .3s, background .3s; }
+.wm-w small { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.wm-w b { font-size: 17px; }
+.wm-w p { font-size: 15px; animation: rise .4s both; }
+.wm-w.on { grid-column: 1 / -1; border-color: var(--dawn); background: var(--dawn-soft); }
