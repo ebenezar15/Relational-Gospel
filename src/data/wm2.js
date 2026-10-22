@@ -108,7 +108,7 @@ RG.wmGen3 = [
     "id": "woman-answers",
     "ref": "Gen 3:2-3",
     "text": "\"We may eat fruit from the trees of the garden, but not the fruit of the tree which is in the middle of the garden. God has said, 'You shall not eat of it. You shall not touch it, lest you die.'\"",
-    "note": "She adds \"you shall not touch it\", which God did not say. Some blame her for this; others note that she may only be repeating what she was told, since the command came first to Adam. Rabbinic tradition (Genesis Rabbah) blamed Adam for building an extra \"fence\" around the command that the serpent then exploited.",
+    "note": "She adds \"you shall not touch it\", which God did not say. Some blame her for this; others note that she may only be repeating what she was told, since the command came first to Adam. Rabbinic tradition (e.g. <em>Avot de-Rabbi Natan</em>) told that Adam had added the \"fence\" himself when passing the command on, and that the serpent exploited it.",
     "highlight": false
   },
   {
@@ -262,7 +262,7 @@ RG.wmWomen = [
     "era": "Gospels",
     "role": "Prophet",
     "story": "An elderly widow and prophetess who never left the temple, worshipping with fasting and prayer night and day. When she saw the infant Jesus, she gave thanks and spoke about him to everyone looking for Jerusalem's redemption.",
-    "point": "She is one of the first evangelists of Jesus, and Luke gives her the title prophetess without apology. Old age and widowhood did not end her calling."
+    "point": "She is one of the first evangelists of Jesus, and Luke gives her the title prophetess without apology. Old age and widowhood did not end her calling; later, Philip's four daughters also prophesied (Acts 21:9), fulfilling \"your daughters will prophesy\" (Acts 2:17)."
   },
   {
     "id": "samaritan-woman",
@@ -271,7 +271,7 @@ RG.wmWomen = [
     "era": "Gospels",
     "role": "Evangelist",
     "story": "At Jacob's well Jesus breaks three taboos at once by talking with a Samaritan, a woman, and one with a complicated history. He reveals himself to her as Messiah, and she runs to tell her town, many of whom believed \"because of the word of the woman\".",
-    "point": "Jesus's longest recorded conversation with one person in the Gospels is with her. He treats her as a theologian and sends her as a witness, not as a problem."
+    "point": "It is one of the longest conversations Jesus has with anyone in the Gospels. He treats her as a theologian and sends her as a witness, not as a problem."
   },
   {
     "id": "mary-of-bethany",
@@ -317,14 +317,164 @@ RG.wmWomen = [
     "role": "Teacher",
     "story": "With her husband Aquila, a tentmaker like Paul, Priscilla (Prisca) hosted a church in their home and risked her neck for Paul. Together they took the gifted preacher Apollos aside and \"explained to him the way of God more accurately\".",
     "point": "She is usually named before her husband, which was unusual. A woman helped teach one of the church's leading preachers."
+  }
+];
+
+RG.wmHistory = [
+  {
+    "id": "devils-gateway",
+    "claim": "Every woman is \"an Eve\" and shares the blame for sin and for Christ's death, so women should dress in mourning and penitence.",
+    "who": "Tertullian, <em>On the Apparel of Women</em> 1.1 (c. AD 200)",
+    "quote": "You are the devil's gateway: you are the unsealer of that (forbidden) tree: you are the first deserter of the divine law.",
+    "url": "https://www.newadvent.org/fathers/0402.htm",
+    "answer": "Scripture names Adam, not Eve, as the one through whom sin and death entered the world (Rom 5:12-19; 1 Cor 15:22). Christ died for the sin of all humanity, men included, out of love, not because women earned his death (Rom 5:8). In him there is no condemnation for anyone, daughters of Eve included (Rom 8:1)."
   },
   {
-    "id": "philips-daughters",
-    "name": "Philip's daughters",
-    "ref": "Acts 21:8-9; Acts 2:17-18",
-    "era": "Early church",
-    "role": "Prophets",
-    "story": "Philip the evangelist \"had four virgin daughters who prophesied\", and Luke notes them in passing as part of normal church life. They fulfil Peter's Pentecost promise from Joel: \"your sons and your daughters will prophesy.\"",
-    "point": "The Spirit poured out at Pentecost is poured out on women too. Speaking God's word in the gathered church (compare 1 Cor 11:5) is a gift given to daughters as well as sons."
+    "id": "curse-on-every-woman",
+    "claim": "The judgment of Genesis 3:16 was applied to every woman in every age, with the guilt of Eve said to live on in each of them.",
+    "who": "Tertullian, <em>On the Apparel of Women</em> 1.1 (c. AD 200)",
+    "quote": "The sentence of God on this sex of yours lives in this age: the guilt must of necessity live too.",
+    "url": "https://www.newadvent.org/fathers/0402.htm",
+    "answer": "Many interpreters, including some complementarians, read Gen 3:16 (\"he will rule over you\") as a description of what sin does, not a command to obey; the same \"desire… rule\" pattern in Gen 4:7 describes sin, not God's ideal. Christ \"redeemed us from the curse of the law, having become a curse for us\" (Gal 3:13), and the new creation sets men and women free to be \"joint heirs of the grace of life\" (1 Pet 3:7)."
+  },
+  {
+    "id": "misbegotten",
+    "claim": "Following Aristotle, woman was described as a \"defective and misbegotten\" male in her individual nature.",
+    "who": "Thomas Aquinas, <em>Summa Theologiae</em> I q.92 a.1 ad 1 (c. 1270), citing Aristotle",
+    "quote": "As regards the individual nature, woman is defective and misbegotten.",
+    "url": "https://www.newadvent.org/summa/1092.htm",
+    "answer": "To be fair to Aquinas, in the same reply he says that woman is <em>not</em> misbegotten as regards human nature in general, and in a.3 that she was not made from the man's head or feet. But the Aristotelian biology behind \"misbegotten\" is simply wrong, and Genesis says that male and female alike are made in God's image and called \"very good\" (Gen 1:27, 31)."
+  },
+  {
+    "id": "less-reason",
+    "claim": "Woman was said to be naturally subject to man even before the fall, because reason was thought to predominate in men.",
+    "who": "Thomas Aquinas, <em>Summa Theologiae</em> I q.92 a.1 ad 2 (c. 1270)",
+    "quote": "So by such a kind of subjection woman is naturally subject to man, because in man the discretion of reason predominates.",
+    "url": "https://www.newadvent.org/summa/1092.htm",
+    "answer": "Scripture never says women are less rational. It calls Abigail a woman \"of good understanding\" (1 Sam 25:3), sends kings and priests to Huldah to interpret God's word (2 Kgs 22:14), and shows Priscilla teaching Apollos (Acts 18:26). Wisdom herself is pictured as a woman (Prov 8)."
+  },
+  {
+    "id": "coverture",
+    "claim": "Under English common law a married woman's legal existence was suspended into her husband's: she could not own property in her own right, make contracts or sue in her own name.",
+    "who": "William Blackstone, <em>Commentaries on the Laws of England</em>, Book 1, ch. 15 (1765)",
+    "quote": "By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage.",
+    "url": "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp",
+    "answer": "Blackstone treats marriage as a civil contract, but this law grew up in a Christian society and was often justified by \"the two shall be one flesh\". In Genesis, one flesh is mutual union, not the erasure of one person (Gen 2:24); the woman of Proverbs 31 buys land and trades in her own name (Prov 31:16-18), and Zelophehad's daughters inherit (Num 27:7)."
+  },
+  {
+    "id": "moderate-correction",
+    "claim": "The old common law allowed a husband to give his wife \"moderate correction\", physical chastisement like that of servants or children.",
+    "who": "William Blackstone, <em>Commentaries on the Laws of England</em>, Book 1, ch. 15 (1765)",
+    "quote": "The husband also (by the old law) might give his wife moderate correction.",
+    "url": "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp",
+    "answer": "Blackstone himself notes that this power had begun to be doubted. Scripture commands husbands to love their wives \"as Christ also loved the assembly, and gave himself up for her\" and as their own bodies (Eph 5:25, 28), and \"not be bitter against them\" (Col 3:19). Christlike headship lays down its life; it never strikes."
+  },
+  {
+    "id": "barred-from-reading",
+    "claim": "An English law barred women below the rank of the gentry (along with servants, apprentices and poor men) from reading the English Bible; noble and gentle women could read it only privately.",
+    "who": "Act for the Advancement of True Religion, England (1543)",
+    "quote": "",
+    "url": "https://en.wikipedia.org/wiki/Act_for_the_Advancement_of_True_Religion",
+    "answer": "The law was about class and control as much as gender, and it was repealed in 1547. But Scripture was given to all God's people: Mary sat at Jesus's feet as a learner (Luke 10:39, 42), and Paul says \"let a woman learn\" (1 Tim 2:11), a radical permission in his world. The Spirit is poured on \"your sons and your daughters\" alike (Acts 2:17)."
+  },
+  {
+    "id": "submit-to-abuse",
+    "claim": "Abused wives have been counselled to stay, pray and submit rather than separate, with \"submission\" used to keep women in danger.",
+    "who": "A prominent seminary leader, in a recording from 2000 that surfaced in 2018 and contributed to his removal that year (reported by Religion News Service)",
+    "quote": "",
+    "url": "",
+    "answer": "On the recording he described telling an abused woman to pray and be submissive; thousands of women in his own denomination, many of them complementarian, protested, and other leaders said abuse can never be tolerated or hidden. Paul's call to submission begins with \"subject yourselves to one another\" (Eph 5:21), and no submission means following anyone into sin or harm (Acts 5:29). If you are in danger, your safety comes first: get to a safe place and contact local emergency services or a domestic-abuse support service."
+  }
+];
+
+RG.wmViews = [
+  {
+    "id": "patriarchal",
+    "label": "Patriarchal",
+    "who": "Much of historic Christian teaching from the early church to the modern era (e.g. Aquinas, much Reformation-era teaching), and some conservative groups today",
+    "view": "Men and women are equal in salvation, but God made the man to rule and the woman to obey, in the home, the church and society. Women's subordination reflects the created order and nature itself, and male rule extends into public and civil life.",
+    "texts": "Gen 2:18-23; Gen 3:16; 1 Cor 11:3-9; 1 Cor 14:34-35; 1 Tim 2:11-15; Eph 5:22-24",
+    "strength": "It takes seriously the texts that speak of male headship and the long consensus of Christian history, and it does not let culture alone set the agenda.",
+    "weakness": "It often leaned on bad science (women as less rational) and Gen 3:16 as prescription, and it gave cover to real abuses such as coverture and \"moderate correction\". It struggles to explain Deborah, Huldah, Junia and Jesus's own treatment of women."
+  },
+  {
+    "id": "complementarian",
+    "label": "Complementarian",
+    "who": "Council on Biblical Manhood and Womanhood (CBMW), the Danvers Statement (1987); writers such as John Piper and Wayne Grudem; the Southern Baptist Convention's Baptist Faith and Message",
+    "view": "Adam and Eve were \"created in God's image, equal before God as persons and distinct in their manhood and womanhood\", and Adam's headship was established before the fall. In marriage husbands are to lead with loving, humble, servant headship and wives to support it with intelligent, willing submission; some governing and teaching roles in the church are restricted to men. No earthly submission ever means following anyone into sin.",
+    "texts": "Gen 1:26-27; 2:18-24; 1 Cor 11:7-9; Eph 5:21-33; Col 3:18-19; 1 Tim 2:11-15; 1 Tim 3:1-7; 1 Pet 3:1-7",
+    "strength": "It affirms equal worth and image-bearing while taking the creation-order arguments in 1 Corinthians 11 and 1 Timothy 2 at face value. It rejects harshness and calls men to sacrificial, Christlike love.",
+    "weakness": "Critics argue that \"equal but subordinate\" is hard to sustain if the subordination is permanent and based on sex alone, and that the model has sometimes been bent to excuse control or abuse (CBMW and others have condemned such abuse). Scholars debate whether <em>kephalē</em> (head) means \"authority over\" or \"source\"."
+  },
+  {
+    "id": "egalitarian",
+    "label": "Egalitarian",
+    "who": "CBE International (founded 1988 as Christians for Biblical Equality; statement \"Men, Women, and Biblical Equality\", 1989); writers such as Gilbert Bilezikian, Catherine Clark Kroeger, Philip Payne, Mimi Haddad",
+    "view": "The Bible teaches the full equality of men and women in creation and redemption. Gifts, not gender, determine ministry, so women may serve in every role in the church, and marriage is a partnership of mutual submission without a fixed ruler. Male rule entered with the fall (Gen 3:16), and the gospel reverses it.",
+    "texts": "Gen 1:26-28; Gen 2:18 (<em>ezer</em>); Joel 2:28-29 with Acts 2:17-18; Rom 16:1-7; 1 Cor 11:11-12; Gal 3:28; Eph 5:21; 1 Pet 3:7",
+    "strength": "It accounts for the women leaders of Scripture (Deborah, Huldah, Phoebe, Junia, Priscilla) and Jesus's radical inclusion of women, and it reads the household codes as moving away from Roman patriarchy.",
+    "weakness": "Complementarians argue it explains away texts that ground restrictions in creation (1 Tim 2:13), relies on debated word studies, and can drift toward cultural accommodation. Some worry it underplays real differences between men and women."
+  },
+  {
+    "id": "mutualist",
+    "label": "Mutualist / relational",
+    "who": "Many in the relational and Trinitarian stream (e.g. writers influenced by Barth, the Torrances and C. Baxter Kruger, as well as Brad Jersak and Wm. Paul Young), and others who stress mutuality over rank; views within it differ",
+    "view": "The deepest question is not who is in charge but what kind of love we were made for. Man and woman image the Triune God, whose persons live in mutual self-giving rather than domination, and Christ's headship is shown in laying down his life (Eph 5:25; Phil 2:5-8). In the new creation, union with Christ and one another (Gal 3:28) makes rivalry for power obsolete; difference becomes a gift to be given, not a ladder to climb.",
+    "texts": "Gen 1:26-27; Gen 2:23-24; Mark 10:42-45; John 17:21-23; 1 Cor 11:11-12; Gal 3:28; Eph 5:21-33; Phil 2:3-8; 2 Cor 5:17",
+    "strength": "It grounds the discussion in the Trinity and the cross rather than in rules alone, and it can honour both the equality egalitarians defend and the self-giving love complementarians commend.",
+    "weakness": "It can sound vague on practical questions such as ordination or decision-making in marriage, and critics say it reads Trinitarian theology into Paul's texts. It mostly lands close to the egalitarian position, so complementarians may see it as egalitarianism in other words."
+  }
+];
+
+RG.wmEvidence2 = [
+  {
+    "text": "Genesis 2:16-17 gives the command to \"the man\" before the woman is formed (2:18-22); Genesis 3:6-7 (WEB): \"she gave some to her husband with her, and he ate it, too. Their eyes were opened.\"",
+    "source": "Bible Hub, World English Bible, Genesis 2 and 3",
+    "url": "https://biblehub.com/web/genesis/3.htm"
+  },
+  {
+    "text": "<em>Ezer</em> (Strong's 5828) occurs 21 times; besides Genesis 2:18, 20 it is used mostly of God as helper (e.g. Exod 18:4; Ps 33:20; 121:1-2).",
+    "source": "Bible Hub, Strong's Hebrew 5828",
+    "url": "https://biblehub.com/hebrew/5828.htm"
+  },
+  {
+    "text": "<em>Teshuqah</em> (\"desire\", Strong's 8669) occurs only three times: Gen 3:16, Gen 4:7 and Song 7:10; the topical lexicon calls Gen 3:16 \"descriptive, not prescriptive\".",
+    "source": "Bible Hub, Strong's Hebrew 8669",
+    "url": "https://biblehub.com/hebrew/8669.htm"
+  },
+  {
+    "text": "<em>Prostatis</em> (Strong's 4368) is used in the New Testament only of Phoebe (Rom 16:2); Thayer gives \"a woman set over others\" and \"a female guardian, protectress, patroness\".",
+    "source": "Bible Hub, Strong's Greek 4368",
+    "url": "https://biblehub.com/greek/4368.htm"
+  },
+  {
+    "text": "Romans 16 (WEB) commends Phoebe as \"a servant of the assembly that is at Cenchreae\" and greets \"Andronicus and Junia… who are notable among the apostles\".",
+    "source": "Bible Hub, World English Bible, Romans 16",
+    "url": "https://biblehub.com/web/romans/16.htm"
+  },
+  {
+    "text": "John Chrysostom on Romans 16:7: \"Oh! How great is the devotion of this woman, that she should be even counted worthy of the appellation of apostle!\" He also says Phoebe held \"the office of deaconess\".",
+    "source": "John Chrysostom, Homily 31 on Romans (late 4th century), New Advent",
+    "url": "https://www.newadvent.org/fathers/210231.htm"
+  },
+  {
+    "text": "Aquinas, citing Aristotle: \"the female is a misbegotten male\" (objection 1); in reply: \"as regards human nature in general, woman is not misbegotten\".",
+    "source": "Thomas Aquinas, Summa Theologiae I q.92 a.1, New Advent",
+    "url": "https://www.newadvent.org/summa/1092.htm"
+  },
+  {
+    "text": "Blackstone: \"the very being or legal existence of the woman is suspended during the marriage\"; also \"the husband also (by the old law) might give his wife moderate correction.\"",
+    "source": "William Blackstone, Commentaries on the Laws of England, Book 1, ch. 15 (1765), Avalon Project, Yale Law School",
+    "url": "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp"
+  },
+  {
+    "text": "The Danvers Statement was prepared at a CBMW meeting in Danvers, Massachusetts, in December 1987; it affirms Adam and Eve as \"equal before God as persons and distinct in their manhood and womanhood\" and that \"Adam's headship in marriage was established by God before the Fall\".",
+    "source": "Council on Biblical Manhood and Womanhood, The Danvers Statement",
+    "url": "https://cbmw.org/about/danvers-statement/"
+  },
+  {
+    "text": "CBE International was established on January 2, 1988 as Christians for Biblical Equality; its first major project was the statement \"Men, Women, and Biblical Equality\", and its first international conference was in July 1989.",
+    "source": "CBE International, History of CBE",
+    "url": "https://www.cbeinternational.org/primary_page/history-of-cbe/"
   }
 ];
