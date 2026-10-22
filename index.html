@@ -1101,6 +1101,44 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .bl-tm-in p { font-size: 15.5px; }
 .bl-track { background: linear-gradient(90deg, var(--wine-soft), #c0392b, var(--gold), var(--dawn-soft)); }
 @media (max-width: 640px) { .bl-bar { flex-direction: column; } .bl-seg { flex: none !important; min-height: 46px; grid-auto-flow: column; justify-content: space-between; padding: 8px 14px; } .bl-seg.s-plasma { min-height: 92px; } .bl-seg.s-red { min-height: 78px; } }
+
+/* ---------- Justice, conflict & call-out culture ---------- */
+.jx-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.jx-nav button { font: inherit; font-size: 14px; padding: 8px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.jx-nav button:hover { border-color: var(--gold); }
+#jx-harm, #jx-call, #jx-free { scroll-margin-top: 80px; }
+.jx-d { display: grid; gap: 8px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 560px) { .jx-d { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.jx-db { display: grid; gap: 4px; justify-items: center; padding: 14px 6px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; transition: transform .3s, border-color .3s, background .3s, box-shadow .3s; }
+.jx-db b { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; font-size: 22px; background: var(--bg-2); border: 2px solid var(--line); transition: background .3s, border-color .3s, color .3s; }
+.jx-db span { font-size: 14px; font-weight: 600; }
+.jx-db:hover { transform: translateY(-3px); }
+.jx-db.on { border-color: var(--dawn); background: var(--dawn-soft); box-shadow: 0 0 18px color-mix(in srgb, var(--dawn) 30%, transparent); }
+.jx-db.on b { background: var(--dawn); border-color: var(--dawn); color: #08201c; }
+#jxd-card, #jxh-card, #jxc-card, #jxa-card { margin-top: 12px; }
+.jx-steps { --p: 0%; position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; padding-top: 4px; }
+.jx-steps::before { content: ""; position: absolute; left: 6%; right: 6%; top: 25px; height: 4px; border-radius: 4px; background: var(--line); }
+.jx-steps::after { content: ""; position: absolute; left: 6%; top: 25px; height: 4px; border-radius: 4px; width: calc((88%) * var(--p) / 100%); background: linear-gradient(90deg, var(--gold), var(--dawn)); transition: width .6s; }
+.jx-step { position: relative; z-index: 1; display: grid; gap: 6px; justify-items: center; border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; line-height: 1.25; text-align: center; cursor: pointer; }
+.jx-step b { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); border: 2px solid var(--line); color: var(--ink); font-family: var(--mono); transition: background .4s, border-color .4s; }
+.jx-step.done b { border-color: var(--dawn); }
+.jx-step.on b { background: var(--gold); border-color: var(--gold); color: #1b1408; box-shadow: 0 0 14px var(--gold); }
+.jx-step.on { color: var(--ink); }
+.jx-ringwrap { display: grid; gap: 16px; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: center; margin-top: 12px; }
+@media (max-width: 860px) { .jx-ringwrap { grid-template-columns: minmax(0, 1fr); } }
+.jx-ring { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1; justify-self: center; overflow: hidden; }
+.jx-orbit { position: absolute; inset: 12%; border-radius: 50%; border: 3px dashed var(--line); animation: orbit 24s linear infinite; }
+.jx-ring.r-cycle .jx-orbit { border-color: color-mix(in srgb, var(--wine) 60%, transparent); animation-duration: 8s; }
+.jx-ring.r-cross .jx-orbit { border-color: color-mix(in srgb, var(--dawn) 60%, transparent); border-style: solid; animation: none; }
+.jx-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 30%; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; text-align: center; font-weight: 700; }
+.r-cycle .jx-core { background: var(--wine-soft); border: 2px solid var(--wine); color: var(--wine); animation: beat 2s ease-in-out infinite; }
+.r-cross .jx-core { background: radial-gradient(circle, var(--gold-soft), transparent 75%); border: 2px solid var(--gold); box-shadow: 0 0 26px color-mix(in srgb, var(--gold) 45%, transparent); }
+.jx-node { position: absolute; transform: translate(-50%, -50%); width: 26%; min-height: 54px; display: grid; gap: 2px; justify-items: center; padding: 6px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: 12.5px; line-height: 1.2; cursor: pointer; transition: border-color .3s, background .3s; }
+.jx-node b { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.r-cycle .jx-node.on { border-color: var(--wine); background: var(--wine-soft); }
+.r-cross .jx-node.on { border-color: var(--dawn); background: var(--dawn-soft); }
+@media (max-width: 480px) { .jx-node { font-size: 11px; min-height: 46px; width: 28%; } }
+@media (prefers-reduced-motion: reduce) { .jx-orbit, .jx-core { animation: none !important; } }
 </style>
 
 <header class="top">
@@ -41283,6 +41321,10 @@ RG.blEvidence3 = [
     wchar: { key: "wyChar", view: "ways", title: function (x) { return "God is " + x.trait.toLowerCase(); }, sub: function () { return "Seen in Jesus"; }, label: "God’s character" },
     wcase: { key: "wyCases", view: "ways", title: function (x) { return x.title; }, sub: function () { return "Case study"; }, label: "How God works" },
     wprov: { key: "wyProvidence", view: "ways", title: function (x) { return x.label; }, sub: function () { return "View of providence"; }, label: "How God works" },
+    jq1: { key: "jxQA1", view: "justice", title: function (x) { return x.q; }, sub: function () { return "Harm, justice and revenge"; }, label: "Justice & conflict" },
+    jq2: { key: "jxQA2", view: "justice", title: function (x) { return x.q; }, sub: function () { return "Call-out culture"; }, label: "Justice & conflict" },
+    jq3: { key: "jxQA3", view: "justice", title: function (x) { return x.q; }, sub: function () { return "The legal gospel’s confusion"; }, label: "Justice & conflict" },
+    jcase: { key: "jxCases", view: "justice", title: function (x) { return x.title; }, sub: function () { return "Case study"; }, label: "Justice & conflict" },
     blq: { key: "blQA", view: "blood", title: function (x) { return x.q; }, sub: function () { return "The life is in the blood"; }, label: "The life is in the blood" },
     blst: { key: "blStory", view: "blood", title: function (x) { return x.title; }, sub: function (x) { return x.ref; }, label: "Blood in Scripture" },
     dech: { key: "deChapters", view: "embrace", title: function (x) { return "Ch. " + x.n + ": " + x.title; }, sub: function () { return "The Divine Embrace"; }, label: "The Divine Embrace" },
@@ -41298,7 +41340,7 @@ RG.blEvidence3 = [
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["justice", "Justice, conflict & call-outs"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -41429,6 +41471,7 @@ RG.blEvidence3 = [
       ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["big", "Big questions", "Why we need God, the devil, the finished work, Adam, and every term defined."],
       ["forgive", "Forgiveness & repair", "Forgiving, repairing, boundaries, and living after harm."],
+      ["justice", "Justice, conflict & call-outs", "Harassment, stepping in, revenge, exposing ministries, and the legal gospel’s contradictions."],
       ["blood", "The life is in the blood", "Blood’s design, its meaning in the Old Testament, and how Christ’s blood cleanses."],
       ["embrace", "The Divine Embrace", "A chapter-by-chapter journey into union, the mirror and our true design."],
       ["myths", "Myths & mistranslations", "Sayings and translations many repeat without checking, busted one by one."],
@@ -41463,6 +41506,7 @@ RG.blEvidence3 = [
         ["love", A("lovePassages").length + " justice passages answered", A("loveObjections").length + " objections, " + A("justiceWords").length + " Hebrew and Greek word studies"],
         ["newcreation", A("ncQuestions").length + " questions on new creation", "The old self, born again, Adam, the cosmic gospel"],
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
+        ["justice", "Justice, conflict & call-outs", A("jxScenes").length + " situations to practise, the 5 Ds, the revenge cycle, " + A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length + " deep questions"],
         ["blood", "The life is in the blood", "An animated journey of blood, " + A("blStory").length + " moments in the scarlet thread, " + A("blQA").length + " deep questions"],
         ["embrace", "The Divine Embrace", deAll().length + " chapters with stories, word studies and questions"],
         ["myths", "Myths & mistranslations", A("mmMyths").length + " myths and mistranslations to bust, " + A("mmCannot").length + " things God cannot do"],
@@ -41853,7 +41897,58 @@ RG.blEvidence3 = [
       ((q.evidence || []).length ? evGrid(q.evidence) : "") +
       '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-qxm="' + p + ':-1"' + (i === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-qxm="' + p + ':1"' + (i === Q.length - 1 ? " disabled" : "") + ">Next question →</button></div></article>";
   }
-  var QXSAVE = { rbq: "rq", dsq: "dq", wyq1: "wq1", wyq2: "wq3", blq: "blq" };
+  var QXSAVE = { rbq: "rq", dsq: "dq", wyq1: "wq1", wyq2: "wq3", blq: "blq", jxq1: "jq1", jxq2: "jq2", jxq3: "jq3" };
+
+  /* ---------- Justice, conflict & call-out culture ---------- */
+  var jxD = 0, jxS = 0, jxSAns = {}, jxH = 0, jxRing = "cycle", jxRi = 0, jxCase = 0, jxT = {}, jxAns = 0;
+  var JXD = { distract: "D1", delegate: "D2", document: "D3", delay: "D4", direct: "D5" };
+  V.justice = function () {
+    var D = A("jx5D"), SC = A("jxScenes"), H = A("jxHarass"), R = RG.jxRevenge || {}, CS = A("jxCases"), T = A("jxTests"), F = A("jxFactors"), VO = A("jxVoices"), FR = A("jxFreedom"), CT = RG.jxContra || {};
+    var E = A("jxEvidence1").concat(A("jxEvidence2"), A("jxEvidence3"), A("jxEvidence4"), A("jxEvidence5"));
+    return head("Love that protects", "Justice, conflict & call-out culture", "What to do about harassment, exploitation and danger; when to step in even at a cost; why people take revenge and how the cross breaks the cycle; why “exposing” culture and division grow, and how to correct and be corrected in love; and the contradictions at the heart of the legal gospel.") +
+      '<nav class="jx-nav"><button type="button" data-jxgo="jx-harm">Harm & justice</button><button type="button" data-jxgo="jx-call">Call-out culture</button><button type="button" data-jxgo="jx-free">Freedom & contradictions</button></nav>' +
+      '<div id="jx-harm"></div>' +
+      (D.length ? '<section class="section"><h2>When you see someone in trouble: the 5 Ds</h2><p class="note">Five safe ways to step in, from the bystander-intervention framework popularised by Right To Be. Safety first: if anyone is in immediate danger, call your local emergency services.</p><div class="jx-d">' + D.map(function (d, i) { return '<button type="button" class="jx-db' + (i === jxD ? " on" : "") + '" data-jxd="' + i + '"><b>' + esc(d.label.charAt(0)) + "</b><span>" + esc(d.label) + "</span></button>"; }).join("") + '</div><div id="jxd-card"></div></section>' : "") +
+      (SC.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>What would love do here?</h2><span class="count" id="jxs-score"></span></div><p class="note">Real situations. Choose a response, then see why.</p><div class="chips" id="jxs-tabs"></div><div id="jxs-card"></div></section>' : "") +
+      (H.length ? '<section class="section"><h2>If you are being harassed</h2><div class="jx-steps" id="jx-steps">' + H.map(function (h, i) { return '<button type="button" class="jx-step' + (i <= jxH ? " done" : "") + (i === jxH ? " on" : "") + '" data-jxh="' + i + '"><b>' + (i + 1) + "</b><span>" + esc(h.step) + "</span></button>"; }).join("") + '</div><div id="jxh-card"></div></section>' : "") +
+      ((R.cycle || []).length ? '<section class="section"><h2>Why people take revenge, and how the cross breaks the cycle</h2><div class="su-toggle" role="group" aria-label="Choose a ring"><button type="button" class="s" data-jxr="cycle" aria-pressed="' + (jxRing === "cycle") + '">The revenge cycle</button><button type="button" class="u" data-jxr="cross" aria-pressed="' + (jxRing === "cross") + '">The cross breaks it</button></div><div class="jx-ringwrap"><div class="jx-ring" id="jx-ring"></div><div id="jxr-card"></div></div></section>' : "") +
+      (CS.length ? '<section class="section"><h2>Case studies and solutions</h2><p class="note">Composite stories, not real people.</p><div class="chips">' + CS.map(function (c, i) { return '<button class="chip" type="button" data-jxc="' + i + '" aria-pressed="' + (i === jxCase ? "true" : "false") + '">' + esc(c.title) + "</button>"; }).join("") + '</div><div id="jxc-card"></div></section>' : "") +
+      qxSection("jxq1", A("jxQA1"), "Harm, justice and revenge: the deep questions") +
+      '<div id="jx-call"></div>' +
+      (T.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Is this correction biblical?</h2><span class="count" id="jxt-score"></span></div><p class="note">Think of a call-out you have seen, or one you want to make. Tick each test it passes.</p><div class="pa-meter"><i id="jxt-meter"></i></div><div class="pa-tests">' + T.map(function (x) { return '<label class="pa-test"><input type="checkbox" data-jxt="' + esc(x.id) + '"' + (jxT[x.id] ? " checked" : "") + '><span><b>' + esc(x.test) + '</b> <span class="ref">' + esc(x.ref) + "</span><small>" + x.why + "</small></span></label>"; }).join("") + '</div><div id="jxt-out"></div></section>' : "") +
+      (F.length ? '<section class="section"><h2>Why call-out culture grows</h2><p class="note">These patterns appear in every camp, not only one. Each has a healthy version.</p><div class="grid">' + F.map(function (f, i) { return '<article class="gterm" style="animation-delay:' + (i * 0.04).toFixed(2) + 's"><h3>' + esc(f.label) + "</h3><p>" + f.text + '</p><p style="font-size:14.5px;color:var(--muted)"><strong>Where it shows up:</strong> ' + f.cuts + '</p><div class="panel uni"><div class="label">The healthy version</div><p>' + f.healthy + "</p></div></article>"; }).join("") + "</div></section>" : "") +
+      (VO.length ? '<section class="section"><h2>Engaging well-known critics</h2><p class="note">A factual description of each person’s public focus, what their work gets right, and how to engage any critique respectfully. This is not a judgement of anyone’s heart or motives.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + VO.map(function (v) { return '<article class="lvpp"><h3>' + esc(v.name) + '</h3><div class="ref">' + esc(strip(v.tradition)) + '</div><p style="font-size:15.5px">' + v.focus + '</p><div class="panel gold"><div class="label">What their work gets right</div><p>' + v.right + '</p></div><div class="panel uni"><div class="label">How to engage</div><p>' + v.engage + "</p></div>" + (v.url ? '<a class="ref" href="' + esc(v.url) + '" target="_blank" rel="noopener">Their own words ↗</a>' : "") + "</article>"; }).join("") + "</div></section>" : "") +
+      qxSection("jxq2", A("jxQA2"), "Exposing, division and criticism: the deep questions") +
+      '<div id="jx-free"></div>' +
+      (FR.length ? '<section class="section"><h2>Set free from… or not?</h2><p class="note">What Christ set us free from, how performance religion often takes it back, and the relational answer.</p>' + cmode("jxfr", 0, 0, "Legal gospel in practice", "Relational gospel") + '<div class="cmp-list mode-both" id="jxfr">' + FR.map(function (r) { return '<article class="cmp"><h3>' + esc(r.area) + '</h3><div class="panel gold"><div class="label">The promise</div><p>' + r.promise + '</p></div><div class="cmp-pair"><div class="panel sep cmp-l"><div class="label">Legal gospel in practice</div><p>' + r.legal + '</p></div><div class="panel uni cmp-r"><div class="label">Relational gospel</div><p>' + r.relational + '</p></div></div><div class="ref">' + esc((r.refs || []).join(" · ")) + "</div></article>"; }).join("") + "</div></section>" : "") +
+      ((CT.legal || []).length ? '<section class="section"><h2>The contradiction, mapped</h2><p class="note">The popular legal message, step by step, beside the relational resolution. Red steps are where the tension appears.</p><div class="svfl"><div class="svfl-col legal"><div class="label">The popular legal message</div>' + CT.legal.map(function (s, i) { return (i ? '<div class="svfl-arrow in" aria-hidden="true">↓</div>' : "") + '<div class="svfl-step in k-' + esc(s.kind) + '"><b>' + esc(s.step) + "</b><p>" + s.text + "</p></div>"; }).join("") + '</div><div class="svfl-col rel"><div class="label">The relational resolution</div>' + (CT.relational || []).map(function (s, i) { return (i ? '<div class="svfl-arrow in" aria-hidden="true">↓</div>' : "") + '<div class="svfl-step in k-rest"><b>' + esc(s.step) + "</b><p>" + s.text + '</p><span class="ref">' + esc(strip(s.ref || "")) + "</span></div>"; }).join("") + "</div></div>" + ((CT.answers || []).length ? '<h3 style="margin-top:14px">How the traditions answer the tension</h3><div class="chips">' + CT.answers.map(function (a, i) { return '<button class="chip" type="button" data-jxa="' + i + '" aria-pressed="' + (i === jxAns) + '">' + esc(a.tradition) + "</button>"; }).join("") + '</div><div id="jxa-card"></div>' : "") + "</section>" : "") +
+      qxSection("jxq3", A("jxQA3"), "The legal gospel’s confusion: the deep questions") +
+      (E.length ? '<section class="section"><h2>Evidence and sources</h2>' + evGrid(E) + "</section>" : "") +
+      '<section class="section"><p class="note">If you or someone else is in danger, contact your local emergency services. For harassment or abuse, keep records and seek trusted, qualified help.</p><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#life">Love with a spine</a><a class="chip" href="#forgive">Forgiveness & repair</a><a class="chip" href="#living">Living it out</a><a class="chip" href="#saviour">Why a Saviour?</a><a class="chip" href="#debate">Debates & strawmen</a></div></section>';
+  };
+  function jxdShow() { var D = A("jx5D"), d = D[jxD]; if (!d || !$("#jxd-card")) return; $$(".jx-db").forEach(function (b, i) { b.classList.toggle("on", i === jxD); }); $("#jxd-card").innerHTML = '<article class="vph-card"><h3>' + esc(d.label) + "</h3><p>" + d.what + '</p><p style="font-size:15px"><strong>When it fits:</strong> ' + d.when + '</p><div class="panel sep"><div class="label">Stay safe</div><p>' + d.caution + '</p></div><p style="font-size:15px"><strong>Example:</strong> ' + d.example + '</p><div class="verse">' + d.ref + "</div></article>"; }
+  function jxsShow() {
+    var R = A("jxScenes"), r = R[jxS]; if (!r || !$("#jxs-card")) return;
+    var n = 0, ok = 0; R.forEach(function (x) { if (jxSAns[x.id] != null) { n++; if (x.options[jxSAns[x.id]].verdict === "right") ok++; } });
+    $("#jxs-score").textContent = n ? ok + " of " + n + " wise and loving" : R.length + " situations";
+    $("#jxs-tabs").innerHTML = R.map(function (x, i) { return '<button class="chip" type="button" data-jxs="' + i + '" aria-pressed="' + (i === jxS) + '">' + (jxSAns[x.id] != null ? "✓ " : "") + (i + 1) + "</button>"; }).join("");
+    var a = jxSAns[r.id], done = a != null;
+    $("#jxs-card").innerHTML = '<article class="sc lvr' + (done ? " answered" : "") + '"><div class="label">Situation ' + (jxS + 1) + " of " + R.length + '</div><h3 style="font-size:21px">' + r.scenario + '</h3><div class="lvr-opts">' + r.options.map(function (o, j) { return '<button type="button" class="chip' + (o.verdict === "right" ? " right" : "") + '" data-jxo="' + j + '" aria-pressed="' + (a === j) + '">' + esc(o.label) + "</button>"; }).join("") + "</div>" +
+      (done ? '<div class="sc-out"><div class="label">' + (r.options[a].verdict === "right" ? "Wise, safe and loving" : r.options[a].verdict === "partial" ? "Part of the way there" : "Love would choose differently") + "</div><p>" + r.options[a].why + "</p>" + r.options.filter(function (o, j) { return j !== a; }).map(function (o) { return '<p style="font-size:14.5px;color:var(--muted)"><strong>' + esc(o.label) + ":</strong> " + o.why + "</p>"; }).join("") + '</div><div class="panel uni"><div class="label">The way of Jesus</div><p>' + r.jesus + "</p></div>" : "") +
+      '<div class="ref">' + esc((r.refs || []).join(" · ")) + '</div><div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-jxsm="-1"' + (jxS === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-jxsm="1"' + (jxS === R.length - 1 ? " disabled" : "") + ">Next situation →</button></div></article>";
+  }
+  function jxhShow() { var H = A("jxHarass"), h = H[jxH]; if (!h || !$("#jxh-card")) return; $$(".jx-step").forEach(function (b, i) { b.classList.toggle("done", i <= jxH); b.classList.toggle("on", i === jxH); }); $("#jx-steps").style.setProperty("--p", (H.length > 1 ? jxH / (H.length - 1) * 100 : 100) + "%"); $("#jxh-card").innerHTML = '<article class="vph-card"><div class="label">Step ' + (jxH + 1) + " of " + H.length + "</div><h3>" + esc(h.step) + "</h3><p>" + h.text + '</p><div class="verse">' + h.ref + '</div><div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-jxhm="-1"' + (jxH === 0 ? " disabled" : "") + '>← Back</button><button class="btn" type="button" data-jxhm="1"' + (jxH === H.length - 1 ? " disabled" : "") + ">Next step →</button></div></article>"; }
+  function jxrShow() {
+    var R = RG.jxRevenge || {}, L = R[jxRing] || []; if (!$("#jx-ring") || !L.length) return;
+    $$("[data-jxr]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.jxr === jxRing)); });
+    jxRi = Math.min(jxRi, L.length - 1);
+    $("#jx-ring").className = "jx-ring r-" + jxRing;
+    $("#jx-ring").innerHTML = '<div class="jx-orbit" aria-hidden="true"></div><div class="jx-core">' + (jxRing === "cycle" ? "Revenge" : "The cross") + "</div>" + L.map(function (s, i) { var ang = -Math.PI / 2 + i / L.length * Math.PI * 2; return '<button type="button" class="jx-node' + (i === jxRi ? " on" : "") + '" data-jxri="' + i + '" style="left:' + (50 + 38 * Math.cos(ang)).toFixed(1) + "%;top:" + (50 + 38 * Math.sin(ang)).toFixed(1) + '%"><b>' + (i + 1) + "</b>" + esc(s.label) + "</button>"; }).join("");
+    var s = L[jxRi]; $("#jxr-card").innerHTML = '<article class="vph-card"><div class="label">' + (jxRing === "cycle" ? "The revenge cycle" : "How the cross breaks it") + " · " + (jxRi + 1) + " of " + L.length + "</div><h3>" + esc(s.label) + "</h3><p>" + s.text + "</p>" + (s.ref ? '<div class="verse">' + s.ref + "</div>" : "") + "</article>";
+  }
+  function jxcShow() { var C = A("jxCases"), c = C[jxCase]; if (!c || !$("#jxc-card")) return; $$("[data-jxc]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.jxc === jxCase)); }); $("#jxc-card").innerHTML = '<article class="vph-card"><h3>' + esc(c.title) + "</h3><p>" + c.story + '</p><div class="cmp-pair"><div class="panel sep"><div class="label">Where the legal gospel goes wrong</div><p>' + c.legal + '</p></div><div class="panel uni"><div class="label">The relational solution</div><p>' + c.relational + '</p></div></div><ol class="steps">' + (c.steps || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ol></article>"; }
+  function jxtShow() { var T = A("jxTests"); if (!$("#jxt-meter")) return; var n = T.filter(function (x) { return jxT[x.id]; }).length, pct = T.length ? n / T.length : 0; $("#jxt-meter").style.width = (pct * 100).toFixed(0) + "%"; $("#jxt-meter").className = pct === 1 ? "full" : pct >= 0.7 ? "good" : ""; $("#jxt-score").textContent = n + " of " + T.length; $("#jxt-out").innerHTML = n === 0 ? "" : '<div class="panel ' + (pct === 1 ? "uni" : pct >= 0.7 ? "gold" : "sep") + '"><p>' + (pct === 1 ? "This looks like biblical correction: truthful, humble, proportionate and aimed at restoration and protection. Speak it, then leave room for God to work." : pct >= 0.7 ? "Much here is healthy. Look again at the tests it misses before speaking publicly; a private word or a gentler tone may be all that is needed." : "Pause. Correction that skips private conversation, distorts, mocks or builds a brand is more likely to wound than to heal. Pray, check the facts, talk to the person or to wise friends first.") + "</p></div>"; }
+  function jxaShow() { var A2 = (RG.jxContra || {}).answers || [], a = A2[jxAns]; if (!a || !$("#jxa-card")) return; $$("[data-jxa]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.jxa === jxAns)); }); $("#jxa-card").innerHTML = '<article class="vph-card"><h3>' + esc(a.tradition) + "</h3><p>" + a.answer + "</p></article>"; }
 
   /* ---------- The life is in the blood ---------- */
   var blS = 0, blT = null, blP = 1, blSt = 0, blV = 3;
@@ -42900,6 +42995,10 @@ RG.blEvidence3 = [
     wchar: function (x) { return panel("sep", "How religion often pictured it", x.distortion) + panel("uni", "Through the Jesus lens", x.jesus) + blk("See it", x.scene) + panel("gold", "Scripture", x.ref); },
     wcase: function (x) { return blk("Who", x.person) + panel("sep", "Legal gospel", x.legal) + panel("gold", "Techniques only", x.secular) + panel("uni", "Relational gospel", x.relational) + blk("Outcome", x.outcome); },
     wprov: function (x) { return blk("Who", x.who) + blk("The view", x.view) + blk("Applied", x.example) + panel("uni", "Strength", x.strength) + panel("sep", "Weakness", x.weakness); },
+    jq1: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    jq2: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    jq3: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
+    jcase: function (x) { return blk("The story", x.story) + panel("sep", "Where the legal gospel goes wrong", x.legal) + panel("uni", "The relational solution", x.relational) + '<div class="blk"><div class="label">Steps</div><ol class="steps">' + (x.steps || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ol></div>"; },
     blq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     blst: function (x) { return blk("What happens", x.scene) + panel("gold", "In its world", x.culture) + panel("uni", "Through the relational lens", x.relational) + blk("In Christ", x.fulfilled); },
     dech: function (x) { return panel("gold", "Big idea", x.big) + blk("Summary", x.summary) + (x.points || []).map(function (p) { return blk(esc(p.head), p.text); }).join("") + blk("Scriptures", esc((x.scriptures || []).join(" · "))) + panel("uni", "Reflect", x.reflect); },
@@ -42998,7 +43097,7 @@ RG.blEvidence3 = [
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -43075,6 +43174,7 @@ RG.blEvidence3 = [
     clearInterval(svTimer); svStep = -1; clearInterval(rbStT); clearInterval(rbLT); clearInterval(wyRcT);
     if (route.view === "myths") mmShow();
     clearInterval(blT);
+    if (route.view === "justice") { jxdShow(); jxsShow(); jxhShow(); jxrShow(); jxcShow(); jxtShow(); jxaShow(); qxShow("jxq1", "jq1"); qxShow("jxq2", "jq2"); qxShow("jxq3", "jq3"); }
     if (route.view === "blood") { blShow(); blpShow(); blvShow(); qxShow("blq", "blq"); }
     if (route.view === "embrace") { deShow(); deWordsShow(); deQsShow(); }
     if (route.view === "ways") { wyCSeen = false; wycShow(); wysShow(); wystScore(); wyvShow(); wypvShow(); qxShow("wyq1", "wq1"); wyskShow(); wycsShow(); wyrcShow(); wyfShow(); qxShow("wyq2", "wq3"); }
@@ -43105,6 +43205,7 @@ RG.blEvidence3 = [
   /* ---------- events ---------- */
   document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } if (ev.target.id === "mm-q") { mmQ = ev.target.value; mmI = 0; mmShow(); } if (ev.target.id === "de-wq") { deWq = ev.target.value; deWordsShow(); } if (ev.target.id === "de-qq") { deQq = ev.target.value; deQsShow(); } });
   document.addEventListener("change", function (ev) { if (ev.target.id === "rbv-a") { rbA = +ev.target.value; rbvShow(); } if (ev.target.id === "rbv-b") { rbB = +ev.target.value; rbvShow(); } });
+  document.addEventListener("change", function (ev) { var jt = ev.target.dataset && ev.target.dataset.jxt; if (jt) { jxT[jt] = ev.target.checked; jxtShow(); } });
   document.addEventListener("change", function (ev) { var d = ev.target.dataset && ev.target.dataset.pat; if (d) { paTest[d] = ev.target.checked; showTests(); } });
   document.addEventListener("keydown", function (ev) { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-bls]")) { ev.preventDefault(); blS = +ev.target.closest("[data-bls]").dataset.bls; blShow(); return; } if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("[data-pas]")) { ev.preventDefault(); clearInterval(paWalk); paGoStn(+ev.target.closest("[data-pas]").dataset.pas); } });
   document.addEventListener("click", function (ev) {
@@ -43121,6 +43222,17 @@ RG.blEvidence3 = [
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    var jgo = t.closest("[data-jxgo]"); if (jgo) { var jel = document.getElementById(jgo.dataset.jxgo); if (jel) jel.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var jdb = t.closest("[data-jxd]"); if (jdb) { jxD = +jdb.dataset.jxd; jxdShow(); return; }
+    var jsb = t.closest("[data-jxs]"); if (jsb) { jxS = +jsb.dataset.jxs; jxsShow(); return; }
+    var job = t.closest("[data-jxo]"); if (job) { var jr = A("jxScenes")[jxS]; if (jr && jxSAns[jr.id] == null) { jxSAns[jr.id] = +job.dataset.jxo; jxsShow(); } return; }
+    var jsm = t.closest("[data-jxsm]"); if (jsm) { jxS = Math.max(0, Math.min(A("jxScenes").length - 1, jxS + +jsm.dataset.jxsm)); jxsShow(); $("#jxs-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var jhb = t.closest("[data-jxh]"); if (jhb) { jxH = +jhb.dataset.jxh; jxhShow(); return; }
+    var jhm = t.closest("[data-jxhm]"); if (jhm) { jxH = Math.max(0, Math.min(A("jxHarass").length - 1, jxH + +jhm.dataset.jxhm)); jxhShow(); return; }
+    var jrb = t.closest("[data-jxr]"); if (jrb) { jxRing = jrb.dataset.jxr; jxRi = 0; jxrShow(); return; }
+    var jrib = t.closest("[data-jxri]"); if (jrib) { jxRi = +jrib.dataset.jxri; jxrShow(); return; }
+    var jcb = t.closest("[data-jxc]"); if (jcb) { jxCase = +jcb.dataset.jxc; jxcShow(); return; }
+    var jab = t.closest("[data-jxa]"); if (jab) { jxAns = +jab.dataset.jxa; jxaShow(); return; }
     var blsb = t.closest("[data-bls]"); if (blsb) { clearInterval(blT); blS = +blsb.dataset.bls; blShow(); return; }
     if (t.closest("#bl-play")) { clearInterval(blT); blS = 0; blShow(); var nB = A("blStations").length; blT = setInterval(function () { if (blS >= nB - 1) { clearInterval(blT); return; } blS++; blShow(); }, reduced ? 400 : 3400); return; }
     var blpb = t.closest("[data-blp]"); if (blpb) { blP = +blpb.dataset.blp; blpShow(); return; }
