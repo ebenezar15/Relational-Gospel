@@ -68,11 +68,6 @@ RG.jxQA2 = [
         "text": "Tim Challies: “The first is that discernment blogs are too often marked by neither truth nor love.” Yet he adds: “there are false leaders and ministries that need to be exposed” and, after a real and honest investigation, “I will join in sounding the alarm.”",
         "source": "Tim Challies, “In the Crosshairs of the Discernment Bloggers”, challies.com",
         "url": "https://www.challies.com/articles/in-the-crosshairs-of-the-discernment-bloggers/"
-      },
-      {
-        "text": "Justin Peters on why he critiques the Word of Faith movement: “The burden that is being placed on people is almost unbearable, and it breaks my heart… I get e-mails from people from all over the world almost on a daily basis now, telling me how they or one of their loved ones have been devastated by this movement.”",
-        "source": "Benjamin Hawkins, “Faith ‘heresy’ wrecks lives, evangelist says”, Baptist Press",
-        "url": "https://www.baptistpress.com/resource-library/news/faith-heresy-wrecks-lives-evangelist-says/"
       }
     ]
   },
@@ -101,7 +96,7 @@ RG.jxQA2 = [
         "title": "Is the pattern fair to assume?",
         "body": [
           "Only partly, and only as a pattern of ideas. It is fair to say that some influential Reformed and cessationist platforms focus heavily on polemics, and that certain teachings make that focus feel natural. It is not fair to assume that any individual Calvinist or cessationist is harsh, nor to guess at anyone’s motives or psychology. Scripture forbids that kind of heart-judging (1 Cor 4:5; Jas 4:11-12).",
-          "The pattern also has many exceptions in both directions. One of the best-known online exposers of abuse in charismatic circles, Mike Winger, is himself described as a charismatic who believes in ongoing prophecy and tongues. Tim Challies, a Reformed writer, has publicly criticised discernment blogging. Progressive Christians run call-out campaigns; charismatics label critics as having a “religious spirit”; fundamentalists separate from fellow believers over small issues. Every camp has its prosecutors."
+          "The pattern also has many exceptions in both directions. One of the best-known online exposers of abuse and false teaching in charismatic circles, a Bible teacher with a large online channel, is himself a charismatic (continuationist) who believes in ongoing prophecy and tongues. Tim Challies, a Reformed writer, has publicly criticised discernment blogging. Progressive Christians run call-out campaigns; charismatics label critics as having a “religious spirit”; fundamentalists separate from fellow believers over small issues. Every camp has its prosecutors."
         ]
       },
       {
@@ -129,14 +124,9 @@ RG.jxQA2 = [
     "refs": ["Luke 9:51-56", "Mark 9:38-40", "Rom 14:1-4", "1 Cor 13:1-3", "1 Cor 4:5", "Jas 4:11-12", "John 1:14", "1 Cor 12:4-11", "1 Cor 14:1", "1 Thess 5:19-21"],
     "evidence": [
       {
-        "text": "“Strange Fire, part of Grace to You’s Truth Matters conference series, evaluates the doctrines, claims, and practices of the modern charismatic movement.” Sessions included “A Case for Cessationism” (Tom Pennington) and two talks by Justin Peters on the Word-Faith movement.",
+        "text": "“Strange Fire, part of Grace to You’s Truth Matters conference series, evaluates the doctrines, claims, and practices of the modern charismatic movement.” Sessions included “A Case for Cessationism” (Tom Pennington) and talks on the Word-Faith movement.",
         "source": "Grace to You, “Truth Matters 2013: Strange Fire” (series page)",
         "url": "https://www.gty.org/library/topical-series-library/325/"
-      },
-      {
-        "text": "Mike Winger “teaches biblical theology from a charismatic viewpoint for lay audiences. He claims to speak in tongues and believes in ongoing prophecy. He is known for publishing in-depth exposés of spiritual abuse and sexual misconduct in Christian circles.”",
-        "source": "Wikipedia, “Mike Winger” (revision of 2026)",
-        "url": "https://en.wikipedia.org/wiki/Mike_Winger"
       },
       {
         "text": "Tim Challies (a Reformed author) on discernment bloggers: “They bemoan a leader’s lack of love and respond by defaming him.”",
@@ -456,7 +446,7 @@ RG.jxQA2 = [
 
   {
     "id": "respond-or-avoid",
-    "q": "Should Christians respond to critics (online apologists and discernment voices such as Justin Peters, Alisa Childers, Melissa Dougherty or Mike Winger), keep responding, or avoid them?",
+    "q": "Should Christians respond to critics (online apologists and discernment voices), keep responding, or avoid them?",
     "short": "There is no single rule. Scripture shows times to answer, times to stay silent and times to walk away. Learn from what critics get right, answer clearly when it helps others, avoid endless back-and-forth, and never return contempt for contempt. These four voices have different traditions and focuses, and each does valuable work that is worth hearing.",
     "sections": [
       {
@@ -469,9 +459,9 @@ RG.jxQA2 = [
       {
         "title": "Who these four voices are (public focus only)",
         "body": [
-          "<strong>Justin Peters</strong> is an evangelist who holds master’s degrees from Southwestern Baptist Theological Seminary and wrote a thesis on Word of Faith theology. His ministry focuses on critiquing the Word of Faith and prosperity movements through his seminar “A Call to Discernment”. He spoke at the 2013 Strange Fire conference, which evaluated the charismatic movement. His work rightly highlights how faith-healing promises can crush the sick.",
-          "<strong>Alisa Childers</strong> is a former member of the Christian band ZOEgirl, now an author and podcaster. Her books include <em>Another Gospel?</em> (2020), about her encounter with progressive Christianity, <em>Live Your Truth and Other Lies</em> (2022), and <em>The Deconstruction of Christianity</em> (2024, with Tim Barnett). Her work helps believers think through questions raised by deconstruction. <strong>Melissa Dougherty</strong> is a Christian apologist and former follower of New Thought; her YouTube channel focuses mainly on New Age and New Thought ideas, and her book <em>Happy Lies</em> (Zondervan) traces how New Thought shaped self-help culture and parts of the church. She helps people spot teachings that sound Christian but are rooted elsewhere.",
-          "<strong>Mike Winger</strong> runs BibleThinker, which aims at “teaching accurate theology”, “defending the biblical/Christian worldview” and “applying the Bible”. He was ordained in 2006 after training at Calvary Chapel Costa Mesa’s School of Ministry. He is charismatic (he believes in ongoing prophecy and tongues), and he is known for long, researched exposés of abuse in some charismatic circles, as well as teaching on many topics. Not all of these voices are Calvinist or cessationist, and they do not all agree with each other."
+          "<strong>An evangelist and seminar speaker who critiques the Word of Faith and prosperity movements</strong> has studied Word of Faith theology in depth and teaches churches about it through a multi-part seminar. He has also spoken at a conference that evaluated the charismatic movement. His work rightly highlights how faith-healing promises can crush the sick.",
+          "<strong>A former Christian pop singer turned author and podcaster on progressive Christianity and deconstruction</strong> has written books about her own encounter with progressive Christianity, about the slogans of “live your truth” culture, and about the deconstruction movement. Her work helps believers think through questions raised by deconstruction. <strong>An apologist and former follower of New Age and New Thought ideas</strong> focuses her online videos mainly on those ideas, and her writing traces how New Thought shaped self-help culture and parts of the church. She helps people spot teachings that sound Christian but are rooted elsewhere.",
+          "<strong>A Bible teacher with a large online channel who exposes abuse and false teaching from a charismatic (continuationist) viewpoint</strong> runs a ministry that aims at teaching accurate theology, defending the Christian worldview and applying the Bible. He is charismatic (he believes in ongoing prophecy and tongues), and he is known for long, researched exposés of abuse in some charismatic circles, as well as teaching on many topics. Not all of these voices are Calvinist or cessationist, and they do not all agree with each other."
         ]
       },
       {
@@ -506,24 +496,9 @@ RG.jxQA2 = [
     "refs": ["1 Pet 3:15-16", "Acts 17:17", "Gal 2:5", "2 Tim 2:23-26", "Phil 1:15-18", "Matt 21:23-27", "Prov 15:1", "Prov 26:4-5", "Rom 12:14-18", "Matt 16:18", "Col 4:5-6", "Jas 1:19-20"],
     "evidence": [
       {
-        "text": "Justin Peters: “I do what I do because I love the Lord, I love His Word and I love His people… And I’m growing weary of seeing wolves in sheep’s clothing preying upon sick and hurting people.” The article notes he “travels to churches to teach them about the Word of Faith movement through a three-part seminar titled ‘A Call to Discernment.’”",
-        "source": "Benjamin Hawkins, “Faith ‘heresy’ wrecks lives, evangelist says”, Baptist Press",
-        "url": "https://www.baptistpress.com/resource-library/news/faith-heresy-wrecks-lives-evangelist-says/"
-      },
-      {
-        "text": "BibleThinker describes its three focuses as “Teaching accurate theology… confronting false teachings”, “Defending the biblical/Christian worldview… and answering skeptics”, and “Applying the Bible… so that we can become true followers of Jesus in not only thinking right, but living right.”",
-        "source": "BibleThinker, “About BibleThinker” / “Meet Mike Winger”",
-        "url": "https://biblethinker.org/meet-mike/"
-      },
-      {
-        "text": "Alisa Childers’s first book, <em>Another Gospel?</em> (Tyndale, 2020), “recounts her experience with progressive Christianity and deconstruction”; her third, <em>The Deconstruction of Christianity</em> (Tyndale, 2024), was co-authored with Stand to Reason apologist Tim Barnett.",
-        "source": "Wikipedia, “Alisa Childers” (revision of 2026)",
-        "url": "https://en.wikipedia.org/wiki/Alisa_Childers"
-      },
-      {
-        "text": "Melissa Dougherty “is a Christian apologist best known for her YouTube channel… Her videos… primarily cover New Age and New Thought.” In <em>Happy Lies</em>, “a former follower of its teachings” traces today’s self-focused culture back to New Thought, an 1800s philosophy.",
-        "source": "Blackstone Library, <em>Happy Lies</em> by Melissa Dougherty (Zondervan / HarperCollins Christian), summary and author bio",
-        "url": "https://www.blackstonelibrary.com/happy-lies"
+        "text": "Tim Challies: “The first is that discernment blogs are too often marked by neither truth nor love.” Yet “there are false leaders and ministries that need to be exposed”, after “a real and honest investigation, to verify the facts, to talk to the people involved”.",
+        "source": "Tim Challies, “In the Crosshairs of the Discernment Bloggers”, challies.com",
+        "url": "https://www.challies.com/articles/in-the-crosshairs-of-the-discernment-bloggers/"
       }
     ]
   }
@@ -551,33 +526,8 @@ RG.jxEvidence2 = [
     "url": "https://faculty.georgetown.edu/jod/augustine/quote.html"
   },
   {
-    "text": "Justin Peters on the Word of Faith movement: “The burden that is being placed on people is almost unbearable, and it breaks my heart.”",
-    "source": "Benjamin Hawkins, “Faith ‘heresy’ wrecks lives, evangelist says”, Baptist Press",
-    "url": "https://www.baptistpress.com/resource-library/news/faith-heresy-wrecks-lives-evangelist-says/"
-  },
-  {
     "text": "Strange Fire (2013) “evaluates the doctrines, claims, and practices of the modern charismatic movement”, with sessions such as “A Case for Cessationism”.",
     "source": "Grace to You, “Truth Matters 2013: Strange Fire”",
     "url": "https://www.gty.org/library/topical-series-library/325/"
-  },
-  {
-    "text": "Mike Winger “teaches biblical theology from a charismatic viewpoint… He claims to speak in tongues and believes in ongoing prophecy”, and is known for in-depth exposés of spiritual abuse, mostly in charismatic circles.",
-    "source": "Wikipedia, “Mike Winger”",
-    "url": "https://en.wikipedia.org/wiki/Mike_Winger"
-  },
-  {
-    "text": "BibleThinker is “a ministry dedicated to equipping people to think and live biblically”, focused on accurate theology, defending the Christian worldview and applying the Bible.",
-    "source": "BibleThinker, “About BibleThinker”",
-    "url": "https://biblethinker.org/meet-mike/"
-  },
-  {
-    "text": "Alisa Childers, formerly of ZOEgirl, wrote <em>Another Gospel?</em> (2020) about progressive Christianity and deconstruction, <em>Live Your Truth and Other Lies</em> (2022) and, with Tim Barnett, <em>The Deconstruction of Christianity</em> (2024).",
-    "source": "Wikipedia, “Alisa Childers”",
-    "url": "https://en.wikipedia.org/wiki/Alisa_Childers"
-  },
-  {
-    "text": "Melissa Dougherty’s YouTube videos “primarily cover New Age and New Thought”; <em>Happy Lies</em> traces “the roots of today’s social chaos back to… New Thought”, written by “a former follower of its teachings”.",
-    "source": "Blackstone Library, <em>Happy Lies</em> (Zondervan / HarperCollins Christian)",
-    "url": "https://www.blackstonelibrary.com/happy-lies"
   }
 ];

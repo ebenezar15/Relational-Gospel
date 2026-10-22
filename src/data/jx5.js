@@ -127,34 +127,38 @@ RG.jxFactors = [
 
 RG.jxVoices = [
   {
-    id: "justin-peters",
-    name: "Justin Peters",
-    focus: "His ministry describes itself as \"a worldwide expository preaching and teaching ministry\" focused on \"teaching the sufficiency of God's word and exposing the false teachings of the prosperity, health and wealth gospel.\" His site says he earned a Master of Divinity and a Master of Theology from Southwestern Baptist Theological Seminary.",
+    id: "voice-1",
+    name: "The Word of Faith critic",
+    url: "",
+    focus: "An evangelist and seminar speaker who critiques the Word of Faith and prosperity movements. His ministry describes itself as an expository preaching and teaching ministry focused on the sufficiency of God's Word and on exposing the false teachings of the prosperity, health and wealth gospel. He has formal theological training.",
     tradition: "Not stated publicly as a single tradition on the pages checked. His ministry's doctrinal statement affirms the Bible as God's inerrant and sufficient Word and salvation \"by grace alone through faith in Christ alone.\"",
     right: "He takes seriously the real damage done when people are promised health and wealth that do not come, and he points people back to Scripture and to Christ's sufficiency. Concern for those let down by false promises is a genuine act of love.",
     engage: "Weigh any critique by Scripture and by accurate sources, not by tone or reputation (Acts 17:11). Where you disagree, for example over spiritual gifts, say so charitably and specifically, and receive whatever is true."
   },
   {
-    id: "alisa-childers",
-    name: "Alisa Childers",
-    focus: "Her site, headed \"Apologetics, Theology, Culture, Worship,\" describes her as a former CCM recording artist with the Dove award-winning group ZOEgirl who went through \"a period of profound doubt\" in her mid-thirties and investigated her faith intellectually. She is the author of <em>Another Gospel? A Lifelong Christian Seeks Truth in Response to Progressive Christianity</em>.",
+    id: "voice-2",
+    name: "The deconstruction apologist",
+    url: "",
+    focus: "A former Christian pop singer turned author and podcaster on progressive Christianity and deconstruction. She describes going through a period of profound doubt in her mid-thirties and investigating her faith intellectually, and she has written a book responding to progressive Christianity from her own experience.",
     tradition: "Not stated publicly as a single tradition",
     right: "She takes doubt seriously and models honest investigation rather than pretending hard questions do not exist. Her work urges Christians to know what they believe and why.",
     engage: "Readers in the relational stream can thank her for taking questions seriously and then answer her specific concerns from Scripture and the church fathers, distinguishing their views from positions they do not hold. Good-faith dialogue means describing each other's views in terms the other would recognise."
   },
   {
-    id: "melissa-dougherty",
-    name: "Melissa Dougherty",
-    focus: "She is described as a Christian apologist best known for her YouTube channel as a former New Ager, focusing on theology, apologetics and how New Age ideas enter churches. Her book <em>Happy Lies</em> (Zondervan, 2025) traces modern self-focused spirituality to the 1800s New Thought movement, of which she says she was once a follower.",
+    id: "voice-3",
+    name: "The ex–New Age apologist",
+    url: "",
+    focus: "An apologist and former follower of New Age and New Thought ideas, best known for her online videos on theology, apologetics and how New Age ideas enter churches. Her writing traces modern self-focused spirituality to the 1800s New Thought movement, of which she says she was once a follower.",
     tradition: "Not stated publicly as a single tradition",
     right: "She helps Christians notice when Christian language is used to carry ideas that make the self, rather than God, the centre. Her own story gives her an insider's understanding of ideas many critics only know second-hand.",
     engage: "When any critic groups different ideas together, respond by showing the differences carefully, for example that union with Christ in Athanasius and 2 Pet 1:4 means sharing God's life by grace, not becoming God by nature. Take seriously any genuine overlap a critic identifies, and change where change is due."
   },
   {
-    id: "mike-winger",
-    name: "Mike Winger",
-    focus: "Through BibleThinker and his YouTube channel he describes his ministry as answering \"tough questions about the Bible\" and verse-by-verse teaching, with occasional topical series. His site's series include apologetics, Bible books, cults and a series titled \"Exposing False Prophets & Cover-Up Culture\".",
-    tradition: "Evangelical; trained at Calvary Chapel Costa Mesa's School of Ministry and ordained in 2006. He has said publicly that he believes in prophecy and tongues today (continuationist), so he is not a cessationist.",
+    id: "voice-4",
+    name: "The online Bible teacher",
+    url: "",
+    focus: "A Bible teacher with a large online channel who exposes abuse and false teaching from a charismatic (continuationist) viewpoint. He describes his ministry as answering tough questions about the Bible and verse-by-verse teaching, with occasional topical series on apologetics, books of the Bible, cults, false prophets and cover-up culture.",
+    tradition: "Evangelical. He has said publicly that he believes in prophecy and tongues today (continuationist), so he is not a cessationist.",
     right: "He spends long hours on careful study and has given voice to people who say they were harmed by leaders. He has stressed that criticising a charismatic leader is not the same as rejecting spiritual gifts.",
     engage: "Engage his arguments on the texts he discusses, and where you reach different conclusions, show your exegesis as carefully as he shows his. Disagreement about a doctrine does not have to become distrust of a person."
   }
@@ -298,41 +302,6 @@ RG.jxContra = {
 };
 
 RG.jxEvidence5 = [
-  {
-    text: "Justin Peters Ministries describes itself as \"a worldwide expository preaching and teaching ministry\" focused on \"teaching the sufficiency of God's word and exposing the false teachings of the prosperity, health and wealth gospel\"; its doctrinal summary affirms the Bible as God's inerrant Word and salvation by grace alone through faith in Christ alone.",
-    source: "Justin Peters Ministries, home page",
-    url: "https://justinpeters.org/"
-  },
-  {
-    text: "Justin Peters's biography says he earned a Master of Divinity and Master of Theology (2000, 2002) from Southwestern Baptist Theological Seminary.",
-    source: "Justin Peters Ministries, About Justin",
-    url: "https://justinpeters.org/about-justin/"
-  },
-  {
-    text: "Alisa Childers describes herself as a lifelong church-goer and former CCM recording artist with the Dove award-winning group ZOEgirl who experienced \"a period of profound doubt\" in her mid-thirties and began \"to investigate my faith intellectually\".",
-    source: "AlisaChilders.com, home page",
-    url: "https://www.alisachilders.com/"
-  },
-  {
-    text: "Melissa Dougherty is described as \"a Christian Apologist best known for her YouTube channel as an ex new ager\" whose channel focuses on \"theology, apologetics, how the new age is infiltrating our churches\".",
-    source: "Cross Examined, speaker profile",
-    url: "https://crossexamined.org/melissa-dougherty"
-  },
-  {
-    text: "Dougherty's <em>Happy Lies</em> (Zondervan, 2025) traces modern self-focused culture to the 1800s New Thought movement; the publisher's description calls her \"a former follower of its teachings\".",
-    source: "Christianbook.com product page",
-    url: "https://www.christianbook.com/movement-never-heard-shaped-obsessed-world/9780310368861/pd/368861"
-  },
-  {
-    text: "In a 2024 interview reported by ChurchLeaders, Mike Winger said, \"I believe in prophecy, tongues, all of those things,\" and that criticism of a charismatic leader is not criticism of the gifts; he described his ministry as answering \"tough questions about the Bible\" and verse-by-verse teaching.",
-    source: "ChurchLeaders, 16 May 2024",
-    url: "https://churchleaders.com/news/478277-mike-winger-says-benny-hinn-is-not-a-christian-during-interview-with-charisma.html"
-  },
-  {
-    text: "Mike Winger graduated from the School of Ministry at Calvary Chapel Costa Mesa, was ordained in 2006, and later moved to full-time online ministry through YouTube and BibleThinker.",
-    source: "Wikipedia, Mike Winger",
-    url: "https://en.wikipedia.org/wiki/Mike_Winger"
-  },
   {
     text: "Brady and colleagues (PNAS, 2017) analysed 563,312 social media messages on polarising issues and found that each additional moral-emotional word increased a message's diffusion by about 20%, more strongly within like-minded networks.",
     source: "NYU Center for Social Media and Politics, research summary",
