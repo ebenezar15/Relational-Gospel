@@ -25,7 +25,7 @@ RG.jxQA3 = [
         "title": "Scripture in context: nine freedoms",
         "body": [
           "<strong>From the law as a way of standing with God.</strong> “Stand firm therefore in the liberty by which Christ has made us free, and don’t be entangled again with a yoke of bondage” (Gal 5:1). Paul says we now serve “in newness of the spirit, and not in oldness of the letter” (Rom 7:6). The contradiction: new lists of rules about dress, music, screens or church attendance become the test of whether you are right with God.",
-          "<strong>From condemnation.</strong> “There is therefore now no condemnation to those who are in Christ Jesus” (Rom 8:1). The word <em>katakrima</em> means a sentence of condemnation, the verdict and its penalty. The contradiction: believers are kept in a low, steady fear that God is about to judge them for this week’s failures. <strong>From sin’s power.</strong> “Sin will not have dominion over you. For you are not under law, but under grace” (Rom 6:14). Paul links freedom from sin’s rule to being under grace, not to being under more law. The contradiction: a constant focus on sin, which keeps sin at the centre of attention.",
+          "<strong>From condemnation.</strong> “There is therefore now no condemnation to those who are in Christ Jesus” (Rom 8:1). The word <em>katakrima</em> means condemnation, a judgment passed against someone. The contradiction: believers are kept in a low, steady fear that God is about to judge them for this week’s failures. <strong>From sin’s power.</strong> “Sin will not have dominion over you. For you are not under law, but under grace” (Rom 6:14). Paul links freedom from sin’s rule to being under grace, not to being under more law. The contradiction: a constant focus on sin, which keeps sin at the centre of attention.",
           "<strong>From the fear of death.</strong> Christ came to “deliver all of them who through fear of death were all their lifetime subject to bondage” (Heb 2:15). The contradiction: believers who are still terrified that they might die on a bad day and be lost. <strong>From a guilty conscience.</strong> Hebrews says that the worshippers, once cleansed, would have “no more consciousness of sins” (Heb 10:2) and invites us to draw near “having our hearts sprinkled from an evil conscience” (Heb 10:22). The contradiction: a cycle of re-confessing for re-forgiveness, as if each sin reopens the case. (Christians do confess; 1 John 1:9 is real. The question is whether confession is honest relationship or anxious re-entry.)",
           "<strong>From the accuser.</strong> “The accuser of our brothers has been thrown down” (Rev 12:10). The contradiction: pulpits that do the accuser’s work. <strong>From striving, shame and religion.</strong> Jesus says, “Come to me, all you who labor and are heavily burdened, and I will give you rest” (Matt 11:28); Hebrews says he “endured the cross, despising its shame” (Heb 12:2); and Paul asks, “If you died with Christ from the elements of the world, why… do you subject yourselves to ordinances, ‘Don’t handle, nor taste, nor touch’?”, adding that such rules “aren’t of any value against the indulgence of the flesh” (Col 2:20-23)."
         ]
@@ -49,7 +49,7 @@ RG.jxQA3 = [
       {
         "title": "A fair counter-view and response",
         "body": [
-          "Many evangelical and Reformed teachers would say: “We agree with every one of those freedoms. The problem is not our theology but bad preaching.” That is fair. The Westminster Confession, for example, says true believers are kept by God and will not finally fall away, and it calls good works the fruits of a true faith, not the price of it. Baptist teaching on eternal security says something similar.",
+          "Many evangelical and Reformed teachers would say: “We agree with every one of those freedoms. The problem is not our theology but bad preaching.” That is fair. The Westminster Confession, for example, says true believers “can neither totally nor finally fall away from the state of grace”, and it calls good works “the fruits and evidences of a true and lively faith”, not the price of it. The Southern Baptist <em>Baptist Faith and Message</em> says something similar.",
           "They would also warn that the New Testament does contain real warnings (Heb 6:4-8; 10:26-31; 1 Cor 9:27), and that freedom without warnings becomes careless. That is also fair, and Scripture should not be edited to feel nicer.",
           "The response is not to deny the warnings but to read them inside the relationship. Warnings in Scripture are given by a Father to children, to wake them up, not to keep them in permanent fear. When warnings are preached so that believers never know where they stand, the effect contradicts Rom 8:1 and Heb 2:15, whatever the official doctrine says."
         ]
@@ -64,7 +64,23 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Gal 5:1", "Rom 7:6", "Rom 8:1", "Rom 6:1-14", "Heb 2:14-15", "Heb 10:2", "Heb 10:22", "Rev 12:10", "Matt 11:28-30", "Heb 12:2", "Col 2:20-23", "1 John 4:18", "1 John 1:9"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "Strong’s 2631 <em>katakrima</em>: condemnation, judgment (used in Rom 8:1, “no condemnation”).",
+        "source": "Bible Hub, Strong’s Greek 2631",
+        "url": "https://biblehub.com/greek/2631.htm"
+      },
+      {
+        "text": "“They whom God hath accepted in his Beloved, effectually called and sanctified by his Spirit, can neither totally nor finally fall away from the state of grace; but shall certainly persevere therein to the end, and be eternally saved.” This perseverance “depends not upon their own free will, but upon the immutability of the decree of election, flowing from the free and unchangeable love of God the Father.”",
+        "source": "Westminster Confession of Faith, ch. 17 “Of the Perseverance of the Saints” (Bible Presbyterian Church text)",
+        "url": "https://bpc.org/wcf-ch-17"
+      },
+      {
+        "text": "“All true believers endure to the end. Those whom God has accepted in Christ, and sanctified by His Spirit, will never fall away from the state of grace, but shall persevere to the end. Believers may fall into sin through neglect and temptation… yet they shall be kept by the power of God through faith unto salvation.” Sanctification “is the experience, beginning in regeneration, by which the believer is set apart to God’s purposes, and is enabled to progress toward moral and spiritual maturity.”",
+        "source": "The Baptist Faith and Message 2000 (Southern Baptist Convention), Articles IV and V",
+        "url": "https://bfm.sbc.net/bfm2000/"
+      }
+    ]
   },
   {
     "id": "the-confusion",
@@ -121,7 +137,28 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Gal 3:1-3", "Luke 18:9-14", "2 Cor 5:18-19", "Heb 12:10", "Heb 12:14", "Eph 2:8-10", "Titus 2:11-12", "Eph 1:4-5", "Rom 5:8"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "Strong’s 38 <em>hagiasmos</em>: sanctification, holiness, consecration (used in Heb 12:14).",
+        "source": "Bible Hub, Strong’s Greek 38",
+        "url": "https://biblehub.com/greek/38.htm"
+      },
+      {
+        "text": "Strong’s 3811 <em>paideuō</em>: to train, to educate, to discipline, to instruct, to correct (used in Titus 2:12, “instructing us”).",
+        "source": "Bible Hub, Strong’s Greek 3811",
+        "url": "https://biblehub.com/greek/3811.htm"
+      },
+      {
+        "text": "“Also they teach that this faith is bound to bring forth good fruits, and that it is necessary to do good works commanded by God, because of God’s will, but that we should not rely on those works to merit justification before God.”",
+        "source": "Augsburg Confession (1530), Art. VI “Of New Obedience”, Book of Concord",
+        "url": "https://bookofconcord.org/augsburg-confession/of-new-obedience/"
+      },
+      {
+        "text": "“Since the initiative belongs to God in the order of grace, no one can merit the initial grace of forgiveness and justification, at the beginning of conversion. Moved by the Holy Spirit and by charity, we can then merit for ourselves and for others the graces needed for our sanctification.” (§2010) “The charity of Christ is the source in us of all our merits before God.” (§2011)",
+        "source": "Catechism of the Catholic Church, §§2010–2011 “Merit”",
+        "url": "https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_three/article_2/iii_merit.html"
+      }
+    ]
   },
   {
     "id": "how-traditions-answer",
@@ -146,7 +183,7 @@ RG.jxQA3 = [
       {
         "title": "Arminian and Wesleyan: grace enables, apostasy is possible",
         "body": [
-          "Arminian and Wesleyan traditions teach that grace goes before us (prevenient grace), enabling a real human response, and that believers can, by persistent unbelief, fall away. The Church of the Nazarene, for example, teaches entire sanctification as a work of God’s grace through the Holy Spirit, and also teaches that people can fall from grace and be lost unless they repent.",
+          "Arminian and Wesleyan traditions teach that grace goes before us (prevenient grace), enabling a real human response, and that believers can, by persistent unbelief, fall away. The Church of the Nazarene, for example, teaches entire sanctification as a work of God’s grace through the Holy Spirit, and also teaches that all persons, even the regenerate and entirely sanctified, “may fall from grace and apostatize” and, unless they repent, be lost.",
           "Their answer to the tension is: everything good is by grace, including our response, but the relationship is real, and real relationships can be refused. Strengths: they take the warnings seriously and insist that holiness is possible by grace, not merely hoped for. Pressure point: in some holiness and revivalist settings this became a cycle of losing and regaining salvation, with great anxiety. John Wesley himself spoke of the Spirit’s witness and assurance, and many Wesleyans today emphasise God’s faithful love over fear."
         ]
       },
@@ -154,7 +191,7 @@ RG.jxQA3 = [
         "title": "Lutheran and Catholic",
         "body": [
           "Lutheran teaching insists on justification by faith alone and also that faith “is bound to bring forth good fruits”, with good works done because they are God’s will, not to merit justification (Augsburg Confession, Art. VI). Its distinctive tool is law and gospel: the law shows us our need, the gospel gives Christ. Pressure point: some feel stuck in endless law-gospel cycles of guilt and relief. Lutherans also generally believe a believer can fall from faith.",
-          "Catholic teaching says grace is the free and undeserved gift that enables us to respond to God’s call, and that no one can merit the first grace of forgiveness and justification; the initiative is God’s. It also teaches that, moved by the Spirit, we can cooperate and grow, and that grave (mortal) sin can cut a person off from grace, with reconciliation through the sacrament. Pressure point: in practice some Catholics have lived with heavy scrupulosity, which the Church itself treats as a pastoral problem.",
+          "Catholic teaching says that “the initiative belongs to God in the order of grace”, so no one can merit the first grace of forgiveness and justification. It then teaches that, moved by the Spirit and by love, believers cooperate with grace and can merit further graces for their sanctification, with “the charity of Christ” as the source of all merit. It also teaches that grave (mortal) sin cuts a person off from grace, with reconciliation through the sacrament. Protestants strongly disagree with the language of merit; Catholics reply that these merits are themselves God’s gifts. Pressure point: in practice some Catholics have lived with heavy scrupulosity, which the Church itself treats as a pastoral problem.",
           "The Orthodox churches, not named in the question, speak of <em>theosis</em>: salvation as a lifelong participation in God’s life by grace, with human cooperation (synergy). This is close in many ways to the relational gospel."
         ]
       },
@@ -176,7 +213,28 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Phil 1:6", "John 10:27-29", "Heb 6:4-8", "Heb 10:26-31", "Gal 5:4", "Rom 8:29-39", "Eph 2:8-10", "2 Pet 1:3-4", "Jude 24"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "“They whom God hath accepted in his Beloved, effectually called and sanctified by his Spirit, can neither totally nor finally fall away from the state of grace; but shall certainly persevere therein to the end, and be eternally saved.” This perseverance “depends not upon their own free will, but upon the immutability of the decree of election, flowing from the free and unchangeable love of God the Father.”",
+        "source": "Westminster Confession of Faith, ch. 17 “Of the Perseverance of the Saints” (Bible Presbyterian Church text)",
+        "url": "https://bpc.org/wcf-ch-17"
+      },
+      {
+        "text": "“We believe that all persons, though in the possession of the experience of regeneration and entire sanctification, may fall from grace and apostatize and, unless they repent of their sins, be hopelessly and eternally lost.” The same article teaches that “the grace of God through Jesus Christ is freely bestowed upon all people, enabling all who will to turn from sin to righteousness.”",
+        "source": "Church of the Nazarene, Articles of Faith, Art. VII “Prevenient Grace” (Mesoamerica Region text)",
+        "url": "https://www.mesonaz.org/en/articles-of-faith/"
+      },
+      {
+        "text": "“Also they teach that this faith is bound to bring forth good fruits, and that it is necessary to do good works commanded by God, because of God’s will, but that we should not rely on those works to merit justification before God.”",
+        "source": "Augsburg Confession (1530), Art. VI “Of New Obedience”, Book of Concord",
+        "url": "https://bookofconcord.org/augsburg-confession/of-new-obedience/"
+      },
+      {
+        "text": "“Since the initiative belongs to God in the order of grace, no one can merit the initial grace of forgiveness and justification, at the beginning of conversion. Moved by the Holy Spirit and by charity, we can then merit for ourselves and for others the graces needed for our sanctification.” (§2010) “The charity of Christ is the source in us of all our merits before God.” (§2011)",
+        "source": "Catechism of the Catholic Church, §§2010–2011 “Merit”",
+        "url": "https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_three/article_2/iii_merit.html"
+      }
+    ]
   },
   {
     "id": "effort-and-grace",
@@ -211,7 +269,7 @@ RG.jxQA3 = [
         "body": [
           "Some will say: “This is too soft. The New Testament says ‘make every effort’ and warns of real consequences. Talk of rest can become an excuse for laziness.” That concern is real. Dietrich Bonhoeffer warned against “cheap grace”, grace that requires no discipleship, and the warning still matters.",
           "The response is that the relational gospel does not lower the bar of holiness; it changes the engine. Jesus’ yoke is “easy” (Matt 11:30), but it is still a yoke; it is shared work with him. Rest does not mean doing nothing; it means not doing it alone, and not doing it to be accepted.",
-          "Others will say Phil 2:12 proves we must contribute to our salvation. Many careful readers across traditions point out that verse 13 gives the reason for verse 12: we work because God works in us. Exactly how human and divine action fit together is debated, but almost no tradition reads this as earning."
+          "Others will say Phil 2:12 proves we must contribute to our salvation, and some respected lexicons do gloss it as “make every effort to obtain salvation”. Many careful readers across traditions point out that verse 13 gives the reason for verse 12: we work because God works in us. Exactly how human and divine action fit together is debated, but almost no tradition reads this as earning."
         ]
       },
       {
@@ -224,7 +282,23 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Phil 2:1-13", "2 Pet 1:3-10", "Heb 12:1-17", "1 Cor 9:24-27", "1 Cor 15:10", "Matt 11:28-30", "Col 1:29", "Gal 5:22-25"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "Strong’s 2716 <em>katergazomai</em>: “to work fully, i.e. accomplish; by implication, to finish, fashion”; “work out”. Thayer glosses Phil 2:12 as “make every effort to obtain salvation”, while the Topical Lexicon notes that “verse 13 immediately grounds the effort in God’s prior working.”",
+        "source": "Bible Hub, Strong’s Greek 2716",
+        "url": "https://biblehub.com/greek/2716.htm"
+      },
+      {
+        "text": "Good works “are the fruits and evidences of a true and lively faith”; “Their ability to do good works is not at all of themselves, but wholly from the spirit of Christ… yet are they not hereupon to grow negligent… but they ought to be diligent in stirring up the grace of God that is in them.” “We cannot, by our best works, merit pardon of sin, or eternal life.”",
+        "source": "Westminster Confession of Faith, ch. 16 “Of Good Works” (Bible Presbyterian Church text)",
+        "url": "https://bpc.org/wcf-ch-16"
+      },
+      {
+        "text": "“We believe that there is a marked distinction between a pure heart and a mature character. The former is obtained in an instant, the result of entire sanctification; the latter is the result of growth in grace.” Sanctification is “the work of God which transforms believers into the likeness of Christ.”",
+        "source": "Church of the Nazarene, Articles of Faith, Art. X “Christian Holiness and Entire Sanctification” (Mesoamerica Region text)",
+        "url": "https://www.mesonaz.org/en/articles-of-faith/"
+      }
+    ]
   },
   {
     "id": "holiness-relationally",
@@ -280,7 +354,28 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Lev 11:44", "1 Pet 1:15-16", "Matt 5:43-48", "Luke 6:36", "2 Cor 3:18", "1 Thess 5:23-24", "1 Cor 1:2", "Rom 12:1-2", "Gal 5:22-23", "Heb 12:10"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "Strong’s 38 <em>hagiasmos</em>: sanctification, holiness, consecration (used in Heb 12:14).",
+        "source": "Bible Hub, Strong’s Greek 38",
+        "url": "https://biblehub.com/greek/38.htm"
+      },
+      {
+        "text": "“We believe that there is a marked distinction between a pure heart and a mature character. The former is obtained in an instant, the result of entire sanctification; the latter is the result of growth in grace.” Sanctification is “the work of God which transforms believers into the likeness of Christ.”",
+        "source": "Church of the Nazarene, Articles of Faith, Art. X “Christian Holiness and Entire Sanctification” (Mesoamerica Region text)",
+        "url": "https://www.mesonaz.org/en/articles-of-faith/"
+      },
+      {
+        "text": "“This sanctification is throughout in the whole man, yet imperfect in this life; there abideth still some remnants of corruption in every part: whence ariseth a continual and irreconcilable war; the flesh lusting against the Spirit, and the Spirit against the flesh.” It adds that “the saints grow in grace, perfecting holiness in the fear of God.”",
+        "source": "Westminster Confession of Faith, ch. 13 “Of Sanctification” (Bible Presbyterian Church text)",
+        "url": "https://bpc.org/wcf-ch-13"
+      },
+      {
+        "text": "“All true believers endure to the end. Those whom God has accepted in Christ, and sanctified by His Spirit, will never fall away from the state of grace, but shall persevere to the end. Believers may fall into sin through neglect and temptation… yet they shall be kept by the power of God through faith unto salvation.” Sanctification “is the experience, beginning in regeneration, by which the believer is set apart to God’s purposes, and is enabled to progress toward moral and spiritual maturity.”",
+        "source": "The Baptist Faith and Message 2000 (Southern Baptist Convention), Articles IV and V",
+        "url": "https://bfm.sbc.net/bfm2000/"
+      }
+    ]
   },
   {
     "id": "living-free",
@@ -336,8 +431,75 @@ RG.jxQA3 = [
       }
     ],
     "refs": ["Matt 11:25-30", "Rom 8:15-17", "1 John 4:16-19", "Luke 15:11-32", "John 14:9", "John 16:8", "Mark 2:27", "Ps 13", "Gal 5:1"],
-    "evidence": []
+    "evidence": [
+      {
+        "text": "Strong’s 2631 <em>katakrima</em>: condemnation, judgment (used in Rom 8:1, “no condemnation”).",
+        "source": "Bible Hub, Strong’s Greek 2631",
+        "url": "https://biblehub.com/greek/2631.htm"
+      },
+      {
+        "text": "“All true believers endure to the end. Those whom God has accepted in Christ, and sanctified by His Spirit, will never fall away from the state of grace, but shall persevere to the end. Believers may fall into sin through neglect and temptation… yet they shall be kept by the power of God through faith unto salvation.” Sanctification “is the experience, beginning in regeneration, by which the believer is set apart to God’s purposes, and is enabled to progress toward moral and spiritual maturity.”",
+        "source": "The Baptist Faith and Message 2000 (Southern Baptist Convention), Articles IV and V",
+        "url": "https://bfm.sbc.net/bfm2000/"
+      },
+      {
+        "text": "“They whom God hath accepted in his Beloved, effectually called and sanctified by his Spirit, can neither totally nor finally fall away from the state of grace; but shall certainly persevere therein to the end, and be eternally saved.” This perseverance “depends not upon their own free will, but upon the immutability of the decree of election, flowing from the free and unchangeable love of God the Father.”",
+        "source": "Westminster Confession of Faith, ch. 17 “Of the Perseverance of the Saints” (Bible Presbyterian Church text)",
+        "url": "https://bpc.org/wcf-ch-17"
+      }
+    ]
   }
 ];
 
-RG.jxEvidence3 = [];
+RG.jxEvidence3 = [
+  {
+    "text": "“This sanctification is throughout in the whole man, yet imperfect in this life; there abideth still some remnants of corruption in every part: whence ariseth a continual and irreconcilable war; the flesh lusting against the Spirit, and the Spirit against the flesh.” It adds that “the saints grow in grace, perfecting holiness in the fear of God.”",
+    "source": "Westminster Confession of Faith, ch. 13 “Of Sanctification” (Bible Presbyterian Church text)",
+    "url": "https://bpc.org/wcf-ch-13"
+  },
+  {
+    "text": "Good works “are the fruits and evidences of a true and lively faith”; “Their ability to do good works is not at all of themselves, but wholly from the spirit of Christ… yet are they not hereupon to grow negligent… but they ought to be diligent in stirring up the grace of God that is in them.” “We cannot, by our best works, merit pardon of sin, or eternal life.”",
+    "source": "Westminster Confession of Faith, ch. 16 “Of Good Works” (Bible Presbyterian Church text)",
+    "url": "https://bpc.org/wcf-ch-16"
+  },
+  {
+    "text": "“They whom God hath accepted in his Beloved, effectually called and sanctified by his Spirit, can neither totally nor finally fall away from the state of grace; but shall certainly persevere therein to the end, and be eternally saved.” This perseverance “depends not upon their own free will, but upon the immutability of the decree of election, flowing from the free and unchangeable love of God the Father.”",
+    "source": "Westminster Confession of Faith, ch. 17 “Of the Perseverance of the Saints” (Bible Presbyterian Church text)",
+    "url": "https://bpc.org/wcf-ch-17"
+  },
+  {
+    "text": "“All true believers endure to the end. Those whom God has accepted in Christ, and sanctified by His Spirit, will never fall away from the state of grace, but shall persevere to the end. Believers may fall into sin through neglect and temptation… yet they shall be kept by the power of God through faith unto salvation.” Sanctification “is the experience, beginning in regeneration, by which the believer is set apart to God’s purposes, and is enabled to progress toward moral and spiritual maturity.”",
+    "source": "The Baptist Faith and Message 2000 (Southern Baptist Convention), Articles IV and V",
+    "url": "https://bfm.sbc.net/bfm2000/"
+  },
+  {
+    "text": "“We believe that all persons, though in the possession of the experience of regeneration and entire sanctification, may fall from grace and apostatize and, unless they repent of their sins, be hopelessly and eternally lost.” The same article teaches that “the grace of God through Jesus Christ is freely bestowed upon all people, enabling all who will to turn from sin to righteousness.”",
+    "source": "Church of the Nazarene, Articles of Faith, Art. VII “Prevenient Grace” (Mesoamerica Region text)",
+    "url": "https://www.mesonaz.org/en/articles-of-faith/"
+  },
+  {
+    "text": "“We believe that there is a marked distinction between a pure heart and a mature character. The former is obtained in an instant, the result of entire sanctification; the latter is the result of growth in grace.” Sanctification is “the work of God which transforms believers into the likeness of Christ.”",
+    "source": "Church of the Nazarene, Articles of Faith, Art. X “Christian Holiness and Entire Sanctification” (Mesoamerica Region text)",
+    "url": "https://www.mesonaz.org/en/articles-of-faith/"
+  },
+  {
+    "text": "“Also they teach that this faith is bound to bring forth good fruits, and that it is necessary to do good works commanded by God, because of God’s will, but that we should not rely on those works to merit justification before God.”",
+    "source": "Augsburg Confession (1530), Art. VI “Of New Obedience”, Book of Concord",
+    "url": "https://bookofconcord.org/augsburg-confession/of-new-obedience/"
+  },
+  {
+    "text": "“Since the initiative belongs to God in the order of grace, no one can merit the initial grace of forgiveness and justification, at the beginning of conversion. Moved by the Holy Spirit and by charity, we can then merit for ourselves and for others the graces needed for our sanctification.” (§2010) “The charity of Christ is the source in us of all our merits before God.” (§2011)",
+    "source": "Catechism of the Catholic Church, §§2010–2011 “Merit”",
+    "url": "https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_three/article_2/iii_merit.html"
+  },
+  {
+    "text": "Strong’s 2716 <em>katergazomai</em>: “to work fully, i.e. accomplish; by implication, to finish, fashion”; “work out”. Thayer glosses Phil 2:12 as “make every effort to obtain salvation”, while the Topical Lexicon notes that “verse 13 immediately grounds the effort in God’s prior working.”",
+    "source": "Bible Hub, Strong’s Greek 2716",
+    "url": "https://biblehub.com/greek/2716.htm"
+  },
+  {
+    "text": "Strong’s 3811 <em>paideuō</em>: to train, to educate, to discipline, to instruct, to correct (used in Titus 2:12, “instructing us”).",
+    "source": "Bible Hub, Strong’s Greek 3811",
+    "url": "https://biblehub.com/greek/3811.htm"
+  }
+];
