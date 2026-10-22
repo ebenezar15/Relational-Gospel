@@ -108,7 +108,7 @@ RG.jxQA2 = [
         "title": "Scripture in context",
         "body": [
           "Jesus rebuked his own disciples when they wanted to call down fire on a Samaritan village: “You don’t know of what kind of spirit you are” (Luke 9:55, in many manuscripts). When John tried to stop a man casting out demons “because he doesn’t follow us”, Jesus said, “Don’t forbid him… whoever is not against us is on our side” (Mark 9:38-40).",
-          "Paul’s rule for disputes over secondary matters is clear: “Receive one who is weak in faith, but not for disputes over opinions” (Rom 14:1). And his test of all gifts, including the gift of right doctrine, is love (1 Cor 13:2). Precision is good; precision without love is “nothing”."
+          "Paul’s rule for disputes over secondary matters is clear: “Now accept one who is weak in faith, but not for disputes over opinions” (Rom 14:1). And his test of all gifts, including the gift of right doctrine, is love (1 Cor 13:2). Precision is good; precision without love is “nothing”."
         ]
       },
       {
@@ -161,7 +161,7 @@ RG.jxQA2 = [
       {
         "title": "Scripture in context: the grounds for exposing",
         "body": [
-          "“Have no fellowship with the unfruitful works of darkness, but rather even reprove them” (Eph 5:11). The verb <em>elenchō</em> means to bring to light, convict or correct. Jesus pronounced public woes on religious leaders who burdened people and neglected “justice, mercy, and faith” (Matt 23:23). Paul “resisted him to his face” when Peter withdrew from Gentile believers, and did it “before them all” because Peter’s action was public and was misleading others (Gal 2:11-14).",
+          "“Have no fellowship with the unfruitful deeds of darkness, but rather even reprove them” (Eph 5:11). The verb <em>elenchō</em> means to bring to light, convict or correct. Jesus pronounced public woes on religious leaders who burdened people and neglected “justice, mercy, and faith” (Matt 23:23). Paul “resisted him to his face” when Peter withdrew from Gentile believers, and did it “before them all” because Peter’s action was public and was misleading others (Gal 2:11-14).",
           "Paul names Hymenaeus and Alexander as having “made a shipwreck” of faith (1 Tim 1:19-20), names Hymenaeus and Philetus for teaching that the resurrection had already happened (2 Tim 2:17-18), and warns Timothy about “Alexander, the coppersmith” who “did me much evil” (2 Tim 4:14-15). John names Diotrephes, who “loves to be first” (<em>philoprōteuōn</em>), refuses others and spreads “wicked words” (3 John 9-10)."
         ]
       },
@@ -194,7 +194,7 @@ RG.jxQA2 = [
         ]
       }
     ],
-    "refs": ["Eph 5:11", "Matt 23:1-36", "Gal 2:11-14", "1 Tim 1:19-20", "2 Tim 2:17-18", "2 Tim 4:14-15", "3 John 9-10", "Matt 18:15-17", "Gal 6:1", "Lev 19:16", "Deut 19:15", "1 Tim 5:19-21", "1 Cor 13:6-7", "Titus 1:9-11", "Acts 20:29-31"],
+    "refs": ["Eph 5:11", "Jude 22-23", "Matt 23:1-36", "Gal 2:11-14", "1 Tim 1:19-20", "2 Tim 2:17-18", "2 Tim 4:14-15", "3 John 9-10", "Matt 18:15-17", "Gal 6:1", "Lev 19:16", "Deut 19:15", "1 Tim 5:19-21", "1 Cor 13:6-7", "Titus 1:9-11", "Acts 20:29-31"],
     "evidence": [
       {
         "text": "Tim Challies: “If a well-known ministry is teaching heresy and leading people to hell or systemically promoting or allowing abuse of children, I am certain we can find someone to do a real and honest investigation, to verify the facts, to talk to the people involved, and to determine if this is the case. If it is, I will join in sounding the alarm.”",
@@ -350,7 +350,7 @@ RG.jxQA2 = [
       {
         "title": "Why love grows cold",
         "body": [
-          "Jesus said that “because iniquity will abound, the love of many will grow cold” (Matt 24:12). Fear is a major cause: fear of hell, of being wrong, of losing our place. “There is no fear in love; but perfect love casts out fear, because fear has punishment” (1 John 4:18). Where fear rules, love shrinks.",
+          "Jesus said that “because iniquity will be multiplied, the love of many will grow cold” (Matt 24:12). Fear is a major cause: fear of hell, of being wrong, of losing our place. “There is no fear in love; but perfect love casts out fear, because fear has punishment” (1 John 4:18). Where fear rules, love shrinks.",
           "Other causes are ordinary and human: wounds from church conflict, pride in knowledge (1 Cor 8:1), busyness, and the shift of much Christian conversation to screens, where people become avatars and outrage spreads faster than kindness. Research on social media confirms that moral outrage spreads quickly within groups, which feeds an “us versus them” mindset."
         ]
       },
@@ -364,7 +364,7 @@ RG.jxQA2 = [
       {
         "title": "The relational answer",
         "body": [
-          "The heart of the relational gospel is that God is not a reluctant judge who needs persuading to love us. The Father, Son and Spirit share an eternal life of love, and in Jesus that love has come all the way to us. “We love, because he first loved us” (1 John 4:19). Love is not a standard we must reach; it is a life we are invited into.",
+          "The heart of the relational gospel is that God is not a reluctant judge who needs persuading to love us. The Father, Son and Spirit share an eternal life of love, and in Jesus that love has come all the way to us. “We love him, because he first loved us” (1 John 4:19). Love is not a standard we must reach; it is a life we are invited into.",
           "When we know we are held, we do not need to prove ourselves by being more right than others. We can afford to be generous, to listen, to admit mistakes, and to see other Christians as family. Love heals division from the inside out: it begins as received love and overflows as shared love."
         ]
       },
@@ -469,16 +469,16 @@ RG.jxQA2 = [
       {
         "title": "Who these four voices are (public focus only)",
         "body": [
-          "<strong>Justin Peters</strong> is an evangelist who holds master’s degrees from Southwestern Baptist Theological Seminary and wrote a thesis on Word of Faith theology. He has cerebral palsy and was told as a teenager that he would be healed; his ministry focuses on critiquing the Word of Faith and prosperity movements through his seminar “A Call to Discernment”. He spoke at the 2013 Strange Fire conference, which evaluated the charismatic movement. His work rightly highlights how faith-healing promises can crush the sick.",
-          "<strong>Alisa Childers</strong> is a former member of the Christian band ZOEgirl, now an author and podcaster. Her books include <em>Another Gospel?</em> (2020), about her encounter with progressive Christianity, <em>Live Your Truth and Other Lies</em> (2022), and <em>The Deconstruction of Christianity</em> (2024, with Tim Barnett). Her work helps believers think through questions raised by deconstruction. <strong>Melissa Dougherty</strong> is a Christian apologist and former follower of New Thought; her YouTube channel focuses mainly on New Age and New Thought ideas, and her book <em>Happy Lies</em> (2024) traces how New Thought shaped self-help culture and parts of the church. She helps people spot teachings that sound Christian but are rooted elsewhere.",
+          "<strong>Justin Peters</strong> is an evangelist who holds master’s degrees from Southwestern Baptist Theological Seminary and wrote a thesis on Word of Faith theology. His ministry focuses on critiquing the Word of Faith and prosperity movements through his seminar “A Call to Discernment”. He spoke at the 2013 Strange Fire conference, which evaluated the charismatic movement. His work rightly highlights how faith-healing promises can crush the sick.",
+          "<strong>Alisa Childers</strong> is a former member of the Christian band ZOEgirl, now an author and podcaster. Her books include <em>Another Gospel?</em> (2020), about her encounter with progressive Christianity, <em>Live Your Truth and Other Lies</em> (2022), and <em>The Deconstruction of Christianity</em> (2024, with Tim Barnett). Her work helps believers think through questions raised by deconstruction. <strong>Melissa Dougherty</strong> is a Christian apologist and former follower of New Thought; her YouTube channel focuses mainly on New Age and New Thought ideas, and her book <em>Happy Lies</em> (Zondervan) traces how New Thought shaped self-help culture and parts of the church. She helps people spot teachings that sound Christian but are rooted elsewhere.",
           "<strong>Mike Winger</strong> runs BibleThinker, which aims at “teaching accurate theology”, “defending the biblical/Christian worldview” and “applying the Bible”. He was ordained in 2006 after training at Calvary Chapel Costa Mesa’s School of Ministry. He is charismatic (he believes in ongoing prophecy and tongues), and he is known for long, researched exposés of abuse in some charismatic circles, as well as teaching on many topics. Not all of these voices are Calvinist or cessationist, and they do not all agree with each other."
         ]
       },
       {
         "title": "Scripture in context: answer, wait or walk away",
         "body": [
-          "Peter tells us to be “ready always to give an answer to everyone who asks you a reason concerning the hope that is in you, with humility and fear” (1 Pet 3:15). Paul debated in the synagogues and the marketplace (Acts 17:17) and defended the gospel when it was at stake (Gal 2:5). Answering critics can be a way of loving those watching.",
-          "But Paul also told Timothy to avoid “foolish and ignorant questionings, knowing that they generate strife” (2 Tim 2:23), and he could rejoice even when rivals preached Christ from bad motives: “Christ is proclaimed. I rejoice in this” (Phil 1:18). Jesus sometimes refused to answer when the question was a trap (Matt 21:23-27). Wisdom is knowing which is which."
+          "Peter tells us to be “always be ready to give an answer to everyone who asks you a reason concerning the hope that is in you, with humility and fear” (1 Pet 3:15). Paul debated in the synagogues and the marketplace (Acts 17:17) and defended the gospel when it was at stake (Gal 2:5). Answering critics can be a way of loving those watching.",
+          "But Paul also told Timothy to “refuse foolish and ignorant questionings, knowing that they generate strife” (2 Tim 2:23), and he could rejoice even when rivals preached Christ from bad motives: “Christ is proclaimed. I rejoice in this” (Phil 1:18). Jesus sometimes refused to answer when the question was a trap (Matt 21:23-27). Wisdom is knowing which is which."
         ]
       },
       {
@@ -551,7 +551,7 @@ RG.jxEvidence2 = [
     "url": "https://faculty.georgetown.edu/jod/augustine/quote.html"
   },
   {
-    "text": "Justin Peters on the Word of Faith movement: “The burden that is being placed on people is almost unbearable, and it breaks my heart.” He says of his cerebral palsy: “I have come to know the Lord’s ways through my handicap that, otherwise, I would never have known.”",
+    "text": "Justin Peters on the Word of Faith movement: “The burden that is being placed on people is almost unbearable, and it breaks my heart.”",
     "source": "Benjamin Hawkins, “Faith ‘heresy’ wrecks lives, evangelist says”, Baptist Press",
     "url": "https://www.baptistpress.com/resource-library/news/faith-heresy-wrecks-lives-evangelist-says/"
   },
