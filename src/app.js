@@ -939,7 +939,7 @@
   function rcrtShow() {
     var R = A("rcRoots"), r = R[rcRt]; if (!r || !$("#rcrt-card")) return;
     $$(".rc-tn").forEach(function (b, i) { b.classList.toggle("on", i === rcRt); });
-    $("#rcrt-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(r.year) + " · " + (r.root === "christian" ? "Christian roots" : r.root === "mixed" ? "Mixed roots" : "Other roots") + "</div><h3>" + esc(r.method) + '</h3><p><strong>Origin:</strong> ' + r.origin + '</p><p><strong>Today:</strong> ' + r.today + '</p><div class="panel uni"><div class="label">Verdict</div><p>' + r.verdict + '</p></div><div class="ref">' + esc(r.ref) + "</div></article>";
+    $("#rcrt-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(r.year) + " · " + (r.root === "christian" ? "Christian roots" : r.root === "mixed" ? "Mixed roots" : "Other roots") + "</div><h3>" + esc(r.method) + '</h3><p><strong>Origin:</strong> ' + r.origin + '</p><p><strong>Today:</strong> ' + r.today + '</p><div class="panel uni"><div class="label">Verdict</div><p>' + r.conclusion + '</p></div><div class="ref">' + esc(r.ref) + "</div></article>";
   }
   function rccyShow() {
     var C = (RG.rcCycles || {})[rcCyc] || []; if (!$("#rc-ring") || !C.length) return;
