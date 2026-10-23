@@ -13,10 +13,17 @@ const data = order
   .map(src)
   .join("\n;\n");
 
+// Tamil: src/i18n/ta.json ({d: {hash: tamil}, u: {english ui text: tamil}}) ships gzipped + base64.
+const taPath = path.join(__dirname, "src", "i18n", "ta.json");
+const ta = fs.existsSync(taPath) ? require("zlib").gzipSync(JSON.stringify(JSON.parse(fs.readFileSync(taPath, "utf8"))), { level: 9 }).toString("base64") : "";
+const i18n = (ta ? 'window.RG_TA="' + ta + '";\n' : "") + src("i18n/common.js") + "\n" + src("i18n/runtime.js");
+const app = src("app.js").replace(/^\(function \(\) \{/, "window.RGstart = function () {").replace(/\}\)\(\);\s*$/, "};\nwindow.RGboot(window.RGstart);\n");
+
 const page = src("index.html")
   .replace("/*STYLES*/", () => src("styles.css"))
   .replace("/*DATA*/", () => safe(data))
-  .replace("/*APP*/", () => safe(src("app.js")));
+  .replace("/*I18N*/", () => safe(i18n))
+  .replace("/*APP*/", () => safe(app));
 
 fs.mkdirSync(path.join(__dirname, "dist"), { recursive: true });
 fs.writeFileSync(path.join(__dirname, "dist", "artifact.html"), page);

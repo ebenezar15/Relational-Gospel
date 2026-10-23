@@ -1198,3 +1198,23 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 @media (max-width: 560px) { .dx-st { font-size: 10.5px; height: calc(60px + var(--i) * 20px); } }
 #dxs-card { margin-top: 12px; }
 .dx-sh, .dx-sh .flip-inner { min-height: 260px; }
+
+/* ---------- language switch & Tamil typography ---------- */
+.lang-switch { display: inline-flex; height: 38px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 3px; gap: 2px; flex: none; }
+.lang-switch button { border: 0; background: transparent; color: var(--muted); border-radius: 999px; padding: 0 10px; font: 600 12px/1 var(--body); cursor: pointer; min-width: 38px; }
+.lang-switch button[lang="ta"] { font-family: "Noto Sans Tamil", var(--body); font-size: 13px; }
+.lang-switch button[aria-pressed="true"] { background: var(--gold); color: #1b1408; }
+.lang-switch button:hover:not([aria-pressed="true"]) { color: var(--ink); }
+.lang-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+html.lang-busy main { opacity: .35; transition: opacity .2s; }
+html.lang-busy::after { content: "தமிழ் / English …"; position: fixed; left: 50%; top: 72px; transform: translateX(-50%); z-index: 99; background: var(--surface); border: 1px solid var(--gold); color: var(--ink); padding: 8px 16px; border-radius: 999px; font: 600 13px/1.2 "Noto Sans Tamil", var(--body); }
+html[lang="ta"] {
+  --display: "Noto Sans Tamil", "Avenir Next", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Noto Sans Tamil", "Avenir Next", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "Noto Sans Tamil", ui-monospace, monospace;
+}
+html[lang="ta"] body { line-height: 1.7; }
+html[lang="ta"] body * { letter-spacing: normal !important; }
+html[lang="ta"] h1, html[lang="ta"] h2, html[lang="ta"] h3 { line-height: 1.4; overflow-wrap: anywhere; }
+html[lang="ta"] .chip, html[lang="ta"] .btn, html[lang="ta"] .pill, html[lang="ta"] .label { overflow-wrap: anywhere; }
+@media (max-width: 640px) { .lang-switch button { padding: 0 8px; min-width: 34px; } }
