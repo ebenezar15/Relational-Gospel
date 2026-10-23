@@ -1,0 +1,42 @@
+window.RG = window.RG || {}; var RG = window.RG;
+
+/* Round 20 C: case studies — smoking, alcohol, porn and lust, adultery, trauma, grief and pain */
+
+RG.rcCases = [
+  { id: "smoking", title: "Smoking", who: "Ravi, 34, has smoked a pack a day since college. He has “given it to God” at three altar calls and started again within a week each time.",
+    legal: "“Your body is the temple of the Holy Spirit. Smoking is sin. Repent, and if you truly believe, God will take the desire away.” When it doesn’t, Ravi wonders whether he really believes.",
+    secular: "Nicotine is highly addictive. Combine medication (nicotine replacement or prescribed medicines) with counselling and a quit plan. Expect several attempts.",
+    relational: "Ravi is already God’s beloved son; his body is a gift to care for, not a test he is failing. He uses every gift available: medication for the withdrawal, a quit date, a friend to text when cravings hit, and prayer turned into conversation (“Father, I feel anxious; be my calm”). When he slips, he tells his friend and starts again the next day.",
+    steps: ["Talk to a doctor about medication; it roughly doubles or triples success", "Set a quit date and remove cigarettes and lighters", "Identify triggers such as coffee, stress and breaks, and plan replacements", "Pray through cravings, which pass in minutes", "Tell one safe person; ask them to check in", "If you slip, don’t quit quitting"],
+    refs: ["1 Cor 6:19–20", "Phil 4:6–7", "1 Cor 10:13"] },
+  { id: "alcohol", title: "Drinking", who: "Grace, 45, drinks every evening to cope with stress and loneliness since her divorce. She hides bottles and feels she can’t tell her church.",
+    legal: "“Drunkenness is a sin. Pour it all out and trust God.” Sudden stopping without medical advice can be dangerous for heavy drinkers.",
+    secular: "Medical assessment first, because alcohol withdrawal can be life-threatening. Then medically supervised detox if needed, medication to reduce cravings, therapy for the stress and loneliness, and a support group.",
+    relational: "Grace’s drinking is both a sin that harms her and a cry of pain. She is invited to stop hiding. A wise church helps her get medical care first, connects her with a recovery group (Christian or not), and surrounds her with real friendship so that the loneliness behind the drinking is met. Being honest with others becomes the beginning of freedom.",
+    steps: ["See a doctor before stopping if you drink heavily every day", "Tell one trusted person the full truth", "Join a recovery group; attend often in the first months", "Replace the evening ritual with another one, such as a walk, a call or prayer", "Address the root: grief, loneliness, anxiety", "Celebrate milestones and expect setbacks"],
+    refs: ["Eph 5:18", "Ps 34:18", "Gal 6:1–2"] },
+  { id: "porn", title: "Lust and porn", who: "Daniel, 19, has watched porn since he was 12. He has made hundreds of vows to stop, feels disgusting, and avoids prayer after each failure.",
+    legal: "“If your eye causes you to sin, gouge it out.” Accountability software and a partner who reports failures. Daniel feels watched, ashamed and hopeless.",
+    secular: "Understand compulsive patterns and triggers, use filters and reduce screen time at night, and address loneliness and anxiety. Therapy can help with compulsive sexual behaviour.",
+    relational: "Daniel learns that the desire for intimacy is good, but porn is a counterfeit that cannot give the connection he longs for. He is not “a porn addict” at the core; he is a beloved son learning a new way. He uses practical tools such as filters and phones out of the bedroom, and he talks with a mentor about his loneliness, not just his failures. Shame no longer drives him into hiding, because there is no condemnation (Rom 8:1). Over months the cycle weakens.",
+    steps: ["Remove easy access: filters, no phone in bed, accountability chosen in freedom", "Notice the trigger states: hungry, angry, lonely, tired", "Replace: call someone, go outside, pray honestly", "Confess quickly to one safe person and to God; don’t spiral into shame", "Get to the root: loneliness, rejection, early exposure", "Seek a counsellor if it feels compulsive or out of control"],
+    refs: ["Matt 5:27–30", "Rom 8:1", "1 Thess 4:3–5", "Ps 51:10"] },
+  { id: "adultery", title: "Adultery", who: "Mark and Priya have been married 12 years. Mark has had an emotional and physical affair with a colleague. Priya found out.",
+    legal: "Mark confesses, the church disciplines him, and Priya is told to forgive quickly and submit. The deeper wounds are not addressed and the marriage stays brittle.",
+    secular: "Couples therapy focused on transparency, rebuilding trust step by step, and understanding the vulnerabilities that led to the affair. Individual therapy for the betrayed partner’s trauma.",
+    relational: "Mark owns his sin fully, without blaming Priya, and ends all contact. He accepts consequences and is transparent. Priya’s pain is honoured, not hurried; forgiveness is a process, and reconciliation depends on repentance and rebuilt trust. A counsellor and a few wise friends walk with them. The marriage may be restored and deepened, but Priya is not forced. God’s covenant faithfulness to unfaithful Israel shows what restoration can look like (Hosea 3).",
+    steps: ["End the affair completely and be fully transparent", "Get a trained marriage counsellor", "Allow the betrayed partner to grieve and ask questions", "Rebuild trust through consistent behaviour over time", "Look at the vulnerabilities in the marriage without blaming the betrayed partner", "Forgiveness and reconciliation are related but not the same"],
+    refs: ["Hosea 3:1", "Matt 5:27–28", "Eph 5:25", "Col 3:13"] },
+  { id: "trauma", title: "Trauma", who: "Esther, 28, was abused as a child. She has panic attacks, nightmares and can’t feel close to God or anyone.",
+    legal: "“Forgive and forget. You are a new creation, the past is gone.” Her symptoms are treated as a lack of faith; she feels she is failing God.",
+    secular: "Trauma-focused therapies (such as EMDR or trauma-focused CBT) help the brain process memories; grounding skills for panic; a safe therapeutic relationship.",
+    relational: "Esther’s wounds are not her sin. God is near the broken-hearted, and Jesus himself was abused and shamed. She gets trauma therapy and finds a church that is safe and patient. She learns to bring her pain to God through lament (the Psalms give her words). Forgiveness of her abuser is a process, not denial, and never means returning to danger. Her identity is not “damaged goods” but beloved and whole in Christ, even while healing takes time.",
+    steps: ["Find a qualified trauma therapist", "Use grounding for panic: breath, the five senses, short prayers", "Pray the lament Psalms honestly", "Choose safe relationships; set boundaries with unsafe people", "Forgiveness is a journey, not a requirement for being loved", "Report abuse where others may be at risk"],
+    refs: ["Ps 34:18", "Isa 53:3–5", "Psalm 88", "Rev 21:4"] },
+  { id: "pain", title: "Grief and chronic pain", who: "Joseph, 60, lives with chronic back pain after an accident and recently lost his wife. He feels useless and angry at God.",
+    legal: "“Pray with faith and you will be healed. If not, maybe there is sin in your life.”",
+    secular: "Pain management combining medical care, physiotherapy, pacing and pain psychology; grief counselling; social support.",
+    relational: "Joseph is invited to bring his anger to God, as Job and the psalmists did. His church prays for healing and also helps practically. He uses pain management and grief counselling. When healing doesn’t come, his worth isn’t gone: God’s strength is made perfect in weakness, and his suffering will not have the last word.",
+    steps: ["Use a pain clinic or physiotherapy plan", "Join a grief group or see a grief counsellor", "Pray honestly, including anger and questions", "Accept practical help from others", "Find small ways to serve and connect", "Hold onto resurrection hope"],
+    refs: ["Job 7:11", "2 Cor 12:9–10", "Rom 8:18–23", "John 11:35"] }
+];
