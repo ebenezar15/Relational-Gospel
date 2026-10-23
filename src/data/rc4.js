@@ -12,7 +12,7 @@ RG.rcQA = [
         "Many evangelicals also teach that God works through doctors and counsellors. Christian counselling movements such as biblical counselling and integration approaches were built by evangelicals trying to care for people well." ] },
       { title: "Where it often goes wrong in practice", body: [
         "<b>Willpower as the engine.</b> The message becomes “Jesus forgave you; now try harder.” Grace is the entry ticket, then effort carries you. Paul says this is foolish: “Having begun in the Spirit, are you now being perfected by the flesh?” (Gal 3:3).",
-        "<b>Fear and shame as motivators.</b> Threats of judgement may stop behaviour briefly, but research consistently links shame with hiding and relapse. Romans 7 describes this exact cycle under law: the harder you try by law, the stronger sin feels.",
+        "<b>Fear and shame as motivators.</b> Threats of judgement may stop behaviour briefly, but research links shame with hiding, blaming others and relapse, while healthy guilt motivates repair. Romans 7 describes this exact cycle under law: the harder you try by law, the stronger sin feels.",
         "<b>Suspicion of help.</b> Some say therapy, medication or twelve-step groups show weak faith. People then hide and suffer, or stop medication they need.",
         "<b>Healing as proof of faith.</b> If freedom doesn’t come instantly, the person is told they don’t believe enough, which adds a spiritual wound to the original one." ] },
       { title: "The honest summary", body: [

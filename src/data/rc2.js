@@ -12,7 +12,7 @@ RG.rcRoots = [
     today: "Cognitive Behavioural Therapy (Aaron Beck, 1960s) and REBT (Albert Ellis, 1955). Ellis openly credited Epictetus.",
     verdict: "Shared insight. CBT draws on Stoic philosophy, not the Bible, but the truth that thoughts shape emotions is part of creation. Paul says renewal also needs the Spirit and the truth about God.", ref: "Rom 12:2; Phil 4:8; 2 Cor 10:5" },
   { id: "aa", year: "1935", method: "The Twelve Steps", root: "christian",
-    origin: "Alcoholics Anonymous grew out of the Oxford Group, a Christian revival movement. Bill W. and Dr Bob adapted its practices of surrender, moral inventory, confession, restitution and helping others. Episcopal priest Sam Shoemaker was a key influence.",
+    origin: "Alcoholics Anonymous grew out of the Oxford Group, a Christian revival movement. Bill W. and Dr Bob adapted its practices of surrender, moral inventory, confession, restitution and helping others. Bill W. said early AA took self-examination, confession, restitution and working with others “straight from the Oxford Group and directly from Sam Shoemaker”, an Episcopal priest.",
     today: "AA, NA, SA and hundreds of Twelve-Step groups. Celebrate Recovery (1991) re-attached the steps to Christ and the Beatitudes.",
     verdict: "Clearly borrowed from Christian practice. The steps changed “God” to “a Power greater than ourselves… as we understood Him” so that people of any faith could join. So here secular recovery copied the church, not the other way round.", ref: "Luke 15:17–20; Matt 5:3–10" },
   { id: "frankl", year: "1946", method: "Logotherapy (meaning)", root: "mixed",
