@@ -133,7 +133,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["justice", "Justice, conflict & call-outs"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["recover", "Habits, healing & help"], ["blessing", "Blessing, matter & spiritual life"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["woman", "Man, woman & Genesis"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["doxa", "Doxa: from glory to glory"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["justice", "Justice, conflict & call-outs"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["recover", "Habits, healing & help"], ["blessing", "Blessing, matter & spiritual life"], ["facets", "The gospel’s facets & finished work"], ["covenant", "The Blessing & covenant"], ["sons", "Manifestation of the sons"], ["healing", "Divine healing"], ["name", "The name of the Lord"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["woman", "Man, woman & Genesis"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["doxa", "Doxa: from glory to glory"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -264,6 +264,11 @@
       ["why", "The why of design", "Why God made the body, needs, rest, work, family and more."],
       ["big", "Big questions", "Why we need God, the devil, the finished work, Adam, and every term defined."],
       ["forgive", "Forgiveness & repair", "Forgiving, repairing, boundaries, and living after harm."],
+      ["facets", "The gospel’s facets & finished work", "Every facet of the gospel, the finished work, and the church fathers."],
+      ["covenant", "The Blessing & covenant", "The Blessing from Eden to the new creation, and the covenants."],
+      ["sons", "Manifestation of the sons", "Romans 8:19: adoption, maturity, now and not yet."],
+      ["healing", "Divine healing", "The LORD who heals: Jesus, history, practice and hard questions."],
+      ["name", "The name of the Lord", "Calling on and proclaiming the name: God revealed."],
       ["blessing", "Blessing, matter & spiritual life", "Spiritual blessing, Gnostic splits, and God’s heart for healing and provision."],
       ["recover", "Habits, healing & help", "Secular help, the legal gospel and the relational gospel on addiction, habits and trauma."],
       ["justice", "Justice, conflict & call-outs", "Harassment, stepping in, revenge, exposing ministries, and the legal gospel’s contradictions."],
@@ -884,6 +889,83 @@
     $("#dxq-card").innerHTML = '<article class="sc' + (done ? " answered" : "") + '"><div class="label">Question ' + (dxQ + 1) + " of " + Q.length + '</div><h3 style="font-size:20px">' + q.q + '</h3><div class="lvr-opts">' + q.options.map(function (o, j) { return '<button type="button" class="chip' + (j === q.answer ? " right" : "") + '" data-dxo="' + j + '" aria-pressed="' + (a === j) + '">' + esc(o) + "</button>"; }).join("") + "</div>" + (done ? '<div class="sc-out"><div class="label">' + (a === q.answer ? "Correct" : "Not quite") + "</div><p>" + q.why + "</p></div>" : "") + '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-dxqm="-1"' + (dxQ === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-dxqm="1"' + (dxQ === Q.length - 1 ? " disabled" : "") + ">Next →</button></div></article>";
   }
 
+  /* ---------- Deep studies (data-driven: RG.studies) ---------- */
+  var SS = {}, SQ = {}, SR = {};
+  function stSel(v, bi, n) { var k = v + "|" + bi; return Math.max(0, Math.min(n - 1, SS[k] == null ? 0 : SS[k])); }
+  function stRef(r) { return r ? '<div class="ref">' + esc(r) + "</div>" : ""; }
+  function stHead(b) { return (b.title ? "<h2>" + esc(b.title) + "</h2>" : "") + (b.note ? '<p class="note">' + b.note + "</p>" : ""); }
+  function stCard(x) { return '<article class="vph-card">' + (x.kicker ? '<div class="label">' + esc(x.kicker) + "</div>" : "") + "<h3>" + esc(x.label || x.title || x.word || "") + "</h3>" + (x.text ? "<p>" + x.text + "</p>" : "") + (x.now ? '<div class="cmp-pair"><div class="panel uni"><div class="label">Now</div><p>' + x.now + '</p></div><div class="panel gold"><div class="label">Not yet</div><p>' + x.later + "</p></div></div>" : "") + (x.father ? '<div class="panel"><div class="label">From the church fathers</div><p>' + x.father + "</p></div>" : "") + (x.note ? '<div class="panel gold"><div class="label">Keep in balance</div><p>' + x.note + "</p></div>" : "") + stRef(x.ref) + "</article>"; }
+  var STB = {
+    prism: function (v, bi, b) {
+      var i = stSel(v, bi, b.items.length), n = b.items.length;
+      return stHead(b) + '<div class="st-prism"><div class="st-core"><span>' + esc(b.center || "") + "</span></div><div class=\"st-facets\">" + b.items.map(function (x, j) { return '<button type="button" class="st-facet' + (j === i ? " on" : "") + '" style="--h:' + Math.round(j / n * 330) + '" data-sx="' + v + "|" + bi + "|" + j + '"><b>' + (j + 1) + "</b>" + esc(x.label) + "</button>"; }).join("") + "</div></div>" + stCard(b.items[i]);
+    },
+    ring: function (v, bi, b) {
+      var all = [b.center].concat(b.items), i = stSel(v, bi, all.length), ring = b.items;
+      return stHead(b) + '<div class="jx-ringwrap"><div class="rc-loopring relational"><div class="jx-orbit" aria-hidden="true"></div><button type="button" class="rc-root' + (i === 0 ? " on" : "") + '" data-sx="' + v + "|" + bi + '|0">' + esc(b.center.label) + "</button>" + ring.map(function (s, j) { var ang = -Math.PI / 2 + j / ring.length * Math.PI * 2; return '<button type="button" class="jx-node' + (j + 1 === i ? " on" : "") + '" data-sx="' + v + "|" + bi + "|" + (j + 1) + '" style="left:' + (50 + 39 * Math.cos(ang)).toFixed(1) + "%;top:" + (50 + 39 * Math.sin(ang)).toFixed(1) + '%">' + esc(s.label) + "</button>"; }).join("") + "</div>" + stCard(all[i]) + "</div>";
+    },
+    flow: function (v, bi, b) {
+      var i = stSel(v, bi, b.steps.length);
+      return stHead(b) + '<div class="row"><button class="btn" type="button" data-sxp="' + v + "|" + bi + '">▶ Play the story</button></div><div class="st-flow">' + b.steps.map(function (s, j) { return '<button type="button" class="st-step' + (j === i ? " on" : "") + (j < i ? " past" : "") + '" data-sx="' + v + "|" + bi + "|" + j + '"><i>' + (j + 1) + "</i><span><b>" + esc(s.label) + "</b>" + (s.tag ? "<small>" + esc(s.tag) + "</small>" : "") + "</span></button>"; }).join("") + "</div>" + stCard(b.steps[i]);
+    },
+    columns: function (v, bi, b) {
+      return stHead(b) + '<div class="rc-sk' + (b.cols.length === 2 ? " c2" : "") + '">' + b.cols.map(function (c) { return '<div class="rc-col ' + esc(c.cls || "") + '"><div class="label">' + esc(c.label) + "</div>" + c.steps.map(function (s, j) { return (j ? '<div class="rc-arrow" aria-hidden="true">↓</div>' : "") + '<div class="rc-step k-' + esc(s.k || "ok") + '" style="animation-delay:' + (j * 0.07).toFixed(2) + 's"><b>' + esc(s.s) + "</b><p>" + s.t + "</p></div>"; }).join("") + "</div>"; }).join("") + "</div>";
+    },
+    words: function (v, bi, b) {
+      var i = stSel(v, bi, b.items.length), w = b.items[i];
+      return stHead(b) + '<div class="chips">' + b.items.map(function (x, j) { return '<button class="chip" type="button" data-sx="' + v + "|" + bi + "|" + j + '" aria-pressed="' + (j === i) + '">' + esc(x.word) + "</button>"; }).join("") + '</div><article class="vph-card"><div class="label">' + esc(w.lang) + " · " + esc(w.gloss) + "</div><h3>" + esc(w.word) + "</h3><p>" + w.meaning + "</p>" + (w.note ? '<div class="panel gold"><div class="label">Note</div><p>' + w.note + "</p></div>" : "") + stRef(w.ref) + "</article>";
+    },
+    timeline: function (v, bi, b) {
+      var i = stSel(v, bi, b.items.length), t = b.items[i];
+      return stHead(b) + (b.legend ? '<p class="note">' + b.legend.map(function (l) { return '<span class="rc-key ' + esc(l[0]) + '">' + esc(l[1]) + "</span>"; }).join(" ") + "</p>" : "") + '<div class="rc-time">' + b.items.map(function (x, j) { return '<button type="button" class="rc-tn ' + esc(x.kind || "") + (j === i ? " on" : "") + '" data-sx="' + v + "|" + bi + "|" + j + '"><small>' + esc(x.year) + "</small><span>" + esc(x.label) + "</span></button>"; }).join("") + '</div><article class="vph-card"><div class="label">' + esc(t.year) + "</div><h3>" + esc(t.label) + "</h3><p>" + t.text + "</p>" + stRef(t.ref) + "</article>";
+    },
+    quotes: function (v, bi, b) {
+      return stHead(b) + '<div class="st-quotes">' + b.items.map(function (q, j) { return '<figure class="st-quote" style="animation-delay:' + (j * 0.05).toFixed(2) + 's"><blockquote>' + q.quote + "</blockquote><figcaption><b>" + esc(q.who) + "</b> · " + esc(q.work) + "</figcaption>" + (q.comment ? "<p>" + q.comment + "</p>" : "") + (q.url ? '<a href="' + esc(q.url) + '" target="_blank" rel="noopener">Read the source ↗</a>' : "") + "</figure>"; }).join("") + "</div>";
+    },
+    cards: function (v, bi, b) {
+      return stHead(b) + '<div class="grid">' + b.items.map(function (x, j) { return '<article class="gterm" style="animation-delay:' + (j * 0.04).toFixed(2) + 's"><h3>' + esc(x.title) + "</h3><p>" + x.text + "</p>" + stRef(x.ref) + "</article>"; }).join("") + "</div>";
+    },
+    compare: function (v, bi, b) {
+      var i = stSel(v, bi, b.items.length), x = b.items[i], cls = ["sep", "gold", "uni"];
+      return stHead(b) + '<div class="chips">' + b.items.map(function (y, j) { return '<button class="chip" type="button" data-sx="' + v + "|" + bi + "|" + j + '" aria-pressed="' + (j === i) + '">' + esc(y.topic) + "</button>"; }).join("") + '</div><article class="vph-card"><h3>' + esc(x.topic) + "</h3>" + (x.intro ? '<p style="color:var(--ink)">' + x.intro + "</p>" : "") + '<div class="rc-three">' + b.labels.map(function (l, k) { return '<div class="panel ' + cls[k % 3] + '"><div class="label">' + esc(l) + "</div><p>" + x.cols[k] + "</p></div>"; }).join("") + "</div>" + stRef(x.ref) + "</article>";
+    },
+    args: function (v, bi, b) {
+      var i = stSel(v, bi, b.items.length), a = b.items[i];
+      return stHead(b) + '<div class="chips">' + b.items.map(function (y, j) { return '<button class="chip" type="button" data-sx="' + v + "|" + bi + "|" + j + '" aria-pressed="' + (j === i) + '">' + (j + 1) + "</button>"; }).join("") + '</div><article class="vph-card"><div class="label">Question ' + (i + 1) + " of " + b.items.length + '</div><div class="panel sep"><div class="label">The objection</div><p>“' + a.arg + '”</p></div><div class="panel gold"><div class="label">What is true in it</div><p>' + a.truth + '</p></div><div class="panel uni"><div class="label">The answer</div><p>' + a.answer + "</p></div>" + stRef(a.ref) + '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-sxm="' + v + "|" + bi + '|-1"' + (i === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-sxm="' + v + "|" + bi + '|1"' + (i === b.items.length - 1 ? " disabled" : "") + ">Next →</button></div></article>";
+    },
+    reveal: function (v, bi, b) {
+      var k = v + "|" + bi, n = SR[k] || 0;
+      return stHead(b) + '<div class="st-reveal">' + (b.intro ? '<p class="st-rintro">' + b.intro + "</p>" : "") + b.items.slice(0, n).map(function (x, j) { return '<div class="st-rline" style="animation-delay:' + (j === n - 1 ? 0 : 0) + 's"><b>' + esc(x.label) + "</b><p>" + x.text + "</p>" + stRef(x.ref) + "</div>"; }).join("") + '<div class="row">' + (n < b.items.length ? '<button class="btn" type="button" data-sxr="' + k + '">' + esc(b.button || "Reveal the next line") + " (" + (n + 1) + "/" + b.items.length + ")</button>" : '<button class="btn ghost" type="button" data-sxr0="' + k + '">Start again</button>') + "</div></div>";
+    },
+    quiz: function (v, bi, b) {
+      var k = v + "|" + bi, ans = SQ[k] || {}, ok = 0, done = 0;
+      b.items.forEach(function (q, j) { if (ans[j] != null) { done++; if (ans[j] === q.answer) ok++; } });
+      return '<div class="row" style="justify-content:space-between">' + stHead(b) + '<span class="count">' + (done ? ok + " of " + done + " correct" : b.items.length + " questions") + '</span></div><div class="st-quiz">' + b.items.map(function (q, j) { var a = ans[j]; return '<article class="st-q' + (a != null ? (a === q.answer ? " right" : " wrong") : "") + '"><h3>' + (j + 1) + ". " + esc(q.q) + '</h3><div class="lvr-opts">' + q.options.map(function (o, m) { return '<button type="button" class="chip' + (a != null && m === q.answer ? " right" : "") + '" data-sxq="' + k + "|" + j + "|" + m + '" aria-pressed="' + (a === m) + '">' + esc(o) + "</button>"; }).join("") + "</div>" + (a != null ? '<p class="st-why">' + q.why + "</p>" : "") + "</article>"; }).join("") + "</div>";
+    },
+    data: function (v, bi, b) {
+      return stHead(b) + '<div class="rc-data">' + b.items.map(function (d, i) { return '<article class="rc-stat" style="animation-delay:' + (i * 0.05).toFixed(2) + 's"><div class="rc-num">' + esc(d.value) + "</div><h3>" + esc(d.label) + "</h3>" + (d.bars ? '<div class="rc-bars">' + d.bars.map(function (x) { return '<div class="rc-bar"><span>' + esc(x.label) + '</span><div class="rc-track"><i style="--w:' + Math.max(2, Math.min(100, x.pct)) + '%"></i></div><b>' + esc(x.show || x.pct + "%") + "</b></div>"; }).join("") + "</div>" : "") + "<p>" + d.text + "</p>" + (d.meaning ? '<div class="panel uni"><div class="label">What it means</div><p>' + d.meaning + "</p></div>" : "") + '<div class="ref">' + esc(d.source) + "</div></article>"; }).join("") + "</div>";
+    },
+    evidence: function (v, bi, b) { return stHead(b) + evGrid(b.items); }
+  };
+  function stBlock(v, bi) { var b = RG.studies[v].blocks[bi], f = STB[b.type]; return f ? f(v, bi, b) : ""; }
+  function stView(v) {
+    var S = RG.studies[v], B = S.blocks || [];
+    return head(S.eyebrow, S.title, S.lede) +
+      '<nav class="jx-nav">' + B.map(function (b, bi) { return b.nav && !(b.items && !b.items.length) ? '<button type="button" data-jxgo="sb-' + v + "-" + bi + '">' + esc(b.nav) + "</button>" : ""; }).join("") + ((S.qa || []).length ? '<button type="button" data-jxgo="sb-' + v + '-qa">Questions</button>' : "") + "</nav>" +
+      (S.thesis ? '<div class="panel gold"><div class="label">The short answer</div><p>' + S.thesis + "</p></div>" : "") +
+      B.map(function (b, bi) { return b.items && !b.items.length ? "" : '<section class="section st-b" id="sb-' + v + "-" + bi + '">' + stBlock(v, bi) + "</section>"; }).join("") +
+      '<div id="sb-' + v + '-qa"></div>' + qxSection("sq" + v, S.qa || [], "Every question, answered") +
+      ((S.evidence || []).length ? '<section class="section"><h2>Evidence and sources</h2>' + evGrid(S.evidence) + "</section>" : "") +
+      ((S.related || []).length ? '<section class="section"><div class="label">Related in this atlas</div><div class="chips">' + S.related.map(function (r) { return '<a class="chip" href="#' + esc(r[0]) + '">' + esc(r[1]) + "</a>"; }).join("") + "</div></section>" : "");
+  }
+  function stRedraw(v, bi) { var el = document.getElementById("sb-" + v + "-" + bi); if (el) el.innerHTML = stBlock(v, bi); }
+  var stTimer = null;
+  function stPlay(v, bi) {
+    var b = RG.studies[v].blocks[bi], k = v + "|" + bi, j = 0; clearInterval(stTimer);
+    SS[k] = 0; stRedraw(v, bi);
+    if (reduced) return;
+    stTimer = setInterval(function () { j++; if (j >= b.steps.length || location.hash.slice(1) !== v) { clearInterval(stTimer); return; } SS[k] = j; stRedraw(v, bi); }, 2200);
+  }
   /* ---------- Blessing, matter & the spiritual life ---------- */
   var bsW = 0, bsSp = 2, bsT = 1, bsS = {}, bsWh = -1, bsLf = "split", bsA = 0, bsY = 0, bsV = 4, bsAct = {}, bsC = 0;
   var BSKIND = { whole: "christian", split: "split", mixed: "mixed" };
@@ -2042,6 +2124,14 @@
     mmyth: function (x) { return '<div class="ref">' + esc(x.kind + " #" + x.n + " · " + x.category) + "</div>" + panel("sep", "The myth", esc(x.myth)) + panel("uni", "What is actually true", x.truth) + blk("More", x.detail) + blk("Scriptures", esc(strip(x.scripture))) + (x.note ? blk("Note", x.note) : ""); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
   };
+  Object.keys(RG.studies || {}).forEach(function (v) {
+    var S = RG.studies[v];
+    V[v] = function () { return stView(v); };
+    RG["sqa_" + v] = S.qa || [];
+    TYPES["sq" + v] = { key: "sqa_" + v, view: v, title: function (x) { return x.q; }, sub: function () { return S.short || S.title; }, label: S.short || S.title };
+    SHEET["sq" + v] = function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); };
+    QXSAVE["sq" + v] = "sq" + v;
+  });
   var lastFocus = null;
   function openSheet(type, id) {
     var x = find(type, id), t = TYPES[type];
@@ -2135,7 +2225,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["blessing", "Blessing"], ["recover", "Habits & healing"], ["doxa", "Doxa"], ["woman", "Man & woman"], ["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["facets", "Gospel facets"], ["covenant", "The Blessing"], ["sons", "Sons revealed"], ["healing", "Divine healing"], ["name", "The Name"], ["blessing", "Blessing"], ["recover", "Habits & healing"], ["doxa", "Doxa"], ["woman", "Man & woman"], ["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -2212,6 +2302,7 @@
     clearInterval(svTimer); svStep = -1; clearInterval(rbStT); clearInterval(rbLT); clearInterval(wyRcT);
     if (route.view === "myths") mmShow();
     clearInterval(blT);
+    if (RG.studies && RG.studies[route.view]) qxShow("sq" + route.view, "sq" + route.view);
     if (route.view === "blessing") { bswShow(); bsspShow(); bswhShow(); bslfShow(); bstShow(); bssShow(); bsaShow(); bsyShow(); bsvShow(); bsacShow(); bscShow(); qxShow("bsq", "bsq"); }
     if (route.view === "recover") { rcdShow(); rcvShow(); rclShow(); rclvShow(); rcrtShow(); rccyShow(); rcbShow(); rccShow(); qxShow("rcq", "rcq"); }
     if (route.view === "justice") { jxdShow(); jxsShow(); jxhShow(); jxrShow(); jxcShow(); jxtShow(); jxaShow(); qxShow("jxq1", "jq1"); qxShow("jxq2", "jq2"); qxShow("jxq3", "jq3"); }
@@ -2288,6 +2379,12 @@
     var jhb = t.closest("[data-jxh]"); if (jhb) { jxH = +jhb.dataset.jxh; jxhShow(); return; }
     var jhm = t.closest("[data-jxhm]"); if (jhm) { jxH = Math.max(0, Math.min(A("jxHarass").length - 1, jxH + +jhm.dataset.jxhm)); jxhShow(); return; }
     var jrb = t.closest("[data-jxr]"); if (jrb) { jxRing = jrb.dataset.jxr; jxRi = 0; jxrShow(); return; }
+    var sx1 = t.closest("[data-sx]"); if (sx1) { var sp = sx1.dataset.sx.split("|"); SS[sp[0] + "|" + sp[1]] = +sp[2]; clearInterval(stTimer); stRedraw(sp[0], +sp[1]); return; }
+    var sx2 = t.closest("[data-sxm]"); if (sx2) { var sm = sx2.dataset.sxm.split("|"), sk = sm[0] + "|" + sm[1]; SS[sk] = (SS[sk] || 0) + +sm[2]; stRedraw(sm[0], +sm[1]); return; }
+    var sx3 = t.closest("[data-sxp]"); if (sx3) { var spp = sx3.dataset.sxp.split("|"); stPlay(spp[0], +spp[1]); return; }
+    var sx4 = t.closest("[data-sxr]"); if (sx4) { var sr = sx4.dataset.sxr.split("|"); SR[sx4.dataset.sxr] = (SR[sx4.dataset.sxr] || 0) + 1; stRedraw(sr[0], +sr[1]); return; }
+    var sx5 = t.closest("[data-sxr0]"); if (sx5) { var sr0 = sx5.dataset.sxr0.split("|"); SR[sx5.dataset.sxr0] = 0; stRedraw(sr0[0], +sr0[1]); return; }
+    var sx6 = t.closest("[data-sxq]"); if (sx6) { var sq = sx6.dataset.sxq.split("|"), qk = sq[0] + "|" + sq[1]; SQ[qk] = SQ[qk] || {}; SQ[qk][+sq[2]] = +sq[3]; stRedraw(sq[0], +sq[1]); return; }
     var bs1 = t.closest("[data-bsw]"); if (bs1) { bsW = +bs1.dataset.bsw; bswShow(); return; }
     var bs2 = t.closest("[data-bssp]"); if (bs2) { bsSp = +bs2.dataset.bssp; bsspShow(); return; }
     var bs3 = t.closest("[data-bswh]"); if (bs3) { bsWh = +bs3.dataset.bswh; bswhShow(); return; }

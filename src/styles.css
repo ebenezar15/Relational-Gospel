@@ -1335,3 +1335,48 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .bs-act em { font-style: normal; }
 #bsac-meter { background: var(--dawn); }
 .bs-why { margin: 10px 0 14px; }
+
+/* ---------- Deep studies engine ---------- */
+.st-b h2 + .note { margin-top: 4px; }
+.st-prism { display: grid; gap: 16px; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); align-items: center; margin: 12px 0 14px; }
+@media (max-width: 760px) { .st-prism { grid-template-columns: minmax(0, 1fr); } }
+.st-core { position: relative; width: 100%; max-width: 220px; aspect-ratio: 1; justify-self: center; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(from 0deg, hsl(0 70% 60%), hsl(40 80% 58%), hsl(90 55% 50%), hsl(170 55% 45%), hsl(220 60% 58%), hsl(280 50% 58%), hsl(330 65% 60%), hsl(360 70% 60%)); animation: stspin 40s linear infinite; }
+.st-core::after { content: ""; position: absolute; inset: 14%; border-radius: 50%; background: var(--surface); box-shadow: inset 0 0 30px rgba(0,0,0,.08); }
+.st-core span { position: relative; z-index: 1; font: 700 18px/1.25 var(--display); text-align: center; padding: 20%; animation: stspin 40s linear infinite reverse; }
+@keyframes stspin { to { transform: rotate(360deg); } }
+.st-facets { display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); }
+.st-facet { display: flex; gap: 8px; align-items: center; text-align: left; padding: 9px 11px; border-radius: 10px; border: 1px solid var(--line); border-left: 5px solid hsl(var(--h) 60% 55%); background: var(--surface); color: var(--ink); font: 600 14px/1.3 var(--body); cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.st-facet b { font: 500 11px var(--mono); color: var(--muted); }
+.st-facet:hover { transform: translateX(3px); }
+.st-facet.on { background: color-mix(in srgb, hsl(var(--h) 60% 55%) 16%, var(--surface)); box-shadow: 0 0 0 2px hsl(var(--h) 60% 55%); }
+.st-flow { position: relative; display: grid; gap: 6px; margin: 12px 0 14px; padding-left: 26px; }
+.st-flow::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, var(--gold), var(--dawn)); }
+.st-step { position: relative; display: flex; gap: 10px; align-items: center; text-align: left; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; transition: transform .25s, background .25s; }
+.st-step i { position: absolute; left: -26px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 600 11px var(--mono); font-style: normal; background: var(--bg-2); border: 2px solid var(--line); color: var(--muted); }
+.st-step span { display: grid; gap: 2px; }
+.st-step b { font-size: 15.5px; }
+.st-step small { font-size: 12.5px; color: var(--muted); }
+.st-step.past i { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
+.st-step.on { transform: translateX(6px); border-color: var(--gold); background: var(--gold-soft); }
+.st-step.on i { background: var(--gold); border-color: var(--gold); color: #1b1408; box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold) 25%, transparent); }
+.st-quotes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); margin-top: 10px; }
+.st-quote { margin: 0; display: grid; gap: 8px; align-content: start; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); animation: rise .45s both; position: relative; }
+.st-quote::before { content: "“"; position: absolute; top: -6px; left: 12px; font: 700 64px/1 Georgia, serif; color: var(--gold); opacity: .35; }
+.st-quote blockquote { margin: 0; font-size: 17px; line-height: 1.55; font-style: italic; color: var(--ink); padding-top: 10px; }
+.st-quote figcaption { font-size: 13.5px; color: var(--muted); }
+.st-quote p { font-size: 14.5px; color: var(--muted); }
+.st-quote a { font-size: 13px; }
+.st-reveal { display: grid; gap: 10px; margin-top: 10px; padding: 18px; border-radius: var(--radius); background: radial-gradient(circle at 50% 0%, var(--gold-soft), var(--surface) 70%); border: 1px solid var(--line); }
+.st-rintro { font-size: 17px; color: var(--ink); text-align: center; }
+.st-rline { display: grid; gap: 4px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--gold); animation: stglow .8s ease-out both; }
+.st-rline b { font: 700 19px/1.3 var(--display); color: var(--gold); }
+@keyframes stglow { from { opacity: 0; transform: scale(.96); box-shadow: 0 0 30px var(--gold); } to { opacity: 1; transform: none; box-shadow: none; } }
+.st-quiz { display: grid; gap: 10px; margin-top: 10px; }
+.st-q { display: grid; gap: 8px; padding: 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.st-q h3 { font-size: 17px; }
+.st-q.right { border-color: var(--dawn); }
+.st-q.wrong { border-color: var(--wine); }
+.st-why { font-size: 15px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .st-core, .st-core span, .st-rline { animation: none; } }
+@media (min-width: 901px) { .rc-sk.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .st-core { max-width: 170px; } }
