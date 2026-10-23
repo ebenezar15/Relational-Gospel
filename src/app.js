@@ -945,8 +945,30 @@
     data: function (v, bi, b) {
       return stHead(b) + '<div class="rc-data">' + b.items.map(function (d, i) { return '<article class="rc-stat" style="animation-delay:' + (i * 0.05).toFixed(2) + 's"><div class="rc-num">' + esc(d.value) + "</div><h3>" + esc(d.label) + "</h3>" + (d.bars ? '<div class="rc-bars">' + d.bars.map(function (x) { return '<div class="rc-bar"><span>' + esc(x.label) + '</span><div class="rc-track"><i style="--w:' + Math.max(2, Math.min(100, x.pct)) + '%"></i></div><b>' + esc(x.show || x.pct + "%") + "</b></div>"; }).join("") + "</div>" : "") + "<p>" + d.text + "</p>" + (d.meaning ? '<div class="panel uni"><div class="label">What it means</div><p>' + d.meaning + "</p></div>" : "") + '<div class="ref">' + esc(d.source) + "</div></article>"; }).join("") + "</div>";
     },
-    evidence: function (v, bi, b) { return stHead(b) + evGrid(b.items); }
+    evidence: function (v, bi, b) { return stHead(b) + evGrid(b.items); },
+    mindmap: function (v, bi, b) { return stHead(b) + stMind(v + "|" + bi, b.center, b.branches); },
+    series: function (v, bi, b) {
+      var k = v + "|" + bi, P = b.parts, i = stSel(v, bi, P.length), p = P[i], tabs = [["summary", "Summary & map"], ["flow", "Argument flow"], ["teachings", "Key teachings"], ["stories", "Stories"], ["words", "Word studies"], ["scriptures", "Scriptures"], ["questions", "Questions"], ["practice", "Practice"], ["fair", "Fair notes"]];
+      tabs = tabs.filter(function (t) { return t[0] === "summary" || (p[t[0]] || []).length; });
+      var tb = SS[k + "|tab"] || "summary"; if (!tabs.some(function (t) { return t[0] === tb; })) tb = "summary";
+      var body = "";
+      if (tb === "summary") body = '<div class="panel gold"><div class="label">Core claim</div><p>' + (p.thesis || "") + "</p></div><p>" + (p.summary || "") + "</p>" + ((p.mindmap || []).length ? stMind(k + "|m" + i, p.title, p.mindmap) : "");
+      else if (tb === "flow") body = '<div class="st-flow">' + p.flow.map(function (f, j) { return '<div class="st-step past"><i>' + (j + 1) + "</i><span><b>" + esc(f.step) + "</b><small>" + f.text + "</small></span></div>"; }).join("") + "</div>";
+      else if (tb === "teachings") body = '<div class="qa">' + p.teachings.map(function (t, j) { return "<details" + (j === 0 ? " open" : "") + "><summary>" + (j + 1) + ". " + esc(t.title) + '</summary><div class="ans"><p style="color:var(--ink)">' + t.body + "</p>" + stRef((t.refs || []).join(" · ")) + "</div></details>"; }).join("") + "</div>";
+      else if (tb === "stories") body = '<div class="grid">' + p.stories.map(function (t) { return '<article class="gterm"><h3>' + esc(t.title) + "</h3><p>" + t.text + "</p></article>"; }).join("") + "</div>";
+      else if (tb === "words") body = '<div class="grid">' + p.words.map(function (w) { var vd = String(w.verdict || "").toLowerCase(); return '<article class="gterm st-word ' + (vd.indexOf("not") === 0 ? "bad" : vd.indexOf("part") === 0 ? "mid" : "good") + '"><h3>' + esc(w.word) + ' <span class="ref">' + esc(w.lang || "") + '</span></h3><p><strong>The series says:</strong> ' + w.claimed + '</p><p><strong>Lexicons:</strong> ' + w.lexicon + '</p><span class="pill">' + esc(w.verdict || "") + "</span></article>"; }).join("") + "</div>";
+      else if (tb === "scriptures") body = '<div class="st-scr">' + p.scriptures.map(function (r) { return '<div><b class="ref">' + esc(r.ref) + "</b><p>" + r.use + "</p></div>"; }).join("") + "</div>";
+      else if (tb === "questions") body = '<div class="qa">' + p.questions.map(function (q) { return "<details><summary>" + esc(q.q) + '</summary><div class="ans"><p style="color:var(--ink)">' + q.a + "</p></div></details>"; }).join("") + "</div>";
+      else if (tb === "practice") body = '<ul class="st-prac">' + p.practice.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>";
+      else if (tb === "fair") body = p.fair.map(function (f) { return '<div class="panel sep"><div class="label">Debated claim</div><p><strong>' + f.claim + "</strong></p><p>" + f.note + "</p>" + stRef((f.refs || []).join(" · ")) + "</div>"; }).join("");
+      return stHead(b) + '<div class="st-rail">' + P.map(function (x, j) { return '<button type="button" class="st-part' + (j === i ? " on" : "") + (j < i ? " past" : "") + '" data-sx="' + v + "|" + bi + "|" + j + '"><b>' + (j + 1) + "</b><span>" + esc(x.title) + "</span></button>"; }).join("") + '</div><article class="vph-card st-pcard"><div class="label">Part ' + (i + 1) + " of " + P.length + "</div><h3>" + esc(p.title) + '</h3><div class="chips st-tabs">' + tabs.map(function (t) { return '<button class="chip" type="button" data-sxt="' + k + "|" + t[0] + '" aria-pressed="' + (t[0] === tb) + '">' + esc(t[1]) + ((p[t[0]] || []).length && t[0] !== "summary" ? " (" + p[t[0]].length + ")" : "") + "</button>"; }).join("") + "</div>" + body + '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-sxm="' + v + "|" + bi + '|-1"' + (i === 0 ? " disabled" : "") + '>← Previous part</button><button class="btn" type="button" data-sxm="' + v + "|" + bi + '|1"' + (i === P.length - 1 ? " disabled" : "") + ">Next part →</button></div></article>";
+    }
   };
+  function stMind(key, center, branches) {
+    var n = branches.length, sel = SS[key] == null ? -1 : SS[key], pts = branches.map(function (x, j) { var a = -Math.PI / 2 + j / n * Math.PI * 2; return [50 + 36 * Math.cos(a), 50 + 34 * Math.sin(a)]; });
+    var sb = branches[sel];
+    return '<div class="st-mind"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">' + pts.map(function (q, j) { return '<path class="' + (j === sel ? "on" : "") + '" d="M50 50 Q ' + ((50 + q[0]) / 2 + (q[1] - 50) * 0.15).toFixed(1) + " " + ((50 + q[1]) / 2 - (q[0] - 50) * 0.15).toFixed(1) + " " + q[0].toFixed(1) + " " + q[1].toFixed(1) + '" style="--h:' + Math.round(j / n * 330) + '"/>'; }).join("") + '</svg><div class="st-mcenter">' + esc(center) + "</div>" + branches.map(function (x, j) { return '<button type="button" class="st-mnode' + (j === sel ? " on" : "") + '" style="left:' + pts[j][0].toFixed(1) + "%;top:" + pts[j][1].toFixed(1) + "%;--h:" + Math.round(j / n * 330) + '" data-sxk="' + key + "|" + j + '">' + esc(x.branch) + "</button>"; }).join("") + "</div>" + (sb ? '<article class="vph-card st-mleaves" style="--h:' + Math.round(sel / n * 330) + '"><h3>' + esc(sb.branch) + "</h3><ul>" + sb.leaves.map(function (l) { return "<li>" + l + "</li>"; }).join("") + "</ul></article>" : '<p class="note">Tap a branch to open it.</p>');
+  }
   function stBlock(v, bi) { var b = RG.studies[v].blocks[bi], f = STB[b.type]; return f ? f(v, bi, b) : ""; }
   function stView(v) {
     var S = RG.studies[v], B = S.blocks || [];
@@ -2379,6 +2401,8 @@
     var jhb = t.closest("[data-jxh]"); if (jhb) { jxH = +jhb.dataset.jxh; jxhShow(); return; }
     var jhm = t.closest("[data-jxhm]"); if (jhm) { jxH = Math.max(0, Math.min(A("jxHarass").length - 1, jxH + +jhm.dataset.jxhm)); jxhShow(); return; }
     var jrb = t.closest("[data-jxr]"); if (jrb) { jxRing = jrb.dataset.jxr; jxRi = 0; jxrShow(); return; }
+    var sx7 = t.closest("[data-sxt]"); if (sx7) { var st7 = sx7.dataset.sxt.split("|"); SS[st7[0] + "|" + st7[1] + "|tab"] = st7[2]; stRedraw(st7[0], +st7[1]); return; }
+    var sx8 = t.closest("[data-sxk]"); if (sx8) { var st8 = sx8.dataset.sxk.split("|"), j8 = +st8.pop(), k8 = st8.join("|"); SS[k8] = SS[k8] === j8 ? -1 : j8; stRedraw(st8[0], +st8[1]); return; }
     var sx1 = t.closest("[data-sx]"); if (sx1) { var sp = sx1.dataset.sx.split("|"); SS[sp[0] + "|" + sp[1]] = +sp[2]; clearInterval(stTimer); stRedraw(sp[0], +sp[1]); return; }
     var sx2 = t.closest("[data-sxm]"); if (sx2) { var sm = sx2.dataset.sxm.split("|"), sk = sm[0] + "|" + sm[1]; SS[sk] = (SS[sk] || 0) + +sm[2]; stRedraw(sm[0], +sm[1]); return; }
     var sx3 = t.closest("[data-sxp]"); if (sx3) { var spp = sx3.dataset.sxp.split("|"); stPlay(spp[0], +spp[1]); return; }
