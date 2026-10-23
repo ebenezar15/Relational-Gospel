@@ -316,7 +316,7 @@
         ["kingdom", "Ekklesia & the Kingdom", A("kingConcepts").length + " concepts, " + A("kingPractice").length + " practices, " + A("kingViews").length + " views of the end"],
         ["embodied", "The Embodied Gospel", A("embStudies").length + " in-depth studies, " + A("embConcepts").length + " key concepts"],
         ["story", A("ages").length + " stages of revelation", "How God met the human condition, age by age"],
-        ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and Miller"],
+        ["voices", A("voices").length + " fathers & teachers", "Irenaeus to Kruger, MacDonald, Crowder and today's New Creation teachers"],
         ["models", A("models").length + " frameworks compared", "Atonement, salvation, hell, Scripture, end times"],
         ["religion", A("misses").length + " things religion misses", "Religion beside revelation"],
         ["apostles", A("apostles").length + " apostles & witnesses", "What they grasped and where they struggled"],

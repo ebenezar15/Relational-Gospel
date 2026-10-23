@@ -513,16 +513,16 @@ RG.voices = [
     caution: "Critics, including Reformed sources such as Monergism, call his teaching “hyper-grace” and charismatic excess, and argue that it downplays repentance and holiness. Supporters reply that holiness flows from union and joy rather than fear."
   },
   {
-    id: "tommy-miller",
-    name: "Tommy Miller",
+    id: "new-creation-teacher",
+    name: "A contemporary New Creation teacher",
     years: "contemporary",
     era: "contemporary",
     tradition: "New Creation / union with Christ",
     big: "A salvific ontology: we are defined by Christ and belovedness, not by the Fall.",
-    idea: "With Bobby Shane Brooks he has contrasted a “tragic ontology” (humanity defined at root by the Fall, separation and fear) with a “salvific ontology” (our true being defined by Christ, inclusion and belovedness), describing the gospel as “awakening to who we have always been in Christ”. In Sacred Biology (2026, with Jen Porter and Bobby Shane Brooks) he argues that God’s plan moves through bodies and that “healing is not a perk of salvation, it is the embodiment of it”. This echoes the older idea, from Irenaeus, Athanasius and Torrance, that salvation is a change in our very being through the Incarnation.",
+    idea: "This teacher has contrasted a “tragic ontology” (humanity defined at root by the Fall, separation and fear) with a “salvific ontology” (our true being defined by Christ, inclusion and belovedness), describing the gospel as “awakening to who we have always been in Christ”. In a recent book on embodied New Creation theology (2026, with its co-authors) he argues that God’s plan moves through bodies and that “healing is not a perk of salvation, it is the embodiment of it”. This echoes the older idea, from Irenaeus, Athanasius and Torrance, that salvation is a change in our very being through the Incarnation.",
     quote: "",
-    works: ["Unveiled", "Sacred Biology (with Jen Porter and Bobby Shane Brooks)"],
-    caution: "The salvific/tragic ontology framing comes mainly from talks and podcasts, so Miller’s own teaching is the source to consult for its fuller meaning. Critics of healing-focused theology worry it can leave those who are not healed feeling they lack faith."
+    works: ["A recent book on embodied New Creation theology (2026, with its co-authors)"],
+    caution: "The salvific/tragic ontology framing comes mainly from talks and podcasts, so this teacher’s own teaching is the source to consult for its fuller meaning. Critics of healing-focused theology worry it can leave those who are not healed feeling they lack faith."
   },
   {
     id: "steve-mcvey",

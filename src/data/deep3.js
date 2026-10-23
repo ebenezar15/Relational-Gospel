@@ -601,7 +601,7 @@ RG.deep["salvific-ontology"] = {
     {
       title: "Practical meaning: waking to the true story",
       body: [
-        "Tommy Miller, with Bobby Shane Brooks, has framed this as a choice between a ‘tragic ontology’ and a ‘salvific ontology’. No fuller published definition was found, so his own teaching is the source to consult. The historical roots above show the idea is not new.",
+        "A contemporary New Creation teacher has framed this as a choice between a ‘tragic ontology’ and a ‘salvific ontology’. No fuller published definition was found, so his own teaching is the source to consult. The historical roots above show the idea is not new.",
         "In practice, it changes how we hear repentance. The Greek <em>metanoia</em> means a change of mind. It is less about proving remorse and more about waking up: ‘Awake, you who sleep, and arise from the dead, and Christ will shine on you’ (Ephesians 5:14).",
         "So begin each day from the true story. ‘You died, and your life is hidden with Christ in God’ (Colossians 3:3). Beholding his glory, we are being transformed into the same image (2 Corinthians 3:18). We do not become someone else. We become who God always meant us to be."
       ],
