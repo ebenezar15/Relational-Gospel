@@ -4,3 +4,12 @@ An interactive, animated study atlas of the relational gospel: Jesus as the perf
 
 - `src/` – page template, styles, app script and content data (`src/data/*.js`)
 - `node build.js` – inlines everything into `index.html` (any static host, e.g. GitHub Pages) and `dist/artifact.html`
+
+## Languages (English / தமிழ்)
+
+The EN | தமிழ் switch in the top-right corner changes the whole app. Tamil text lives in
+`src/i18n/ta.json` (built from `src/i18n/parts/` by `src/i18n/merge.js`), ships gzipped inside the page,
+and is applied by `src/i18n/runtime.js`: content strings are swapped before the app renders, interface
+text is translated in the page, and scripture references get Tamil Bible book names. After changing
+English content, re-run the extractor (`src/i18n/extract.js`) and translate any new strings
+following `src/i18n/BRIEF.md`.

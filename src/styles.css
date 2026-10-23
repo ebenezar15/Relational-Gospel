@@ -1216,5 +1216,6 @@ html[lang="ta"] {
 html[lang="ta"] body { line-height: 1.7; }
 html[lang="ta"] body * { letter-spacing: normal !important; }
 html[lang="ta"] h1, html[lang="ta"] h2, html[lang="ta"] h3 { line-height: 1.4; overflow-wrap: anywhere; }
-html[lang="ta"] .chip, html[lang="ta"] .btn, html[lang="ta"] .pill, html[lang="ta"] .label { overflow-wrap: anywhere; }
+html[lang="ta"] main, html[lang="ta"] #layer, html[lang="ta"] .rail { overflow-wrap: anywhere; }
+html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 @media (max-width: 640px) { .lang-switch button { padding: 0 8px; min-width: 34px; } }
