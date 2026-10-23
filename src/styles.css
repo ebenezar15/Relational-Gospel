@@ -1164,3 +1164,37 @@ mark { background: var(--gold-soft); color: var(--gold); border-radius: 3px; pad
 .wm-w b { font-size: 17px; }
 .wm-w p { font-size: 15px; animation: rise .4s both; }
 .wm-w.on { grid-column: 1 / -1; border-color: var(--dawn); background: var(--dawn-soft); }
+
+/* ---------- Doxa ---------- */
+.dx-hero { display: grid; gap: 18px; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); align-items: center; padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+@media (max-width: 640px) { .dx-hero { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; } }
+.dx-hero svg { width: 100%; max-width: 240px; height: auto; display: block; overflow: visible; }
+.dx-frame { fill: none; stroke: var(--gold); stroke-width: 6; }
+.dx-pane { fill: var(--surface); }
+.dx-face { fill: none; stroke: var(--muted); stroke-width: 3; opacity: .35; transition: stroke 1s, opacity 1s; }
+.dx-shine { opacity: 0; transition: opacity 1.2s; }
+.dx-veil { fill: color-mix(in srgb, var(--ink) 70%, var(--bg)); opacity: .92; transition: transform 1.4s cubic-bezier(.6,0,.2,1), opacity 1.4s; transform-box: fill-box; transform-origin: top; }
+.dx-hero.lifted .dx-veil { transform: translateY(-110%) scaleY(.2); opacity: 0; }
+.dx-hero.lifted .dx-face { stroke: var(--gold); opacity: 1; }
+.dx-hero.lifted .dx-shine { opacity: 1; animation: glow 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.dx-copy { display: grid; gap: 12px; justify-items: start; }
+@media (max-width: 640px) { .dx-copy { justify-items: center; } }
+.dx-verse { font-size: 20px; line-height: 1.5; font-style: italic; }
+.dx-hero.lifted .dx-verse { color: var(--gold); }
+#dx-gr { width: 100%; accent-color: var(--gold); margin-bottom: 10px; }
+.dx-gl { --t: 0; display: grid; gap: 8px; }
+.dx-row { display: grid; gap: 6px 10px; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.dx-l, .dx-r { display: grid; gap: 2px; padding: 8px 10px; border-radius: 10px; }
+.dx-l small, .dx-r small { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.dx-l { background: var(--wine-soft); opacity: calc(1 - var(--t) * .75); filter: grayscale(var(--t)); }
+.dx-r { background: color-mix(in srgb, var(--gold) calc(var(--t) * 35%), var(--surface)); box-shadow: 0 0 calc(var(--t) * 22px) color-mix(in srgb, var(--gold) 50%, transparent); }
+.dx-arrow { color: var(--gold); font-size: 20px; }
+.dx-note { grid-column: 1 / -1; font-size: 14.5px; color: var(--muted); }
+.dx-stairs { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; align-items: end; min-height: 220px; padding: 10px 0; }
+.dx-st { --i: 0; height: calc(70px + var(--i) * 26px); display: grid; align-content: start; justify-items: center; gap: 4px; padding: 10px 4px; border-radius: 12px 12px 4px 4px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font: inherit; font-size: 12.5px; line-height: 1.2; cursor: pointer; transition: background .6s, border-color .6s, color .6s, box-shadow .6s; }
+.dx-st b { font-family: var(--mono); font-size: 15px; color: var(--ink); }
+.dx-st.lit { background: color-mix(in srgb, var(--gold) calc(10% + var(--i) * 6%), var(--surface)); border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); color: var(--ink); }
+.dx-st.on { box-shadow: 0 0 22px color-mix(in srgb, var(--gold) 55%, transparent); border-color: var(--gold); }
+@media (max-width: 560px) { .dx-st { font-size: 10.5px; height: calc(60px + var(--i) * 20px); } }
+#dxs-card { margin-top: 12px; }
+.dx-sh, .dx-sh .flip-inner { min-height: 260px; }

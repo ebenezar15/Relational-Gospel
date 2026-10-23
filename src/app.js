@@ -115,6 +115,7 @@
     jcase: { key: "jxCases", view: "justice", title: function (x) { return x.title; }, sub: function () { return "Case study"; }, label: "Justice & conflict" },
     blq: { key: "blQA", view: "blood", title: function (x) { return x.q; }, sub: function () { return "The life is in the blood"; }, label: "The life is in the blood" },
     blst: { key: "blStory", view: "blood", title: function (x) { return x.title; }, sub: function (x) { return x.ref; }, label: "Blood in Scripture" },
+    dxpart: { key: "dxParts", view: "doxa", title: function (x) { return "Doxa, part " + x.n + ": " + x.title; }, sub: function () { return "Doxa: from glory to glory"; }, label: "Doxa" },
     dech: { key: "deChapters", view: "embrace", title: function (x) { return "Ch. " + x.n + ": " + x.title; }, sub: function () { return "The Divine Embrace"; }, label: "The Divine Embrace" },
     mmyth: { key: "mmMyths", view: "myths", title: function (x) { return x.myth; }, sub: function (x) { return x.kind + " #" + x.n + " · " + x.category; }, label: "Myths & mistranslations" },
     miss: { key: "misses", view: "religion", title: function (x) { return x.title; }, sub: function (x) { return (x.refs || []).join(" · "); }, label: "What religion misses" }
@@ -128,7 +129,7 @@
   var VIEWS = [
     { group: "Begin", items: [["atlas", "The Atlas"], ["read", "How to read the Bible"], ["theme.bible-narratives", "Reading the Bible's story"], ["theme.undiluted-gospel", "The undiluted gospel"]] },
     { group: "The God Jesus reveals", items: [["story", "How God met humanity"], ["theme.perfect-theology", "Jesus, perfect theology"], ["love", "God is love: one nature"], ["apostles", "Did the apostles see it?"], ["lens", "Old & New Testament tensions"], ["journey", "How people misread God"], ["violence", "The violent passages"]] },
-    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["justice", "Justice, conflict & call-outs"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["woman", "Man, woman & Genesis"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
+    { group: "Trinity & union", items: [["newcreation", "New creation & the old self"], ["compare", "Legal vs relational gospel"], ["trinity", "The Trinity at work"], ["theme.trinitarian-gospel", "The Trinitarian gospel"], ["theme.union-sonship", "Union & sonship"], ["theme.designed-for-connection", "Made for connection"], ["theme.church-now", "The church now"], ["worship", "Worship in Spirit & truth"], ["living", "Living it out"], ["justice", "Justice, conflict & call-outs"], ["paths", "Ancient paths & encounters"], ["identity", "Identity & heart healing"], ["saviour", "Why a Saviour?"], ["reborn", "Born again"], ["design", "Made for each other"], ["blood", "The life is in the blood"], ["woman", "Man, woman & Genesis"], ["ways", "How God works"], ["embrace", "The Divine Embrace"], ["doxa", "Doxa: from glory to glory"], ["kingdom", "Ekklesia & the Kingdom"], ["life", "Designed to live: love with a spine"], ["share", "Sharing the good news"], ["why", "The why of design"], ["big", "Big questions"], ["forgive", "Forgiveness & repair"]] },
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
@@ -262,6 +263,7 @@
       ["justice", "Justice, conflict & call-outs", "Harassment, stepping in, revenge, exposing ministries, and the legal gospel’s contradictions."],
       ["woman", "Man, woman & Genesis", "Man first, Genesis 1 and 2, eyes opened, and women’s dignity."],
       ["blood", "The life is in the blood", "Blood’s design, its meaning in the Old Testament, and how Christ’s blood cleanses."],
+      ["doxa", "Doxa: from glory to glory", "Glory, identity, perspective and doubt, from 2 Corinthians 3."],
       ["embrace", "The Divine Embrace", "A chapter-by-chapter journey into union, the mirror and our true design."],
       ["myths", "Myths & mistranslations", "Sayings and translations many repeat without checking, busted one by one."],
       ["ways", "How God works", "His character, his boundaries, his voice, and why some are spared."],
@@ -298,6 +300,7 @@
         ["justice", "Justice, conflict & call-outs", A("jxScenes").length + " situations to practise, the 5 Ds, the revenge cycle, " + A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length + " deep questions"],
         ["woman", "Man, woman & Genesis", A("wmQA").length + " deep questions, Genesis 1 and 2 compared, " + A("wmWomen").length + " women in God’s story"],
         ["blood", "The life is in the blood", "An animated journey of blood, " + A("blStory").length + " moments in the scarlet thread, " + A("blQA").length + " deep questions"],
+        ["doxa", "Doxa: from glory to glory", dxAll().length + " parts, two glories, a glory-to-glory journey and a quiz"],
         ["embrace", "The Divine Embrace", deAll().length + " chapters with stories, word studies and questions"],
         ["myths", "Myths & mistranslations", A("mmMyths").length + " myths and mistranslations to bust, " + A("mmCannot").length + " things God cannot do"],
         ["ways", "How God works", A("wyChar").length + " traits seen in Jesus, a voice quiz, a change skeleton, " + A("wyQA1").concat(A("wyQA2")).length + " deep questions"],
@@ -830,6 +833,47 @@
     $$("[data-blv]").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.blv === blV)); });
     $("#blv-dot").style.left = (VW.length > 1 ? blV / (VW.length - 1) * 100 : 50) + "%";
     $("#blv-card").innerHTML = '<article class="vph-card"><div class="label">' + esc(strip(v.who)) + "</div><h3>" + esc(v.label) + "</h3><p>" + v.view + '</p><div class="ref">' + esc(strip(v.texts)) + '</div><div class="cmp-pair"><div class="panel uni"><div class="label">Strength</div><p>' + v.strength + '</p></div><div class="panel sep"><div class="label">Weakness</div><p>' + v.weakness + "</p></div></div></article>";
+  }
+
+  /* ---------- Doxa: glory and identity ---------- */
+  var dxP = 0, dxTab = "big", dxRead = {}, dxVeil = false, dxG = 0, dxSt = 0, dxStT = null, dxQ = 0, dxQA = {};
+  var DXT = [["big", "Big idea"], ["points", "Key teachings"], ["stories", "Stories"], ["words", "Words"], ["questions", "Questions"], ["practice", "Practice"], ["scriptures", "Scriptures"], ["reflect", "Reflect"]];
+  function dxAll() { return A("dxParts1").concat(A("dxParts2")).sort(function (a, b) { return a.n - b.n; }); }
+  V.doxa = function () {
+    RG.dxParts = dxAll();
+    var P = RG.dxParts, I = RG.dxIntro || {}, G = A("dxGlories"), S = A("dxSteps"), W = A("dxWords"), SH = A("dxShifts"), Q = A("dxQuiz"), E = A("dxEvidence");
+    return head("A series on glory and identity", "Doxa: from glory to glory", (I.key ? esc(strip(I.key)) + " " : "") + "A five-part series on 2 Corinthians 3, glory (doxa), perspective and doubt, condensed and made interactive.") +
+      '<section class="section"><div class="dx-hero' + (dxVeil ? " lifted" : "") + '" id="dx-hero"><svg viewBox="0 0 260 300" aria-hidden="true"><defs><radialGradient id="dxg"><stop offset="0" stop-color="#fff6dc"/><stop offset=".45" stop-color="#e0ae55" stop-opacity=".85"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs><circle cx="130" cy="140" r="125" fill="url(#dxg)" class="dx-shine"/><ellipse cx="130" cy="140" rx="92" ry="120" class="dx-frame"/><ellipse cx="130" cy="140" rx="82" ry="110" class="dx-pane"/><circle cx="130" cy="112" r="30" class="dx-face"/><path d="M80 210 Q130 160 180 210" class="dx-face"/><rect x="34" y="18" width="192" height="250" rx="40" class="dx-veil"/></svg><div class="dx-copy"><div class="label">2 Corinthians 3:18</div><p class="dx-verse">“But we all, with unveiled face seeing the glory of the Lord as in a mirror, are transformed into the same image from glory to glory, even as from the Lord, the Spirit.”</p><button class="btn" type="button" id="dx-veil">' + (dxVeil ? "Veil again" : "Lift the veil") + "</button></div></div>" + ((I.summary || []).length ? '<div class="panel gold" style="margin-top:14px"><div class="label">The series in brief</div>' + I.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" : "") + "</section>" +
+      (G.length ? '<section class="section"><h2>Two glories</h2><p class="note">Drag the slider: the glory that was fading gives way to the glory that remains (2 Corinthians 3:7-11).</p><input type="range" id="dx-gr" min="0" max="100" value="' + dxG + '" aria-label="From fading glory to surpassing glory"><div class="dx-gl" id="dx-gl" style="--t:' + (dxG / 100) + '">' + G.map(function (g) { return '<article class="dx-row"><div class="dx-l"><small>' + esc(g.label) + "</small><b>" + esc(g.left) + '</b></div><div class="dx-arrow" aria-hidden="true">→</div><div class="dx-r"><small>' + esc(g.label) + "</small><b>" + esc(g.right) + '</b></div><p class="dx-note">' + g.note + ' <span class="ref">' + esc(strip(g.ref)) + "</span></p></article>"; }).join("") + "</div></section>" : "") +
+      (S.length ? '<section class="section"><h2>From glory to glory</h2><p class="note">Climb the stairs. Tap a step or watch the journey.</p><div class="dx-stairs" id="dx-stairs">' + S.map(function (s, i) { return '<button type="button" class="dx-st' + (i <= dxSt ? " lit" : "") + (i === dxSt ? " on" : "") + '" data-dxs="' + i + '" style="--i:' + i + '"><b>' + (i + 1) + "</b><span>" + esc(s.label) + "</span></button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="dx-play">Climb the stairs</button></div><div id="dxs-card"></div></section>' : "") +
+      (P.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>The series, part by part</h2><span class="count" id="dx-count"></span></div><div class="de-rail" id="dx-rail"></div><div id="dx-card"></div></section>' : "") +
+      (SH.length ? '<section class="section"><h2>Shift your perspective</h2><p class="note">Tap each card to turn an old way of seeing into the new.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))">' + SH.map(function (s) { return '<button type="button" class="flip dx-sh" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front"><div class="label">Old lens</div><h3>“' + esc(s.from) + '”</h3><span class="note" style="font-size:14px">Tap to shift</span></div><div class="flip-face back"><div class="label">New lens</div><h3 style="font-size:20px">“' + esc(s.to) + '”</h3><p style="font-size:15px">' + s.why + '</p><div class="ref">' + esc(strip(s.ref)) + "</div></div></div></button>"; }).join("") + "</div></section>" : "") +
+      (W.length ? '<section class="section"><h2>Words behind the series</h2><div class="grid">' + W.map(function (w, i) { return '<article class="gterm" style="animation-delay:' + (i * 0.04).toFixed(2) + 's"><h3>' + esc(w.word) + ' <span class="ref">' + esc(w.lang + " · " + w.gloss) + "</span></h3><p>" + w.meaning + '</p><div class="ref">' + esc(strip(w.ref || "")) + "</div></article>"; }).join("") + "</div></section>" : "") +
+      (Q.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Check your understanding</h2><span class="count" id="dxq-score"></span></div><div id="dxq-card"></div></section>' : "") +
+      (E.length ? '<section class="section"><h2>Evidence and sources</h2>' + evGrid(E) + "</section>" : "") +
+      '<section class="section"><p class="note">This section condenses a sermon series in our own words; Scripture is quoted from the World English Bible.</p><div class="label">Related in this atlas</div><div class="chips"><a class="chip" href="#embrace">The Divine Embrace</a><a class="chip" href="#identity">Identity & heart healing</a><a class="chip" href="#newcreation">New creation & the old self</a><a class="chip" href="#embodied">The Embodied Gospel</a></div></section>';
+  };
+  function dxStepShow() { var S = A("dxSteps"), s = S[dxSt]; if (!s || !$("#dxs-card")) { clearInterval(dxStT); return; } $$(".dx-st").forEach(function (b, i) { b.classList.toggle("lit", i <= dxSt); b.classList.toggle("on", i === dxSt); }); $("#dxs-card").innerHTML = '<article class="vph-card"><div class="label">Step ' + (dxSt + 1) + " of " + S.length + "</div><h3>" + esc(s.title) + "</h3><p>" + s.text + '</p><div class="ref">' + esc(strip(s.ref)) + "</div></article>"; }
+  function dxShow() {
+    var P = RG.dxParts || [], c = P[dxP]; if (!c || !$("#dx-rail")) return;
+    dxRead[c.id] = true; $("#dx-count").textContent = Object.keys(dxRead).length + " of " + P.length + " parts opened";
+    $("#dx-rail").innerHTML = P.map(function (x, i) { return '<button type="button" class="de-dot' + (i === dxP ? " on" : "") + (dxRead[x.id] ? " read" : "") + '" data-dxp="' + i + '"><b>' + x.n + "</b><span>" + esc(x.title) + "</span></button>"; }).join("");
+    var body = "";
+    if (dxTab === "big") body = '<p class="de-big">' + c.big + "</p><p>" + c.summary + "</p>";
+    if (dxTab === "points") body = '<div class="de-pts">' + (c.points || []).map(function (p, i) { return '<div class="de-pt" style="animation-delay:' + (i * 0.05).toFixed(2) + 's"><b>' + esc(p.head) + "</b><p>" + p.text + "</p></div>"; }).join("") + "</div>";
+    if (dxTab === "stories") body = (c.illustrations || []).length ? c.illustrations.map(function (s) { return '<div class="panel gold"><div class="label">' + esc(s.title) + "</div><p>" + s.text + "</p></div>"; }).join("") : '<p class="note">No featured story in this part.</p>';
+    if (dxTab === "words") body = (c.words || []).length ? '<div class="grid">' + c.words.map(function (w) { return '<article class="gterm"><h3>' + esc(w.word) + "</h3><p>" + w.meaning + "</p></article>"; }).join("") + "</div>" : '<p class="note">No word studies in this part.</p>';
+    if (dxTab === "questions") body = '<div class="qa">' + (c.questions || []).map(function (q, i) { return "<details" + (i === 0 ? " open" : "") + "><summary>" + q.q + '</summary><div class="ans"><p style="color:var(--ink)">' + q.a + "</p></div></details>"; }).join("") + "</div>";
+    if (dxTab === "practice") body = '<ol class="steps">' + (c.practice || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ol>";
+    if (dxTab === "scriptures") body = '<div class="chips">' + (c.scriptures || []).map(function (r) { return '<span class="chip">' + esc(r) + "</span>"; }).join("") + "</div>";
+    if (dxTab === "reflect") body = '<div class="panel uni"><div class="label">Pause and reflect</div><p style="font-size:19px">' + c.reflect + "</p></div>";
+    $("#dx-card").innerHTML = '<article class="de-card"><div class="row" style="justify-content:space-between"><div class="label">Part ' + c.n + " of " + P.length + "</div>" + saveBtn("dxpart", c.id) + "</div><h3>" + esc(c.title) + '</h3><div class="chips de-tabs">' + DXT.map(function (t) { return '<button class="chip" type="button" data-dxtab="' + t[0] + '" aria-pressed="' + (dxTab === t[0]) + '">' + t[1] + "</button>"; }).join("") + '</div><div class="de-body">' + body + '</div><div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-dxpm="-1"' + (dxP === 0 ? " disabled" : "") + '>← Previous part</button><button class="btn" type="button" data-dxpm="1"' + (dxP === P.length - 1 ? " disabled" : "") + ">Next part →</button></div></article>";
+  }
+  function dxqShow() {
+    var Q = A("dxQuiz"), q = Q[dxQ]; if (!q || !$("#dxq-card")) return;
+    var n = 0, r = 0; Q.forEach(function (x) { if (dxQA[x.id] != null) { n++; if (dxQA[x.id] === x.answer) r++; } }); $("#dxq-score").textContent = n ? r + " of " + n + " correct" : Q.length + " questions";
+    var a = dxQA[q.id], done = a != null;
+    $("#dxq-card").innerHTML = '<article class="sc' + (done ? " answered" : "") + '"><div class="label">Question ' + (dxQ + 1) + " of " + Q.length + '</div><h3 style="font-size:20px">' + q.q + '</h3><div class="lvr-opts">' + q.options.map(function (o, j) { return '<button type="button" class="chip' + (j === q.answer ? " right" : "") + '" data-dxo="' + j + '" aria-pressed="' + (a === j) + '">' + esc(o) + "</button>"; }).join("") + "</div>" + (done ? '<div class="sc-out"><div class="label">' + (a === q.answer ? "Correct" : "Not quite") + "</div><p>" + q.why + "</p></div>" : "") + '<div class="row" style="justify-content:space-between"><button class="btn ghost" type="button" data-dxqm="-1"' + (dxQ === 0 ? " disabled" : "") + '>← Previous</button><button class="btn" type="button" data-dxqm="1"' + (dxQ === Q.length - 1 ? " disabled" : "") + ">Next →</button></div></article>";
   }
 
   /* ---------- The Divine Embrace ---------- */
@@ -1845,6 +1889,7 @@
     jcase: function (x) { return blk("The story", x.story) + panel("sep", "Where the legal gospel goes wrong", x.legal) + panel("uni", "The relational solution", x.relational) + '<div class="blk"><div class="label">Steps</div><ol class="steps">' + (x.steps || []).map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ol></div>"; },
     blq: function (x) { return panel("gold", "In short", x.short) + (x.sections || []).map(function (sec) { return blk(sec.title, sec.body.join("</p><p>")); }).join("") + blk("Scriptures", esc((x.refs || []).join(" · "))); },
     blst: function (x) { return blk("What happens", x.scene) + panel("gold", "In its world", x.culture) + panel("uni", "Through the relational lens", x.relational) + blk("In Christ", x.fulfilled); },
+    dxpart: function (x) { return panel("gold", "Big idea", x.big) + blk("Summary", x.summary) + (x.points || []).map(function (p) { return blk(esc(p.head), p.text); }).join("") + blk("Scriptures", esc((x.scriptures || []).join(" · "))) + panel("uni", "Reflect", x.reflect); },
     dech: function (x) { return panel("gold", "Big idea", x.big) + blk("Summary", x.summary) + (x.points || []).map(function (p) { return blk(esc(p.head), p.text); }).join("") + blk("Scriptures", esc((x.scriptures || []).join(" · "))) + panel("uni", "Reflect", x.reflect); },
     mmyth: function (x) { return '<div class="ref">' + esc(x.kind + " #" + x.n + " · " + x.category) + "</div>" + panel("sep", "The myth", esc(x.myth)) + panel("uni", "What is actually true", x.truth) + blk("More", x.detail) + blk("Scriptures", esc(strip(x.scripture))) + (x.note ? blk("Note", x.note) : ""); },
     miss: function (x) { return panel("sep", "What religion says", x.religion) + panel("uni", "What the gospel reveals", x.gospel) + blk("Scriptures", esc((x.refs || []).join(" · "))); }
@@ -1881,6 +1926,7 @@
   function buildIndex() {
     RG.worAllQA = A("worQA1").concat(A("worQA2"));
     RG.deChapters = deAll();
+    RG.dxParts = dxAll();
     RG.svAllQA = A("svQA1").concat(A("svQA2"));
     RG.idAllQA = A("idQA1").concat(A("idQA2"));
     RG.paAllQA = A("paQA1").concat(A("paQA2"));
@@ -1941,7 +1987,7 @@
   function startSky() {
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
-    var themes = A("themes"), regions = [["woman", "Man & woman"], ["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
+    var themes = A("themes"), regions = [["doxa", "Doxa"], ["woman", "Man & woman"], ["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
     var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
     var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
     themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
@@ -2020,6 +2066,8 @@
     clearInterval(blT);
     if (route.view === "justice") { jxdShow(); jxsShow(); jxhShow(); jxrShow(); jxcShow(); jxtShow(); jxaShow(); qxShow("jxq1", "jq1"); qxShow("jxq2", "jq2"); qxShow("jxq3", "jq3"); }
     if (route.view === "blood") { blShow(); blpShow(); blvShow(); blwShow(); qxShow("blq", "blq"); qxShow("blwq", "blwq"); }
+    clearInterval(dxStT);
+    if (route.view === "doxa") { dxStepShow(); dxShow(); dxqShow(); }
     if (route.view === "woman") { wmStepShow(); wmWomenShow(); wmvShow(); qxShow("wmq", "wmq"); }
     if (route.view === "embrace") { deShow(); deWordsShow(); deQsShow(); }
     if (route.view === "ways") { wyCSeen = false; wycShow(); wysShow(); wystScore(); wyvShow(); wypvShow(); qxShow("wyq1", "wq1"); wyskShow(); wycsShow(); wyrcShow(); wyfShow(); qxShow("wyq2", "wq3"); }
@@ -2048,7 +2096,7 @@
   }
 
   /* ---------- events ---------- */
-  document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } if (ev.target.id === "mm-q") { mmQ = ev.target.value; mmI = 0; mmShow(); } if (ev.target.id === "de-wq") { deWq = ev.target.value; deWordsShow(); } if (ev.target.id === "de-qq") { deQq = ev.target.value; deQsShow(); } });
+  document.addEventListener("input", function (ev) { if (ev.target.id === "lvb-r") { lvBal = +ev.target.value; showBal(); } if (ev.target.id === "idg-r") { idG = +ev.target.value; idgShow(); } if (ev.target.id === "dx-gr") { dxG = +ev.target.value; var gl = $("#dx-gl"); if (gl) gl.style.setProperty("--t", dxG / 100); } if (ev.target.id === "mm-q") { mmQ = ev.target.value; mmI = 0; mmShow(); } if (ev.target.id === "de-wq") { deWq = ev.target.value; deWordsShow(); } if (ev.target.id === "de-qq") { deQq = ev.target.value; deQsShow(); } });
   document.addEventListener("change", function (ev) { if (ev.target.id === "rbv-a") { rbA = +ev.target.value; rbvShow(); } if (ev.target.id === "rbv-b") { rbB = +ev.target.value; rbvShow(); } });
   document.addEventListener("change", function (ev) { var jt = ev.target.dataset && ev.target.dataset.jxt; if (jt) { jxT[jt] = ev.target.checked; jxtShow(); } });
   document.addEventListener("change", function (ev) { var d = ev.target.dataset && ev.target.dataset.pat; if (d) { paTest[d] = ev.target.checked; showTests(); } });
@@ -2067,6 +2115,14 @@
     var lc = t.closest("[data-cat]"); if (lc) { lawCat = lc.dataset.cat; $$("[data-cat]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === lc)); }); lawGrid(); return; }
     var cv = t.closest("[data-v]"); if (cv) { culVerdict = cv.dataset.v; $$("[data-v]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === cv)); }); culGrid(); return; }
     var dt = t.closest("[data-dt]"); if (dt) { debateTab = dt.dataset.dt; $$("[data-dt]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === dt)); }); $("#dpane").innerHTML = debateTab === "strawmen" ? strawPane() : argPane(); return; }
+    if (t.closest("#dx-veil")) { dxVeil = !dxVeil; $("#dx-hero").classList.toggle("lifted", dxVeil); t.closest("#dx-veil").textContent = dxVeil ? "Veil again" : "Lift the veil"; return; }
+    var dsb2 = t.closest("[data-dxs]"); if (dsb2) { clearInterval(dxStT); dxSt = +dsb2.dataset.dxs; dxStepShow(); return; }
+    if (t.closest("#dx-play")) { clearInterval(dxStT); dxSt = 0; dxStepShow(); var nDx = A("dxSteps").length; dxStT = setInterval(function () { if (dxSt >= nDx - 1) { clearInterval(dxStT); return; } dxSt++; dxStepShow(); }, reduced ? 300 : 2800); return; }
+    var dpb = t.closest("[data-dxp]"); if (dpb) { dxP = +dpb.dataset.dxp; dxShow(); return; }
+    var dtb2 = t.closest("[data-dxtab]"); if (dtb2) { dxTab = dtb2.dataset.dxtab; dxShow(); return; }
+    var dpm = t.closest("[data-dxpm]"); if (dpm) { dxP = Math.max(0, Math.min((RG.dxParts || []).length - 1, dxP + +dpm.dataset.dxpm)); dxShow(); $("#dx-card").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); return; }
+    var dob = t.closest("[data-dxo]"); if (dob) { var dq = A("dxQuiz")[dxQ]; if (dq && dxQA[dq.id] == null) { dxQA[dq.id] = +dob.dataset.dxo; dxqShow(); } return; }
+    var dqm = t.closest("[data-dxqm]"); if (dqm) { dxQ = Math.max(0, Math.min(A("dxQuiz").length - 1, dxQ + +dqm.dataset.dxqm)); dxqShow(); return; }
     var bwb = t.closest("[data-blw]"); if (bwb) { blW = +bwb.dataset.blw; blwShow(); return; }
     var wsb = t.closest("[data-wms]"); if (wsb) { wmS = +wsb.dataset.wms; wmStepShow(); return; }
     var wsm = t.closest("[data-wmsm]"); if (wsm) { wmS = Math.max(0, Math.min(A("wmGen3").length - 1, wmS + +wsm.dataset.wmsm)); wmStepShow(); return; }

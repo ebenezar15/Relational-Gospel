@@ -701,7 +701,7 @@ RG.embStudies = [
   {
   id: "gospel-in-our-bodies",
   title: "Getting the Gospel to Show up in Our Bodies",
-  theme: "Sacred biology",
+  theme: "The body in new creation",
   thesis: "You cannot help, redeem or love anything you are judging, including your own body. The church taught believers to distrust and escape the body through Gnostic dualism, later hardened by the Cartesian split of mind and body, but the gospel is “biology-centric”: the body is God's dwelling and his instrument for redeeming creation. Scripture ends not in evacuation but in resurrection and integration.",
   points: [
   "<strong>Judge not, as a universal principle.</strong> God's invisible things are seen through what he made (Rom 1:20), so his principles hold everywhere. Matthew 7 is about the inability to help someone while judging them. “Love and judgment cannot coexist.”",
@@ -916,7 +916,7 @@ RG.embStudies = [
   },
   {
   id: "words-worlds",
-  title: "Words, Worlds & Sacred Biology",
+  title: "Words, Worlds & the Body",
   theme: "Words and the soul",
   thesis: "A son's words are creative: creation and the body arrange themselves under what is spoken. But the mouth speaks from the overflow of the heart, so changing words without changing what the soul feeds on is religion and counterfeit. The real work is taking thoughts captive and pulling down strongholds, the reasoning that justifies dysfunction, so that from union you say only what you hear the Father saying, and your soul's prosperity shows up as health (3 John 2).",
   points: [
