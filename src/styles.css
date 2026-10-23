@@ -1304,3 +1304,34 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .rc-myth.flip .label { color: var(--dawn); }
 @keyframes rcflip { 0% { transform: rotateY(90deg); } 100% { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .rc-venn circle, .rc-track i, .rc-myth.flip { animation: none; } }
+
+/* ---------- Blessing, matter & the spiritual life ---------- */
+.rc-key.split { background: var(--wine-soft); color: var(--wine); }
+.rc-tn.split::before { background: var(--wine); }
+.bs-spec { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 12px 0 14px; position: relative; padding-top: 14px; }
+.bs-spec::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--wine), var(--gold) 30%, var(--dawn) 50%, var(--gold) 70%, var(--wine)); }
+.bs-sp { display: grid; gap: 4px; align-content: start; text-align: left; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; transition: transform .2s, border-color .2s; }
+.bs-sp:hover { transform: translateY(-2px); }
+.bs-sp b { font-size: 15px; line-height: 1.25; }
+.bs-sp small { font-size: 13px; color: var(--muted); line-height: 1.35; }
+.bs-sp.on { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
+.bs-sp.p2 { border-color: color-mix(in srgb, var(--dawn) 55%, var(--line)); background: var(--dawn-soft); }
+@media (max-width: 760px) { .bs-spec { grid-template-columns: minmax(0, 1fr); padding-top: 0; padding-left: 16px; } .bs-spec::before { width: 8px; height: auto; bottom: 0; right: auto; background: linear-gradient(180deg, var(--wine), var(--gold) 30%, var(--dawn) 50%, var(--gold) 70%, var(--wine)); } }
+.bs-good { border-color: var(--dawn); }
+.bs-wheel .jx-node { font-size: 12.5px; }
+.bs-split { display: grid; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr); gap: 8px; margin: 12px 0 6px; animation: rise .4s both; }
+.bs-half { padding: 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
+.bs-half.h0 { background: var(--gold-soft); }
+.bs-half ul { padding-left: 18px; display: grid; gap: 4px; margin-top: 6px; }
+.bs-wall { border-radius: 4px; background: repeating-linear-gradient(180deg, var(--wine) 0 10px, transparent 10px 16px); }
+.bs-whole { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); margin: 12px 0; }
+.bs-seg { display: grid; gap: 6px; align-content: start; padding: 14px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--dawn) 45%, var(--line)); background: linear-gradient(160deg, var(--dawn-soft), var(--surface)); animation: rise .45s both; }
+.bs-seg p { font-size: 15px; }
+.bs-acts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); margin-top: 12px; }
+.bs-act { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); cursor: pointer; transition: border-color .3s, background .3s; }
+.bs-act:has(input:checked) { border-color: var(--dawn); background: var(--dawn-soft); }
+.bs-act input { width: 20px; height: 20px; accent-color: var(--dawn); margin-top: 2px; }
+.bs-act span { display: grid; gap: 4px; font-size: 15px; }
+.bs-act em { font-style: normal; }
+#bsac-meter { background: var(--dawn); }
+.bs-why { margin: 10px 0 14px; }
