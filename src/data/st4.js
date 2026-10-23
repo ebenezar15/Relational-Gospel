@@ -53,7 +53,7 @@ RG.studies.healing = {
         { year: "c. 180", label: "Irenaeus", kind: "christian", text: "Irenaeus reported that believers healed the sick by laying on hands, and that even the dead had been raised.", ref: "Mark 16:18" },
         { year: "c. 248", label: "Origen", kind: "christian", text: "Origen wrote that traces of the Spirit’s power remained among Christians, who drove out demons and performed many cures.", ref: "Acts 1:8" },
         { year: "c. 369", label: "Basil’s hospital", kind: "christian", text: "Basil of Caesarea built a complex for the sick and poor: prayer and medicine together.", ref: "Luke 10:34" },
-        { year: "c. 426", label: "Augustine", kind: "christian", text: "Augustine first thought miracles had ceased, then in The City of God recorded many healings in his own region, including dozens of written accounts in Hippo within two years.", ref: "John 14:12" },
+        { year: "c. 426", label: "Augustine", kind: "christian", text: "Augustine earlier wrote that miracles had ceased, then in The City of God recorded many healings, saying published accounts at Hippo reached “almost seventy” in under two years, with many more unrecorded (linked in his day to relics).", ref: "John 14:12" },
         { year: "Middle Ages", label: "Anointing changes", kind: "mixed", text: "Anointing the sick gradually became “extreme unction”, a rite for the dying, though healing stories of saints continued.", ref: "James 5:14–15" },
         { year: "1500s–1900s", label: "Cessationism", kind: "split", text: "Many Protestants taught that miracles had ceased with the apostles; B.B. Warfield’s Counterfeit Miracles (1918) became a classic statement.", ref: "1 Cor 13:8–10" },
         { year: "1840s", label: "Blumhardt", kind: "christian", text: "Johann Christoph Blumhardt in Möttlingen, Germany, saw deliverance and healings and proclaimed “Jesus is Victor”.", ref: "Col 2:15" },
@@ -90,7 +90,13 @@ RG.studies.healing = {
         { arg: "Sickness is a cross God gives us to carry.", truth: "Suffering for Christ’s sake is part of following him.", answer: "Jesus’ “cross” refers to persecution and self-denial for him, not disease. He never told the sick to carry their sickness; he healed them.", ref: "Mark 8:34; 1 Pet 4:12–16; Matt 8:16" },
         { arg: "Healing ministries are full of fraud.", truth: "Some are. Staged healings and money manipulation have done real harm.", answer: "Counterfeits imply something real. Test the fruit, insist on honesty and medical confirmation, and never charge for prayer (Matt 10:8).", ref: "Matt 7:15–20; Matt 10:8; 1 Thess 5:21" }
       ] },
-    { type: "quotes", nav: "The fathers", title: "Early witnesses to healing", note: "Short quotations from public-domain translations.", items: [] },
+    { type: "quotes", nav: "The fathers", title: "Early witnesses to healing", note: "Short quotations from public-domain translations.", items: [
+      { who: "Justin Martyr", work: "Second Apology 6 (c. 150–160)", quote: "…many of our Christian men exorcising them in the name of Jesus Christ, who was crucified under Pontius Pilate, have healed and do heal… though they could not be cured by all the other exorcists, and those who used incantations and drugs.", comment: "Healing and deliverance in Jesus’ name were public and continuing in the 2nd century.", url: "https://www.newadvent.org/fathers/0127.htm" },
+      { who: "Irenaeus of Lyons", work: "Against Heresies II.32.4 (c. 180)", quote: "Others still, heal the sick by laying their hands upon them, and they are made whole… For as she has received freely from God, freely also does she minister.", comment: "Healing was free of charge and through laying on of hands.", url: "https://www.newadvent.org/fathers/0103232.htm" },
+      { who: "Origen", work: "Against Celsus I.46 (c. 248)", quote: "And there are still preserved among Christians traces of that Holy Spirit which appeared in the form of a dove. They expel evil spirits, and perform many cures.", comment: "Note “traces”: fewer than in the apostles’ time, but present.", url: "https://www.newadvent.org/fathers/04161.htm" },
+      { who: "Tertullian", work: "To Scapula 4 (c. 212)", quote: "How many men of rank (to say nothing of common people) have been delivered from devils, and healed of diseases! Even Severus himself… sought out the Christian Proculus… in gratitude for his having once cured him by anointing.", comment: "An emperor healed through anointing with oil, an early example of James 5.", url: "https://www.newadvent.org/fathers/0305.htm" },
+      { who: "Augustine", work: "The City of God XXII.8 (c. 426)", quote: "For even now miracles are wrought in the name of Christ… It is not yet two years since these relics were first brought to Hippo-regius… those which have been published amount to almost seventy at the hour at which I write.", comment: "Augustine changed his mind about miracles having ceased.", url: "https://www.newadvent.org/fathers/120122.htm" },
+      { who: "Gregory of Nazianzus", work: "Oration 43.63 (on Basil, c. 381)", quote: "Go forth a little way from the city, and behold the new city, the storehouse of piety…", comment: "Describing Basil’s complex for the sick and poor: prayer and practical care together.", url: "https://www.newadvent.org/fathers/310243.htm" } ] },
     { type: "quiz", nav: "Quiz", title: "Check your understanding",
       items: [
         { q: "What name does God reveal in Exodus 15:26?", options: ["The LORD who provides", "The LORD who heals you", "The LORD my banner"], answer: 1, why: "“I am the LORD, your healer” (YHWH Rapha)." },
@@ -99,7 +105,12 @@ RG.studies.healing = {
         { q: "What did Jesus do when the blind man saw only partly?", options: ["Blamed his faith", "Prayed again", "Left"], answer: 1, why: "Mark 8:25: he laid his hands on his eyes again." },
         { q: "Which father first doubted miracles, then recorded many?", options: ["Augustine", "Anselm", "Luther"], answer: 0, why: "Augustine, The City of God XXII.8." }
       ] },
-    { type: "data", nav: "Clear data", title: "Clear data", items: [] }
+    { type: "data", nav: "Clear data", title: "Clear data", items: [
+      { value: "56–87%", label: "Healing in today’s global church", bars: [{ label: "South Korea", pct: 56, show: "56%" }, { label: "Kenya", pct: 87, show: "87%" }], text: "In Pew’s 10-country survey (2006), 56–87% of Pentecostals said they had experienced or witnessed divine healing.", meaning: "Healing is a lived reality for much of the world’s church.", source: "Pew Research Center, Spirit and Power (2006)" },
+      { value: "≈70", label: "Augustine’s published healing accounts", text: "In under two years at Hippo, published accounts of miracles reached “almost seventy”, with many more unrecorded.", meaning: "A church father who once doubted miracles documented them carefully.", source: "Augustine, City of God XXII.8" },
+      { value: "1,172 pages", label: "Modern miracle claims studied", text: "Craig Keener’s Miracles (2011) gathers hundreds of contemporary healing claims, many with eyewitnesses or medical records.", meaning: "Scholarship takes healing claims seriously enough to examine them.", source: "Keener, Miracles (Baker Academic, 2011)" },
+      { value: "72", label: "Medically examined at Lourdes", text: "The Catholic Church recognises 72 Lourdes healings as miraculous after strict medical review (the 72nd in 2025).", meaning: "Honest testing and testimony belong together.", source: "Catholic World Report (2025)" },
+      { value: "1887 → 1923", label: "Christ the Healer in the creeds of revival", bars: [{ label: "Simpson’s Fourfold Gospel (C&MA, 1887)", pct: 40 }, { label: "Angelus Temple, Foursquare (1923)", pct: 80 }], text: "A.B. Simpson proclaimed Christ as Saviour, Sanctifier, Healer and Coming King; Aimee Semple McPherson adapted it as Saviour, Baptiser, Healer and Coming King.", meaning: "Healing was restored to the core confession of whole movements.", source: "Christian and Missionary Alliance; Foursquare Church histories" } ] }
   ],
   qa: [
     { id: "will", q: "Is it God’s will to heal?", short: "Jesus shows God’s will: “I am willing; be cleansed” (Mark 1:41), and he healed all who came. Sickness is part of the curse and oppression he came to undo. So we pray for healing with confidence, while living honestly in a world that is not yet fully redeemed.",
@@ -117,5 +128,15 @@ RG.studies.healing = {
     { id: "heart", q: "How are physical and heart healing connected?", short: "Jesus forgave and healed together (Mark 2), and many illnesses have emotional and relational dimensions. Healing of shame, fear and unforgiveness often goes with physical recovery. But not every sickness is caused by sin or emotion; Jesus refused that assumption (John 9:3).",
       sections: [{ title: "Whole person", body: ["Pray for body and heart, and use both medical and emotional care. See “Identity & heart healing” and “Habits, healing & help”."] }], refs: ["Mark 2:5–12", "Ps 147:3", "John 9:1–3"] }
   ],
-  evidence: []
+  evidence: [
+    { text: "Christians healed demoniacs in Jesus’ name when other exorcists could not.", source: "Justin Martyr, Second Apology 6", url: "https://www.newadvent.org/fathers/0127.htm" },
+    { text: "Believers heal the sick by laying on hands, freely.", source: "Irenaeus, Against Heresies II.32.4", url: "https://www.newadvent.org/fathers/0103232.htm" },
+    { text: "Traces of the Spirit remain among Christians, who perform many cures.", source: "Origen, Against Celsus I.46", url: "https://www.newadvent.org/fathers/04161.htm" },
+    { text: "Septimius Severus was cured by anointing by the Christian Proculus.", source: "Tertullian, To Scapula 4", url: "https://www.newadvent.org/fathers/0305.htm" },
+    { text: "Almost seventy published miracle accounts at Hippo in under two years.", source: "Augustine, City of God XXII.8", url: "https://www.newadvent.org/fathers/120122.htm" },
+    { text: "56–87% of Pentecostals report experiencing or witnessing divine healing.", source: "Pew Research Center (2006)", url: "https://www.pewresearch.org/religion/2006/10/05/spirit-and-power/" },
+    { text: "Keener documents miracle claims worldwide in two volumes.", source: "Themelios review of Keener, Miracles", url: "https://www.thegospelcoalition.org/themelios/review/miracles-the-credibility-of-the-new-testament-accounts/" },
+    { text: "Lourdes: 72nd recognised miracle (2025).", source: "Catholic World Report", url: "https://www.catholicworldreport.com/2025/04/16/lourdes-announces-72nd-miracle/" },
+    { text: "Cessationist case: miraculous gifts ceased with the apostles.", source: "B.B. Warfield, Counterfeit Miracles (1918)", url: "https://archive.org/download/counterfeitmir00warf/counterfeitmir00warf_bw.pdf" }
+  ]
 };

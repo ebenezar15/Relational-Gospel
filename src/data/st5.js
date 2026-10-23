@@ -100,7 +100,10 @@ RG.studies.name = {
         { q: "Philippians 2:10–11 quotes which Old Testament text about YHWH?", options: ["Isaiah 45:23", "Psalm 23", "Genesis 1"], answer: 0, why: "“To me every knee shall bow, every tongue shall swear allegiance.”" },
         { q: "What does “taking the name in vain” literally refer to?", options: ["Only swearing", "Carrying his name emptily", "Writing it down"], answer: 1, why: "The Hebrew speaks of lifting or carrying the name for nothing." }
       ] },
-    { type: "data", nav: "Clear data", title: "Clear data", items: [] }
+    { type: "data", nav: "Clear data", title: "Clear data", items: [
+      { value: "≈6,828", label: "The name is everywhere", text: "God’s covenant name YHWH appears about 6,828 times in the Hebrew Bible, with about 134 further places where scribes substituted Adonai out of reverence.", meaning: "God wants to be known personally, by name, not as an anonymous force.", source: "Masoretic text (BHS); Tetragrammaton summary" },
+      { value: "2 texts", label: "YHWH’s words applied to Jesus", bars: [{ label: "Joel 2:32 → Romans 10:13", pct: 50 }, { label: "Isaiah 45:23 → Philippians 2:10–11", pct: 100 }], text: "The earliest Christians applied Old Testament texts about calling on and bowing to YHWH directly to Jesus.", meaning: "To call on Jesus’ name is to call on the name of the LORD.", source: "Rom 10:9–13; Phil 2:9–11" },
+      { value: "c. 150", label: "Early Christians on the power of the name", text: "Justin Martyr’s chapter on the “names of God and of Christ, their meaning and power” records Christians healing in the name of Jesus.", meaning: "The name was understood as Christ’s present authority, not a formula.", source: "Justin Martyr, Second Apology 6" } ] }
   ],
   qa: [
     { id: "proclaim", q: "What does it mean to “proclaim the name of the Lord”?", short: "To declare who God is as he has revealed himself: his character, deeds and saving power. God himself proclaimed his name as merciful and gracious (Exod 34:5–7). Moses said, “I will proclaim the name of the LORD; ascribe greatness to our God” (Deut 32:3). For us it means worship, testimony, preaching and living in a way that shows his character.",
@@ -116,5 +119,10 @@ RG.studies.name = {
     { id: "put-name", q: "What does God “putting his name” on people mean?", short: "Marking them as his own, bringing his presence and blessing, and making them carry his reputation. Through the priestly blessing God put his name on Israel (Num 6:27). In Christ we are baptised into the name and will bear his name on our foreheads (Rev 22:4).",
       sections: [{ title: "Identity", body: ["To be called by his name is the deepest identity: belonging, honour and responsibility."] }], refs: ["Num 6:27", "Deut 28:10", "Rev 22:4"] }
   ],
-  evidence: []
+  evidence: [
+    { text: "YHWH occurs about 6,828 times; Jewish practice reads Adonai or HaShem.", source: "Tetragrammaton (summary)", url: "https://en.wikipedia.org/wiki/Tetragrammaton" },
+    { text: "Names of God and of Christ, their meaning and power; healing in the name of Jesus.", source: "Justin Martyr, Second Apology 6", url: "https://www.newadvent.org/fathers/0127.htm" },
+    { text: "The church calls on the name of the Lord Jesus Christ to work miracles.", source: "Irenaeus, Against Heresies II.32.5", url: "https://www.newadvent.org/fathers/0103232.htm" },
+    { text: "The name of Jesus can still take away diseases.", source: "Origen, Against Celsus I.67", url: "https://www.newadvent.org/fathers/04161.htm" }
+  ]
 };

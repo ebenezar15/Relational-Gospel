@@ -14,7 +14,7 @@ RG.studies.sons = {
     { type: "words", nav: "The words", title: "The key words",
       items: [
         { word: "huios", lang: "Greek", gloss: "son", meaning: "Son, often with the sense of heir and one who shares the father’s character. Paul uses it for all believers, women included (Gal 3:26–28), because sons inherited in that world.", ref: "Rom 8:14, 19; Gal 3:26; Gal 4:6–7" },
-        { word: "teknon", lang: "Greek", gloss: "child, born one", meaning: "Child, emphasising birth and family likeness. Paul and John also use it for believers (Rom 8:16–17; 1 John 3:1–2).", ref: "Rom 8:16–17; John 1:12; 1 John 3:2", note: "Some teach that teknon means an immature child and huios a mature son. Scholars generally do not support a strict distinction, since Paul uses both side by side (Rom 8:14–17). Maturity is real, but it isn’t carried by these two words." },
+        { word: "teknon", lang: "Greek", gloss: "child, born one", meaning: "Child, emphasising birth and family likeness. Paul and John also use it for believers (Rom 8:16–17; 1 John 3:1–2).", ref: "Rom 8:16–17; John 1:12; 1 John 3:2", note: "Some teach that teknon means an immature child and huios a mature son. Paul switches freely between them in Romans 8: huioi (8:14), tekna (8:16–17), huiōn (8:19), and the freedom revealed belongs to the tekna (8:21). The real contrast in Paul is between nēpios (a minor) and the heir who comes of age (Gal 4:1–7). Maturity is real, but it isn’t carried by these two words." },
         { word: "huiothesia", lang: "Greek", gloss: "adoption, placement as son", meaning: "Literally “placing as a son”. In Roman law an adopted son received the full name, rights and inheritance of a natural son, and old debts were cancelled.", ref: "Rom 8:15, 23; Gal 4:5; Eph 1:5" },
         { word: "apokaradokia", lang: "Greek", gloss: "eager expectation", meaning: "A vivid word, something like “craning the neck” to watch for something. Creation is pictured leaning forward, longing.", ref: "Rom 8:19; Phil 1:20" },
         { word: "apokalypsis", lang: "Greek", gloss: "revelation, unveiling", meaning: "Uncovering what is already there but hidden. The sons are already sons (1 John 3:2: “now we are children of God”); what is unveiled is their glory.", ref: "Rom 8:19; 1 Cor 1:7; 1 Pet 1:13" },
@@ -83,7 +83,10 @@ RG.studies.sons = {
         { q: "When will believers appear with Christ in glory?", options: ["When Christ appears", "When they reach perfection", "Never"], answer: 0, why: "Col 3:4." },
         { q: "What is being manifested in our mortal flesh now (2 Cor 4:11)?", options: ["Our own power", "The life of Jesus", "Nothing"], answer: 1, why: "“…so that the life of Jesus also may be manifested in our mortal flesh.”" }
       ] },
-    { type: "data", nav: "Clear data", title: "Clear data", items: [] }
+    { type: "data", nav: "Clear data", title: "Clear data", items: [
+      { value: "4 switches", label: "Romans 8 uses “sons” and “children” interchangeably", bars: [{ label: "8:14 huioi (sons)", pct: 25 }, { label: "8:16–17 tekna (children)", pct: 50 }, { label: "8:19 huiōn (sons)", pct: 75 }, { label: "8:21 teknōn (children)", pct: 100 }], text: "Within eight verses Paul moves between both words; the glorious freedom of 8:21 belongs to the “children”.", meaning: "Every child of God is a son and heir; maturity is growth, not a separate class.", source: "Greek text of Romans 8" },
+      { value: "1948–1951", label: "The Latter Rain story", bars: [{ label: "Revival begins, North Battleford", pct: 30, show: "Feb 1948" }, { label: "Assemblies of God disapproves", pct: 60, show: "1949" }, { label: "Warnock’s Feast of Tabernacles", pct: 90, show: "1951" }], text: "The “manifest sons” teaching grew out of the Latter Rain revival; the Assemblies of God formally disapproved of the movement’s teachings in 1949.", meaning: "Hunger for maturity is good; elitism and claims beyond Scripture are not.", source: "Revival Library; Assemblies of God News" },
+      { value: "Adoptio", label: "Roman adoption gave full rights", text: "Roman law knew adoptio (a person under another father’s power) and adrogatio (an independent person, whose whole household passed to the adopter). Adoptees became full heirs.", meaning: "Paul’s readers heard adoption as full status, a new name and inheritance.", source: "Gaius, Institutes 1.97–107; Justinian, Institutes 1.11" } ] }
   ],
   qa: [
     { id: "meaning", q: "What does “the manifestation (revealing) of the sons of God” mean?", short: "It is the unveiling of the glory of God’s adopted children: their likeness to Christ made visible now in part, and fully at Christ’s appearing, when their bodies are raised and creation is set free. They are already sons; what is revealed is what they already are in Christ.",
@@ -98,5 +101,10 @@ RG.studies.sons = {
     { id: "church", q: "What should the church do with this teaching?", short: "Teach every believer their adoption and inheritance; build communities where Christ is formed and gifts flow; pursue Christ-likeness and the works of the kingdom; care for creation; and avoid elitism, extra-biblical revelation and claims of immortality before the resurrection.",
       sections: [{ title: "Creation is watching", body: ["Creation longs for sons who look like the Son: who steward the earth with love, heal, make peace and set captives free."] }], refs: ["Rom 8:19–21", "Eph 4:11–16", "Gen 1:28"] }
   ],
-  evidence: []
+  evidence: [
+    { text: "The Latter Rain revival began in North Battleford, Saskatchewan, in February 1948.", source: "Revival Library", url: "https://revival-library.org/histories/1947-1958-latter-rain-revival-intro/" },
+    { text: "The Assemblies of God General Council disapproved of the “New Order of the Latter Rain” in 1949.", source: "Assemblies of God News", url: "https://news.ag.org/en/articles/news/2025/10/this-week-in-ag-history-oct-15-1949" },
+    { text: "Athanasius: he was made man that we might be made God (theosis).", source: "Athanasius, On the Incarnation 54", url: "https://www.newadvent.org/fathers/2802.htm" },
+    { text: "Irenaeus on humanity growing from childhood to maturity and Christ becoming what we are.", source: "Irenaeus, Against Heresies V, Preface", url: "https://www.newadvent.org/fathers/0103500.htm" }
+  ]
 };

@@ -109,7 +109,10 @@ RG.studies.covenant = {
         { q: "What does putting God’s “name” on the people mean (Num 6:27)?", options: ["A secret password", "Marking them as his and bringing his presence and blessing", "A tribal label"], answer: 1, why: "His name means his character, presence and ownership." },
         { q: "What was Jesus doing as he ascended?", options: ["Teaching", "Blessing his disciples", "Praying alone"], answer: 1, why: "“Lifting up his hands he blessed them… he parted from them” (Luke 24:50–51)." }
       ] },
-    { type: "data", nav: "Clear data", title: "Clear data", items: [] }
+    { type: "data", nav: "Clear data", title: "Clear data", items: [
+      { value: "330", label: "Blessing is everywhere in the Old Testament", bars: [{ label: "barak (to bless)", pct: 100, show: "330" }, { label: "hesed (steadfast love)", pct: 74, show: "≈245" }, { label: "berakah (a blessing)", pct: 21, show: "69" }], text: "The verb “bless” appears about 330 times, “steadfast love” about 245 times and the noun “blessing” 69 times.", meaning: "Blessing and covenant love are among the Old Testament’s central themes, not side notes.", source: "Bible Hub / Strong’s concordance (H1288, H1293, H2617)" },
+      { value: "c. 600 BC", label: "The oldest surviving words paralleling Scripture are a blessing", text: "Two tiny silver amulets found in 1979 at Ketef Hinnom in Jerusalem, excavated under Gabriel Barkay, contain the priestly blessing of Numbers 6:24–26. They date to about 600 BC, the oldest surviving text paralleling Scripture.", meaning: "Before anything else of the Bible survives in writing, God’s people were wearing his blessing.", source: "Barkay et al., BASOR 334 (2004); Israel Museum" },
+      { value: "5 times", label: "Abraham’s call is saturated with blessing", text: "In Genesis 12:2–3 forms of “bless” appear five times, answering the five mentions of curse in Genesis 1–11.", meaning: "The covenant with Abraham is God’s answer to the curse.", source: "Gen 12:1–3" } ] }
   ],
   qa: [
     { id: "the-blessing", q: "What is “The Blessing” in the Bible?", short: "The Blessing is God’s life-giving favour, presence and power spoken over his people to make them fruitful, flourishing and a blessing to others. It began at creation (Gen 1:28), was promised to Abraham for all nations (Gen 12:3), was spoken over Israel (Num 6), and is fulfilled in Christ, in whom we are blessed with every blessing of the Spirit (Eph 1:3).",
@@ -128,5 +131,10 @@ RG.studies.covenant = {
     { id: "deut28", q: "What about the long list of curses in Deuteronomy 28?", short: "They belonged to the Sinai covenant and warned Israel about breaking it. Christ bore that curse. They still show that sin is destructive, and the blessings show God’s heart. The new covenant gives a better basis: God’s promises in Christ, received by faith.",
       sections: [{ title: "Reading it today", body: ["Read Deuteronomy 28:1–14 as a picture of the life God loves to give, and 28:15–68 as a picture of what Christ saved us from."] }], refs: ["Deut 28", "Gal 3:10–14", "2 Cor 1:20"] }
   ],
-  evidence: []
+  evidence: [
+    { text: "Barak occurs about 330 times (BDB: 329).", source: "Bible Hub, Strong’s H1288", url: "https://biblehub.com/hebrew/1288.htm" },
+    { text: "Hesed occurs 247 times, two of them a homonym meaning shame.", source: "Bible Hub, Strong’s H2617", url: "https://biblehub.com/hebrew/2617.htm" },
+    { text: "The Ketef Hinnom amulets (c. 600 BC) contain the priestly blessing.", source: "Ketef Hinnom scrolls (summary)", url: "https://en.wikipedia.org/wiki/Ketef_Hinnom_scrolls" },
+    { text: "The amulets were worn for protection with the priestly blessing.", source: "TheTorah.com, The Ketef Hinnom Amulets", url: "https://www.thetorah.com/article/the-ketef-hinnom-amulets-wearing-the-priestly-blessing-for-protection" }
+  ]
 };
