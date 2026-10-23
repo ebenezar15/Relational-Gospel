@@ -127,3 +127,6 @@ Use WebSearch, or Apify web-fetch if WebFetch fails (Firecrawl has no credits). 
 
 ## Round 20 — Habits, healing & help (view `recover`, data rc1–rc5)
 Secular help vs legal gospel vs relational gospel on habits, addiction (smoking, alcohol, porn, adultery) and trauma. Two levels of healing (creation/common grace vs new creation/saving grace), overlap map, habit loop with three lenses, roots timeline (who borrowed from whom), shame vs grace cycles, life skeleton, over-emphasis scale, 6 cases, 10 myths, 12 deep questions, 13 data cards. Figures verified in RESEARCH-recover.md (disputed figures such as Teen Challenge 86%, "loneliness = 15 cigarettes" excluded or flagged). No hotline numbers.
+
+## Round 21 — Blessing, matter & the spiritual life (view `blessing`, data bs1–bs5)
+Spiritual blessing (pneumatikos = of the Spirit), seven word studies, spectrum from Gnostic escape to prosperity formula, shalom wheel, spiritual life (split vs whole), Gnostic timeline, self-check, 15 arguments against healing/provision answered, God's heart, 9 reasons blessing is not always seen (relational / WOF emphasis / caution), five perspectives (holiness, WOF, dominion, manifested sons, relational synthesis), church actions checklist, 6 cases, 10 questions, 13 data cards. Facts in RESEARCH-blessing.md (Lourdes 72; Pew 2006 vs 2014 distinguished; Plato prison = Phaedo).
