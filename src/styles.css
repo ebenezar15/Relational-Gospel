@@ -1422,3 +1422,22 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .st-mnode.t:hover { transform: none; }
 .st-mb ul { margin: 0 0 4px 6px; padding: 8px 10px 8px 22px; border-radius: 10px; background: color-mix(in srgb, hsl(var(--h) 60% 55%) 8%, var(--surface)); border: 1px solid var(--line); display: grid; gap: 4px; font-size: 15px; animation: rise .35s both; }
 .st-mcenter { background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--surface); z-index: 1; }
+
+/* ---------- Study engine: two spines ---------- */
+.st-spines { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 6px 0; align-items: stretch; margin: 12px 0 14px; }
+.st-spines::before, .st-spines::after { content: ""; position: absolute; top: 40px; bottom: 10px; width: 3px; border-radius: 3px; }
+.st-spines::before { left: 16px; background: linear-gradient(180deg, var(--wine), color-mix(in srgb, var(--wine) 30%, transparent)); }
+.st-spines::after { right: 16px; background: linear-gradient(180deg, var(--dawn), color-mix(in srgb, var(--dawn) 30%, transparent)); }
+.st-sph { font: 600 12px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 4px; }
+.st-sph.l { color: var(--wine); }
+.st-sph.r { color: var(--dawn); text-align: right; }
+.st-sn { position: relative; z-index: 1; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 14px/1.25 var(--body); cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; animation: rise .4s both; }
+.st-sn.l { text-align: left; border-left: 4px solid var(--wine); }
+.st-sn.r { text-align: right; border-right: 4px solid var(--dawn); }
+.st-sn.empty { opacity: .5; font-weight: 400; }
+.st-sn:hover { transform: translateY(-1px); }
+.st-sn.l.on { background: var(--wine-soft); box-shadow: 0 0 0 2px var(--wine); }
+.st-sn.r.on { background: var(--dawn-soft); box-shadow: 0 0 0 2px var(--dawn); }
+.st-link { display: grid; place-items: center; color: var(--muted); font-size: 15px; }
+.st-link.on { color: var(--gold); font-weight: 700; transform: scale(1.3); }
+@media (max-width: 560px) { .st-sn { font-size: 12.5px; padding: 7px 8px; } .st-spines { grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr); } }
