@@ -1412,3 +1412,13 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .st-scr div { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
 .st-scr p { font-size: 14.5px; margin-top: 4px; }
 .st-prac { padding-left: 20px; display: grid; gap: 6px; }
+.st-mtree { margin: 10px 0 12px; }
+.st-mcenter.t { position: static; transform: none; width: auto; aspect-ratio: auto; border-radius: 14px; padding: 12px 14px; margin: 0 auto 0; max-width: 260px; }
+.st-mbranches { position: relative; display: grid; gap: 8px; padding: 14px 0 0 22px; }
+.st-mbranches::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 18px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, var(--gold), var(--dawn)); }
+.st-mb { position: relative; display: grid; gap: 6px; }
+.st-mb::before { content: ""; position: absolute; left: -12px; top: 18px; width: 12px; height: 3px; background: hsl(var(--h) 55% 55%); }
+.st-mnode.t { position: static; transform: none; max-width: none; width: 100%; text-align: left; font-size: 14px; padding: 9px 12px; border-left: 5px solid hsl(var(--h) 60% 55%); }
+.st-mnode.t:hover { transform: none; }
+.st-mb ul { margin: 0 0 4px 6px; padding: 8px 10px 8px 22px; border-radius: 10px; background: color-mix(in srgb, hsl(var(--h) 60% 55%) 8%, var(--surface)); border: 1px solid var(--line); display: grid; gap: 4px; font-size: 15px; animation: rise .35s both; }
+.st-mcenter { background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--surface); z-index: 1; }
