@@ -3,8 +3,8 @@ const R='/home/user/Relational-Gospel/';const {hash,wanted}=require(R+'src/i18n/
 const TA=JSON.parse(fs.readFileSync(R+'src/i18n/ta.json','utf8'));
 const order=JSON.parse(fs.readFileSync(R+'build.js','utf8').match(/const order = (\[.*?\]);/)[1]);
 const seen=new Set(),out=[];
-for(const n of order){const p=R+'src/data/'+n+'.js';if(!fs.existsSync(p))continue;const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync(p,'utf8'),ctx);
-(function walk(v,k){if(typeof v==='string'){if(wanted(v,k)){const h=hash(v);if(!TA.d[h]&&!seen.has(h)){seen.add(h);out.push({k:h,en:v})}}}else if(Array.isArray(v))v.forEach(x=>walk(x,k));else if(v&&typeof v==='object')for(const kk in v)walk(v[kk],kk)})(ctx.window.RG,'');}
+const ctx={window:{}};vm.createContext(ctx);for(const n of order){const p=R+'src/data/'+n+'.js';if(fs.existsSync(p))vm.runInContext(fs.readFileSync(p,'utf8'),ctx);}
+{(function walk(v,k){if(typeof v==='string'){if(wanted(v,k)){const h=hash(v);if(!TA.d[h]&&!seen.has(h)){seen.add(h);out.push({k:h,en:v})}}}else if(Array.isArray(v))v.forEach(x=>walk(x,k));else if(v&&typeof v==='object')for(const kk in v)walk(v[kk],kk)})(ctx.window.RG,'');}
 const tag=process.argv[2];const N=Math.ceil(out.length/2);
 if(out.length){fs.writeFileSync('in/'+tag+'a.json',JSON.stringify(out.slice(0,N)).replace(/\},\{/g,'},\n{'));fs.writeFileSync('in/'+tag+'b.json',JSON.stringify(out.slice(N)).replace(/\},\{/g,'},\n{'));}
 // ui
