@@ -1,7 +1,7 @@
 /* Shared rules for the Tamil build: which data strings are translated and how they are keyed.
    Loaded by the extractor/build (Node) and inlined into the page for the runtime. */
 var RGI18N_RULES = (function () {
-  var EXCL = { id: 1, url: 1, href: 1, src: 1, source: 1, icon: 1, color: 1, verdict: 1, family: 1, testament: 1, side: 1, start: 1, tone: 1, organ: 1, kind: 1, slug: 1, related: 1 };
+  var EXCL = { id: 1, url: 1, href: 1, src: 1, source: 1, icon: 1, color: 1, verdict: 1, family: 1, testament: 1, side: 1, start: 1, tone: 1, organ: 1, kind: 1, slug: 1, related: 1, to: 1 };
   var REF_RE = /^\s*(?:(?:[1-3]\s)?[A-Z][a-z]+\.?(?:\s(?:of\s)?[A-Z][a-z]+)?\s\d+(?::\d+(?:[–-]\d+)?(?:,\s?\d+(?:[–-]\d+)?)*)?(?:[–-]\d+(?::\d+)?)?(?:\s?(?:;|,)\s?)?)+\s*$/;
   function hash(s) {
     var h = 0x811c9dc5;
