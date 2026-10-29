@@ -26,6 +26,12 @@ const page = src("index.html")
   .replace("/*APP*/", () => safe(app));
 
 fs.mkdirSync(path.join(__dirname, "dist"), { recursive: true });
+// Atlas 2: same content with the Ecclesia-style skin (published to a separate link)
+const page2 = page
+  .replace("family=IBM+Plex+Mono", "family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono")
+  .replace("</style>", () => src("ui2.css") + "</style>")
+  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("ui2.js")) + "</script>");
+fs.writeFileSync(path.join(__dirname, "dist", "atlas2.html"), page2);
 fs.writeFileSync(path.join(__dirname, "dist", "artifact.html"), page);
 fs.writeFileSync(
   path.join(__dirname, "index.html"),
