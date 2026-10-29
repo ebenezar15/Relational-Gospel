@@ -61371,7 +61371,7 @@ window.RGboot(window.RGstart);
     var nodes = btns.map(function (b, i) { var p = pts[i]; return '<button type="button" class="u2-node" data-u2go="' + b.getAttribute("data-jxgo") + '" style="left:' + (p[0] / W * 100).toFixed(2) + "%;top:" + (p[1] / H * 100).toFixed(2) + "%;animation-delay:" + (0.2 + i * 0.05).toFixed(2) + 's"><b>' + (i + 1) + "</b><span>" + b.textContent + "</span></button>"; }).join("");
     var metro = btns.map(function (b, i) { return '<button type="button" class="u2-stop" data-u2go="' + b.getAttribute("data-jxgo") + '"><i>' + (i + 1) + "</i><span>" + b.textContent + "</span></button>"; }).join("");
     var box = document.createElement("section"); box.className = "u2-map";
-    box.innerHTML = '<div class="label">Study map · tap a section</div><div class="u2-radial"><svg viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' + ring + lines + '</svg><div class="u2-core"><span>' + title + "</span><small>" + n + " sections</small></div>" + nodes + '</div><div class="u2-metro">' + metro + "</div>";
+    box.innerHTML = '<div class="label">Study map · tap a section</div><div class="u2-radial"><svg viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' + ring + lines + '</svg><div class="u2-core"><span>' + title + "</span><small>" + n + " <span>sections</span></small></div>" + nodes + '</div><div class="u2-metro">' + metro + "</div>";
     nav.parentNode.insertBefore(box, nav);
     box.addEventListener("click", function (e) { var b = e.target.closest("[data-u2go]"); if (!b) return; var t = document.getElementById(b.getAttribute("data-u2go")); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); });
   }
