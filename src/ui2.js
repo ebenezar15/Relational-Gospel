@@ -45,6 +45,38 @@
     });
   }
 
+
+  /* ---- study map, metro line, progress and scrollspy ---- */
+  function studyMap() {
+    var main = document.getElementById("main"); if (!main) return;
+    var nav = main.querySelector(".jx-nav"); var old = main.querySelector(".u2-map"); if (old) old.remove();
+    if (!nav) return;
+    var btns = Array.prototype.slice.call(nav.querySelectorAll("button[data-jxgo]")); if (btns.length < 3) return;
+    var h1 = main.querySelector(".view-head h1"); var title = h1 ? h1.textContent.split(/[:?]/)[0] : "";
+    var n = btns.length, W = 1000, H = 460, cx = W / 2, cy = H / 2, rx = 380, ry = 165;
+    var pts = btns.map(function (b, i) { var a = -Math.PI / 2 + i / n * Math.PI * 2; return [cx + rx * Math.cos(a), cy + ry * Math.sin(a)]; });
+    var lines = pts.map(function (p, i) { var mx = (cx + p[0]) / 2, my = (cy + p[1]) / 2 - 30; return '<path d="M' + cx + " " + cy + " Q" + mx + " " + my + " " + p[0].toFixed(0) + " " + p[1].toFixed(0) + '" pathLength="1" style="animation-delay:' + (i * 0.05).toFixed(2) + 's"/>'; }).join("");
+    var ring = '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" class="u2-ring"/>';
+    var nodes = btns.map(function (b, i) { var p = pts[i]; return '<button type="button" class="u2-node" data-u2go="' + b.getAttribute("data-jxgo") + '" style="left:' + (p[0] / W * 100).toFixed(2) + "%;top:" + (p[1] / H * 100).toFixed(2) + "%;animation-delay:" + (0.2 + i * 0.05).toFixed(2) + 's"><b>' + (i + 1) + "</b><span>" + b.textContent + "</span></button>"; }).join("");
+    var metro = btns.map(function (b, i) { return '<button type="button" class="u2-stop" data-u2go="' + b.getAttribute("data-jxgo") + '"><i>' + (i + 1) + "</i><span>" + b.textContent + "</span></button>"; }).join("");
+    var box = document.createElement("section"); box.className = "u2-map";
+    box.innerHTML = '<div class="label">Study map · tap a section</div><div class="u2-radial"><svg viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' + ring + lines + '</svg><div class="u2-core"><span>' + title + "</span><small>" + n + " sections</small></div>" + nodes + '</div><div class="u2-metro">' + metro + "</div>";
+    nav.parentNode.insertBefore(box, nav);
+    box.addEventListener("click", function (e) { var b = e.target.closest("[data-u2go]"); if (!b) return; var t = document.getElementById(b.getAttribute("data-u2go")); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  }
+  var bar = null;
+  function spy() {
+    if (!bar) { bar = document.createElement("div"); bar.className = "u2-progress"; document.body.appendChild(bar); }
+    var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")";
+    var nav = document.querySelector("#main .jx-nav"); if (!nav) return;
+    var cur = null;
+    nav.querySelectorAll("button[data-jxgo]").forEach(function (b) { var t = document.getElementById(b.getAttribute("data-jxgo")); if (t && t.getBoundingClientRect().top < 160) cur = b; });
+    nav.querySelectorAll("button.u2-on").forEach(function (b) { if (b !== cur) b.classList.remove("u2-on"); });
+    if (cur && !cur.classList.contains("u2-on")) { cur.classList.add("u2-on"); var l = cur.offsetLeft - nav.clientWidth / 2 + cur.clientWidth / 2; nav.scrollTo({ left: l, behavior: "smooth" }); }
+    document.querySelectorAll(".u2-node, .u2-stop").forEach(function (n) { n.classList.toggle("u2-on", !!cur && n.getAttribute("data-u2go") === cur.getAttribute("data-jxgo")); });
+  }
+  addEventListener("scroll", function () { requestAnimationFrame(spy); }, { passive: true });
+
   function paletteHTML() {
     var S = [["parchment", "Parchment", "#b8892b"], ["byzantine", "Byzantine", "#6a2a8a"], ["lapis", "Lapis", "#1d4ea6"], ["iona", "Iona", "#2f6b4a"], ["desert", "Desert", "#b0541c"], ["monastic", "Monastic", "#5a5243"], ["rose", "Rose", "#a3374d"]];
     var M = [["light", "Light"], ["dark", "Dark"], ["system", "System"]];
@@ -94,9 +126,9 @@
     var rail = document.getElementById("rail"), main = document.getElementById("main");
     if (window.MutationObserver) {
       new MutationObserver(iconRail).observe(rail, { childList: true });
-      new MutationObserver(function () { if (!st._a) { st._a = 1; apply(); } setTimeout(reveal, 30); }).observe(main, { childList: true });
+      new MutationObserver(function () { if (!st._a) { st._a = 1; apply(); } setTimeout(function () { studyMap(); reveal(); spy(); }, 60); }).observe(main, { childList: true });
     }
-    iconRail(); reveal(); apply();
+    iconRail(); studyMap(); reveal(); apply(); spy();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { setTimeout(init, 0); }); else setTimeout(init, 0);
 })();

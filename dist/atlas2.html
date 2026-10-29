@@ -1608,6 +1608,38 @@ details, .qx { border-radius: 14px; }
 @media (max-width: 560px) { .brand-name span { display: none; } .top .lang-switch button { padding: 4px 9px; } }
 html[lang=ta] .view-head h1 { line-height: 1.25; }
 @media (prefers-reduced-motion: reduce) { .plate, .u2-reveal, .rail a, .card { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; } }
+
+/* ---- study map ---- */
+.u2-map { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(600px 260px at 50% 50%, rgb(var(--glow) / .10), transparent 70%), var(--surface); box-shadow: var(--shadow); }
+.u2-map > .label { color: var(--accent); }
+.u2-radial { position: relative; aspect-ratio: 1000 / 460; }
+.u2-radial svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.u2-radial path { fill: none; stroke: rgb(var(--glow) / .45); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: u2draw .9s ease forwards; }
+.u2-ring { fill: none; stroke: var(--line); stroke-dasharray: 4 6; }
+@keyframes u2draw { to { stroke-dashoffset: 0; } }
+.u2-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 25%; aspect-ratio: 1.6; border-radius: 50%; display: grid; place-content: center; text-align: center; gap: 2px; padding: 10px; background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 75%, white), var(--accent)); color: var(--accent-ink); box-shadow: 0 0 0 10px rgb(var(--glow) / .14), 0 20px 40px -14px rgb(var(--glow) / .9); animation: u2pulse 3.2s ease-in-out infinite; }
+.u2-core span { font-weight: 800; font-size: clamp(12px, 1.4vw, 17px); line-height: 1.15; }
+.u2-core small { font-size: 11px; opacity: .85; letter-spacing: .08em; text-transform: uppercase; }
+@keyframes u2pulse { 50% { box-shadow: 0 0 0 18px rgb(var(--glow) / .06), 0 20px 40px -14px rgb(var(--glow) / .9); } }
+.u2-node { position: absolute; transform: translate(-50%, -50%) scale(.6); opacity: 0; max-width: 17%; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 5px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1.2; cursor: pointer; text-align: left; box-shadow: 0 6px 16px -10px rgba(0,0,0,.4); animation: u2in .45s cubic-bezier(.2,.8,.2,1.2) forwards; transition: background .2s, color .2s, border-color .2s; }
+.u2-node b, .u2-stop i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-style: normal; font-weight: 800; background: rgb(var(--glow) / .16); color: var(--accent); }
+.u2-node:hover, .u2-node.u2-on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); z-index: 2; }
+.u2-node:hover b, .u2-node.u2-on b { background: var(--accent-ink); color: var(--accent); }
+@keyframes u2in { to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+.u2-metro { display: none; position: relative; padding-left: 6px; }
+.u2-metro::before { content: ""; position: absolute; left: 16px; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: linear-gradient(var(--accent), var(--accent-2)); }
+.u2-stop { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; padding: 7px 4px; border: 0; background: none; font: inherit; font-size: 14.5px; font-weight: 700; color: var(--ink-2); text-align: left; cursor: pointer; }
+.u2-stop i { background: var(--surface); border: 3px solid var(--accent); width: 24px; height: 24px; }
+.u2-stop.u2-on { color: var(--accent); }
+.u2-stop.u2-on i { background: var(--accent); color: var(--accent-ink); }
+@media (max-width: 760px) { .u2-radial { display: none; } .u2-metro { display: grid; } }
+.jx-nav button.u2-on { background: var(--accent); color: var(--accent-ink); }
+.u2-progress { position: fixed; z-index: 25; left: 0; right: 0; top: calc(58px + env(safe-area-inset-top, 0px)); height: 3px; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--accent), var(--accent-2)); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .u2-radial path, .u2-node, .u2-core { animation: none !important; opacity: 1; stroke-dashoffset: 0; transform: translate(-50%, -50%); } }
+.jx-nav { flex-wrap: nowrap !important; }
+.jx-nav button { flex: none; }
+#main section, #main .st-b, #main [id^=sb-] { scroll-margin-top: 130px; }
+@media (max-width: 760px) { .jx-nav { top: 62px; } .u2-map { padding: 14px; } }
 </style>
 
 <header class="top">
@@ -61324,6 +61356,38 @@ window.RGboot(window.RGstart);
     });
   }
 
+
+  /* ---- study map, metro line, progress and scrollspy ---- */
+  function studyMap() {
+    var main = document.getElementById("main"); if (!main) return;
+    var nav = main.querySelector(".jx-nav"); var old = main.querySelector(".u2-map"); if (old) old.remove();
+    if (!nav) return;
+    var btns = Array.prototype.slice.call(nav.querySelectorAll("button[data-jxgo]")); if (btns.length < 3) return;
+    var h1 = main.querySelector(".view-head h1"); var title = h1 ? h1.textContent.split(/[:?]/)[0] : "";
+    var n = btns.length, W = 1000, H = 460, cx = W / 2, cy = H / 2, rx = 380, ry = 165;
+    var pts = btns.map(function (b, i) { var a = -Math.PI / 2 + i / n * Math.PI * 2; return [cx + rx * Math.cos(a), cy + ry * Math.sin(a)]; });
+    var lines = pts.map(function (p, i) { var mx = (cx + p[0]) / 2, my = (cy + p[1]) / 2 - 30; return '<path d="M' + cx + " " + cy + " Q" + mx + " " + my + " " + p[0].toFixed(0) + " " + p[1].toFixed(0) + '" pathLength="1" style="animation-delay:' + (i * 0.05).toFixed(2) + 's"/>'; }).join("");
+    var ring = '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" class="u2-ring"/>';
+    var nodes = btns.map(function (b, i) { var p = pts[i]; return '<button type="button" class="u2-node" data-u2go="' + b.getAttribute("data-jxgo") + '" style="left:' + (p[0] / W * 100).toFixed(2) + "%;top:" + (p[1] / H * 100).toFixed(2) + "%;animation-delay:" + (0.2 + i * 0.05).toFixed(2) + 's"><b>' + (i + 1) + "</b><span>" + b.textContent + "</span></button>"; }).join("");
+    var metro = btns.map(function (b, i) { return '<button type="button" class="u2-stop" data-u2go="' + b.getAttribute("data-jxgo") + '"><i>' + (i + 1) + "</i><span>" + b.textContent + "</span></button>"; }).join("");
+    var box = document.createElement("section"); box.className = "u2-map";
+    box.innerHTML = '<div class="label">Study map · tap a section</div><div class="u2-radial"><svg viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' + ring + lines + '</svg><div class="u2-core"><span>' + title + "</span><small>" + n + " sections</small></div>" + nodes + '</div><div class="u2-metro">' + metro + "</div>";
+    nav.parentNode.insertBefore(box, nav);
+    box.addEventListener("click", function (e) { var b = e.target.closest("[data-u2go]"); if (!b) return; var t = document.getElementById(b.getAttribute("data-u2go")); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  }
+  var bar = null;
+  function spy() {
+    if (!bar) { bar = document.createElement("div"); bar.className = "u2-progress"; document.body.appendChild(bar); }
+    var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")";
+    var nav = document.querySelector("#main .jx-nav"); if (!nav) return;
+    var cur = null;
+    nav.querySelectorAll("button[data-jxgo]").forEach(function (b) { var t = document.getElementById(b.getAttribute("data-jxgo")); if (t && t.getBoundingClientRect().top < 160) cur = b; });
+    nav.querySelectorAll("button.u2-on").forEach(function (b) { if (b !== cur) b.classList.remove("u2-on"); });
+    if (cur && !cur.classList.contains("u2-on")) { cur.classList.add("u2-on"); var l = cur.offsetLeft - nav.clientWidth / 2 + cur.clientWidth / 2; nav.scrollTo({ left: l, behavior: "smooth" }); }
+    document.querySelectorAll(".u2-node, .u2-stop").forEach(function (n) { n.classList.toggle("u2-on", !!cur && n.getAttribute("data-u2go") === cur.getAttribute("data-jxgo")); });
+  }
+  addEventListener("scroll", function () { requestAnimationFrame(spy); }, { passive: true });
+
   function paletteHTML() {
     var S = [["parchment", "Parchment", "#b8892b"], ["byzantine", "Byzantine", "#6a2a8a"], ["lapis", "Lapis", "#1d4ea6"], ["iona", "Iona", "#2f6b4a"], ["desert", "Desert", "#b0541c"], ["monastic", "Monastic", "#5a5243"], ["rose", "Rose", "#a3374d"]];
     var M = [["light", "Light"], ["dark", "Dark"], ["system", "System"]];
@@ -61373,9 +61437,9 @@ window.RGboot(window.RGstart);
     var rail = document.getElementById("rail"), main = document.getElementById("main");
     if (window.MutationObserver) {
       new MutationObserver(iconRail).observe(rail, { childList: true });
-      new MutationObserver(function () { if (!st._a) { st._a = 1; apply(); } setTimeout(reveal, 30); }).observe(main, { childList: true });
+      new MutationObserver(function () { if (!st._a) { st._a = 1; apply(); } setTimeout(function () { studyMap(); reveal(); spy(); }, 60); }).observe(main, { childList: true });
     }
-    iconRail(); reveal(); apply();
+    iconRail(); studyMap(); reveal(); apply(); spy();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { setTimeout(init, 0); }); else setTimeout(init, 0);
 })();

@@ -148,3 +148,35 @@ details, .qx { border-radius: 14px; }
 @media (max-width: 560px) { .brand-name span { display: none; } .top .lang-switch button { padding: 4px 9px; } }
 html[lang=ta] .view-head h1 { line-height: 1.25; }
 @media (prefers-reduced-motion: reduce) { .plate, .u2-reveal, .rail a, .card { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; } }
+
+/* ---- study map ---- */
+.u2-map { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(600px 260px at 50% 50%, rgb(var(--glow) / .10), transparent 70%), var(--surface); box-shadow: var(--shadow); }
+.u2-map > .label { color: var(--accent); }
+.u2-radial { position: relative; aspect-ratio: 1000 / 460; }
+.u2-radial svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.u2-radial path { fill: none; stroke: rgb(var(--glow) / .45); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: u2draw .9s ease forwards; }
+.u2-ring { fill: none; stroke: var(--line); stroke-dasharray: 4 6; }
+@keyframes u2draw { to { stroke-dashoffset: 0; } }
+.u2-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 25%; aspect-ratio: 1.6; border-radius: 50%; display: grid; place-content: center; text-align: center; gap: 2px; padding: 10px; background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--accent) 75%, white), var(--accent)); color: var(--accent-ink); box-shadow: 0 0 0 10px rgb(var(--glow) / .14), 0 20px 40px -14px rgb(var(--glow) / .9); animation: u2pulse 3.2s ease-in-out infinite; }
+.u2-core span { font-weight: 800; font-size: clamp(12px, 1.4vw, 17px); line-height: 1.15; }
+.u2-core small { font-size: 11px; opacity: .85; letter-spacing: .08em; text-transform: uppercase; }
+@keyframes u2pulse { 50% { box-shadow: 0 0 0 18px rgb(var(--glow) / .06), 0 20px 40px -14px rgb(var(--glow) / .9); } }
+.u2-node { position: absolute; transform: translate(-50%, -50%) scale(.6); opacity: 0; max-width: 17%; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 5px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: inherit; font-size: 12.5px; font-weight: 700; line-height: 1.2; cursor: pointer; text-align: left; box-shadow: 0 6px 16px -10px rgba(0,0,0,.4); animation: u2in .45s cubic-bezier(.2,.8,.2,1.2) forwards; transition: background .2s, color .2s, border-color .2s; }
+.u2-node b, .u2-stop i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-style: normal; font-weight: 800; background: rgb(var(--glow) / .16); color: var(--accent); }
+.u2-node:hover, .u2-node.u2-on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); z-index: 2; }
+.u2-node:hover b, .u2-node.u2-on b { background: var(--accent-ink); color: var(--accent); }
+@keyframes u2in { to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+.u2-metro { display: none; position: relative; padding-left: 6px; }
+.u2-metro::before { content: ""; position: absolute; left: 16px; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: linear-gradient(var(--accent), var(--accent-2)); }
+.u2-stop { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; padding: 7px 4px; border: 0; background: none; font: inherit; font-size: 14.5px; font-weight: 700; color: var(--ink-2); text-align: left; cursor: pointer; }
+.u2-stop i { background: var(--surface); border: 3px solid var(--accent); width: 24px; height: 24px; }
+.u2-stop.u2-on { color: var(--accent); }
+.u2-stop.u2-on i { background: var(--accent); color: var(--accent-ink); }
+@media (max-width: 760px) { .u2-radial { display: none; } .u2-metro { display: grid; } }
+.jx-nav button.u2-on { background: var(--accent); color: var(--accent-ink); }
+.u2-progress { position: fixed; z-index: 25; left: 0; right: 0; top: calc(58px + env(safe-area-inset-top, 0px)); height: 3px; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--accent), var(--accent-2)); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .u2-radial path, .u2-node, .u2-core { animation: none !important; opacity: 1; stroke-dashoffset: 0; transform: translate(-50%, -50%); } }
+.jx-nav { flex-wrap: nowrap !important; }
+.jx-nav button { flex: none; }
+#main section, #main .st-b, #main [id^=sb-] { scroll-margin-top: 130px; }
+@media (max-width: 760px) { .jx-nav { top: 62px; } .u2-map { padding: 14px; } }
