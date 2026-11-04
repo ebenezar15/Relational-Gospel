@@ -32,9 +32,12 @@ const page2 = page
   .replace("</style>", () => src("ui2.css") + "</style>")
   .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("ui2.js")) + "</script>");
 fs.writeFileSync(path.join(__dirname, "dist", "atlas2.html"), page2);
-// Main build: the Rose Window skin (Schibsted Grotesk + Literata) layered over the base styles.
-const FONTS_MAIN = "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Noto+Sans+Tamil:wght@400;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap";
+// Main build: the Rose Window skin (Avenir Next, Nunito Sans fallback, six colour schemes) layered over the base styles.
+// A tiny early script applies the saved colour scheme before first paint.
+const EARLY = '<script>try{var s=JSON.parse(localStorage.getItem("rga.sk.scheme"));if(s&&s!=="rose")document.documentElement.setAttribute("data-scheme",s);var t=JSON.parse(localStorage.getItem("rga.theme"));if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>';
+const FONTS_MAIN = "https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..700&display=swap";
 const pageMain = page
+  .replace(/(<meta name="claude:viewport-fit-sides"[^>]*>)/, (m) => m + "\n" + EARLY)
   .replace(/https:\/\/fonts\.googleapis\.com\/css2\?[^"]+/, () => FONTS_MAIN)
   .replace("</style>", () => "\n" + src("skin.css") + "</style>")
   .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("skin.js")) + "</script>\n");

@@ -2380,7 +2380,7 @@
       ev.preventDefault(); sel = order[i]; caption(sel); if (reduced) draw(performance.now());
     });
     var mo = new MutationObserver(function () { readColors(); if (reduced) draw(performance.now()); });
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "lang"] });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "lang", "data-scheme"] });
     var mq = window.matchMedia && matchMedia("(prefers-color-scheme: dark)"), onMq = function () { readColors(); if (reduced) draw(performance.now()); };
     if (mq && mq.addEventListener) mq.addEventListener("change", onMq);
     size(); window.addEventListener("resize", size); caption(null);

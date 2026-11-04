@@ -1,6 +1,7 @@
 /* Rose Window skin behaviour (main build): navigator groups + filter, breadcrumbs, "On this page"
-   thread with scrollspy, previous/next pager, text size, reading progress, copyable references,
-   pointer spotlight, scroll reveals, phone contents sheet and menu filter. Pure enhancement:
+   thread with scrollspy, previous/next pager, colour schemes, appearance, text size, reading focus,
+   highlighter, reading progress, copyable references, spotlight + tilt, ripples, count-ups,
+   scroll reveals, phone contents sheet, swipe-to-close sheets and menu filter. Pure enhancement:
    the app renders exactly as before and this script decorates what it renders. */
 (function () {
   var root = document.documentElement, doc = document;
@@ -130,6 +131,8 @@
     // references you can copy
     $$(".ref", plate).forEach(function (r) { if (!r.closest("[data-open], a, button")) { r.classList.add("sk-copyable"); r.title = "Copy this reference"; } });
     reveal(plate);
+    countUp(plate);
+    applyHL(plate);
     spy();
   }
   doc.addEventListener("click", function (e) {
@@ -162,7 +165,7 @@
     if (bar) bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
     if (top) { var small = innerWidth <= 980; top.classList.toggle("sk-hide", small && y > lastY + 4 && y > 240 && !$("#layer").children.length); if (y < lastY - 4 || y < 240) top.classList.remove("sk-hide"); }
     lastY = y;
-    var up = $(".sk-up"); if (up) up.classList.toggle("show", y > 900);
+    var up = $(".sk-up"); if (up) { up.classList.toggle("show", y > 900); up.style.setProperty("--p", h > 0 ? Math.min(1, y / h).toFixed(3) : 0); }
     if (heads.length) {
       var on = -1; for (var i = 0; i < heads.length; i++) if (heads[i].getBoundingClientRect().top < 150) on = i;
       tocLinks.forEach(function (a, j) { a.classList.toggle("on", j === on); });
@@ -182,18 +185,209 @@
   }
   function closeTocSheet() { var s = $(".sk-tocsheet"); if (s) { $("#layer").innerHTML = ""; tocSheetLinks = []; } }
 
-  /* ---------- pointer spotlight ---------- */
+  /* ---------- pointer spotlight + tilt ---------- */
+  var fine = window.matchMedia && matchMedia("(hover: hover) and (pointer: fine)").matches;
   doc.addEventListener("pointermove", function (e) {
     var c = e.target.closest && e.target.closest(".card"); if (!c) return;
-    var r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px");
+    var r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    c.style.setProperty("--mx", x + "px"); c.style.setProperty("--my", y + "px");
+    if (fine && !reduced) { c.style.setProperty("--ry", ((x / r.width - 0.5) * 6).toFixed(2) + "deg"); c.style.setProperty("--rx", ((0.5 - y / r.height) * 5).toFixed(2) + "deg"); }
   }, { passive: true });
 
-  /* ---------- text size ---------- */
-  var SIZES = [1, 1.08, 1.16, 0.93], sz = get("rga.sk.size", 0);
-  function applySize() {
-    root.style.setProperty("--sk-z", SIZES[sz] || 1);
-    var b = $(".sk-size"); if (b) { b.setAttribute("aria-label", "Text size " + Math.round((SIZES[sz] || 1) * 100) + "%. Change text size"); b.innerHTML = "A<small>" + (sz === 0 ? "" : sz === 3 ? "−" : "+".repeat(sz)) + "</small>"; }
+  /* ---------- ripple on press ---------- */
+  doc.addEventListener("pointerdown", function (e) {
+    if (reduced) return;
+    var b = e.target.closest && e.target.closest(".btn, .chip, .su-toggle button, .tabbar a, .tabbar button, .sk-gh, .jx-nav button"); if (!b) return;
+    var r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = doc.createElement("span");
+    s.className = "sk-ripple"; s.style.width = s.style.height = d + "px"; s.style.left = (e.clientX - r.left - d / 2) + "px"; s.style.top = (e.clientY - r.top - d / 2) + "px";
+    b.appendChild(s); setTimeout(function () { s.remove(); }, 650);
+  }, { passive: true });
+
+  /* ---------- count-up for the atlas figures ---------- */
+  function countUp(plate) {
+    if (reduced || !("IntersectionObserver" in window)) return;
+    var els = $$(".card h3", plate).filter(function (h) { return /^\d{1,4}\b/.test(h.textContent.trim()); });
+    if (!els.length) return;
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return; cio.unobserve(en.target);
+        var h = en.target, tn = h.firstChild; if (!tn || tn.nodeType !== 3) return;
+        var m = /^(\d+)/.exec(tn.nodeValue); if (!m) return;
+        var end = +m[1], rest = tn.nodeValue.slice(m[1].length), t0 = performance.now();
+        (function step(now) { var k = Math.min(1, (now - t0) / 1100), e2 = 1 - Math.pow(1 - k, 3); tn.nodeValue = Math.round(end * e2) + rest; if (k < 1) requestAnimationFrame(step); })(t0);
+      });
+    }, { threshold: 0.4 });
+    els.forEach(function (h) { cio.observe(h); });
   }
+
+  /* ---------- text size, focus mode ---------- */
+  var SIZES = [0.93, 1, 1.08, 1.16], SZ_LABEL = ["Small", "Normal", "Large", "Larger"], sz = get("rga.sk.size2", 1);
+  function applySize() { root.style.setProperty("--sk-z", SIZES[sz] || 1); }
+  var focusOn = !!get("rga.sk.focus", false);
+  function applyFocus() { doc.body.classList.toggle("sk-focus", focusOn); }
+
+  /* ---------- colour schemes ---------- */
+  var SCHEMES = [
+    ["rose", "Rose window", "linear-gradient(90deg,#12132a 0 40%,#a3abff 40% 60%,#f2bd5c 60% 80%,#58d7b7 80%)"],
+    ["jordan", "Jordan", "linear-gradient(90deg,#0b1d22 0 40%,#62d2e2 40% 60%,#f5c060 60% 80%,#74e08e 80%)"],
+    ["gethsemane", "Gethsemane", "linear-gradient(90deg,#20261a 0 40%,#b9d670 40% 60%,#f0c25e 60% 80%,#62d4bb 80%)"],
+    ["byzantine", "Byzantine", "linear-gradient(90deg,#261a3b 0 40%,#d4a8ff 40% 60%,#f4c062 60% 80%,#5ad6b8 80%)"],
+    ["sunrise", "Sunrise", "linear-gradient(90deg,#fbf3f2 0 40%,#c2255c 40% 60%,#9e5f08 60% 80%,#0f7b6c 80%)"],
+    ["contrast", "High contrast", "linear-gradient(90deg,#000 0 40%,#ffd400 40% 60%,#fff 60% 80%,#0033cc 80%)"]
+  ];
+  var scheme = get("rga.sk.scheme", "rose");
+  function modeNow() { var t = root.getAttribute("data-theme"); return t === "light" || t === "dark" ? t : "system"; }
+  function withTransition(fn) { if (doc.startViewTransition && !reduced) doc.startViewTransition(fn); else fn(); }
+  function applyScheme() { if (scheme && scheme !== "rose") root.setAttribute("data-scheme", scheme); else root.removeAttribute("data-scheme"); }
+  function setMode(m) {
+    if (m === "system") { root.removeAttribute("data-theme"); try { localStorage.removeItem("rga.theme"); } catch (e) { /* storage unavailable */ } }
+    else { root.setAttribute("data-theme", m); put("rga.theme", m); }
+  }
+  var pal = null;
+  function palHTML() {
+    var m = modeNow();
+    return '<div><h3>Colour scheme</h3><div class="sk-sw">' + SCHEMES.map(function (s) { return '<button type="button" data-sks="' + s[0] + '" aria-pressed="' + (scheme === s[0]) + '"><i style="--sw:' + s[2] + '"></i>' + s[1] + "</button>"; }).join("") + "</div></div>" +
+      '<div><h3>Appearance</h3><div class="sk-seg" role="group" aria-label="Appearance">' + [["light", "Light"], ["dark", "Dark"], ["system", "Match device"]].map(function (x) { return '<button type="button" data-skm="' + x[0] + '" aria-pressed="' + (m === x[0]) + '">' + x[1] + "</button>"; }).join("") + "</div></div>" +
+      '<div><h3>Text size</h3><div class="sk-seg" role="group" aria-label="Text size">' + SZ_LABEL.map(function (l, i) { return '<button type="button" data-skz="' + i + '" aria-pressed="' + (sz === i) + '" style="font-size:' + (12 + i * 1.5) + 'px">' + l + "</button>"; }).join("") + "</div></div>" +
+      '<div class="sk-row sk-focus-row"><span>Reading focus<small>Hide the side panels so the study fills the page. Shortcut: F</small></span><button type="button" class="sk-switch" data-skf aria-pressed="' + focusOn + '" aria-label="Reading focus"></button></div>';
+  }
+  function openPal() {
+    if (pal) { closePal(); return; }
+    pal = doc.createElement("div"); pal.className = "sk-pal"; pal.setAttribute("role", "dialog"); pal.setAttribute("aria-label", "Colours and reading"); pal.innerHTML = palHTML();
+    doc.body.appendChild(pal);
+    pal.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var s = e.target.closest("[data-sks]"), m = e.target.closest("[data-skm]"), z = e.target.closest("[data-skz]"), f = e.target.closest("[data-skf]");
+      if (s) { scheme = s.dataset.sks; put("rga.sk.scheme", scheme); withTransition(applyScheme); }
+      else if (m) withTransition(function () { setMode(m.dataset.skm); });
+      else if (z) { sz = +z.dataset.skz; put("rga.sk.size2", sz); applySize(); }
+      else if (f) { focusOn = !focusOn; put("rga.sk.focus", focusOn); applyFocus(); }
+      else return;
+      pal.innerHTML = palHTML();
+    });
+    var b = $(".sk-palbtn"); if (b) b.setAttribute("aria-expanded", "true");
+  }
+  function closePal() { if (pal) { pal.remove(); pal = null; var b = $(".sk-palbtn"); if (b) b.setAttribute("aria-expanded", "false"); } }
+  doc.addEventListener("click", function (e) { if (pal && !e.target.closest(".sk-pal, .sk-palbtn")) closePal(); });
+
+  /* ---------- highlighter ---------- */
+  var HL = get("rga.sk.hl", []), HLC = [["gold", "Gold"], ["dawn", "Green"], ["accent", "Accent"], ["wine", "Red"]], bar = null, barRange = null, barMark = null;
+  function saveHL() { put("rga.sk.hl", HL); var b = $(".sk-hlbadge"); if (b) { b.textContent = HL.length; b.hidden = !HL.length; } }
+  function scopeOf(node) { var el = node && (node.nodeType === 1 ? node : node.parentElement); return el && el.closest ? el.closest(".sheet-body, #main .plate") : null; }
+  function keyOf(scope) {
+    if (scope.classList.contains("sheet-body")) { var sv = scope.parentNode.querySelector(".sheet-head [data-save]"); return sv ? sv.dataset.save.replace(":", ".") : null; }
+    return decodeURIComponent(location.hash.slice(1)) || "atlas";
+  }
+  function titleOf(scope) { var h = scope.classList.contains("sheet-body") ? scope.parentNode.querySelector("h2") : scope.querySelector("h1"); return h ? h.textContent.trim() : "This page"; }
+  function textNodes(scope) {
+    var w = doc.createTreeWalker(scope, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { var p = n.parentElement; return p && !p.closest("script, style, button, svg, .sk-pager, .sk-toc") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; } }), out = [], n;
+    while ((n = w.nextNode())) out.push(n); return out;
+  }
+  function wrap(range, c, id, fresh) {
+    var nodes = textNodes(range.commonAncestorContainer.nodeType === 1 ? range.commonAncestorContainer : range.commonAncestorContainer.parentNode).filter(function (n) { return range.intersectsNode(n); });
+    if (range.commonAncestorContainer.nodeType === 3) nodes = [range.commonAncestorContainer];
+    var first = null;
+    nodes.forEach(function (n) {
+      var s = n === range.startContainer ? range.startOffset : 0, e = n === range.endContainer ? range.endOffset : n.nodeValue.length;
+      if (e <= s || !n.nodeValue.slice(s, e).trim()) return;
+      var mid = n.splitText(s); mid.splitText(e - s);
+      var m = doc.createElement("mark"); m.className = "sk-hl" + (fresh ? " sk-new" : ""); m.dataset.c = c; m.dataset.hl = id;
+      mid.parentNode.insertBefore(m, mid); m.appendChild(mid); if (!first) first = m;
+    });
+    return first;
+  }
+  function locate(scope, h) {
+    var nodes = textNodes(scope), full = "", map = [];
+    nodes.forEach(function (n) { map.push([n, full.length]); full += n.nodeValue; });
+    var i = h.pre ? full.indexOf(h.pre + h.text) : -1; i = i > -1 ? i + h.pre.length : full.indexOf(h.text);
+    if (i < 0) return null;
+    function at(off, end) { for (var k = map.length - 1; k >= 0; k--) if (map[k][1] < off || (!end && map[k][1] === off)) return [map[k][0], off - map[k][1]]; return [map[0][0], 0]; }
+    var a = at(i, false), b = at(i + h.text.length, true), r = doc.createRange();
+    try { r.setStart(a[0], a[1]); r.setEnd(b[0], b[1]); } catch (e) { return null; }
+    return r;
+  }
+  function applyHL(scope) {
+    if (!scope) return; var key = keyOf(scope); if (!key) return;
+    HL.forEach(function (h) { if (h.key === key && !scope.querySelector('[data-hl="' + h.id + '"]')) { var r = locate(scope, h); if (r) wrap(r, h.c, h.id, false); } });
+  }
+  function unwrap(id) { $$('mark[data-hl="' + id + '"]').forEach(function (m) { var p = m.parentNode; while (m.firstChild) p.insertBefore(m.firstChild, m); p.removeChild(m); p.normalize(); }); }
+  function hideBar() { if (bar) { bar.remove(); bar = null; } barRange = null; barMark = null; }
+  function showBar(x, y, forMark) {
+    hideBar();
+    bar = doc.createElement("div"); bar.className = "sk-hlbar"; bar.setAttribute("role", "toolbar"); bar.setAttribute("aria-label", "Highlight");
+    var cur = forMark ? forMark.dataset.c : "";
+    bar.innerHTML = HLC.map(function (c) { return '<button type="button" class="c" data-c="' + c[0] + '" aria-pressed="' + (cur === c[0]) + '" aria-label="Highlight ' + c[1] + '" title="' + c[1] + '"></button>'; }).join("") +
+      (forMark ? '<button type="button" class="t" data-hlx>Remove</button>' : '<button type="button" class="t" data-hlcopy>Copy</button>');
+    bar.style.left = Math.max(110, Math.min(doc.documentElement.clientWidth - 110, x)) + "px"; bar.style.top = (y + scrollY) + "px";
+    doc.body.appendChild(bar); barMark = forMark || null;
+  }
+  function onSelect() {
+    var sel = getSelection(); if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+    var r = sel.getRangeAt(0), txt = r.toString().trim(), sc = scopeOf(r.startContainer);
+    if (!sc || sc !== scopeOf(r.endContainer) || txt.length < 2 || txt.length > 800) return;
+    var rect = r.getBoundingClientRect(); barRange = r.cloneRange();
+    showBar(rect.left + rect.width / 2, rect.top, null); barRange = r.cloneRange();
+  }
+  doc.addEventListener("mouseup", function (e) { if (e.target.closest && e.target.closest(".sk-hlbar")) return; setTimeout(onSelect, 10); });
+  doc.addEventListener("touchend", function (e) { if (e.target.closest && e.target.closest(".sk-hlbar")) return; setTimeout(onSelect, 350); }, { passive: true });
+  doc.addEventListener("selectionchange", function () { var s = getSelection(); if (bar && !barMark && (!s || s.isCollapsed)) setTimeout(function () { var s2 = getSelection(); if (bar && !barMark && (!s2 || s2.isCollapsed)) hideBar(); }, 200); });
+  doc.addEventListener("scroll", function () { if (bar && barMark) hideBar(); }, { passive: true });
+  doc.addEventListener("pointerdown", function (e) { if (bar && !e.target.closest(".sk-hlbar")) { if (!e.target.closest("mark.sk-hl")) hideBar(); } });
+  doc.addEventListener("click", function (e) {
+    var mk = e.target.closest && e.target.closest("mark.sk-hl");
+    if (mk && !(getSelection() && !getSelection().isCollapsed)) { e.preventDefault(); e.stopPropagation(); var r = mk.getBoundingClientRect(); showBar(r.left + r.width / 2, r.top, mk); return; }
+    if (!bar || !e.target.closest(".sk-hlbar")) return;
+    e.stopPropagation();
+    var c = e.target.closest("[data-c]");
+    if (barMark) {
+      var id = barMark.dataset.hl, h = HL.filter(function (x) { return x.id === id; })[0];
+      if (e.target.closest("[data-hlx]")) { HL = HL.filter(function (x) { return x.id !== id; }); unwrap(id); saveHL(); toast("Highlight removed"); }
+      else if (c && h) { h.c = c.dataset.c; $$('mark[data-hl="' + id + '"]').forEach(function (m) { m.dataset.c = h.c; }); saveHL(); }
+      hideBar(); return;
+    }
+    if (!barRange) { hideBar(); return; }
+    if (e.target.closest("[data-hlcopy]")) { var t = barRange.toString(); try { navigator.clipboard.writeText(t).then(function () { toast("Copied"); }, function () {}); } catch (er) { /* clipboard refused */ } hideBar(); return; }
+    if (c) {
+      var sc = scopeOf(barRange.startContainer), key = sc && keyOf(sc); if (!key) { hideBar(); return; }
+      var pre = (function () { var r2 = doc.createRange(); r2.setStart(sc, 0); r2.setEnd(barRange.startContainer, barRange.startOffset); var s = r2.toString(); return s.slice(-32); })();
+      var nid = "h" + Date.now().toString(36);
+      HL.unshift({ id: nid, key: key, title: titleOf(sc), text: barRange.toString(), pre: pre, c: c.dataset.c, t: Date.now() });
+      wrap(barRange, c.dataset.c, nid, true); saveHL();
+      try { getSelection().removeAllRanges(); } catch (er) { /* no selection */ }
+      hideBar(); toast("Highlighted. Find it under Highlights.");
+    }
+  }, true);
+  function openHL() {
+    closePal();
+    var groups = {}, order = [];
+    HL.forEach(function (h) { if (!groups[h.key]) { groups[h.key] = { title: h.title, items: [] }; order.push(h.key); } groups[h.key].items.push(h); });
+    var X = ic('<path d="M6 6l12 12M18 6 6 18"/>');
+    $("#layer").innerHTML = '<div class="scrim" data-close></div><aside class="sheet sk-hlpanel" role="dialog" aria-modal="true" aria-label="Highlights" tabindex="-1"><div class="sheet-head"><div><div class="label">Your study</div><h2>Highlights</h2></div><button class="save" type="button" data-close aria-label="Close">' + X + '</button></div><div class="sk-hlist" style="margin-top:18px">' +
+      (order.length ? order.map(function (k) { return "<section><h3>" + esc(groups[k].title) + "</h3>" + groups[k].items.map(function (h) { return '<div class="sk-hli" data-c="' + h.c + '"><i></i><button type="button" class="go" data-hlgo="' + h.id + '">' + esc(h.text.length > 240 ? h.text.slice(0, 240) + "…" : h.text) + '</button><button type="button" class="x" data-hldel="' + h.id + '" aria-label="Remove highlight">' + X + "</button></div>"; }).join("") + "</section>"; }).join("")
+        : '<p class="sk-empty">Select any words in a study, then pick a colour to highlight them. Your highlights are kept in this browser and gathered here.</p>') + "</div></aside>";
+    var p = $(".sk-hlpanel"); if (p) p.focus();
+  }
+  doc.addEventListener("click", function (e) {
+    var d = e.target.closest && e.target.closest("[data-hldel]"), g = e.target.closest && e.target.closest("[data-hlgo]");
+    if (d) { var id = d.dataset.hldel; HL = HL.filter(function (x) { return x.id !== id; }); unwrap(id); saveHL(); var row = d.closest(".sk-hli"), sec = row.parentNode; row.remove(); if (!sec.querySelector(".sk-hli")) sec.remove(); if (!HL.length) openHL(); return; }
+    if (g) {
+      var h = HL.filter(function (x) { return x.id === g.dataset.hlgo; })[0]; if (!h) return;
+      $("#layer").innerHTML = "";
+      var cur = decodeURIComponent(location.hash.slice(1)) || "atlas";
+      if (cur !== h.key) location.hash = h.key;
+      setTimeout(function () { var m = $('mark[data-hl="' + h.id + '"]'); if (m) { m.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); m.classList.add("sk-flash"); setTimeout(function () { m.classList.remove("sk-flash"); }, 1700); } }, 450);
+    }
+  });
+
+  /* ---------- swipe a phone sheet down to close it ---------- */
+  doc.addEventListener("touchstart", function (e) {
+    var sh = e.target.closest && e.target.closest(".sheet"); if (!sh || innerWidth > 720 || sh.scrollTop > 0) return;
+    var y0 = e.touches[0].clientY, dy = 0;
+    function mv(ev) { dy = Math.max(0, ev.touches[0].clientY - y0); if (dy > 6) { sh.classList.add("sk-drag"); sh.style.transform = "translateY(" + dy + "px)"; } }
+    function end() { sh.removeEventListener("touchmove", mv); sh.removeEventListener("touchend", end); sh.classList.remove("sk-drag");
+      if (dy > 110) { var s = $("#layer .scrim"); if (s) s.click(); } else { sh.style.transition = "transform .25s"; sh.style.transform = ""; setTimeout(function () { sh.style.transition = ""; }, 260); } }
+    sh.addEventListener("touchmove", mv, { passive: true }); sh.addEventListener("touchend", end);
+  }, { passive: true });
 
   /* ---------- menu sheet: filter and colour dots ---------- */
   function enhanceMenu() {
@@ -218,15 +412,20 @@
     if (!top || !acts || top.dataset.sk) return; top.dataset.sk = "1";
     var mark = $(".brand-mark");
     if (mark) mark.outerHTML = '<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><g class="bm-ring"><circle cx="16" cy="16" r="14.5" fill="none" stroke="var(--line-2)" stroke-dasharray="2 3"/></g>' +
-      '<circle cx="16" cy="11.4" r="6" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.4"/><circle cx="12" cy="18.6" r="6" fill="var(--wine-soft)" stroke="var(--wine)" stroke-width="1.4"/><circle cx="20" cy="18.6" r="6" fill="var(--dawn-soft)" stroke="var(--dawn)" stroke-width="1.4"/><circle cx="16" cy="16.2" r="2.2" fill="var(--gold)"/></svg>';
+      '<g class="bm-tri"><circle cx="16" cy="11.4" r="6" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.4"/><circle cx="12" cy="18.6" r="6" fill="var(--wine-soft)" stroke="var(--wine)" stroke-width="1.4"/><circle cx="20" cy="18.6" r="6" fill="var(--dawn-soft)" stroke="var(--dawn)" stroke-width="1.4"/></g><circle cx="16" cy="16.2" r="2.2" fill="var(--gold)"/></svg>';
     var s = doc.createElement("button"); s.type = "button"; s.className = "sk-search"; s.setAttribute("aria-label", "Search the atlas");
     s.innerHTML = SEARCH + "<span>Search laws, customs, sayings, voices…</span><span class=\"kbd\">/</span>";
     top.insertBefore(s, acts);
     s.addEventListener("click", function () { var o = $("#open-search"); if (o) o.click(); });
-    var size = doc.createElement("button"); size.type = "button"; size.className = "icon-btn sk-size";
-    var th = $("#theme-toggle"); acts.insertBefore(size, th || acts.firstChild);
-    size.addEventListener("click", function () { sz = (sz + 1) % SIZES.length; put("rga.sk.size", sz); applySize(); toast("Text size " + Math.round(SIZES[sz] * 100) + "%"); });
-    applySize();
+    var hb = doc.createElement("button"); hb.type = "button"; hb.className = "icon-btn sk-hlbtn"; hb.setAttribute("aria-label", "Your highlights");
+    hb.innerHTML = ic('<path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>') + '<span class="sk-badge sk-hlbadge" hidden>0</span>';
+    var pb = doc.createElement("button"); pb.type = "button"; pb.className = "icon-btn sk-palbtn"; pb.setAttribute("aria-label", "Colours and reading"); pb.setAttribute("aria-expanded", "false");
+    pb.innerHTML = ic('<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.9-.7-1.3-.7-2.2 0-.9.8-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.9 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/>');
+    var th = $("#theme-toggle"); acts.insertBefore(hb, th || acts.firstChild); acts.insertBefore(pb, th || acts.firstChild);
+    hb.addEventListener("click", openHL);
+    pb.addEventListener("click", function (e) { e.stopPropagation(); openPal(); });
+    if (th) th.addEventListener("click", function () { if (pal) pal.innerHTML = palHTML(); });
+    applySize(); applyFocus(); applyScheme(); saveHL();
     var fl = doc.createElement("div"); fl.className = "sk-float";
     fl.innerHTML = '<button type="button" class="sk-tocbtn" hidden aria-label="On this page">' + ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>') + "<span>Contents</span></button>" +
       '<button type="button" class="sk-up" aria-label="Back to top">' + ic('<path d="m6 15 6-6 6 6"/>') + "</button>";
@@ -236,7 +435,9 @@
 
     doc.addEventListener("keydown", function (e) {
       var t = e.target, typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+      if (e.key === "Escape") { closePal(); hideBar(); }
       if (typing || e.metaKey || e.ctrlKey || e.altKey || $("#layer").children.length) return;
+      if (e.key === "f" || e.key === "F") { if (innerWidth > 980) { focusOn = !focusOn; put("rga.sk.focus", focusOn); applyFocus(); toast(focusOn ? "Reading focus on" : "Reading focus off"); } return; }
       if (e.key === "[" || e.key === "]") { var a = $(".sk-pager ." + (e.key === "[" ? "prev" : "next")); if (a) { e.preventDefault(); a.click(); } }
     });
 
@@ -247,7 +448,7 @@
         var fresh = recs.some(function (r) { return Array.prototype.some.call(r.addedNodes, function (n) { return n.classList && n.classList.contains("plate"); }); });
         if (fresh) { main.dataset.sk = ""; setTimeout(decorate, 40); }
       }).observe(main, { childList: true });
-      new MutationObserver(function () { enhanceMenu(); if (!$(".sk-tocsheet")) tocSheetLinks = []; }).observe(layer, { childList: true });
+      new MutationObserver(function () { enhanceMenu(); hideBar(); if (!$(".sk-tocsheet")) tocSheetLinks = []; var sb = $("#layer .sheet-body"); if (sb) setTimeout(function () { applyHL(sb); }, 30); }).observe(layer, { childList: true });
     }
     buildRail(); decorate(); spy();
   }
