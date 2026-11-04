@@ -32,11 +32,17 @@ const page2 = page
   .replace("</style>", () => src("ui2.css") + "</style>")
   .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("ui2.js")) + "</script>");
 fs.writeFileSync(path.join(__dirname, "dist", "atlas2.html"), page2);
-fs.writeFileSync(path.join(__dirname, "dist", "artifact.html"), page);
+// Main build: the Rose Window skin (Schibsted Grotesk + Literata) layered over the base styles.
+const FONTS_MAIN = "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Noto+Sans+Tamil:wght@400;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap";
+const pageMain = page
+  .replace(/https:\/\/fonts\.googleapis\.com\/css2\?[^"]+/, () => FONTS_MAIN)
+  .replace("</style>", () => "\n" + src("skin.css") + "</style>")
+  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("skin.js")) + "</script>\n");
+fs.writeFileSync(path.join(__dirname, "dist", "artifact.html"), pageMain);
 fs.writeFileSync(
   path.join(__dirname, "index.html"),
   '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n</head>\n<body>\n' +
-    page +
+    pageMain +
     "\n</body>\n</html>\n"
 );
-console.log("built", (page.length / 1024).toFixed(0) + " KB");
+console.log("built", (pageMain.length / 1024).toFixed(0) + " KB");

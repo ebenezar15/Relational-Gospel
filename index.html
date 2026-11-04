@@ -10,7 +10,7 @@
 <meta name="description" content="An interactive atlas of the relational gospel: Jesus as the perfect theology, the purpose of the Law, violent passages, cultural customs, the words of Jesus, and the debates.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Noto+Sans+Tamil:wght@400;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
 <style>/* Layout: a night-sky atlas. Sticky header, a left "chart rail" of regions on wide screens
    (a bottom tab bar on phones), and one content plate per region. Details open in a side sheet. */
 :root {
@@ -27,6 +27,7 @@
   --dawn: #79c7bd;
   --dawn-soft: rgba(121, 199, 189, 0.14);
   --shadow: 0 18px 50px rgba(2, 5, 15, 0.55);
+  --gold-hi: #fff6dc; --on-gold: #1a1408; --ember: #d9822b; --accent: #e0ae55;
   --display: "Avenir Next", "Avenir", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
   --body: "Avenir Next", "Avenir", "Nunito Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -39,14 +40,14 @@
     --bg: #eceff4; --bg-2: #e3e7ef; --surface: #ffffff; --line: #cfd5e2;
     --ink: #192038; --muted: #59617a; --gold: #94640f; --gold-soft: rgba(148, 100, 15, 0.1);
     --wine: #a3374d; --wine-soft: rgba(163, 55, 77, 0.09); --dawn: #1f7a70; --dawn-soft: rgba(31, 122, 112, 0.1);
-    --shadow: 0 16px 40px rgba(25, 32, 56, 0.16); color-scheme: light;
+    --shadow: 0 16px 40px rgba(25, 32, 56, 0.16); --gold-hi: #ffe7a8; --on-gold: #fffaf0; --accent: #94640f; color-scheme: light;
   }
 }
 :root[data-theme="light"] {
   --bg: #eceff4; --bg-2: #e3e7ef; --surface: #ffffff; --line: #cfd5e2;
   --ink: #192038; --muted: #59617a; --gold: #94640f; --gold-soft: rgba(148, 100, 15, 0.1);
   --wine: #a3374d; --wine-soft: rgba(163, 55, 77, 0.09); --dawn: #1f7a70; --dawn-soft: rgba(31, 122, 112, 0.1);
-  --shadow: 0 16px 40px rgba(25, 32, 56, 0.16); color-scheme: light;
+  --shadow: 0 16px 40px rgba(25, 32, 56, 0.16); --gold-hi: #ffe7a8; --on-gold: #fffaf0; --accent: #94640f; color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -1465,6 +1466,492 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .st-dend h3 { margin: 4px 0 6px; }
 .st-dnode, .st-dend { animation: stFadeUp .35s ease both; }
 @keyframes stFadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ==========================================================================
+   Rose Window skin (main build).
+   Layout: a slim glass header with a separation→union progress thread; on wide
+   screens a collapsible navigator on the left, the study in the middle and an
+   "On this page" thread on the right; on phones a floating dock and sheets.
+   Colour: night-vigil indigo (dark) / limewash (light). Ultramarine is the
+   interface accent; gold is the divine light at the centre of every diagram;
+   cinnabar marks separation, viridian marks union.
+   Type: Schibsted Grotesk for headings and interface, Literata for reading.
+   ========================================================================== */
+:root {
+  --bg: #12132a;
+  --bg-2: #181a36;
+  --surface: #1e2142;
+  --surface-2: #252949;
+  --line: #30355e;
+  --line-2: #434a80;
+  --ink: #eeecf7;
+  --muted: #a7aacb;
+  --accent: #a3abff;
+  --accent-soft: rgba(163, 171, 255, 0.15);
+  --on-accent: #12132a;
+  --gold: #f2bd5c;
+  --gold-soft: rgba(242, 189, 92, 0.14);
+  --gold-hi: #fff1cc;
+  --on-gold: #2a1a00;
+  --wine: #ff8676;
+  --wine-soft: rgba(255, 134, 118, 0.14);
+  --dawn: #58d7b7;
+  --dawn-soft: rgba(88, 215, 183, 0.14);
+  --ember: #ffa152;
+  --glass: rgba(18, 19, 42, 0.78);
+  --dots: rgba(163, 171, 255, 0.13);
+  --shadow: 0 26px 60px -24px rgba(3, 3, 18, 0.8);
+  --shadow-sm: 0 8px 22px -12px rgba(3, 3, 18, 0.7);
+  --display: "Schibsted Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --ui: "Schibsted Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --body: "Literata", Georgia, "Times New Roman", serif;
+  --mono: "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+  --radius: 14px;
+  --rail: 292px;
+  --top-h: 64px;
+  --sk-z: 1;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f3f3f8; --bg-2: #e9eaf4; --surface: #ffffff; --surface-2: #f7f7fc; --line: #d9dbea; --line-2: #b9bdd8;
+    --ink: #181a33; --muted: #575b7c; --accent: #3a43c9; --accent-soft: rgba(58, 67, 201, 0.09); --on-accent: #ffffff;
+    --gold: #a4650a; --gold-soft: rgba(164, 101, 10, 0.1); --gold-hi: #ffd98a; --on-gold: #fffaf0;
+    --wine: #be3a2f; --wine-soft: rgba(190, 58, 47, 0.08); --dawn: #0a7d6a; --dawn-soft: rgba(10, 125, 106, 0.09); --ember: #c25f0e;
+    --glass: rgba(243, 243, 248, 0.8); --dots: rgba(58, 67, 201, 0.1);
+    --shadow: 0 22px 50px -26px rgba(30, 32, 80, 0.32); --shadow-sm: 0 8px 20px -14px rgba(30, 32, 80, 0.35);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f3f3f8; --bg-2: #e9eaf4; --surface: #ffffff; --surface-2: #f7f7fc; --line: #d9dbea; --line-2: #b9bdd8;
+  --ink: #181a33; --muted: #575b7c; --accent: #3a43c9; --accent-soft: rgba(58, 67, 201, 0.09); --on-accent: #ffffff;
+  --gold: #a4650a; --gold-soft: rgba(164, 101, 10, 0.1); --gold-hi: #ffd98a; --on-gold: #fffaf0;
+  --wine: #be3a2f; --wine-soft: rgba(190, 58, 47, 0.08); --dawn: #0a7d6a; --dawn-soft: rgba(10, 125, 106, 0.09); --ember: #c25f0e;
+  --glass: rgba(243, 243, 248, 0.8); --dots: rgba(58, 67, 201, 0.1);
+  --shadow: 0 22px 50px -26px rgba(30, 32, 80, 0.32); --shadow-sm: 0 8px 20px -14px rgba(30, 32, 80, 0.35);
+  color-scheme: light;
+}
+html[lang="ta"] {
+  --display: "Noto Sans Tamil", "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+  --ui: "Noto Sans Tamil", "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Noto Sans Tamil", "Literata", Georgia, serif;
+  --mono: "Noto Sans Tamil", "Schibsted Grotesk", system-ui, sans-serif;
+}
+
+/* ---------- base ---------- */
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body);
+  font-size: 17.5px; line-height: 1.68; font-optical-sizing: auto;
+  font-feature-settings: "kern", "liga";
+}
+body::before { background: var(--glass); }
+::selection { background: var(--accent-soft); color: var(--ink); }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; letter-spacing: -0.018em; }
+h1 { letter-spacing: -0.032em; font-weight: 800; }
+button, input, select, textarea { font-family: var(--ui); }
+
+/* Labels, refs and every small caption: sentence case in the interface face, no typewriter caps. */
+.label, .ref, .icon-btn, .atlas-tip, .btn, .chip, .count, .pill, .su-toggle button, .t-era, .compass-list button b,
+.dawn-meter b, .case-num, .who, .abm thead th, .apo-b span, .fn-n, .gorig, .hm thead th span, .hm tbody th b, .hm tfoot th, .hm tfoot b,
+.bub span, .tri .tri-h, .rv-y, .tg, .gbm-n, .wc2, .spine-scale, .k-chip, .ev a, .book .book-year, .tabbar a, .tabbar button, .lvr-k,
+.pa-dot small, .idc small, .mm-stamp, .mm-g b, .mm-cn small, .de-dot b, .de-st small, .bl-seg small, .jx-step b, .jx-node b, .wm-sd, .wm-w small,
+.dx-l small, .dx-r small, .dx-st b, .rc-bar b, .rc-tn small, .st-facet b, .st-step i, .st-part b, .st-sph {
+  font-family: var(--ui); text-transform: none; letter-spacing: 0.005em; font-variant-numeric: tabular-nums;
+}
+.tl, .sc-t, .wseg text, .pa-stn text, .idl-ring text, .bl-st text, .rc-venn text { font-family: var(--ui); }
+.label { font-size: 13.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.01em; }
+.ref { font-size: 13.5px; font-weight: 600; color: var(--gold); font-variant-numeric: normal; }
+.ref.sk-copyable { cursor: copy; border-radius: 4px; transition: background .2s; }
+.ref.sk-copyable:hover { background: var(--gold-soft); }
+em { font-style: italic; }
+strong, b { font-weight: 650; }
+
+/* ---------- header ---------- */
+.top {
+  height: var(--top-h); padding-block: 0; gap: 14px;
+  background: var(--glass); border-bottom: 1px solid var(--line);
+  backdrop-filter: saturate(1.4) blur(16px); -webkit-backdrop-filter: saturate(1.4) blur(16px);
+  transition: transform .35s cubic-bezier(.3,.7,.2,1);
+}
+.top.sk-hide { transform: translateY(calc(-100% - 2px)); }
+.brand-mark { width: 34px; height: 34px; }
+.brand-mark .bm-ring { animation: bm-turn 60s linear infinite; transform-origin: 16px 16px; }
+@keyframes bm-turn { to { transform: rotate(360deg); } }
+.brand-name { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; display: grid; line-height: 1.05; }
+.brand-name span { color: var(--muted); font-weight: 500; font-size: 12.5px; letter-spacing: 0; }
+.icon-btn {
+  height: 40px; min-width: 40px; justify-content: center; padding: 0 12px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font-size: 13.5px; font-weight: 600; transition: border-color .2s, background .2s, transform .15s;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--ink); }
+.icon-btn:active { transform: scale(.95); }
+.icon-btn svg { width: 18px; height: 18px; }
+.kbd { border: 1px solid var(--line-2); border-radius: 6px; padding: 1px 6px; font-size: 11.5px; color: var(--muted); font-family: var(--ui); }
+.sk-search {
+  flex: 0 1 420px; margin-left: auto; display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 8px 0 14px;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--muted); cursor: text;
+  font: 500 15px/1 var(--ui); transition: border-color .2s, box-shadow .2s;
+}
+.sk-search:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.sk-search svg { width: 18px; height: 18px; flex: none; }
+.sk-search span:first-of-type { flex: 1; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top-actions { margin-left: 0; gap: 8px; align-items: center; }
+.sk-search ~ .top-actions #open-search { display: none; }
+.lang-switch { height: 40px; border-radius: 12px; background: var(--surface); }
+.lang-switch button { border-radius: 9px; font: 600 13px/1 var(--ui); }
+.lang-switch button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.lang-switch button:focus-visible { outline-color: var(--accent); }
+html.lang-busy::after { border-color: var(--accent); }
+.sk-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; transform-origin: 0 50%; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--wine), var(--gold) 50%, var(--dawn)); pointer-events: none; }
+.sk-size { font-family: var(--display) !important; font-weight: 800 !important; letter-spacing: -0.02em !important; }
+.sk-size small { font-size: 11px; font-weight: 700; }
+
+/* ---------- shell & navigator ---------- */
+.shell { grid-template-columns: var(--rail) minmax(0, 1fr); }
+.rail {
+  top: calc(env(safe-area-inset-top, 0px) + var(--top-h)); height: calc(100vh - var(--top-h) - env(safe-area-inset-top, 0px));
+  padding: 14px 12px 40px max(12px, env(safe-area-inset-left, 0px)); border-right: 1px solid var(--line); background: var(--bg);
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.sk-filter { position: sticky; top: -14px; z-index: 2; margin: -14px -12px 10px; padding: 14px 12px 10px; background: var(--bg); }
+.sk-filter label { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 12px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); }
+.sk-filter label:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.sk-filter svg { width: 15px; height: 15px; flex: none; }
+.sk-filter input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 500 14.5px/1 var(--ui); }
+.sk-grp { margin-bottom: 4px; }
+.sk-gh {
+  width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 10px; border: 0; border-radius: 10px; background: transparent;
+  color: var(--ink); cursor: pointer; font: 700 14px/1.2 var(--ui); text-align: left; letter-spacing: -0.005em;
+}
+.sk-gh:hover { background: var(--bg-2); }
+.sk-gh .sk-gi { width: 26px; height: 26px; flex: none; display: grid; place-items: center; border-radius: 8px; background: var(--c-soft, var(--accent-soft)); color: var(--c, var(--accent)); }
+.sk-gh .sk-gi svg { width: 15px; height: 15px; }
+.sk-gh .sk-gn { margin-left: auto; font-weight: 600; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sk-gh .sk-chev { width: 14px; height: 14px; color: var(--muted); transition: transform .25s; flex: none; }
+.sk-grp.open .sk-chev { transform: rotate(90deg); }
+.sk-items { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s cubic-bezier(.3,.7,.2,1); }
+.sk-grp.open .sk-items { grid-template-rows: 1fr; }
+.sk-items > div { overflow: hidden; display: grid; gap: 1px; padding-left: 22px; position: relative; }
+.sk-items > div::before { content: ""; position: absolute; left: 22px; top: 4px; bottom: 6px; width: 1px; background: var(--line); }
+.rail a {
+  position: relative; display: block; padding: 6px 10px 6px 16px; border-radius: 8px; color: var(--muted);
+  font: 500 14.5px/1.35 var(--ui); text-decoration: none; transition: color .15s, background .15s;
+}
+.rail a .dot { display: none; }
+.rail a:hover { color: var(--ink); background: var(--bg-2); }
+.rail a[aria-current="page"] { color: var(--ink); background: var(--accent-soft); font-weight: 650; }
+.rail a[aria-current="page"]::before { content: ""; position: absolute; left: -1px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: var(--accent); }
+.rail .rail-group { display: none; }
+.sk-none { padding: 10px 12px; color: var(--muted); font: 500 14px/1.4 var(--ui); }
+.rail mark, .menu-sheet mark { background: var(--accent-soft); color: var(--ink); }
+
+main { padding-block: 40px 140px; }
+main.sk-has-toc { display: grid; grid-template-columns: minmax(0, 1fr) 232px; column-gap: 40px; align-items: start; }
+main.sk-has-toc > .plate, main.sk-has-toc > .footer, main.sk-has-toc > .sk-pager { grid-column: 1; width: 100%; }
+main.sk-has-toc > .sk-toc { grid-column: 2; grid-row: 1 / span 3; }
+.plate { max-width: 1040px; gap: 40px; zoom: var(--sk-z); animation: sk-in .55s cubic-bezier(.3,.7,.2,1) both; }
+@keyframes sk-in { from { transform: translateY(8px); opacity: .5; } }
+
+/* view head */
+.view-head { gap: 14px; max-width: 800px; }
+.view-head .label { color: var(--accent); font-size: 14px; }
+.view-head h1 { font-size: clamp(36px, 5.4vw, 62px); line-height: 1.02; }
+.view-head .lede { font-size: 20px; line-height: 1.6; color: var(--muted); max-width: 64ch; }
+.sk-crumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 600 13.5px/1.2 var(--ui); color: var(--muted); }
+.sk-crumb i { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--accent)); display: inline-block; }
+.sk-crumb span + span::before { content: "/"; margin-right: 6px; color: var(--line-2); }
+
+.section { gap: 18px; }
+.section > h2, .sk-h2 { font-size: clamp(25px, 3vw, 32px); line-height: 1.12; scroll-margin-top: calc(var(--top-h) + 24px); }
+.prose p { font-size: 18.5px; line-height: 1.72; }
+.note { font-size: 16.5px; color: var(--muted); }
+
+/* ---------- atlas hero ---------- */
+.atlas { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 44px; }
+.atlas-fig { display: grid; gap: 14px; justify-items: center; min-width: 0; }
+.atlas-stage { width: 100%; max-width: 640px; border-radius: 50%; background: radial-gradient(circle, var(--gold-soft), transparent 62%); }
+.atlas-stage canvas { touch-action: manipulation; border-radius: 50%; }
+.atlas-stage canvas:focus-visible { outline-offset: -6px; border-radius: 50%; }
+.atlas-tip { background: var(--surface); border-color: var(--gold); border-radius: 10px; font: 600 13px/1.2 var(--ui); }
+.sky-cap {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; min-height: 48px; max-width: 100%;
+  padding: 6px 8px 6px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface);
+  font: 500 14.5px/1.35 var(--ui); color: var(--muted); text-align: center;
+}
+.sky-cap b { color: var(--ink); font-weight: 700; }
+.sky-k { font-weight: 700; font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 999px; }
+.atlas-copy { gap: 20px; }
+.atlas-copy > .label:first-child { color: var(--accent); font-size: 14px; }
+.atlas-copy > .legend { color: var(--muted); }
+.atlas-copy h1 { font-size: clamp(40px, 5.8vw, 72px); line-height: .98; letter-spacing: -0.04em; }
+.atlas-copy h1 em { color: var(--gold); font-style: normal; }
+.atlas-copy .lede { font-size: 20px; line-height: 1.6; }
+.verse-band { position: relative; border: 0; padding: 4px 0 0 34px; font-size: 20px; line-height: 1.55; font-style: italic; }
+.verse-band::before { content: "\201C"; position: absolute; left: 0; top: -10px; font: 800 54px/1 var(--display); color: var(--gold); }
+.verse-band .ref { margin-top: 8px; }
+.legend { gap: 16px; font: 600 13.5px/1.2 var(--ui); color: var(--muted); }
+.legend i { width: 11px; height: 11px; }
+
+/* buttons */
+.btn {
+  min-height: 46px; padding: 0 20px; border-radius: 13px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent);
+  font: 650 15px/1 var(--ui); justify-content: center; transition: transform .15s, box-shadow .2s, background .2s;
+}
+.btn:hover { filter: none; box-shadow: 0 10px 26px -12px var(--accent); transform: translateY(-1px); }
+.btn:active { transform: scale(.97); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
+.btn.ghost:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.btn.sm { min-height: 34px; padding: 0 14px; border-radius: 10px; font-size: 13.5px; }
+
+/* suggested path: a real sequence, drawn as a connected stepper */
+.path { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.path a { position: relative; gap: 6px; align-content: start; padding: 20px 18px 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.path a::before {
+  content: counter(step); width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font: 800 14px/1 var(--ui); letter-spacing: 0; margin-bottom: 6px;
+}
+.path a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.path a b { font-family: var(--display); font-weight: 700; font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; }
+.path a small { font-size: 15.5px; }
+
+/* ---------- cards ---------- */
+.grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 14px; }
+.card, .path a, .wx-tile, .rv, .fnode, .stair {
+  --mx: 50%; --my: 0%;
+}
+.card {
+  gap: 10px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line);
+  background: radial-gradient(420px circle at var(--mx) var(--my), var(--sk-spot, transparent), transparent 65%), var(--surface);
+  transition: border-color .2s, transform .2s, box-shadow .25s;
+}
+.card:hover { --sk-spot: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); transform: translateY(-2px); box-shadow: var(--shadow); }
+.card:active { transform: scale(.99); }
+.card h3 { font-size: 20.5px; line-height: 1.22; letter-spacing: -0.012em; }
+.card p { font-size: 16px; line-height: 1.55; }
+.save { width: 34px; height: 34px; border-radius: 10px; background: var(--surface-2); border-color: var(--line); transition: transform .2s, color .2s, border-color .2s; }
+.save:hover { color: var(--gold); border-color: var(--gold); }
+.save[aria-pressed="true"] { animation: sk-pop .35s; }
+@keyframes sk-pop { 40% { transform: scale(1.25); } }
+
+/* chips & toggles */
+.chips { gap: 8px; }
+.chip {
+  padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  font: 600 14px/1.2 var(--ui); transition: background .2s, color .2s, border-color .2s, transform .15s;
+}
+.chip:hover { color: var(--ink); border-color: var(--line-2); }
+.chip:active { transform: scale(.96); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.su-toggle { padding: 4px; gap: 2px; border-radius: 13px; background: var(--bg-2); border-color: var(--line); }
+.su-toggle button { padding: 8px 16px; border-radius: 10px; font: 650 14px/1.2 var(--ui); transition: background .25s, color .25s, box-shadow .25s; }
+.su-toggle button[aria-pressed="true"], .su-toggle button[aria-pressed="true"]:not(.s):not(.u) { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
+.su-toggle button[aria-pressed="true"].s { background: var(--surface); color: var(--wine); }
+.su-toggle button[aria-pressed="true"].u { background: var(--surface); color: var(--dawn); }
+.toolbar { gap: 12px; }
+.field { border-radius: 13px; padding: 0 14px; background: var(--surface); transition: border-color .2s, box-shadow .2s; }
+.field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.field input { font: 500 16px/1.2 var(--ui); padding: 12px 0; }
+.count { font-size: 13.5px; font-weight: 600; }
+.pill { font-size: 12.5px; font-weight: 650; padding: 4px 10px; }
+input[type="range"] { accent-color: var(--accent); }
+
+/* panels and verses */
+.panel { border-radius: var(--radius); padding: 20px; background: var(--surface); }
+.panel.sep, .panel.uni, .panel.gold { border-width: 1px; }
+.panel.sep .label::before, .panel.uni .label::before, .panel.gold .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; background: currentColor; vertical-align: 1px; }
+.verse { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 18px 20px; font-size: 17.5px; position: relative; }
+.verse::after { content: ""; position: absolute; left: 20px; right: 20px; top: -1px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.qa { border-top: 0; display: grid; gap: 8px; }
+.qa details { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 0 18px; transition: border-color .2s, background .2s; }
+.qa details[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.qa summary { font: 650 17px/1.35 var(--ui); padding: 16px 34px 16px 0; }
+.qa summary::after { content: ""; top: 50%; right: 4px; width: 9px; height: 9px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: translateY(-70%) rotate(45deg); transition: transform .25s; }
+.qa details[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.qa .ans { padding-bottom: 18px; animation: sk-in .35s both; }
+.voice { border-left: 0; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+
+/* ---------- diagram stages: a faint lattice, like the leading of a window ---------- */
+.su-switch, .scales, .nc-stage, .j4, .stairs, .flow, .ot, .emph, .hm-wrap, .apo-stack, .dlg, .tree, .dawn-sky, .lensbox,
+.vrs, .wheel, .river-wrap, .tri-wrap, .glyph, .trin-fig, .contrast, .t-item, .scale, .compass-card, .dv {
+  border-radius: calc(var(--radius) + 4px);
+}
+.su-switch, .scales, .nc-stage, .j4, .stairs, .flow, .ot, .emph, .apo-stack, .dawn-sky {
+  background-color: var(--bg-2);
+  background-image: radial-gradient(var(--dots) 1.1px, transparent 1.3px);
+  background-size: 18px 18px;
+  border-color: var(--line);
+}
+.su-scene .fig { transition-duration: 1.4s; }
+.su-text, .scales p { font-size: 18px; }
+.contrast, .t-item, .scale, .compass-card, .miss, .cmp, .gterm, .acc, .case-step, .tree-card, .vph-card, .dawn-card { border-radius: calc(var(--radius) + 2px); }
+.contrast:hover, .t-item:hover, .miss:hover, .cmp:hover { border-color: var(--line-2); }
+.lensbox > div { border-radius: 12px; }
+.timeline::before { width: 3px; left: 8px; }
+.t-era { font-weight: 700; font-size: 14px; color: var(--ink); }
+.t-era::before { box-shadow: 0 0 0 4px var(--bg), 0 0 14px var(--gold); }
+.flip-face { border-radius: calc(var(--radius) + 2px); }
+.flip:hover .flip-inner { transform: rotateY(8deg); }
+.flip.on:hover .flip-inner { transform: rotateY(172deg); }
+.jx-nav button { font: 600 14px/1.2 var(--ui); transition: border-color .2s, background .2s; }
+.jx-nav button:hover { border-color: var(--accent); background: var(--accent-soft); }
+.compass-list button { font-family: var(--ui); border-radius: 10px; }
+.compass-list button[aria-current="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.fnode, .stair, .wx-tile, .rv { border-radius: 12px; font-family: var(--ui); }
+.fnode:hover, .stair:hover { border-color: var(--accent); }
+.wx-tile.on, .dv-e.on { background: var(--accent-soft); border-color: var(--accent); }
+.rv:hover { border-color: var(--accent); }
+.bub { font-family: var(--ui); border-radius: 16px; }
+.bub.me { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.vph.on { background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
+.vph:hover { background: var(--accent-soft); }
+.tg { font-family: var(--ui); font-weight: 600; font-size: 11px; }
+.hm td i { border-radius: 7px; }
+.hm td i.on { background: var(--dawn); }
+.case-num { font-family: var(--display); font-weight: 800; color: var(--accent); }
+.orig { color: var(--gold); }
+
+/* ---------- side sheet ---------- */
+.scrim { background: color-mix(in srgb, var(--bg) 55%, transparent); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.sheet {
+  width: min(700px, 100%); background: var(--bg); border-left: 1px solid var(--line); border-radius: 24px 0 0 24px; box-shadow: var(--shadow);
+  animation: sk-sheet .42s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes sk-sheet { from { transform: translateX(60px); opacity: 0; } }
+.sheet:focus, .sheet:focus-visible { outline: none; }
+.sheet h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.025em; }
+.sheet .blk p { font-size: 17.5px; line-height: 1.7; }
+.links div { border-left: 0; border-radius: 10px; background: var(--accent-soft); font-family: var(--ui); font-weight: 500; }
+.tab-panel { border-radius: 12px; }
+
+/* ---------- command palette ---------- */
+.search-box { border-radius: 20px; top: calc(env(safe-area-inset-top, 0px) + 84px); box-shadow: var(--shadow), 0 0 0 1px var(--line); border: 0; animation: sk-pal .25s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes sk-pal { from { transform: translateX(-50%) translateY(-8px) scale(.98); opacity: 0; } }
+.search-box .field { padding: 6px 20px; box-shadow: none !important; }
+.search-box .field input { font-size: 19px; font-weight: 500; }
+.results button { padding: 13px 20px; border-left: 3px solid transparent; transition: background .12s; }
+.results button:hover, .results button.active { background: var(--accent-soft); border-left-color: var(--accent); }
+.results b { font: 650 16px/1.3 var(--ui); }
+.results small { font-family: var(--body); }
+mark { background: var(--gold-soft); color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); }
+
+/* ---------- phone navigation ---------- */
+.menu-sheet {
+  max-height: 86vh; border-radius: 24px 24px 0 0; border: 1px solid var(--line); border-bottom: 0; background: var(--bg);
+  padding-top: 8px; animation: sk-up .35s cubic-bezier(.2,.8,.2,1) both; box-shadow: var(--shadow);
+}
+@keyframes sk-up { from { transform: translateY(40px); opacity: 0; } }
+.menu-sheet::before { content: ""; display: block; width: 44px; height: 5px; border-radius: 5px; background: var(--line-2); margin: 4px auto 12px; }
+.menu-sheet .label { font: 700 14px/1.2 var(--ui) !important; color: var(--ink); display: flex; align-items: center; gap: 8px; margin: 18px 0 8px !important; }
+.menu-sheet .label i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); }
+.menu-sheet .grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: 6px; }
+.menu-sheet a { border-radius: 12px; font: 500 15px/1.3 var(--ui); padding: 12px 14px; transition: border-color .15s; }
+.menu-sheet a:hover, .menu-sheet a[aria-current="page"] { border-color: var(--accent); background: var(--accent-soft); }
+.sk-msearch { position: sticky; top: -8px; z-index: 2; background: var(--bg); padding-block: 4px 8px; }
+
+.footer { max-width: 1040px; font-family: var(--ui); font-size: 14.5px; }
+
+/* ---------- pager, contents thread, helpers ---------- */
+.sk-pager { max-width: 1040px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.sk-pager a {
+  display: grid; gap: 4px; padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface);
+  text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s; min-width: 0;
+}
+.sk-pager a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.sk-pager a.next { text-align: right; grid-column: 2; }
+.sk-pager small { font: 600 13px/1.2 var(--ui); color: var(--muted); }
+.sk-pager b { font: 700 18px/1.25 var(--display); letter-spacing: -0.01em; }
+.sk-pager kbd { font: 600 11px/1 var(--ui); border: 1px solid var(--line-2); border-radius: 5px; padding: 2px 5px; color: var(--muted); }
+
+.sk-toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--top-h) + 28px); max-height: calc(100vh - var(--top-h) - 60px); overflow-y: auto; display: grid; gap: 2px; padding-left: 2px; scrollbar-width: none; }
+.sk-toc .label { margin-bottom: 8px; color: var(--ink); font-weight: 700; }
+.sk-toc a { position: relative; display: block; padding: 6px 0 6px 18px; color: var(--muted); text-decoration: none; font: 500 13.5px/1.35 var(--ui); border-left: 2px solid var(--line); transition: color .2s, border-color .2s; }
+.sk-toc a:hover { color: var(--ink); }
+.sk-toc a.on { color: var(--ink); border-left-color: var(--accent); font-weight: 650; }
+.sk-toc a.on::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--bg); }
+
+.sk-float { position: fixed; z-index: 29; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 22px); display: grid; gap: 10px; justify-items: end; }
+.sk-float button {
+  display: inline-flex; align-items: center; gap: 8px; height: 46px; min-width: 46px; justify-content: center; padding: 0 14px; border-radius: 15px;
+  border: 1px solid var(--line); background: var(--glass); color: var(--ink); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-sm); cursor: pointer; font: 650 14px/1 var(--ui); transition: transform .25s, opacity .25s, border-color .2s;
+}
+.sk-float button:hover { border-color: var(--accent); }
+.sk-float button svg { width: 18px; height: 18px; }
+.sk-float button[hidden] { display: none; }
+.sk-float .sk-up { opacity: 0; transform: translateY(10px); pointer-events: none; }
+.sk-float .sk-up.show { opacity: 1; transform: none; pointer-events: auto; }
+.sk-float .sk-tocbtn { display: none; }
+
+.sk-tocsheet { position: fixed; z-index: 41; left: 0; right: 0; bottom: 0; max-height: 75vh; overflow-y: auto; background: var(--bg); border-radius: 24px 24px 0 0; border: 1px solid var(--line); border-bottom: 0; box-shadow: var(--shadow);
+  padding: 10px max(18px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(18px, env(safe-area-inset-left, 0px)); animation: sk-up .3s both; }
+.sk-tocsheet::before { content: ""; display: block; width: 44px; height: 5px; border-radius: 5px; background: var(--line-2); margin: 4px auto 14px; }
+.sk-tocsheet a { display: flex; gap: 12px; align-items: baseline; padding: 12px 4px; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; font: 600 16px/1.35 var(--ui); }
+.sk-tocsheet a span { font-size: 12.5px; color: var(--accent); font-variant-numeric: tabular-nums; min-width: 1.6em; }
+.sk-tocsheet a.on { color: var(--accent); }
+
+.sk-toast { position: fixed; z-index: 60; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); transform: translateX(-50%); padding: 10px 16px; border-radius: 12px; background: var(--ink); color: var(--bg); font: 600 14px/1.2 var(--ui); box-shadow: var(--shadow); animation: sk-toast 2.2s both; pointer-events: none; max-width: calc(100% - 32px); }
+@keyframes sk-toast { 0% { opacity: 0; transform: translate(-50%, 8px); } 12%, 82% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; } }
+
+.sk-rv { animation: sk-rise .7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes sk-rise { from { opacity: .35; transform: translateY(18px); } }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1279px) {
+  main.sk-has-toc { display: block; }
+  .sk-toc { display: none; }
+  .sk-float .sk-tocbtn { display: inline-flex; }
+}
+@media (max-width: 980px) {
+  :root { --top-h: 58px; }
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .sk-search { display: none; }
+  .sk-search ~ .top-actions #open-search { display: inline-flex; }
+  .top-actions { margin-left: auto; }
+  .atlas { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .atlas-copy { order: -1; }
+  .atlas-stage { max-width: 520px; }
+  .tabbar {
+    left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+    padding: 6px; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); box-shadow: var(--shadow);
+    backdrop-filter: saturate(1.4) blur(18px); -webkit-backdrop-filter: saturate(1.4) blur(18px);
+  }
+  .tabbar a, .tabbar button { border-radius: 16px; padding: 7px 2px 6px; font: 600 11.5px/1.1 var(--ui); color: var(--muted); transition: background .2s, color .2s; }
+  .tabbar [aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
+  .tabbar a:active, .tabbar button:active { transform: scale(.94); }
+  main { padding-block: 28px 150px; }
+  .sk-float { bottom: calc(env(safe-area-inset-bottom, 0px) + 92px); }
+  .sk-toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 160px); }
+}
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+  .brand-name span { display: none; }
+  .view-head .lede, .atlas-copy .lede { font-size: 18.5px; }
+  .sheet { border-radius: 0; }
+  .sk-pager { grid-template-columns: minmax(0, 1fr); }
+  .sk-float .sk-tocbtn span { display: none; }
+  .sk-pager a.next { grid-column: 1; }
+  .card { padding: 18px; }
+  .verse-band { font-size: 18.5px; }
+}
+@media (max-width: 440px) {
+  .brand-name { display: none; }
+}
+@media (max-width: 400px) {
+  .icon-btn { padding: 0 9px; min-width: 38px; }
+  .sk-size { display: none !important; }
+}
+@media (hover: none) {
+  .card:hover, .path a:hover, .sk-pager a:hover { transform: none; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark .bm-ring, .sk-rv, .plate { animation: none !important; }
+  .top { transition: none; }
+}
 </style>
 
 <header class="top">
@@ -59657,7 +60144,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
 
   /* ---------- glyphs for themes ---------- */
   function glyph(id) {
-    var g = "#e0ae55";
+    var g = "var(--gold)";
     var c = 'fill="none" stroke="var(--gold)" stroke-width="1.2"';
     var map = {
       "trinitarian-gospel": null, "trinity-restoration": null, "triune-dance": '<g class="spin"><circle cx="100" cy="62" r="26" ' + c + '/><circle cx="66" cy="122" r="26" ' + c + '/><circle cx="134" cy="122" r="26" ' + c + '/></g><circle cx="100" cy="102" r="7" fill="var(--dawn)"><animate attributeName="r" values="5;9;5" dur="4s" repeatCount="indefinite"/></circle>',
@@ -59681,9 +60168,9 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
     return '<div class="su-switch" id="su"><div class="row" style="justify-content:space-between"><div class="label">Two gospels, one picture</div>' +
       '<div class="su-toggle" role="group" aria-label="Choose a gospel"><button type="button" class="s" data-su="sep" aria-pressed="true">Separation</button><button type="button" class="u" data-su="uni" aria-pressed="false">Union</button></div></div>' +
       '<div class="su-scene"><svg viewBox="0 0 640 280" aria-hidden="true">' +
-      '<defs><radialGradient id="glow"><stop offset="0" stop-color="#e0ae55" stop-opacity=".9"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      '<defs><radialGradient id="glow"><stop offset="0" stop-color="var(--gold)" stop-opacity=".9"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs>' +
       '<g class="gap"><path d="M300 280 L310 140 L300 30 M340 280 L330 140 L340 30" stroke="var(--wine)" fill="none" stroke-width="1.5" stroke-dasharray="5 6"/><text x="320" y="16" text-anchor="middle" fill="var(--wine)" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2">THE GULF</text></g>' +
-      '<g class="fig f-god" style="transform:translateX(-140px)"><circle cx="320" cy="130" r="70" fill="url(#glow)"/><circle cx="320" cy="130" r="26" fill="#e0ae55"/><text x="320" y="225" text-anchor="middle" fill="var(--ink)" font-family="Avenir Next, Nunito Sans, sans-serif" font-weight="600" font-size="18">Father, Son &amp; Spirit</text></g>' +
+      '<g class="fig f-god" style="transform:translateX(-140px)"><circle cx="320" cy="130" r="70" fill="url(#glow)"/><circle cx="320" cy="130" r="26" fill="var(--gold)"/><text x="320" y="225" text-anchor="middle" fill="var(--ink)" font-family="Avenir Next, Nunito Sans, sans-serif" font-weight="600" font-size="18">Father, Son &amp; Spirit</text></g>' +
       '<g class="fig f-us" style="transform:translateX(150px)"><circle cx="320" cy="140" r="18" fill="none" stroke="var(--dawn)" stroke-width="2"/><text x="320" y="186" text-anchor="middle" fill="var(--ink)" font-family="Avenir Next, Nunito Sans, sans-serif" font-weight="600" font-size="18">Humanity</text></g>' +
       "</svg></div><p class=\"su-text\" id=\"su-text\"></p></div>";
   }
@@ -59779,12 +60266,12 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
       ["themes", "The great themes", "Incarnation to apokatastasis."],
       ["debate", "Debates & strawmen", "The strongest objections, answered."]
     ];
-    return '<section class="atlas"><div class="atlas-stage" id="stage"><canvas id="sky" aria-label="Star map of the atlas. Choose a star to open a region."></canvas><div class="atlas-tip" id="tip" hidden></div></div>' +
+    return '<section class="atlas"><div class="atlas-fig"><div class="atlas-stage" id="stage"><canvas id="sky" tabindex="0" aria-label="Rose window map of the atlas. Use the arrow keys to move between lights and Enter to open one."></canvas><div class="atlas-tip" id="tip" hidden></div></div><div class="sky-cap" id="sky-cap" aria-live="polite"></div></div>' +
       '<div class="atlas-copy"><div class="label">An atlas of the relational gospel</div>' +
       "<h1>Every road on this map leads to <em>Jesus</em></h1>" +
       '<p class="lede">Explore how the Bible\'s hardest passages, its laws, its customs and its contradictions read when Jesus is the clearest picture of who God is.</p>' +
       '<div class="verse-band">"No one has seen God at any time. The one and only Son, who is in the bosom of the Father, he has declared him."<span class="ref">John 1:18 · WEB</span></div>' +
-      '<div class="legend label"><span><i style="background:var(--gold)"></i>Themes</span><span><i style="background:var(--dawn)"></i>Regions</span><span><i style="background:#fff6dc;box-shadow:0 0 8px var(--gold)"></i>Christ at the centre</span></div>' +
+      '<div class="legend label"><span><i style="background:var(--gold)"></i>Themes</span><span><i style="background:var(--dawn)"></i>Regions</span><span><i style="background:var(--gold-hi);box-shadow:0 0 8px var(--gold)"></i>Christ at the centre</span></div>' +
       '<div class="row"><a class="btn" href="#read">Begin the journey</a><button class="btn ghost" type="button" data-search>Search everything</button></div></div></section>' +
       '<section class="section"><h2>A suggested path</h2><div class="path">' + steps.map(function (s) { return '<a href="#' + s[0] + '"><b>' + s[1] + "</b><small>" + s[2] + "</small></a>"; }).join("") + "</div></section>" +
       '<section class="section"><h2>What is in the atlas</h2><div class="grid">' + [
@@ -60035,12 +60522,12 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
   };
   function scalesHTML() {
     return '<section class="scales" id="scales"><div class="row" style="justify-content:space-between"><div class="label">Two pictures of God</div><div class="su-toggle" role="group" aria-label="Choose a picture"><button type="button" class="s" data-scale="two" aria-pressed="true">Two natures</button><button type="button" class="u" data-scale="one" aria-pressed="false">One nature</button></div></div>' +
-      '<div class="scales-stage"><svg viewBox="0 0 640 300" aria-hidden="true"><defs><radialGradient id="flame"><stop offset="0" stop-color="#fff6dc"/><stop offset=".35" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      '<div class="scales-stage"><svg viewBox="0 0 640 300" aria-hidden="true"><defs><radialGradient id="flame"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".35" stop-color="var(--gold)"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs>' +
       '<g class="sc-two"><path d="M320 60 V250 M270 262 H370" stroke="var(--muted)" stroke-width="3" fill="none"/><polygon points="308,60 332,60 320,44" fill="var(--muted)"/>' +
       '<g class="beam"><line x1="150" y1="64" x2="490" y2="64" stroke="var(--ink)" stroke-width="3"/>' +
       '<g class="pan-l"><path d="M150 64 L110 150 M150 64 L190 150" stroke="var(--muted)" fill="none"/><path d="M100 150 H200 Q150 185 100 150z" fill="var(--dawn-soft)" stroke="var(--dawn)"/><text x="150" y="210" text-anchor="middle" class="sc-t" style="fill:var(--dawn)">LOVE</text><text x="150" y="228" text-anchor="middle" class="sc-s">wants to forgive</text></g>' +
       '<g class="pan-r"><path d="M490 64 L450 150 M490 64 L530 150" stroke="var(--muted)" fill="none"/><path d="M440 150 H540 Q490 185 440 150z" fill="var(--wine-soft)" stroke="var(--wine)"/><text x="490" y="210" text-anchor="middle" class="sc-t" style="fill:var(--wine)">JUSTICE</text><text x="490" y="228" text-anchor="middle" class="sc-s">demands punishment</text></g></g></g>' +
-      '<g class="sc-one"><circle cx="320" cy="140" r="120" fill="url(#flame)" class="sc-glow"/><circle cx="320" cy="140" r="34" fill="#e0ae55"/><text x="320" y="146" text-anchor="middle" class="sc-t" style="fill:#1a1408">LOVE</text>' +
+      '<g class="sc-one"><circle cx="320" cy="140" r="120" fill="url(#flame)" class="sc-glow"/><circle cx="320" cy="140" r="34" fill="var(--gold)"/><text x="320" y="146" text-anchor="middle" class="sc-t" style="fill:var(--on-gold)">LOVE</text>' +
       [["Justice", "love setting things right", 320, 20], ["Holiness", "love's purity", 520, 110], ["Wrath", "love against what destroys", 500, 250], ["Mercy", "love toward the undeserving", 140, 250], ["Judgement", "love exposing and healing", 120, 110]].map(function (r) {
         return '<line x1="320" y1="140" x2="' + r[2] + '" y2="' + (r[3] + (r[3] < 140 ? 14 : -14)) + '" stroke="var(--gold)" stroke-opacity=".5" stroke-dasharray="3 5"/><text x="' + r[2] + '" y="' + r[3] + '" text-anchor="middle" class="sc-t" style="font-size:13px">' + r[0].toUpperCase() + '</text><text x="' + r[2] + '" y="' + (r[3] + 16) + '" text-anchor="middle" class="sc-s">' + r[1] + "</text>";
       }).join("") + "</g></svg></div>" +
@@ -60146,7 +60633,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
     W.forEach(function (w) { if (posts.indexOf(w.posture) === -1) posts.push(w.posture); });
     return head("Bodies, spirit, truth", "Worship in Spirit & truth", "What does it mean to offer our bodies as a living sacrifice? What did Jesus mean by worship in spirit and truth? What is the human spirit, and what changes when we come to Christ? Read Romans 12 phrase by phrase and walk through John 4.") +
       (VV.length ? '<section class="section"><h2>Romans 12:1-2, phrase by phrase</h2><p class="note">Tap any phrase, or let it read slowly.</p><div class="vrs" id="vrs">' + VV.map(function (v, i) { return '<button type="button" class="vph' + (i === vSel ? " on" : "") + '" data-vph="' + i + '">' + esc(v.phrase) + "</button>"; }).join(" ") + '</div><div class="row"><button class="btn" type="button" id="vrs-play">Read it slowly</button></div><div id="vph-card"></div></section>' : "") +
-      (P.length ? '<section class="section"><h2>John 4: where do we worship?</h2><div class="chips">' + P.map(function (p, i) { return '<button class="chip" type="button" data-wp="' + i + '" aria-pressed="' + (i === wPlace) + '">' + (i + 1) + ". " + esc(p.place) + "</button>"; }).join("") + '</div><div class="j4" id="j4"><svg viewBox="0 0 760 240" aria-hidden="true"><defs><radialGradient id="j4g"><stop offset="0" stop-color="#e0ae55" stop-opacity=".9"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      (P.length ? '<section class="section"><h2>John 4: where do we worship?</h2><div class="chips">' + P.map(function (p, i) { return '<button class="chip" type="button" data-wp="' + i + '" aria-pressed="' + (i === wPlace) + '">' + (i + 1) + ". " + esc(p.place) + "</button>"; }).join("") + '</div><div class="j4" id="j4"><svg viewBox="0 0 760 240" aria-hidden="true"><defs><radialGradient id="j4g"><stop offset="0" stop-color="var(--gold)" stop-opacity=".9"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs>' +
         '<path d="M0 220 L140 110 L260 220 Z" class="j4-hill h-ger"/><text x="140" y="96" text-anchor="middle" class="tl">GERIZIM</text>' +
         '<path d="M500 220 L620 100 L760 220 Z" class="j4-hill h-jer"/><rect x="600" y="80" width="40" height="22" class="j4-temple"/><text x="620" y="70" text-anchor="middle" class="tl">JERUSALEM</text>' +
         '<g transform="translate(380 170)"><circle r="8" fill="var(--dawn)"/><text y="34" text-anchor="middle" class="tl">THE WELL AT SYCHAR</text></g>' +
@@ -60345,7 +60832,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
     RG.dxParts = dxAll();
     var P = RG.dxParts, I = RG.dxIntro || {}, G = A("dxGlories"), S = A("dxSteps"), W = A("dxWords"), SH = A("dxShifts"), Q = A("dxQuiz"), E = A("dxEvidence");
     return head("A series on glory and identity", "Doxa: from glory to glory", (I.key ? esc(strip(I.key)) + " " : "") + "A five-part series on 2 Corinthians 3, glory (doxa), perspective and doubt, condensed and made interactive.") +
-      '<section class="section"><div class="dx-hero' + (dxVeil ? " lifted" : "") + '" id="dx-hero"><svg viewBox="0 0 260 300" aria-hidden="true"><defs><radialGradient id="dxg"><stop offset="0" stop-color="#fff6dc"/><stop offset=".45" stop-color="#e0ae55" stop-opacity=".85"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs><circle cx="130" cy="140" r="125" fill="url(#dxg)" class="dx-shine"/><ellipse cx="130" cy="140" rx="92" ry="120" class="dx-frame"/><ellipse cx="130" cy="140" rx="82" ry="110" class="dx-pane"/><circle cx="130" cy="112" r="30" class="dx-face"/><path d="M80 210 Q130 160 180 210" class="dx-face"/><rect x="34" y="18" width="192" height="250" rx="40" class="dx-veil"/></svg><div class="dx-copy"><div class="label">2 Corinthians 3:18</div><p class="dx-verse">“But we all, with unveiled face seeing the glory of the Lord as in a mirror, are transformed into the same image from glory to glory, even as from the Lord, the Spirit.”</p><button class="btn" type="button" id="dx-veil">' + (dxVeil ? "Veil again" : "Lift the veil") + "</button></div></div>" + ((I.summary || []).length ? '<div class="panel gold" style="margin-top:14px"><div class="label">The series in brief</div>' + I.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" : "") + "</section>" +
+      '<section class="section"><div class="dx-hero' + (dxVeil ? " lifted" : "") + '" id="dx-hero"><svg viewBox="0 0 260 300" aria-hidden="true"><defs><radialGradient id="dxg"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".45" stop-color="var(--gold)" stop-opacity=".85"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs><circle cx="130" cy="140" r="125" fill="url(#dxg)" class="dx-shine"/><ellipse cx="130" cy="140" rx="92" ry="120" class="dx-frame"/><ellipse cx="130" cy="140" rx="82" ry="110" class="dx-pane"/><circle cx="130" cy="112" r="30" class="dx-face"/><path d="M80 210 Q130 160 180 210" class="dx-face"/><rect x="34" y="18" width="192" height="250" rx="40" class="dx-veil"/></svg><div class="dx-copy"><div class="label">2 Corinthians 3:18</div><p class="dx-verse">“But we all, with unveiled face seeing the glory of the Lord as in a mirror, are transformed into the same image from glory to glory, even as from the Lord, the Spirit.”</p><button class="btn" type="button" id="dx-veil">' + (dxVeil ? "Veil again" : "Lift the veil") + "</button></div></div>" + ((I.summary || []).length ? '<div class="panel gold" style="margin-top:14px"><div class="label">The series in brief</div>' + I.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" : "") + "</section>" +
       (G.length ? '<section class="section"><h2>Two glories</h2><p class="note">Drag the slider: the glory that was fading gives way to the glory that remains (2 Corinthians 3:7-11).</p><input type="range" id="dx-gr" min="0" max="100" value="' + dxG + '" aria-label="From fading glory to surpassing glory"><div class="dx-gl" id="dx-gl" style="--t:' + (dxG / 100) + '">' + G.map(function (g) { return '<article class="dx-row"><div class="dx-l"><small>' + esc(g.label) + "</small><b>" + esc(g.left) + '</b></div><div class="dx-arrow" aria-hidden="true">→</div><div class="dx-r"><small>' + esc(g.label) + "</small><b>" + esc(g.right) + '</b></div><p class="dx-note">' + g.note + ' <span class="ref">' + esc(strip(g.ref)) + "</span></p></article>"; }).join("") + "</div></section>" : "") +
       (S.length ? '<section class="section"><h2>From glory to glory</h2><p class="note">Climb the stairs. Tap a step or watch the journey.</p><div class="dx-stairs" id="dx-stairs">' + S.map(function (s, i) { return '<button type="button" class="dx-st' + (i <= dxSt ? " lit" : "") + (i === dxSt ? " on" : "") + '" data-dxs="' + i + '" style="--i:' + i + '"><b>' + (i + 1) + "</b><span>" + esc(s.label) + "</span></button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="dx-play">Climb the stairs</button></div><div id="dxs-card"></div></section>' : "") +
       (P.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>The series, part by part</h2><span class="count" id="dx-count"></span></div><div class="de-rail" id="dx-rail"></div><div id="dx-card"></div></section>' : "") +
@@ -60638,7 +61125,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
     RG.deStories = ST; RG.deWords = W; RG.deQs = Q;
     return head("A celebration of union", "The Divine Embrace", "A chapter-by-chapter journey through a study of God’s embrace of humanity in Christ: the mirror of our true design, the end of distance and delay, our inclusion in Jesus’ death and resurrection, and the life of oneness that follows. Every chapter summarised, with its stories, word studies and questions.") +
       '<section class="section"><h2>Religion thrives on two lies</h2><p class="note">Tap each lie to see what the gospel replaces it with.</p><div class="de-lies"><button type="button" class="de-lie' + (deLie & 1 ? " flip" : "") + '" data-delie="1"><span class="a">Distance</span><span class="b">Oneness</span><small>' + esc((I.distance || "God is not far away; he has already embraced humanity in Christ.")) + '</small></button><button type="button" class="de-lie' + (deLie & 2 ? " flip" : "") + '" data-delie="2"><span class="a">Delay</span><span class="b">Now</span><small>' + esc((I.delay || "Union is not a future reward; it is the present truth to wake up to.")) + "</small></button></div>" + ((I.summary || []).length ? '<div class="panel gold" style="margin-top:14px"><div class="label">The heart of the book</div>' + I.summary.map(function (p) { return "<p>" + p + "</p>"; }).join("") + "</div>" : "") + "</section>" +
-      '<section class="section"><h2>As in a mirror</h2><p class="note">James 1:23-25 pictures two people looking into the same mirror. Tap the mirror.</p><div class="de-mirror' + (deMir ? " on" : "") + '" id="de-mirror"><button type="button" class="de-glass" id="de-glass" aria-label="Look into the mirror"><svg viewBox="0 0 200 260" aria-hidden="true"><defs><radialGradient id="deg"><stop offset="0" stop-color="#fff6dc"/><stop offset=".5" stop-color="#e0ae55" stop-opacity=".7"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs><ellipse cx="100" cy="125" rx="80" ry="110" class="de-frame"/><ellipse cx="100" cy="125" rx="70" ry="100" class="de-pane"/><circle cx="100" cy="100" r="26" class="de-face"/><path d="M58 190 Q100 140 142 190" class="de-face"/><circle cx="100" cy="125" r="90" fill="url(#deg)" class="de-shine"/></svg></button><div class="de-two"><div class="panel sep"><div class="label">The spectator</div><p>Hears the word, glimpses their true face, then walks away and forgets what kind of person they are.</p></div><div class="panel uni"><div class="label">The participator</div><p>Keeps gazing until what they see in Christ becomes the way they live: free, spontaneous, at home in their real identity.</p></div></div></div></section>' +
+      '<section class="section"><h2>As in a mirror</h2><p class="note">James 1:23-25 pictures two people looking into the same mirror. Tap the mirror.</p><div class="de-mirror' + (deMir ? " on" : "") + '" id="de-mirror"><button type="button" class="de-glass" id="de-glass" aria-label="Look into the mirror"><svg viewBox="0 0 200 260" aria-hidden="true"><defs><radialGradient id="deg"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".5" stop-color="var(--gold)" stop-opacity=".7"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs><ellipse cx="100" cy="125" rx="80" ry="110" class="de-frame"/><ellipse cx="100" cy="125" rx="70" ry="100" class="de-pane"/><circle cx="100" cy="100" r="26" class="de-face"/><path d="M58 190 Q100 140 142 190" class="de-face"/><circle cx="100" cy="125" r="90" fill="url(#deg)" class="de-shine"/></svg></button><div class="de-two"><div class="panel sep"><div class="label">The spectator</div><p>Hears the word, glimpses their true face, then walks away and forgets what kind of person they are.</p></div><div class="panel uni"><div class="label">The participator</div><p>Keeps gazing until what they see in Christ becomes the way they live: free, spontaneous, at home in their real identity.</p></div></div></div></section>' +
       (C.length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>The journey, chapter by chapter</h2><span class="count" id="de-count"></span></div><div class="de-rail" id="de-rail"></div><div id="de-card"></div></section>' : "") +
       (ST.length ? '<section class="section"><h2>The stories and pictures</h2><p class="note">The illustrations the book uses to make the truth land. Tap one.</p><div class="de-stories">' + ST.map(function (x, i) { return '<button type="button" class="de-st' + (i === deStory ? " on" : "") + '" data-dest="' + i + '"><small>Chapter ' + x.c.n + "</small><b>" + esc(x.s.title) + "</b>" + (i === deStory ? "<p>" + x.s.text + "</p>" : "") + "</button>"; }).join("") + "</div></section>" : "") +
       (W.length ? '<section class="section"><h2>Word studies</h2><input type="search" id="de-wq" class="de-search" placeholder="Search Greek and Hebrew words…" aria-label="Search word studies" value="' + esc(deWq) + '"><div class="grid" id="de-words"></div></section>' : "") +
@@ -60707,7 +61194,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
       (M.length ? '<section class="section"><h2>What really matters, and to whom?</h2><p class="note">How each gospel says these things affect your relationship with God, and how they matter to people.</p>' + cmode("wym", 0, 0, "Legal gospel", "Relational gospel") + '<div class="cmp-list mode-both" id="wym">' + M.map(function (r) { return '<article class="cmp"><h3>' + esc(r.area) + '</h3><div class="cmp-pair"><div class="panel sep cmp-l"><div class="label">Legal gospel</div><p>' + r.legal + '</p></div><div class="panel uni cmp-r"><div class="label">Relational gospel</div><p>' + r.relational + '</p></div></div><div class="panel gold"><div class="label">How it matters to people</div><p>' + r.people + '</p></div><div class="ref">' + esc((r.refs || []).join(" · ")) + "</div></article>"; }).join("") + "</div></section>" : "") +
       ((SK.layers || []).length ? '<section class="section"><h2>Where does change come from? A skeleton</h2><p class="note">Five layers of a human life. Choose a lens to see which layers it works on, and how it says change happens.</p><div class="chips">' + (SK.lenses || []).map(function (l) { return '<button class="chip" type="button" data-wyl="' + esc(l.id) + '" aria-pressed="' + (wyLens === l.id) + '">' + esc(l.label) + "</button>"; }).join("") + '</div><div class="wysk"><div class="wysk-layers" id="wysk-layers"></div><div id="wysk-card"></div></div></section>' : "") +
       (CS.length ? '<section class="section"><h2>Case studies: three ways to change</h2><p class="note">Composite stories, not real people. Where needed, professional help is part of the answer.</p><div class="chips">' + CS.map(function (c, i) { return '<button class="chip" type="button" data-wycs="' + i + '" aria-pressed="' + (i === wyCase) + '">' + esc(c.title) + "</button>"; }).join("") + '</div><div id="wycs-card"></div></section>' : "") +
-      (RC.length ? '<section class="section"><h2>From gift to experience</h2><p class="note">What God has given is real before we feel it. Watch the gift open.</p><div class="wyg" id="wyg"><svg viewBox="0 0 640 220" aria-hidden="true"><defs><radialGradient id="wygg"><stop offset="0" stop-color="#fff6dc"/><stop offset=".4" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs><circle class="wyg-glow" cx="320" cy="120" r="110" fill="url(#wygg)"/><g class="wyg-box"><rect x="260" y="110" width="120" height="90" rx="6"/><rect x="314" y="110" width="12" height="90" class="wyg-rib"/></g><g class="wyg-lid"><rect x="250" y="88" width="140" height="26" rx="6"/><rect x="314" y="88" width="12" height="26" class="wyg-rib"/></g>' + [0, 1, 2, 3, 4, 5].map(function (k) { return '<circle class="wyg-sp" cx="' + (200 + k * 48) + '" cy="' + (40 + (k % 2) * 30) + '" r="4"/>'; }).join("") + '</svg><div class="chips">' + RC.map(function (r, i) { return '<button class="chip" type="button" data-wyrc="' + i + '" aria-pressed="' + (i === wyRc) + '">' + (i + 1) + ". " + esc(r.label) + "</button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="wyrc-play">Open the gift</button></div><div id="wyrc-card"></div></div></section>' : "") +
+      (RC.length ? '<section class="section"><h2>From gift to experience</h2><p class="note">What God has given is real before we feel it. Watch the gift open.</p><div class="wyg" id="wyg"><svg viewBox="0 0 640 220" aria-hidden="true"><defs><radialGradient id="wygg"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".4" stop-color="var(--gold)"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs><circle class="wyg-glow" cx="320" cy="120" r="110" fill="url(#wygg)"/><g class="wyg-box"><rect x="260" y="110" width="120" height="90" rx="6"/><rect x="314" y="110" width="12" height="90" class="wyg-rib"/></g><g class="wyg-lid"><rect x="250" y="88" width="140" height="26" rx="6"/><rect x="314" y="88" width="12" height="26" class="wyg-rib"/></g>' + [0, 1, 2, 3, 4, 5].map(function (k) { return '<circle class="wyg-sp" cx="' + (200 + k * 48) + '" cy="' + (40 + (k % 2) * 30) + '" r="4"/>'; }).join("") + '</svg><div class="chips">' + RC.map(function (r, i) { return '<button class="chip" type="button" data-wyrc="' + i + '" aria-pressed="' + (i === wyRc) + '">' + (i + 1) + ". " + esc(r.label) + "</button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="wyrc-play">Open the gift</button></div><div id="wyrc-card"></div></div></section>' : "") +
       (OS.length ? '<section class="section"><h2>Objective truth, subjective experience</h2><p class="note">What is true in Christ, how it may feel, and the bridge between them.</p>' + cmode("wyos", 0, 0, "True in Christ", "How it feels") + '<div class="cmp-list mode-both" id="wyos">' + OS.map(function (o) { return '<article class="cmp"><div class="cmp-pair"><div class="panel gold cmp-l"><div class="label">True in Christ</div><p style="font-size:19px">' + o.objective + '</p></div><div class="panel sep cmp-r"><div class="label">How it may feel</div><p>' + o.subjective + '</p></div></div><div class="panel uni"><div class="label">The bridge</div><p>' + o.bridge + '</p></div><div class="ref">' + esc(strip(o.ref)) + "</div></article>"; }).join("") + "</div></section>" : "") +
       (F.length ? '<section class="section"><h2>Why some are spared and others are not</h2><p class="note">There is no single answer, and no one who suffers is to blame for “too little faith”. These are the factors Scripture and honest reflection point to.</p><div class="chips">' + F.map(function (f, i) { return '<button class="chip" type="button" data-wyf="' + i + '" aria-pressed="' + (i === wyF) + '">' + esc(f.factor) + "</button>"; }).join("") + '</div><div id="wyf-card"></div></section>' : "") +
       qxSection("wyq2", A("wyQA2"), "Change, receiving and tragedy: the deep questions") +
@@ -60768,7 +61255,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
   V.reborn = function () {
     var ST = A("rbStages"), J = A("rbJohn3"), IM = A("rbImages"), VW = A("rbViews"), E = A("rbEvidence1").concat(A("rbEvidence2"));
     return head("Born from above", "Born again", "What Jesus meant by being “born again” (or “born from above”), why we need it, and how it happens. Walk through Nicodemus’s night conversation line by line, see the images Scripture uses for new birth, and compare how every major tradition understands it.") +
-      (ST.length ? '<section class="section"><h2>The story of new birth</h2><p class="note">Tap a stage, or watch the whole story unfold.</p><div class="rbs" id="rbs"><svg viewBox="0 0 640 240" aria-hidden="true"><defs><radialGradient id="rbg"><stop offset="0" stop-color="#fff6dc"/><stop offset=".45" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs><rect class="rbs-dark" x="0" y="0" width="640" height="240" rx="16"/><g class="rbs-rays">' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (k) { return '<line x1="320" y1="120" x2="' + (320 + 200 * Math.cos(k * Math.PI / 6)).toFixed(0) + '" y2="' + (120 + 200 * Math.sin(k * Math.PI / 6)).toFixed(0) + '"/>'; }).join("") + '</g><circle class="rbs-breath" cx="320" cy="120" r="60"/><circle class="rbs-core" cx="320" cy="120" r="14" fill="url(#rbg)"/><path class="rbs-grow" d="M320 200 C 320 170, 320 150, 320 132 M320 168 C 300 160, 290 150, 286 140 M320 158 C 340 150, 350 140, 354 130"/></svg><div class="chips">' + ST.map(function (s, i) { return '<button class="chip" type="button" data-rbs="' + i + '" aria-pressed="' + (i === rbSt) + '">' + (i + 1) + ". " + esc(s.label) + "</button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="rbs-play">Watch the story</button></div><div id="rbs-card"></div></div></section>' : "") +
+      (ST.length ? '<section class="section"><h2>The story of new birth</h2><p class="note">Tap a stage, or watch the whole story unfold.</p><div class="rbs" id="rbs"><svg viewBox="0 0 640 240" aria-hidden="true"><defs><radialGradient id="rbg"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".45" stop-color="var(--gold)"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs><rect class="rbs-dark" x="0" y="0" width="640" height="240" rx="16"/><g class="rbs-rays">' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (k) { return '<line x1="320" y1="120" x2="' + (320 + 200 * Math.cos(k * Math.PI / 6)).toFixed(0) + '" y2="' + (120 + 200 * Math.sin(k * Math.PI / 6)).toFixed(0) + '"/>'; }).join("") + '</g><circle class="rbs-breath" cx="320" cy="120" r="60"/><circle class="rbs-core" cx="320" cy="120" r="14" fill="url(#rbg)"/><path class="rbs-grow" d="M320 200 C 320 170, 320 150, 320 132 M320 168 C 300 160, 290 150, 286 140 M320 158 C 340 150, 350 140, 354 130"/></svg><div class="chips">' + ST.map(function (s, i) { return '<button class="chip" type="button" data-rbs="' + i + '" aria-pressed="' + (i === rbSt) + '">' + (i + 1) + ". " + esc(s.label) + "</button>"; }).join("") + '</div><div class="row"><button class="btn" type="button" id="rbs-play">Watch the story</button></div><div id="rbs-card"></div></div></section>' : "") +
       (J.length ? '<section class="section"><h2>Night conversation: John 3</h2><p class="note">Read it as a conversation. Tap a line to see the Greek and the culture behind it.</p><div class="rbj" id="rbj"></div><div class="row"><button class="btn" type="button" id="rbj-next">Next line →</button><button class="btn ghost" type="button" id="rbj-all">Show the whole conversation</button><button class="btn ghost" type="button" id="rbj-reset">Start again</button></div></section>' : "") +
       (IM.length ? '<section class="section"><h2>How Scripture pictures new birth</h2><div class="grid">' + IM.map(function (m, i) { return '<article class="gterm" style="animation-delay:' + (i * 0.04).toFixed(2) + 's"><div class="orig">' + esc(m.original) + "</div><h3>" + esc(m.image) + ' <span class="ref">' + esc(m.ref) + "</span></h3><p>" + m.meaning + '</p><p style="color:var(--dawn);font-size:15px">' + m.relational + "</p></article>"; }).join("") + "</div></section>" : "") +
       (VW.length ? '<section class="section"><h2>Compare the traditions</h2><p class="note">Choose any two traditions to see them side by side.</p><div class="rbv-pick"><select id="rbv-a" aria-label="First tradition">' + VW.map(function (v, i) { return '<option value="' + i + '"' + (i === rbA ? " selected" : "") + ">" + esc(v.tradition) + "</option>"; }).join("") + '</select><span aria-hidden="true">vs</span><select id="rbv-b" aria-label="Second tradition">' + VW.map(function (v, i) { return '<option value="' + i + '"' + (i === rbB ? " selected" : "") + ">" + esc(v.tradition) + "</option>"; }).join("") + '</select></div><div class="rbv" id="rbv"></div></section>' : "") +
@@ -61099,7 +61586,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
       (A("fgEgo").length ? '<section class="section"><div class="row" style="justify-content:space-between"><h2>Ego or self-respect?</h2><span class="count" id="fe-score"></span></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr))">' + A("fgEgo").map(function (x) { return '<article class="sc" id="fe-' + x.id + '"><p>' + x.behaviour + '</p><div class="chips">' + [["self-respect", "Self-respect"], ["ego", "Ego"], ["depends", "It depends"]].map(function (o) { return '<button class="chip" type="button" data-fe="' + x.id + '" data-ans="' + o[0] + '">' + o[1] + "</button>"; }).join("") + '</div><div class="sc-out" hidden></div></article>'; }).join("") + "</div></section>" : "") +
       (A("fgHonor").length ? '<section class="section"><h2>What looks like honour, and what it really is</h2><p class="note">Tap a card.</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">' + A("fgHonor").map(function (h) { return '<button type="button" class="flip" data-flip aria-label="Flip card"><div class="flip-inner"><div class="flip-face front cf-front"><div class="label">Looks like honour</div><h3>' + esc(strip(h.looksLike)) + '</h3><span class="note" style="font-size:14px">Tap to see what it really is</span></div><div class="flip-face back"><div class="label" style="color:var(--wine)">Really</div><p>' + h.actually + '</p><div class="label">True honour</div><p>' + h.true + '</p><span class="ref">' + esc((h.refs || []).join(" · ")) + "</span></div></div></button>"; }).join("") + "</div></section>" : "") +
       ((Ab.types || []).length ? '<section class="section"><h2>Recognising abuse</h2><div class="su-toggle" role="group" aria-label="Choose a direction"><button type="button" data-ab="all" aria-pressed="true">All</button><button type="button" data-ab="self" aria-pressed="false">To yourself</button><button type="button" data-ab="others" aria-pressed="false">To others</button><button type="button" data-ab="fromOthers" aria-pressed="false">From others</button></div><div class="tri-wrap"><table class="abm ab-all" id="abm"><thead><tr><th>Type</th><th class="c-self">To yourself</th><th class="c-others">To others</th><th class="c-fromOthers">From others: signs</th></tr></thead><tbody>' + Ab.types.map(function (t) { return "<tr><th>" + esc(t.type) + '</th><td class="c-self">' + t.self + '</td><td class="c-others">' + t.others + '</td><td class="c-fromOthers">' + t.fromOthers + "</td></tr>"; }).join("") + '</tbody></table></div>' + (Ab.note ? '<div class="panel gold"><div class="label">If this is happening</div><p>' + Ab.note + "</p>" + (Ab.url ? '<a class="ref" href="' + esc(Ab.url) + '" target="_blank" rel="noopener">' + esc(Ab.source || "Source") + " ↗</a>" : "") + "</div>" : "") + "</section>" : "") +
-      (A("fgDavid").length ? '<section class="section"><h2>David: forgiven, yet the story unfolds</h2><div class="legend label"><span><i style="background:var(--wine)"></i>Sin</span><span><i style="background:var(--dawn)"></i>Forgiveness</span><span><i style="background:#d9822b"></i>Consequence</span><span><i style="background:var(--gold)"></i>Mercy</span></div><div class="river-wrap"><div class="dv" id="dv">' + A("fgDavid").map(function (d, i) { return '<button type="button" class="dv-e k-' + d.kind + '" data-dv="' + i + '" style="animation-delay:' + (i * 0.06).toFixed(2) + 's"><span class="dv-dot"></span><span class="ref">' + esc(d.ref) + "</span><b>" + esc(d.event) + "</b></button>"; }).join("") + '</div></div><div id="dv-note"></div></section>' : "") +
+      (A("fgDavid").length ? '<section class="section"><h2>David: forgiven, yet the story unfolds</h2><div class="legend label"><span><i style="background:var(--wine)"></i>Sin</span><span><i style="background:var(--dawn)"></i>Forgiveness</span><span><i style="background:var(--ember)"></i>Consequence</span><span><i style="background:var(--gold)"></i>Mercy</span></div><div class="river-wrap"><div class="dv" id="dv">' + A("fgDavid").map(function (d, i) { return '<button type="button" class="dv-e k-' + d.kind + '" data-dv="' + i + '" style="animation-delay:' + (i * 0.06).toFixed(2) + 's"><span class="dv-dot"></span><span class="ref">' + esc(d.ref) + "</span><b>" + esc(d.event) + "</b></button>"; }).join("") + '</div></div><div id="dv-note"></div></section>' : "") +
       (A("fgApology").length ? '<section class="section"><h2>Anatomy of a real apology</h2><div class="apo"><div class="apo-stack" id="apo-stack"></div><div class="apo-side"><div id="apo-text"></div><div class="row"><button class="btn ghost" type="button" data-apo="-1">← Remove</button><button class="btn" type="button" data-apo="1">Add the next part →</button></div></div></div></section>' : "") +
       (A("fgModels").length ? '<section class="section"><h2>Models from research and practice</h2><div class="grid">' + A("fgModels").map(function (m) { return '<article class="scale"><div class="label">' + esc(m.source) + "</div><h3>" + esc(m.name) + '</h3><ol class="steps">' + (m.steps || []).map(function (s2) { return "<li>" + s2 + "</li>"; }).join("") + "</ol>" + (m.note ? '<p class="note">' + m.note + "</p>" : "") + (m.url ? '<a class="ref" href="' + esc(m.url) + '" target="_blank" rel="noopener">Source ↗</a>' : "") + "</article>"; }).join("") + "</div></section>" : "") +
       (A("fgEvidence1").concat(A("fgEvidence2"), A("fgEvidence3")).length ? '<section class="section"><h2>Evidence and sources</h2><div class="evidence">' + A("fgEvidence1").concat(A("fgEvidence2"), A("fgEvidence3")).map(function (e) { return '<div class="ev"><p>' + e.text + '</p><span class="ref">' + esc(e.source) + "</span>" + (e.url ? ' <a href="' + esc(e.url) + '" target="_blank" rel="noopener">Open source ↗</a>' : "") + "</div>"; }).join("") + "</div></section>" : "") +
@@ -61423,7 +61910,7 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
   V.story = function () {
     var G = A("ages"), R = A("revealed");
     return head("Progressive revelation", "How God met humanity", "God came to people where they were: in a garden, a tent, a law, a temple, a prophet's cry. The light grew until it shone in a face, in the Incarnation, at the Cross and in the Resurrection. Drag through the ages and watch it rise.") +
-      (G.length ? '<section class="dawn" id="dawn"><div class="dawn-sky"><svg viewBox="0 0 800 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><radialGradient id="sun"><stop offset="0" stop-color="#fff6dc"/><stop offset=".25" stop-color="#e0ae55"/><stop offset="1" stop-color="#e0ae55" stop-opacity="0"/></radialGradient></defs>' +
+      (G.length ? '<section class="dawn" id="dawn"><div class="dawn-sky"><svg viewBox="0 0 800 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><radialGradient id="sun"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset=".25" stop-color="var(--gold)"/><stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></radialGradient></defs>' +
         '<rect class="dawn-wash" x="0" y="0" width="800" height="220" fill="var(--gold)" opacity="0"/><circle class="dawn-sun" cx="400" cy="240" r="150" fill="url(#sun)"/><path d="M0 200 Q200 170 400 190 T800 185 V220 H0z" fill="var(--bg-2)"/><path d="M0 210 Q260 195 520 206 T800 204 V220 H0z" fill="var(--surface)"/></svg>' +
         '<div class="dawn-meter"><span class="label">Clarity of revelation</span><b id="dawn-num"></b></div></div>' +
         '<div class="dawn-ctl"><input type="range" id="age-range" min="0" max="' + (G.length - 1) + '" value="' + ageIdx + '" aria-label="Move through the ages"><div class="row" style="justify-content:space-between"><span class="label">Eden</span><span class="label">The restoration of all things</span></div></div>' +
@@ -61751,62 +62238,107 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
     var cv = $("#sky"); if (!cv) return;
     var ctx = cv.getContext("2d"), stage = $("#stage"), tip = $("#tip");
     var themes = A("themes"), regions = [["question", "Question God?"], ["authored", "Did God do it?"], ["reconcile", "Reconciliation"], ["sozo", "Sozo Ecclesia"], ["sovereign", "Sovereignty"], ["unfold", "Born again, still healing"], ["ecstasy", "Ecstasy of loving God"], ["incarnation", "Incarnation"], ["lamb", "Lamb of the free"], ["lies", "52 lies"], ["allsaved", "All saved?"], ["realm", "Kingdom concepts"], ["miracles", "Miracles in history"], ["tenses", "Three tenses"], ["enforce", "Truth to reality"], ["receive", "Receiving the word"], ["gifts", "Gifts & fruit"], ["parables", "Kingdom parables"], ["mission", "Mission"], ["misuse", "Scripture misused"], ["sorry", "Sorry?"], ["belief", "Belief manifests?"], ["trees", "Two trees"], ["deathless", "Deathless"], ["facets", "Gospel facets"], ["covenant", "The Blessing"], ["sons", "Sons revealed"], ["healing", "Divine healing"], ["name", "The Name"], ["blessing", "Blessing"], ["recover", "Habits & healing"], ["doxa", "Doxa"], ["woman", "Man & woman"], ["justice", "Justice & call-outs"], ["blood", "Life in the blood"], ["embrace", "Divine Embrace"], ["myths", "Myths"], ["ways", "How God works"], ["reborn", "Born again"], ["design", "Made for each other"], ["saviour", "Why a Saviour?"], ["identity", "Identity & healing"], ["paths", "Ancient paths"], ["living", "Living it out"], ["worship", "Worship"], ["forgive", "Forgiveness"], ["big", "Big questions"], ["why", "Why of design"], ["share", "Sharing it"], ["life", "Love with a spine"], ["kingdom", "Kingdom"], ["embodied", "Embodied gospel"], ["love", "God is love"], ["newcreation", "New creation"], ["compare", "Legal vs relational"], ["story", "God met us"], ["read", "Reading"], ["lens", "Old & New"], ["journey", "Misreadings"], ["violence", "Violence"], ["law", "The Law"], ["culture", "Culture"], ["sayings", "Jesus' words"], ["trinity", "Trinity"], ["apostles", "Apostles"], ["voices", "Fathers"], ["models", "Frameworks"], ["religion", "Religion"], ["debate", "Debates"]];
-    var nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, t0 = performance.now(), raf = 0;
-    var stars = []; for (var i = 0; i < 160; i++) stars.push({ a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), s: Math.random() * 1.3 + 0.2, p: Math.random() * 6 });
-    themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.36, a: (i / themes.length) * Math.PI * 2, rel: t.related || [] }); });
-    regions.forEach(function (r, i) { nodes.push({ kind: "region", id: r[0], label: r[1], ring: 0.7, a: (i / regions.length) * Math.PI * 2 + 0.3 }); });
-    function size() { W = stage.clientWidth; cv.width = W * dpr; cv.height = W * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    /* Rose-window atlas: Christ at the centre, the great themes on the inner tracery, the regions on the outer rim.
+       Only the light you point at (or step to with the arrow keys) is named, so labels never collide. */
+    var cap = $("#sky-cap"), nodes = [], W = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), hover = null, sel = null, t0 = performance.now(), raf = 0, tilt = 0, tiltT = 0, C = {};
+    themes.forEach(function (t, i) { nodes.push({ kind: "theme", id: t.id, label: t.title, ring: 0.44, a: (i / themes.length) * Math.PI * 2 - Math.PI / 2, rel: t.related || [] }); });
+    regions.forEach(function (r, i) { nodes.push({ kind: "region", id: r[0], label: r[1], ring: 0.84, a: (i / regions.length) * Math.PI * 2 - Math.PI / 2 }); });
+    var order = nodes.slice();
     function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
-    function pos(n, rot) { var a = n.a + rot * (n.kind === "theme" ? 1 : -0.55); return { x: W / 2 + Math.cos(a) * n.ring * W / 2 * 1.25, y: W / 2 + Math.sin(a) * n.ring * W / 2 * 1.25 }; }
+    function readColors() { ["--gold", "--gold-hi", "--on-gold", "--dawn", "--wine", "--accent", "--ink", "--muted", "--line", "--surface", "--display", "--body"].forEach(function (k) { C[k] = css(k) || "#888"; }); }
+    function clear(hex) { var m = /^#?([0-9a-f]{6})$/i.exec(hex || ""); if (!m) return "rgba(0,0,0,0)"; var n = parseInt(m[1], 16); return "rgba(" + (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255) + ",0)"; }
+    function size() { W = stage.clientWidth; cv.width = W * dpr; cv.height = W * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); readColors(); if (reduced) draw(performance.now()); }
+    function pos(n, rot) { var a = n.a + rot * (n.kind === "theme" ? 1 : -0.5); var R = W / 2 * 0.94; return { x: W / 2 + Math.cos(a) * n.ring * R, y: W / 2 + Math.sin(a) * n.ring * R, a: a }; }
+    function label(n, p) {
+      var fs = W > 460 ? 14 : 12.5, c = W / 2;
+      ctx.font = "600 " + fs + "px " + C["--display"]; var tw = ctx.measureText(n.label).width, ph = fs + 12, pw = tw + 22;
+      var dx = p.x - c, dy = p.y - c, d = Math.hypot(dx, dy) || 1, off = n.kind === "theme" ? -1 : 1;
+      var x = p.x + dx / d * 26 * off, y = p.y + dy / d * 26 * off;
+      x = Math.max(pw / 2 + 4, Math.min(W - pw / 2 - 4, x)); y = Math.max(ph / 2 + 4, Math.min(W - ph / 2 - 4, y));
+      ctx.fillStyle = C["--surface"]; ctx.strokeStyle = n.kind === "theme" ? C["--gold"] : C["--dawn"]; ctx.lineWidth = 1.2;
+      ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x - pw / 2, y - ph / 2, pw, ph, ph / 2); else ctx.rect(x - pw / 2, y - ph / 2, pw, ph); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = C["--ink"]; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(n.label, x, y + 1);
+    }
     function draw(now) {
-      var tt = (now - t0) / 1000, rot = reduced ? 0 : tt * 0.02, gold = css("--gold"), dawn = css("--dawn"), ink = css("--ink"), muted = css("--muted"), line = css("--line");
-      ctx.clearRect(0, 0, W, W);
-      var c = W / 2;
-      stars.forEach(function (s) { var r = s.r * W * 0.5; ctx.globalAlpha = 0.25 + 0.35 * Math.sin(tt * 0.8 + s.p) * 0.5 + 0.2; ctx.fillStyle = muted; ctx.beginPath(); ctx.arc(c + Math.cos(s.a + rot * 0.3) * r, c + Math.sin(s.a + rot * 0.3) * r, s.s, 0, 7); ctx.fill(); });
-      ctx.globalAlpha = 1;
-      [0.36, 0.7].forEach(function (rg) { ctx.strokeStyle = line; ctx.setLineDash([2, 6]); ctx.beginPath(); ctx.arc(c, c, rg * W / 2 * 1.25, 0, 7); ctx.stroke(); });
+      var tt = (now - t0) / 1000; tilt += (tiltT - tilt) * 0.06;
+      var rot = (reduced ? 0 : tt * 0.012) + tilt, c = W / 2, R = W / 2 * 0.94, focus = hover || sel;
+      ctx.clearRect(0, 0, W, W); ctx.lineWidth = 1;
+      // outer tracery: rim, inner rings and twelve foils
+      ctx.strokeStyle = C["--line"]; ctx.globalAlpha = 1;
+      [0.99, 0.84, 0.64, 0.44, 0.2].forEach(function (k, i) { ctx.setLineDash(i === 2 ? [2, 5] : []); ctx.beginPath(); ctx.arc(c, c, k * R, 0, 7); ctx.stroke(); });
       ctx.setLineDash([]);
+      for (var f = 0; f < 12; f++) { var fa = f / 12 * Math.PI * 2 + rot * 0.6; ctx.globalAlpha = 0.55; ctx.beginPath(); ctx.arc(c + Math.cos(fa) * R * 0.64, c + Math.sin(fa) * R * 0.64, R * 0.2, 0, 7); ctx.stroke(); }
+      for (var s = 0; s < 24; s++) { var sa = s / 24 * Math.PI * 2 + rot * 0.6; ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.moveTo(c + Math.cos(sa) * R * 0.2, c + Math.sin(sa) * R * 0.2); ctx.lineTo(c + Math.cos(sa) * R * 0.99, c + Math.sin(sa) * R * 0.99); ctx.stroke(); }
+      ctx.globalAlpha = 1;
       var P = {}; nodes.forEach(function (n) { P[n.kind + n.id] = pos(n, rot); });
+      // links between related themes, through the centre
       nodes.forEach(function (n) {
         if (n.kind !== "theme") return;
-        n.rel.forEach(function (r) { var q = P["theme" + r]; if (!q) return; var p = P["theme" + n.id]; ctx.strokeStyle = gold; ctx.globalAlpha = hover && (hover.id === n.id || hover.id === r) ? 0.6 : 0.08; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.quadraticCurveTo(c, c, q.x, q.y); ctx.stroke(); });
+        n.rel.forEach(function (r) { var q = P["theme" + r]; if (!q) return; var p = P["theme" + n.id], on = focus && (focus.id === n.id || focus.id === r); ctx.strokeStyle = C["--gold"]; ctx.lineWidth = on ? 1.6 : 1; ctx.globalAlpha = on ? 0.85 : 0.1; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.quadraticCurveTo(c, c, q.x, q.y); ctx.stroke(); });
       });
+      ctx.lineWidth = 1;
+      if (focus) { var fp = P[focus.kind + focus.id]; if (fp) { ctx.strokeStyle = focus.kind === "theme" ? C["--gold"] : C["--dawn"]; ctx.globalAlpha = 0.8; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(fp.x, fp.y); ctx.stroke(); ctx.lineWidth = 1; } }
       ctx.globalAlpha = 1;
-      nodes.forEach(function (n) { var p = P[n.kind + n.id]; ctx.strokeStyle = n.kind === "theme" ? gold : dawn; ctx.globalAlpha = hover === n ? 0.7 : 0.14; ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-      ctx.globalAlpha = 1;
-      var pulse = reduced ? 1 : 1 + Math.sin(tt * 1.4) * 0.08, g = ctx.createRadialGradient(c, c, 0, c, c, W * 0.16 * pulse);
-      g.addColorStop(0, "rgba(255,246,220,1)"); g.addColorStop(0.18, "rgba(224,174,85,.9)"); g.addColorStop(1, "rgba(224,174,85,0)");
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, W * 0.16 * pulse, 0, 7); ctx.fill();
-      ctx.fillStyle = "#1a1408"; ctx.font = (W > 420 ? 15 : 12) + "px Avenir Next, Nunito Sans, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("Jesus", c, c);
+      // the light at the centre
+      var pulse = reduced ? 1 : 1 + Math.sin(tt * 1.2) * 0.06, gr = R * 0.34 * pulse, g = ctx.createRadialGradient(c, c, 0, c, c, gr);
+      g.addColorStop(0, C["--gold-hi"]); g.addColorStop(0.3, C["--gold"]); g.addColorStop(1, clear(C["--gold"]));
+      ctx.globalAlpha = 0.9; ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, gr, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+      ctx.fillStyle = C["--gold"]; ctx.beginPath(); ctx.arc(c, c, R * 0.13, 0, 7); ctx.fill();
+      ctx.fillStyle = C["--on-gold"]; ctx.font = "700 " + (W > 460 ? 17 : 13) + "px " + C["--display"]; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("Jesus", c, c + 1);
+      // the lights
       nodes.forEach(function (n) {
-        var p = P[n.kind + n.id], hv = hover === n, r = n.kind === "theme" ? (hv ? 7 : 4.5) : (hv ? 9 : 6.5);
-        ctx.fillStyle = n.kind === "theme" ? gold : dawn; ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = hv ? 18 : 8;
-        ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
-        if (n.kind === "region" || hv) {
-          ctx.fillStyle = hv ? ink : muted; ctx.font = (W > 420 ? 12 : 10) + "px IBM Plex Mono, monospace"; ctx.textAlign = "center";
-          ctx.fillText(n.label.toUpperCase(), p.x, p.y + (p.y > c ? 20 : -18));
-        }
-        n.p = p;
+        var p = P[n.kind + n.id], on = focus === n, th = n.kind === "theme", col = th ? C["--gold"] : C["--dawn"], r = th ? (on ? 8 : 4.5) : (on ? 7.5 : 3.6);
+        if (on) { ctx.globalAlpha = 0.25; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(p.x, p.y, r + 9, 0, 7); ctx.fill(); ctx.globalAlpha = 1; }
+        ctx.fillStyle = col; ctx.beginPath();
+        if (th) ctx.arc(p.x, p.y, r, 0, 7); else { ctx.moveTo(p.x, p.y - r * 1.25); ctx.lineTo(p.x + r, p.y); ctx.lineTo(p.x, p.y + r * 1.25); ctx.lineTo(p.x - r, p.y); ctx.closePath(); }
+        ctx.fill(); n.p = p;
       });
+      if (focus && focus.p) label(focus, focus.p);
       if (!reduced) raf = requestAnimationFrame(draw);
     }
-    function hit(ev) {
-      var b = cv.getBoundingClientRect(), x = ev.clientX - b.left, y = ev.clientY - b.top, best = null, bd = 22;
+    function hit(ev, touch) {
+      var b = cv.getBoundingClientRect(), x = ev.clientX - b.left, y = ev.clientY - b.top, best = null, bd = touch ? 26 : 16;
       nodes.forEach(function (n) { if (!n.p) return; var d = Math.hypot(n.p.x - x, n.p.y - y); if (d < bd) { bd = d; best = n; } });
       if (!best && Math.hypot(x - W / 2, y - W / 2) < W * 0.07) best = { kind: "center", id: "perfect-theology", label: "Jesus, perfect theology" };
       return best;
     }
+    function open(n) { go(n.kind === "region" ? n.id : "theme." + n.id); }
+    function caption(n) {
+      if (!cap) return;
+      cap.innerHTML = n ? '<span class="sky-k">' + (n.kind === "theme" ? "Theme" : n.kind === "region" ? "Region" : "The centre") + '</span><b>' + esc(n.label) + '</b><button type="button" class="btn sm" id="sky-open">Open</button>' : '<span class="sky-k">Explore</span><span>Point at a light to read its name. Tap it again, or press Enter, to open it.</span>';
+      var ob = $("#sky-open"); if (ob) ob.addEventListener("click", function () { open(n); });
+    }
     cv.addEventListener("pointermove", function (ev) {
-      var n = hit(ev); hover = n && n.kind !== "center" ? n : null;
+      var b = cv.getBoundingClientRect(); tiltT = ((ev.clientX - b.left) / b.width - 0.5) * 0.25;
+      if (ev.pointerType === "touch") return;
+      var n = hit(ev, false); hover = n && n.kind !== "center" ? n : null;
       cv.style.cursor = n ? "pointer" : "default";
-      if (n) { var b = cv.getBoundingClientRect(); tip.hidden = false; tip.textContent = n.label; tip.style.left = (ev.clientX - b.left) + "px"; tip.style.top = (ev.clientY - b.top) + "px"; } else tip.hidden = true;
+      if (n && n.kind === "center") { tip.hidden = false; tip.textContent = n.label; tip.style.left = (ev.clientX - b.left) + "px"; tip.style.top = (ev.clientY - b.top) + "px"; } else tip.hidden = true;
+      if (n) caption(n);
       if (reduced) draw(performance.now());
     });
-    cv.addEventListener("pointerleave", function () { hover = null; tip.hidden = true; if (reduced) draw(performance.now()); });
-    cv.addEventListener("click", function (ev) { var n = hit(ev); if (!n) return; go(n.kind === "region" ? n.id : "theme." + n.id); });
-    size(); window.addEventListener("resize", size);
+    cv.addEventListener("pointerleave", function () { hover = null; tiltT = 0; tip.hidden = true; caption(sel); if (reduced) draw(performance.now()); });
+    cv.addEventListener("click", function (ev) {
+      var touch = ev.pointerType === "touch" || (window.matchMedia && matchMedia("(hover: none)").matches), n = hit(ev, touch); if (!n) { sel = null; caption(null); if (reduced) draw(performance.now()); return; }
+      if (n.kind === "center" || !touch || sel === n) { open(n); return; }
+      sel = n; caption(n); if (reduced) draw(performance.now());
+    });
+    cv.addEventListener("keydown", function (ev) {
+      var i = sel ? order.indexOf(sel) : -1;
+      if (ev.key === "ArrowRight" || ev.key === "ArrowDown") i = (i + 1) % order.length;
+      else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") i = (i - 1 + order.length) % order.length;
+      else if (ev.key === "Enter" && sel) { ev.preventDefault(); open(sel); return; }
+      else return;
+      ev.preventDefault(); sel = order[i]; caption(sel); if (reduced) draw(performance.now());
+    });
+    var mo = new MutationObserver(function () { readColors(); if (reduced) draw(performance.now()); });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "lang"] });
+    var mq = window.matchMedia && matchMedia("(prefers-color-scheme: dark)"), onMq = function () { readColors(); if (reduced) draw(performance.now()); };
+    if (mq && mq.addEventListener) mq.addEventListener("change", onMq);
+    size(); window.addEventListener("resize", size); caption(null);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(readColors);
     draw(performance.now());
-    sky = { stop: function () { cancelAnimationFrame(raf); window.removeEventListener("resize", size); } };
+    sky = { stop: function () { cancelAnimationFrame(raf); window.removeEventListener("resize", size); mo.disconnect(); if (mq && mq.removeEventListener) mq.removeEventListener("change", onMq); } };
   }
 
   /* ================= RENDER ================= */
@@ -62155,6 +62687,262 @@ if (typeof module !== "undefined") module.exports = RGI18N_RULES;
   render();
 };
 window.RGboot(window.RGstart);
+</script>
+<script>/* Rose Window skin behaviour (main build): navigator groups + filter, breadcrumbs, "On this page"
+   thread with scrollspy, previous/next pager, text size, reading progress, copyable references,
+   pointer spotlight, scroll reveals, phone contents sheet and menu filter. Pure enhancement:
+   the app renders exactly as before and this script decorates what it renders. */
+(function () {
+  var root = document.documentElement, doc = document;
+  var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function $(s, r) { return (r || doc).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); }
+  function get(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function ic(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + "</svg>"; }
+
+  var GROUPS = [
+    { c: "var(--accent)", s: "var(--accent-soft)", i: ic('<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>') },
+    { c: "var(--gold)", s: "var(--gold-soft)", i: ic('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>') },
+    { c: "var(--dawn)", s: "var(--dawn-soft)", i: ic('<circle cx="12" cy="8.5" r="4.5"/><circle cx="8" cy="15" r="4.5"/><circle cx="16" cy="15" r="4.5"/>') },
+    { c: "var(--wine)", s: "var(--wine-soft)", i: ic('<path d="M12 3v18M5 21h14M7 7h10M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z"/>') },
+    { c: "var(--gold)", s: "var(--gold-soft)", i: ic('<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>') },
+    { c: "var(--accent)", s: "var(--accent-soft)", i: ic('<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/><path d="M8 8h6"/>') },
+    { c: "var(--dawn)", s: "var(--dawn-soft)", i: ic('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"/>') },
+    { c: "var(--wine)", s: "var(--wine-soft)", i: ic('<path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/>') }
+  ];
+  function G(i) { return GROUPS[i % GROUPS.length]; }
+  var CHEV = ic('<path d="m9 6 6 6-6 6"/>');
+  var SEARCH = ic('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>');
+
+  /* ---------- toast ---------- */
+  var toastT = 0;
+  function toast(msg) {
+    var old = $(".sk-toast"); if (old) old.remove();
+    var t = doc.createElement("div"); t.className = "sk-toast"; t.setAttribute("role", "status"); t.textContent = msg; doc.body.appendChild(t);
+    clearTimeout(toastT); toastT = setTimeout(function () { t.remove(); }, 2300);
+  }
+
+  /* ---------- navigator ---------- */
+  var openSet = get("rga.sk.open", null), filterQ = "", NAV = [];
+  function hashOf(a) { return (a.getAttribute("href") || "").slice(1); }
+  function buildRail() {
+    var rail = $("#rail"); if (!rail || rail.querySelector(".sk-filter")) return;
+    var groups = [], cur = null;
+    Array.prototype.forEach.call(rail.children, function (el) {
+      if (el.classList.contains("rail-group")) { cur = { name: el.textContent, links: [] }; groups.push(cur); }
+      else if (el.tagName === "A" && cur) cur.links.push(el);
+    });
+    if (!groups.length) return;
+    NAV = [];
+    groups.forEach(function (g, gi) { g.links.forEach(function (a) { NAV.push({ hash: hashOf(a), text: a.textContent, group: g.name, gi: gi, cur: a.getAttribute("aria-current") === "page" }); }); });
+    var curG = -1; groups.forEach(function (g, gi) { if (g.links.some(function (a) { return a.getAttribute("aria-current") === "page"; })) curG = gi; });
+    if (!openSet) openSet = [0, 1];
+    var frag = doc.createDocumentFragment();
+    var f = doc.createElement("div"); f.className = "sk-filter";
+    f.innerHTML = '<label>' + SEARCH + '<input id="sk-rail-q" type="search" placeholder="Filter regions" autocomplete="off" aria-label="Filter regions"></label>';
+    frag.appendChild(f);
+    groups.forEach(function (g, gi) {
+      var col = G(gi), box = doc.createElement("div");
+      box.className = "sk-grp" + (openSet.indexOf(gi) > -1 || gi === curG ? " open" : ""); box.dataset.gi = gi;
+      box.style.setProperty("--c", col.c); box.style.setProperty("--c-soft", col.s);
+      box.innerHTML = '<button type="button" class="sk-gh" aria-expanded="' + box.classList.contains("open") + '"><span class="sk-gi">' + col.i + '</span><span>' + esc(g.name) + '</span><span class="sk-gn">' + g.links.length + "</span>" + CHEV.replace("<svg", '<svg class="sk-chev"') + '</button><div class="sk-items"><div></div></div>';
+      var inner = box.querySelector(".sk-items > div");
+      g.links.forEach(function (a) { inner.appendChild(a); });
+      frag.appendChild(box);
+    });
+    var none = doc.createElement("p"); none.className = "sk-none"; none.hidden = true; none.textContent = "No region matches that. Try a shorter word."; frag.appendChild(none);
+    rail.innerHTML = ""; rail.appendChild(frag);
+    var q = $("#sk-rail-q"); q.value = filterQ; if (filterQ) applyFilter();
+    q.addEventListener("input", function () { filterQ = q.value; applyFilter(); });
+    q.addEventListener("keydown", function (e) { if (e.key === "Enter") { var a = $$(".rail a").filter(function (x) { return !x.hidden; })[0]; if (a) a.click(); } if (e.key === "Escape") { q.value = ""; filterQ = ""; applyFilter(); } });
+    var ca = rail.querySelector('a[aria-current="page"]');
+    if (ca && !filterQ) setTimeout(function () { var r = ca.getBoundingClientRect(), rr = rail.getBoundingClientRect(); if (r.top < rr.top + 60 || r.bottom > rr.bottom - 20) rail.scrollTop += r.top - rr.top - rr.height / 3; }, 30);
+  }
+  function applyFilter() {
+    var q = filterQ.trim().toLowerCase(), any = false;
+    $$(".sk-grp").forEach(function (g) {
+      var hit = 0;
+      $$(".sk-items a", g).forEach(function (a) { var m = !q || a.textContent.toLowerCase().indexOf(q) > -1; a.hidden = !m; if (m) hit++; });
+      g.hidden = !!q && !hit; if (hit) any = true;
+      g.classList.toggle("sk-forced", !!q && hit > 0);
+      if (q && hit) g.classList.add("open"); else if (!q) g.classList.toggle("open", openSet.indexOf(+g.dataset.gi) > -1 || !!g.querySelector('a[aria-current="page"]'));
+    });
+    var n = $(".sk-none"); if (n) n.hidden = !q || any;
+  }
+  doc.addEventListener("click", function (e) {
+    var h = e.target.closest && e.target.closest(".sk-gh"); if (!h) return;
+    var g = h.parentNode, gi = +g.dataset.gi, on = !g.classList.contains("open");
+    g.classList.toggle("open", on); h.setAttribute("aria-expanded", String(on));
+    var i = openSet.indexOf(gi); if (on && i < 0) openSet.push(gi); if (!on && i > -1) openSet.splice(i, 1); put("rga.sk.open", openSet);
+  });
+
+  /* ---------- per-view decorations ---------- */
+  var heads = [], tocLinks = [], tocSheetLinks = [];
+  function curIndex() { var h = decodeURIComponent(location.hash.slice(1)) || "atlas"; for (var i = 0; i < NAV.length; i++) if (NAV[i].hash === h) return i; for (var j = 0; j < NAV.length; j++) if (NAV[j].cur) return j; return -1; }
+  function decorate() {
+    var main = $("#main"); if (!main || main.dataset.sk === "1") return;
+    main.dataset.sk = "1";
+    var plate = $(".plate", main); if (!plate) return;
+    var ci = curIndex(), cn = NAV[ci];
+    // breadcrumb inside the eyebrow
+    var lab = $(".view-head > .label", plate);
+    if (lab && cn) {
+      var col = G(cn.gi), crumb = doc.createElement("div"); crumb.className = "label sk-crumb"; crumb.style.setProperty("--c", col.c);
+      var gs = doc.createElement("span"), ls = doc.createElement("span"); gs.innerHTML = "<i></i> "; gs.appendChild(doc.createTextNode(cn.group));
+      while (lab.firstChild) ls.appendChild(lab.firstChild);
+      crumb.appendChild(gs); var lt = ls.textContent.trim(); if (lt && lt.toLowerCase() !== String(cn.group).trim().toLowerCase()) crumb.appendChild(ls);
+      lab.replaceWith(crumb);
+    }
+    // section thread
+    heads = $$(".plate h2", main).filter(function (h) { return h.offsetParent !== null && h.textContent.trim(); });
+    tocLinks = []; tocSheetLinks = [];
+    var old = $(".sk-toc", main); if (old) old.remove();
+    main.classList.remove("sk-has-toc");
+    var isAtlas = (decodeURIComponent(location.hash.slice(1)) || "atlas") === "atlas";
+    if (heads.length >= 3 && !isAtlas) {
+      var toc = doc.createElement("nav"); toc.className = "sk-toc"; toc.setAttribute("aria-label", "On this page");
+      toc.innerHTML = '<div class="label">On this page</div>' + heads.map(function (h, i) { h.classList.add("sk-h2"); return '<a href="#" data-sk-to="' + i + '">' + esc(h.textContent) + "</a>"; }).join("");
+      main.appendChild(toc); main.classList.add("sk-has-toc");
+      tocLinks = $$("a", toc);
+    }
+    if (isAtlas) heads = [];
+    var tb = $(".sk-tocbtn"); if (tb) tb.hidden = heads.length < 3;
+    // previous / next
+    var pg = $(".sk-pager", main); if (pg) pg.remove();
+    if (ci > -1) {
+      var prev = NAV[ci - 1], next = NAV[ci + 1], p = doc.createElement("nav"); p.className = "sk-pager"; p.setAttribute("aria-label", "Previous and next region");
+      p.innerHTML = (prev ? '<a class="prev" href="#' + esc(prev.hash) + '"><small><kbd>[</kbd> Previous</small><b>' + esc(prev.text) + "</b></a>" : "") +
+        (next ? '<a class="next" href="#' + esc(next.hash) + '"><small>Next <kbd>]</kbd></small><b>' + esc(next.text) + "</b></a>" : "");
+      plate.insertAdjacentElement("afterend", p);
+    }
+    // references you can copy
+    $$(".ref", plate).forEach(function (r) { if (!r.closest("[data-open], a, button")) { r.classList.add("sk-copyable"); r.title = "Copy this reference"; } });
+    reveal(plate);
+    spy();
+  }
+  doc.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-sk-to]"); if (!a) return;
+    e.preventDefault(); closeTocSheet();
+    var h = heads[+a.dataset.skTo]; if (h) h.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  });
+  doc.addEventListener("click", function (e) {
+    var r = e.target.closest && e.target.closest(".ref.sk-copyable"); if (!r) return;
+    var txt = r.textContent.trim(), done = function () { toast("Copied " + txt); };
+    try { navigator.clipboard.writeText(txt).then(done, function () { selectText(r); toast("Selected " + txt + ". Press copy to keep it."); }); } catch (err) { selectText(r); }
+  });
+  function selectText(el) { try { var rg = doc.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); } catch (e) { /* no selection API */ } }
+
+  /* ---------- reveal on scroll (starts visible; animates only as it enters) ---------- */
+  var io = !reduced && "IntersectionObserver" in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("sk-rv"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -6% 0px" }) : null;
+  function reveal(plate) {
+    if (!io) return;
+    var vh = innerHeight;
+    $$(":scope > .section, :scope > section, .grid > .card, .path > a", plate).slice(0, 400).forEach(function (el) { if (el.getBoundingClientRect().top > vh) io.observe(el); });
+  }
+
+  /* ---------- scroll: progress, spy, header, back to top ---------- */
+  var bar = null, lastY = 0, ticking = false;
+  function spy() {
+    var top = $(".top"), y = scrollY, h = doc.documentElement.scrollHeight - innerHeight;
+    if (!bar && top) { bar = doc.createElement("div"); bar.className = "sk-progress"; top.appendChild(bar); }
+    if (bar) bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
+    if (top) { var small = innerWidth <= 980; top.classList.toggle("sk-hide", small && y > lastY + 4 && y > 240 && !$("#layer").children.length); if (y < lastY - 4 || y < 240) top.classList.remove("sk-hide"); }
+    lastY = y;
+    var up = $(".sk-up"); if (up) up.classList.toggle("show", y > 900);
+    if (heads.length) {
+      var on = -1; for (var i = 0; i < heads.length; i++) if (heads[i].getBoundingClientRect().top < 150) on = i;
+      tocLinks.forEach(function (a, j) { a.classList.toggle("on", j === on); });
+      tocSheetLinks.forEach(function (a, j) { a.classList.toggle("on", j === on); });
+      var act = tocLinks[on]; if (act && act.parentNode.scrollHeight > act.parentNode.clientHeight) { var p = act.parentNode, r = act.offsetTop - p.clientHeight / 2; if (Math.abs(p.scrollTop - r) > 60) p.scrollTop = r; }
+    }
+  }
+  addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; spy(); }); } }, { passive: true });
+  addEventListener("resize", spy);
+
+  /* ---------- phone contents sheet ---------- */
+  function openTocSheet() {
+    if (!heads.length) return;
+    var layer = $("#layer"); layer.innerHTML = '<div class="scrim" data-close></div><div class="sk-tocsheet" role="dialog" aria-label="On this page"><div class="label" style="margin-bottom:6px">On this page</div>' +
+      heads.map(function (h, i) { return '<a href="#" data-sk-to="' + i + '"><span>' + (i + 1) + "</span>" + esc(h.textContent) + "</a>"; }).join("") + "</div>";
+    tocSheetLinks = $$(".sk-tocsheet a"); spy();
+  }
+  function closeTocSheet() { var s = $(".sk-tocsheet"); if (s) { $("#layer").innerHTML = ""; tocSheetLinks = []; } }
+
+  /* ---------- pointer spotlight ---------- */
+  doc.addEventListener("pointermove", function (e) {
+    var c = e.target.closest && e.target.closest(".card"); if (!c) return;
+    var r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px");
+  }, { passive: true });
+
+  /* ---------- text size ---------- */
+  var SIZES = [1, 1.08, 1.16, 0.93], sz = get("rga.sk.size", 0);
+  function applySize() {
+    root.style.setProperty("--sk-z", SIZES[sz] || 1);
+    var b = $(".sk-size"); if (b) { b.setAttribute("aria-label", "Text size " + Math.round((SIZES[sz] || 1) * 100) + "%. Change text size"); b.innerHTML = "A<small>" + (sz === 0 ? "" : sz === 3 ? "−" : "+".repeat(sz)) + "</small>"; }
+  }
+
+  /* ---------- menu sheet: filter and colour dots ---------- */
+  function enhanceMenu() {
+    var m = $(".menu-sheet"); if (!m || m.dataset.sk) return; m.dataset.sk = "1";
+    var labs = $$(":scope > .label", m);
+    labs.forEach(function (l, i) { l.style.setProperty("--c", G(i).c); l.insertAdjacentHTML("afterbegin", "<i></i>"); });
+    var cur = decodeURIComponent(location.hash.slice(1)) || "atlas";
+    $$("a", m).forEach(function (a) { if (hashOf(a) === cur) a.setAttribute("aria-current", "page"); });
+    var box = doc.createElement("div"); box.className = "sk-msearch";
+    box.innerHTML = '<label class="field">' + SEARCH + '<input id="sk-menu-q" type="search" placeholder="Filter regions" autocomplete="off" aria-label="Filter regions"></label>';
+    m.insertBefore(box, m.firstChild);
+    var q = $("#sk-menu-q");
+    q.addEventListener("input", function () {
+      var v = q.value.trim().toLowerCase();
+      labs.forEach(function (l) { var g = l.nextElementSibling, hit = 0; $$("a", g).forEach(function (a) { var ok = !v || a.textContent.toLowerCase().indexOf(v) > -1; a.hidden = !ok; if (ok) hit++; }); l.hidden = g.hidden = !hit; });
+    });
+  }
+
+  /* ---------- header & floating controls ---------- */
+  function init() {
+    var top = $(".top"), acts = $(".top-actions"), brand = $(".brand");
+    if (!top || !acts || top.dataset.sk) return; top.dataset.sk = "1";
+    var mark = $(".brand-mark");
+    if (mark) mark.outerHTML = '<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><g class="bm-ring"><circle cx="16" cy="16" r="14.5" fill="none" stroke="var(--line-2)" stroke-dasharray="2 3"/></g>' +
+      '<circle cx="16" cy="11.4" r="6" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.4"/><circle cx="12" cy="18.6" r="6" fill="var(--wine-soft)" stroke="var(--wine)" stroke-width="1.4"/><circle cx="20" cy="18.6" r="6" fill="var(--dawn-soft)" stroke="var(--dawn)" stroke-width="1.4"/><circle cx="16" cy="16.2" r="2.2" fill="var(--gold)"/></svg>';
+    var s = doc.createElement("button"); s.type = "button"; s.className = "sk-search"; s.setAttribute("aria-label", "Search the atlas");
+    s.innerHTML = SEARCH + "<span>Search laws, customs, sayings, voices…</span><span class=\"kbd\">/</span>";
+    top.insertBefore(s, acts);
+    s.addEventListener("click", function () { var o = $("#open-search"); if (o) o.click(); });
+    var size = doc.createElement("button"); size.type = "button"; size.className = "icon-btn sk-size";
+    var th = $("#theme-toggle"); acts.insertBefore(size, th || acts.firstChild);
+    size.addEventListener("click", function () { sz = (sz + 1) % SIZES.length; put("rga.sk.size", sz); applySize(); toast("Text size " + Math.round(SIZES[sz] * 100) + "%"); });
+    applySize();
+    var fl = doc.createElement("div"); fl.className = "sk-float";
+    fl.innerHTML = '<button type="button" class="sk-tocbtn" hidden aria-label="On this page">' + ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>') + "<span>Contents</span></button>" +
+      '<button type="button" class="sk-up" aria-label="Back to top">' + ic('<path d="m6 15 6-6 6 6"/>') + "</button>";
+    doc.body.appendChild(fl);
+    $(".sk-up", fl).addEventListener("click", function () { scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }); });
+    $(".sk-tocbtn", fl).addEventListener("click", openTocSheet);
+
+    doc.addEventListener("keydown", function (e) {
+      var t = e.target, typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+      if (typing || e.metaKey || e.ctrlKey || e.altKey || $("#layer").children.length) return;
+      if (e.key === "[" || e.key === "]") { var a = $(".sk-pager ." + (e.key === "[" ? "prev" : "next")); if (a) { e.preventDefault(); a.click(); } }
+    });
+
+    var rail = $("#rail"), main = $("#main"), layer = $("#layer");
+    if (window.MutationObserver) {
+      new MutationObserver(function () { buildRail(); }).observe(rail, { childList: true });
+      new MutationObserver(function (recs) {
+        var fresh = recs.some(function (r) { return Array.prototype.some.call(r.addedNodes, function (n) { return n.classList && n.classList.contains("plate"); }); });
+        if (fresh) { main.dataset.sk = ""; setTimeout(decorate, 40); }
+      }).observe(main, { childList: true });
+      new MutationObserver(function () { enhanceMenu(); if (!$(".sk-tocsheet")) tocSheetLinks = []; }).observe(layer, { childList: true });
+    }
+    buildRail(); decorate(); spy();
+  }
+  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", function () { setTimeout(init, 0); }); else setTimeout(init, 0);
+})();
 </script>
 
 </body>
