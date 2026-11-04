@@ -137,7 +137,7 @@
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
-    { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved"]] }
+    { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved items"]] }
   ];
   window.RGVIEWS = VIEWS;
   var PINNED = ["perfect-theology", "bible-narratives", "undiluted-gospel", "trinitarian-gospel", "union-sonship", "designed-for-connection", "church-now"];
@@ -339,7 +339,7 @@
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
         ["blessing", "Blessing, matter & spiritual life", A("bsArgs").length + " arguments answered, the Gnostic timeline, the shalom wheel, " + A("bsQA").length + " deep questions"],
         ["recover", "Habits, healing & help", A("rcCases").length + " case studies, the habit loop, two cycles, a visual map, " + A("rcQA").length + " deep questions"],
-        ["justice", "Justice, conflict & call-outs", A("jxScenes").length + " situations to practise, the 5 Ds, the revenge cycle, " + A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length + " deep questions"],
+        ["justice", "Justice, conflict & call-outs", window.RGtr("{a} situations to practise, the 5 Ds, the revenge cycle, {b} deep questions", { a: A("jxScenes").length, b: A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length })],
         ["woman", "Man, woman & Genesis", A("wmQA").length + " deep questions, Genesis 1 and 2 compared, " + A("wmWomen").length + " women in God’s story"],
         ["blood", "The life is in the blood", "An animated journey of blood, " + A("blStory").length + " moments in the scarlet thread, " + A("blQA").length + " deep questions"],
         ["doxa", "Doxa: from glory to glory", dxAll().length + " parts, two glories, a glory-to-glory journey and a quiz"],
@@ -2061,7 +2061,7 @@
 
   V.saved = function () {
     var items = saved.map(function (k) { var p = k.split(":"); return { type: p[0], x: find(p[0], p[1]) }; }).filter(function (o) { return o.x; });
-    return head("Your collection", "Saved", "Tap the star on any card to keep it here. Saved items live in this browser only.") +
+    return head("Your collection", "Saved items", "Tap the star on any card to keep it here. Saved items live in this browser only.") +
       (items.length ? '<div class="grid">' + items.map(function (o) {
         if (o.type === "theme") return '<a class="card" href="#theme.' + o.x.id + '"><div class="label">Theme</div><h3>' + esc(o.x.title) + "</h3></a>";
         return card(o.type, o.x, { top: '<div class="label">' + TYPES[o.type].label + "</div>" });

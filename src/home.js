@@ -11,34 +11,27 @@
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function ic(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + "</svg>"; }
   function curHash() { return decodeURIComponent(location.hash.slice(1)); }
+  // tr("{a} of {b} explored", {a: 3, b: 9}): looks the whole template up in the Tamil dictionary, then fills it
+  function tr(t, v) { var o = window.RGI18N ? window.RGI18N.t(t) : t; return v ? o.replace(/\{(\w+)\}/g, function (m, k) { return v[k] == null ? m : v[k]; }) : o; }
+  function L(en, key) { var t = tr(key); return t === key ? en : t; }
+  function ta() { return !!(window.RGI18N && window.RGI18N.lang() === "ta"); }
 
   /* ---------- topics (sidebar groups, home topic map, pager order) ---------- */
   var ROOMS = [
-    { id: "entrance", name: "Start here", c: "accent", scene: "door", tag: "How to read the Bible, the atlas map, and the good news the apostles announced.",
-      prompt: "What picture of God did you grow up with? Write it down before you walk further in.", items: ["read", "atlas", "theme.bible-narratives", "theme.undiluted-gospel"] },
-    { id: "revelation", name: "Who God is", c: "gold", scene: "sun", tag: "Jesus shows us the Father. Love is God's one nature, and the hard passages read differently in his light.",
-      prompt: "Which picture of God in these studies surprised you most, and why?", items: ["story", "theme.perfect-theology", "love", "apostles", "lens", "journey", "violence", "authored", "question", "sovereign", "ways"] },
-    { id: "union", name: "Union & the Trinity", c: "dawn", scene: "trinity", tag: "Father, Son and Spirit, and a humanity drawn into their shared life. The relational gospel at its heart.",
-      prompt: "If you are already included in the life of the Trinity, what changes about today?", items: ["theme.trinitarian-gospel", "trinity", "theme.union-sonship", "compare", "trees", "newcreation", "incarnation", "theme.designed-for-connection", "embrace", "doxa", "ecstasy"] },
-    { id: "cross", name: "The cross & new birth", c: "wine", scene: "cross", tag: "What the cross did, what was defeated, and what it means to be born from above.",
-      prompt: "How would you explain what the cross did to a friend who has never been to church?", items: ["saviour", "lamb", "blood", "facets", "tenses", "deathless", "reborn", "allsaved"] },
-    { id: "healing", name: "Healing & freedom", c: "dawn", scene: "heal", tag: "Heart healing, forgiveness, boundaries, habits, and hope while you are still growing.",
-      prompt: "Where do you need healing or repair right now? Name it gently.", items: ["identity", "unfold", "forgive", "sorry", "boundaries", "recover", "healing", "resist", "justice"] },
-    { id: "kingdom", name: "Kingdom & church", c: "accent", scene: "seed", tag: "Ekklesia, the parables of the kingdom, mission, and the ministry of reconciliation.",
-      prompt: "What would the church look like if it lived as a family and a kingdom colony?", items: ["kingdom", "realm", "parables", "theme.church-now", "sozo", "reconcile", "mission", "share", "miracles"] },
-    { id: "blessing", name: "Blessing & promise", c: "gold", scene: "cup", tag: "Covenant blessing, God's heart for provision, faith, promises, gifts and the sons of God.",
-      prompt: "Which promise do you find hardest to receive, and what stands in the way?", items: ["blessing", "covenant", "name", "belief", "receive", "enforce", "gifts", "sons"] },
-    { id: "living", name: "Everyday life", c: "ember", scene: "path", tag: "Worship, work, money, family, manners, and love with a spine on a Monday.",
-      prompt: "Pick one practice from this room to try this week. What is it?", items: ["living", "life", "worship", "paths", "design", "woman", "why"] },
-    { id: "library", name: "Law, culture & Scripture", c: "accent", scene: "scroll", tag: "Why the Law was given, the customs behind the text, the words of Jesus, and common misreadings.",
-      prompt: "Which verse have you heard misused? How does its setting change it?", items: ["law", "culture", "sayings", "myths", "misuse", "conflate", "lies"] },
-    { id: "themes", name: "The great themes", c: "gold", scene: "sun", tag: "Incarnation, union, the Triune dance, resurrection and the restoration of all things, one theme at a time.",
-      prompt: "", items: ["themes"] },
-    { id: "council", name: "Voices & debates", c: "wine", scene: "voices", tag: "Church fathers and teachers, frameworks compared, big questions, and the strongest objections answered.",
-      prompt: "Which objection still troubles you? Write it as honestly as you can.", items: ["voices", "embodied", "models", "big", "religion", "teachings", "debate"] },
-    { id: "you", name: "Your study", c: "gold", scene: "lamp", tag: "Saved studies, highlights, notes and progress, kept in this browser.", prompt: "", items: ["saved"] }
+    { id: "entrance", name: "Start here", c: "accent", scene: "door", tag: "How to read the Bible, the atlas map, and the good news the apostles announced.", items: ["read", "atlas", "theme.bible-narratives", "theme.undiluted-gospel"] },
+    { id: "revelation", name: "Who God is", c: "gold", scene: "sun", tag: "Jesus shows us the Father. Love is God's one nature, and the hard passages read differently in his light.", items: ["story", "theme.perfect-theology", "love", "apostles", "lens", "journey", "violence", "authored", "question", "sovereign", "ways"] },
+    { id: "union", name: "Union & the Trinity", c: "dawn", scene: "trinity", tag: "Father, Son and Spirit, and a humanity drawn into their shared life. The relational gospel at its heart.", items: ["theme.trinitarian-gospel", "trinity", "theme.union-sonship", "compare", "trees", "newcreation", "incarnation", "theme.designed-for-connection", "embrace", "doxa", "ecstasy"] },
+    { id: "cross", name: "The cross & new birth", c: "wine", scene: "cross", tag: "What the cross did, what was defeated, and what it means to be born from above.", items: ["saviour", "lamb", "blood", "facets", "tenses", "deathless", "reborn", "allsaved"] },
+    { id: "healing", name: "Healing & freedom", c: "dawn", scene: "heal", tag: "Heart healing, forgiveness, boundaries, habits, and hope while you are still growing.", items: ["identity", "unfold", "forgive", "sorry", "boundaries", "recover", "healing", "resist", "justice"] },
+    { id: "kingdom", name: "Kingdom & church", c: "accent", scene: "seed", tag: "Ekklesia, the parables of the kingdom, mission, and the ministry of reconciliation.", items: ["kingdom", "realm", "parables", "theme.church-now", "sozo", "reconcile", "mission", "share", "miracles"] },
+    { id: "blessing", name: "Blessing & promise", c: "gold", scene: "cup", tag: "Covenant blessing, God's heart for provision, faith, promises, gifts and the sons of God.", items: ["blessing", "covenant", "name", "belief", "receive", "enforce", "gifts", "sons"] },
+    { id: "living", name: "Everyday life", c: "ember", scene: "path", tag: "Worship, work, money, family, manners, and love with a spine on a Monday.", items: ["living", "life", "worship", "paths", "design", "woman", "why"] },
+    { id: "library", name: "Law, culture & Scripture", c: "accent", scene: "scroll", tag: "Why the Law was given, the customs behind the text, the words of Jesus, and common misreadings.", items: ["law", "culture", "sayings", "myths", "misuse", "conflate", "lies"] },
+    { id: "themes", name: "The great themes", c: "gold", scene: "sun", tag: "Incarnation, union, the Triune dance, resurrection and the restoration of all things, one theme at a time.", items: ["themes"] },
+    { id: "council", name: "Voices & debates", c: "wine", scene: "voices", tag: "Church fathers and teachers, frameworks compared, big questions, and the strongest objections answered.", items: ["voices", "embodied", "models", "big", "religion", "teachings", "debate"] },
+    { id: "you", name: "Your study", c: "gold", scene: "lamp", tag: "Saved studies, highlights, notes and progress, kept in this browser.", items: ["saved"] }
   ];
-  var MORE = { id: "more", name: "More studies", c: "muted", scene: "door", tag: "Studies added since these topics were arranged.", prompt: "", items: [] };
+  var MORE = { id: "more", name: "More studies", c: "muted", scene: "door", tag: "Studies added since these topics were arranged.", items: [] };
   var MAP = {}; ROOMS.forEach(function (r) { r.items.forEach(function (h) { MAP[h] = r.id; }); });
   function room(id) { for (var i = 0; i < ROOMS.length; i++) if (ROOMS[i].id === id) return ROOMS[i]; return id === "more" ? MORE : null; }
   function roomOf(h) { if (MAP[h]) return MAP[h]; if (/^theme\./.test(h)) return "themes"; return "more"; }
@@ -107,7 +100,7 @@
     { k: "curious", t: "Curious", m: "Good place to start. These three give you the big picture fast.", go: ["big", "story", "theme.perfect-theology"] },
     { k: "anxious", t: "Anxious", m: "You are held. These studies look at God's heart, and at whether he is behind what frightens you.", go: ["love", "ways", "sovereign"] },
     { k: "guilty", t: "Guilty", m: "Guilt is heavy. See what the cross actually dealt with, and how to tell true guilt from false.", go: ["forgive", "saviour", "sorry"] },
-    { k: "hurt", t: "Hurt", m: "Being hurt by people, or by church, is real. These rooms talk about repair, boundaries and healing.", go: ["forgive", "boundaries", "identity"] },
+    { k: "hurt", t: "Hurt", m: "Being hurt by people, or by church, is real. These studies talk about repair, boundaries and healing.", go: ["forgive", "boundaries", "identity"] },
     { k: "doubting", t: "Doubting", m: "Questions are welcome here. These take the hardest ones head on.", go: ["question", "authored", "violence"] },
     { k: "tired", t: "Tired of religion", m: "Many people are. Here is what religion misses, and the good news underneath it.", go: ["religion", "lies", "theme.undiluted-gospel"] },
     { k: "hungry", t: "Hungry for more", m: "Go deeper into union, joy and worship.", go: ["embrace", "ecstasy", "worship"] },
@@ -139,11 +132,33 @@
     shame: ["identity", "doxa", "forgive"], guilt: ["sorry", "forgive", "saviour"], adam: ["newcreation", "big"], eve: ["woman"], glory: ["doxa"], union: ["theme.union-sonship", "embrace"], joy: ["ecstasy"], healing: ["healing", "identity"]
   };
   var STOP = { the: 1, a: 1, an: 1, is: 1, are: 1, of: 1, to: 1, and: 1, in: 1, on: 1, do: 1, does: 1, i: 1, my: 1, me: 1, what: 1, why: 1, how: 1, who: 1, about: 1, god: 1, bible: 1, it: 1, for: 1, with: 1, can: 1, will: 1, be: 1, that: 1, this: 1, was: 1, did: 1, if: 1, or: 1, at: 1 };
+  // Tamil stems → the English keyword they stand for in SYN
+  var TSYN = {
+    "நரக": "hell", "கோப": "wrath", "சினம்": "anger", "தண்டன": "punish", "தண்டி": "punish", "நியாயப்பிரமாண": "law", "சட்ட": "law", "தசமபாக": "tithe",
+    "சுக": "heal", "வியாதி": "sick", "நோய்": "sick", "மன்னி": "forgive", "அடிமைத்தன": "addiction", "பழக்க": "habit", "தீமை": "evil", "தீய": "evil",
+    "பாடு": "suffer", "துன்ப": "suffering", "வேதனை": "suffering", "திரித்துவ": "trinity", "ஞானஸ்நான": "baptism", "பெண்": "women", "திருமண": "marriage",
+    "மரண": "death", "சாவு": "death", "சிலுவை": "cross", "பாவநிவிர்த்தி": "atonement", "இரத்த": "blood", "இரட்சி": "saved", "மறுபடியும்": "born",
+    "ஜெப": "prayer", "சபை": "church", "திருச்சபை": "church", "பண": "money", "பாவ": "sin", "பிசாசு": "devil", "சாத்தான்": "satan", "பேய்": "demon",
+    "வன்முறை": "violence", "போர்": "war", "யுத்த": "war", "பழைய": "old", "ஓய்வுநாள்": "sabbath", "இயேசு": "jesus", "பிதா": "father", "தந்தை": "father",
+    "ஆவி": "spirit", "ஆராதனை": "worship", "பய": "fear", "அச்ச": "fear", "கவலை": "anxious", "சந்தேக": "doubt", "கட்டுப்பா": "control", "எல்லை": "boundaries",
+    "துஷ்பிரயோக": "abuse", "நீதி": "justice", "ராஜ்ய": "kingdom", "அறிவிப்பு": "evangelism", "தீர்க்கதரிசன": "prophecy", "வரங்க": "gifts",
+    "விசுவாச": "faith", "கிருபை": "grace", "அடையாள": "identity", "அவமான": "shame", "குற்ற": "guilt", "ஆதாம்": "adam", "ஏவாள்": "eve", "மகிமை": "glory",
+    "ஐக்கிய": "union", "சந்தோஷ": "joy", "மகிழ்ச்சி": "joy", "தலைமுடி": "hair", "முக்காடு": "veil", "செருப்பு": "sandals"
+  };
   function answer(q) {
     var words = q.toLowerCase().replace(/[^a-z0-9஀-௿\s'-]/g, " ").split(/\s+/).filter(function (w) { return w.length > 1 && !STOP[w]; });
     var score = {};
     function add(h, n) { if (TITLE[h]) score[h] = (score[h] || 0) + n; }
     words.forEach(function (w) {
+      if (/[஀-௿]/.test(w)) {
+        // Tamil: words carry case endings (நரகம், நரகத்தை…), so match on stems and on the translated titles
+        Object.keys(TSYN).forEach(function (st) { if (w.indexOf(st) === 0) (SYN[TSYN[st]] || []).forEach(function (h, i) { add(h, 6 - i); }); });
+        var tst = w.length > 4 ? w.slice(0, w.length - 2) : w;
+        if (tst.length >= 3) Object.keys(TITLE).forEach(function (h) {
+          if (tr(TITLE[h]).indexOf(tst) > -1) add(h, 4); else if (DESC[h] && tr(DESC[h]).indexOf(tst) > -1) add(h, 1.5);
+        });
+        return;
+      }
       var stem = w.replace(/(ing|ed|es|s)$/, "");
       Object.keys(SYN).forEach(function (k) { if (k === w || k === stem) SYN[k].forEach(function (h, i) { add(h, 6 - i); }); });
       Object.keys(TITLE).forEach(function (h) {
@@ -165,12 +180,12 @@
   }
   function topicTile(r, i, on) {
     var p = prog(r);
-    return '<button type="button" class="rm-tile t-' + r.id + '" data-topic="' + r.id + '" aria-pressed="' + !!on + '" style="--c:' + col(r) + ";--i:" + i + '"><span class="rm-tile-sc">' + scene(r.scene) + '</span><span class="rm-tile-tx"><b>' + esc(r.name) + '</b><span class="rm-meter"><i style="width:' + Math.round(p.p * 100) + '%"></i></span><span class="rm-tile-n">' + p.s + " of " + p.n + " explored</span></span></button>";
+    return '<button type="button" class="rm-tile t-' + r.id + '" data-topic="' + r.id + '" aria-pressed="' + !!on + '" style="--c:' + col(r) + ";--i:" + i + '"><span class="rm-tile-sc">' + scene(r.scene) + '</span><span class="rm-tile-tx"><b>' + esc(r.name) + '</b><span class="rm-meter"><i style="width:' + Math.round(p.p * 100) + '%"></i></span><span class="rm-tile-n">' + tr("{a} of {b} explored", { a: p.s, b: p.n }) + "</span></span></button>";
   }
   function topicMap(id) {
     var r = room(id); if (!r) return "";
     var list = r.items.filter(function (h) { return TITLE[h]; }), p = prog(r), next = list.filter(function (h) { return !seen[h]; })[0] || list[0];
-    return '<div class="rm-topic" style="--c:' + col(r) + '"><div class="rm-topic-h"><div class="rm-topic-sc">' + scene(r.scene) + '</div><div><h3>' + esc(r.name) + '</h3><p>' + esc(r.tag) + '</p><div class="rm-prog">' + ring(p.p, 40) + "<span><b>" + p.s + " of " + p.n + "</b> explored</span>" + (next ? '<a class="btn sm" href="#' + esc(next) + '">' + (p.s ? "Continue: " : "Start: ") + esc(title(next)) + "</a>" : "") + "</div></div></div>" +
+    return '<div class="rm-topic" style="--c:' + col(r) + '"><div class="rm-topic-h"><div class="rm-topic-sc">' + scene(r.scene) + '</div><div><h3>' + esc(r.name) + '</h3><p>' + esc(r.tag) + '</p><div class="rm-prog">' + ring(p.p, 40) + "<span>" + tr("{a} of {b} explored", { a: "<b>" + p.s + "</b>", b: "<b>" + p.n + "</b>" }) + "</span>" + (next ? '<a class="btn sm" href="#' + esc(next) + '">' + tr(p.s ? "Continue: {t}" : "Start: {t}", { t: esc(tr(title(next))) }) + "</a>" : "") + "</div></div></div>" +
       flow(list.map(function (h) { return { t: title(h), href: "#" + h, seen: !!seen[h], on: h === next }; }), "room") +
       '<div class="rm-cards">' + list.map(function (h, i) { return studyCard(h, i); }).join("") + "</div></div>";
   }
@@ -180,7 +195,7 @@
     ((window.RG || {}).themes || []).forEach(function (t) { (t.keyVerses || []).forEach(function (v) { if (v && v.text && v.text.length < 260) V.push({ v: v, t: t }); }); });
     if (!V.length) return "";
     var d = new Date(), n = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 864e5), x = V[n % V.length];
-    return '<div class="rm-vt"><div class="label">Verse for today</div><blockquote>' + esc(x.v.text) + '</blockquote><div class="rm-vt-f"><span class="ref">' + esc(x.v.ref) + '</span><a href="#theme.' + esc(x.t.id) + '">Read the theme: ' + esc(x.t.title) + "</a></div></div>";
+    return '<div class="rm-vt"><div class="label">Verse for today</div><blockquote>' + esc(x.v.text) + '</blockquote><div class="rm-vt-f"><span class="ref">' + esc(x.v.ref) + '</span><a href="#theme.' + esc(x.t.id) + '">' + tr("Read the theme: {t}", { t: esc(x.t.title) }) + "</a></div></div>";
   }
   function hero() {
     // a large animated picture of union: Father, Son and Spirit in a dance, with humanity drawn into the centre
@@ -202,7 +217,7 @@
     var tp = get("rga.r.topic", "revelation"), tps = allRooms().filter(function (r) { return r.id !== "you"; });
     if (!room(tp)) tp = tps[0].id;
     return '<div class="rm-page" data-rm="home">' +
-      '<section class="rm-hero"><div class="rm-hero-tx"><div class="rm-greet"><span>' + greet() + "</span>" + (s ? '<span class="rm-chip">' + s + "-day streak</span>" : "") + (ex ? '<span class="rm-chip">' + ex + " of " + tot + " explored</span>" : "") + "</div>" +
+      '<section class="rm-hero"><div class="rm-hero-tx"><div class="rm-greet"><span>' + greet() + "</span>" + (s ? '<span class="rm-chip">' + tr("{n}-day streak", { n: s }) + "</span>" : "") + (ex ? '<span class="rm-chip">' + tr("{a} of {b} explored", { a: ex, b: tot }) + "</span>" : "") + "</div>" +
       "<h1>See God the way Jesus shows him</h1>" +
       '<p class="lede">Studies, animated diagrams and honest questions on the relational gospel: a Father who was never against you, a Son who joined humanity, and a Spirit who draws you into their life.</p>' +
       '<blockquote class="rm-quote">“No one has seen God at any time. The one and only Son, who is in the bosom of the Father, he has declared him.”<span class="ref">John 1:18 · WEB</span></blockquote>' +
@@ -223,15 +238,15 @@
   }
   function storyOut(i) {
     var f = FLOW[i]; if (!f) return "";
-    return '<div class="rm-step-card"><span class="rm-step-n">' + (i + 1) + ' of 8</span><h3>' + esc(f.t) + '</h3><p>' + esc(f.d) + '</p><div class="row"><span class="ref">' + esc(f.r) + "</span>" + (TITLE[f.go] ? '<a class="btn sm" href="#' + esc(f.go) + '">Open: ' + esc(title(f.go)) + "</a>" : "") + "</div></div>";
+    return '<div class="rm-step-card"><span class="rm-step-n">' + tr("{a} of {b}", { a: i + 1, b: FLOW.length }) + '</span><h3>' + esc(f.t) + '</h3><p>' + esc(f.d) + '</p><div class="row"><span class="ref">' + esc(f.r) + "</span>" + (TITLE[f.go] ? '<a class="btn sm" href="#' + esc(f.go) + '">' + tr("Open: {t}", { t: esc(tr(title(f.go))) }) + "</a>" : "") + "</div></div>";
   }
   function vYou() {
     var ex = Object.keys(seen).filter(function (h) { return TITLE[h]; }).length, tot = Object.keys(TITLE).length, hl = get("rga.sk.hl", []), sv = get("rga.saved", []);
     var started = allRooms().filter(function (r) { return r.id !== "you" && prog(r).s; }).length, note = get("rga.r.j.notes", "");
     return '<div class="rm-page" data-rm="you" style="--c:var(--gold)"><section class="rm-banner"><div class="rm-banner-sc">' + scene("lamp") + '</div><div class="rm-banner-tx"><div class="label">Your study</div><h1>Your study</h1><p class="lede">Your progress, highlights, saved studies and notes. Everything here is kept in this browser only.</p></div></section>' +
-      '<section class="rm-stats">' + [[ex, "of " + tot + " studies explored"], [started, "topics started"], [streak(), "day streak"], [hl.length, "highlights"], [sv.length, "saved items"]].map(function (s) { return '<div><b class="rm-num">' + s[0] + "</b><span>" + s[1] + "</span></div>"; }).join("") + "</section>" +
+      '<section class="rm-stats">' + [[ex, tr("of {n} studies explored", { n: tot })], [started, "topics started"], [streak(), "day streak"], [hl.length, "highlights"], [sv.length, "saved items"]].map(function (s) { return '<div><b class="rm-num">' + s[0] + "</b><span>" + s[1] + "</span></div>"; }).join("") + "</section>" +
       '<section class="section"><h2>Progress by topic</h2><div class="rm-bars">' + allRooms().filter(function (r) { return r.id !== "you"; }).map(function (r) { var p = prog(r); return '<button type="button" data-gotopic="' + r.id + '" style="--c:' + col(r) + '"><span>' + esc(r.name) + '</span><span class="rm-meter"><i style="width:' + Math.round(p.p * 100) + '%"></i></span><b>' + p.s + "/" + p.n + "</b></button>"; }).join("") + "</div></section>" +
-      '<section class="section"><h2>Your shelf</h2><div class="row"><a class="btn" href="#saved">Open saved studies</a><button class="btn ghost" type="button" data-openhl>Open highlights (' + hl.length + ")</button></div></section>" +
+      '<section class="section"><h2>Your shelf</h2><div class="row"><a class="btn" href="#saved">Open saved studies</a><button class="btn ghost" type="button" data-openhl>' + tr("Open highlights ({n})", { n: hl.length }) + "</button></div></section>" +
       (hist.length ? '<section class="section"><h2>Recently explored</h2><div class="rm-cards">' + hist.filter(function (h) { return TITLE[h]; }).slice(0, 6).map(function (h, i) { return studyCard(h, i); }).join("") + "</div></section>" : "") +
       '<section class="section rm-reflect"><h2>Notes</h2><p class="rm-prompt">What is God showing you? Write questions, prayers or anything you want to remember.</p><textarea id="rm-j-notes" data-journal="rga.r.j.notes" placeholder="Only you can see this; it stays in this browser.">' + esc(note) + '</textarea><span class="note" data-jstate>' + (note ? "Saved in this browser" : "") + "</span></section></div>";
   }
@@ -309,8 +324,8 @@
     setTimeout(function () {
       typing.remove();
       var hits = answer(q);
-      if (hits.length) guideMsg("<p>Here are the studies that speak to that:</p><div class=\"rm-cards mini\">" + hits.map(function (h) { return studyCard(h).replace('<a class="rm-card', '<a data-close class="rm-card'); }).join("") + '</div><button type="button" class="chip" data-gsearch="' + esc(q) + '">Search every word for “' + esc(q.length > 30 ? q.slice(0, 30) + "…" : q) + "”</button>");
-      else guideMsg('<p>I could not match that to a study. Try a single word like <em>hell</em>, <em>Law</em> or <em>healing</em>, or search every word in the atlas.</p><button type="button" class="chip" data-gsearch="' + esc(q) + '">Search the atlas</button>');
+      if (hits.length) guideMsg("<p>Here are the studies that speak to that:</p><div class=\"rm-cards mini\">" + hits.map(function (h) { return studyCard(h).replace('<a class="rm-card', '<a data-close class="rm-card'); }).join("") + '</div><button type="button" class="chip" data-gsearch="' + esc(q) + '">' + tr("Search every word for “{q}”", { q: esc(q.length > 30 ? q.slice(0, 30) + "…" : q) }) + "</button>");
+      else guideMsg(tr('<p>I could not match that to a study. Try a single word like <em>hell</em>, <em>Law</em> or <em>healing</em>, or search every word in the atlas.</p>') + '<button type="button" class="chip" data-gsearch="' + esc(q) + '">Search the atlas</button>');
     }, reduced ? 50 : 650);
   }
   function openGuide(q) {
@@ -334,7 +349,7 @@
   function dock() {
     if ($(".rm-dock")) return;
     var d = doc.createElement("nav"); d.className = "rm-dock"; d.setAttribute("aria-label", "Main");
-    d.innerHTML = '<a href="#home" data-d="home">' + ic('<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>') + "<span>Home</span></a>" +
+    d.innerHTML = '<a href="#home" data-d="home">' + ic('<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>') + "<span>" + esc(L("Home", "Home (start page)")) + "</span></a>" +
       '<button type="button" data-dbrowse>' + ic('<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/>') + "<span>Browse</span></button>" +
       '<button type="button" class="rm-dock-ask" data-guide aria-label="Ask the guide">' + ic('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/>') + "<span>Ask</span></button>" +
       '<button type="button" data-dsearch>' + ic('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>') + "<span>Search</span></button>" +

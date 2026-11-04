@@ -41,6 +41,9 @@
 
   /* ---------- toast ---------- */
   var toastT = 0;
+  function tr(t, v) { var o = window.RGI18N ? window.RGI18N.t(t) : t; return v ? o.replace(/\{(\w+)\}/g, function (m, k) { return v[k] == null ? m : v[k]; }) : o; }
+  // L("Home", "Home (start page)"): English text, or the Tamil stored under a key that is unique to this label
+  function L(en, key) { var t = tr(key); return t === key ? en : t; }
   function toast(msg) {
     var old = $(".sk-toast"); if (old) old.remove();
     var t = doc.createElement("div"); t.className = "sk-toast"; t.setAttribute("role", "status"); t.textContent = msg; doc.body.appendChild(t);
@@ -69,7 +72,7 @@
         if (t.id === "you") ls.unshift(mk("you", "Progress & notes"));
         return { name: t.name, links: ls, col: T.col(t), icon: TICON[t.id] };
       }).filter(function (g) { return g.links.length; });
-      groups.unshift({ name: "Home", links: [mk("home", "Home")], home: true });
+      groups.unshift({ name: "Home", links: [mk("home", L("Home", "Home (start page)"))], home: true });
     }
     NAV = [];
     groups.forEach(function (g, gi) { if (g.home) return; g.links.forEach(function (a) { NAV.push({ hash: hashOf(a), text: a.textContent, group: g.name, gi: gi, col: g.col, cur: a.getAttribute("aria-current") === "page" }); }); });
@@ -80,7 +83,7 @@
     f.innerHTML = '<label>' + SEARCH + '<input id="sk-rail-q" type="search" placeholder="Filter studies" autocomplete="off" aria-label="Filter studies"></label>';
     frag.appendChild(f);
     groups.forEach(function (g, gi) {
-      if (g.home) { var hl = g.links[0]; hl.className = "sk-home"; hl.innerHTML = '<span class="sk-gi">' + TICON.home + "</span><span>Home</span>"; frag.appendChild(hl); return; }
+      if (g.home) { var hl = g.links[0]; hl.className = "sk-home"; hl.innerHTML = '<span class="sk-gi">' + TICON.home + "</span><span>" + esc(L("Home", "Home (start page)")) + "</span>"; frag.appendChild(hl); return; }
       var col = g.col ? { c: g.col, s: "color-mix(in srgb, " + g.col + " 15%, transparent)", i: g.icon || G(gi).i } : G(gi), box = doc.createElement("div");
       box.className = "sk-grp" + (openSet.indexOf(gi) > -1 || gi === curG ? " open" : ""); box.dataset.gi = gi;
       box.style.setProperty("--c", col.c); box.style.setProperty("--c-soft", col.s);
@@ -89,7 +92,7 @@
       g.links.forEach(function (a) { inner.appendChild(a); });
       frag.appendChild(box);
     });
-    var none = doc.createElement("p"); none.className = "sk-none"; none.hidden = true; none.textContent = "No region matches that. Try a shorter word."; frag.appendChild(none);
+    var none = doc.createElement("p"); none.className = "sk-none"; none.hidden = true; none.textContent = "No study matches that. Try a shorter word."; frag.appendChild(none);
     rail.innerHTML = ""; rail.appendChild(frag);
     var q = $("#sk-rail-q"); q.value = filterQ; if (filterQ) applyFilter();
     q.addEventListener("input", function () { filterQ = q.value; applyFilter(); });
@@ -149,7 +152,7 @@
     // previous / next
     var pg = $(".sk-pager", main); if (pg) pg.remove();
     if (ci > -1) {
-      var prev = NAV[ci - 1], next = NAV[ci + 1], p = doc.createElement("nav"); p.className = "sk-pager"; p.setAttribute("aria-label", "Previous and next region");
+      var prev = NAV[ci - 1], next = NAV[ci + 1], p = doc.createElement("nav"); p.className = "sk-pager"; p.setAttribute("aria-label", "Previous and next study");
       p.innerHTML = (prev ? '<a class="prev" href="#' + esc(prev.hash) + '"><small><kbd>[</kbd> Previous</small><b>' + esc(prev.text) + "</b></a>" : "") +
         (next ? '<a class="next" href="#' + esc(next.hash) + '"><small>Next <kbd>]</kbd></small><b>' + esc(next.text) + "</b></a>" : "");
       plate.insertAdjacentElement("afterend", p);
@@ -168,8 +171,8 @@
   });
   doc.addEventListener("click", function (e) {
     var r = e.target.closest && e.target.closest(".ref.sk-copyable"); if (!r) return;
-    var txt = r.textContent.trim(), done = function () { toast("Copied " + txt); };
-    try { navigator.clipboard.writeText(txt).then(done, function () { selectText(r); toast("Selected " + txt + ". Press copy to keep it."); }); } catch (err) { selectText(r); }
+    var txt = r.textContent.trim(), done = function () { toast(tr("Copied {t}", { t: txt })); };
+    try { navigator.clipboard.writeText(txt).then(done, function () { selectText(r); toast(tr("Selected {t}. Press copy to keep it.", { t: txt })); }); } catch (err) { selectText(r); }
   });
   function selectText(el) { try { var rg = doc.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); } catch (e) { /* no selection API */ } }
 
@@ -273,7 +276,7 @@
   function palHTML() {
     var m = modeNow();
     return '<div><h3>Colour scheme</h3><div class="sk-sw">' + SCHEMES.map(function (s) { return '<button type="button" data-sks="' + s[0] + '" aria-pressed="' + (scheme === s[0]) + '"><i style="--sw:' + s[2] + '"></i>' + s[1] + "</button>"; }).join("") + "</div></div>" +
-      '<div><h3>Appearance</h3><div class="sk-seg" role="group" aria-label="Appearance">' + [["light", "Light"], ["dark", "Dark"], ["system", "Match device"]].map(function (x) { return '<button type="button" data-skm="' + x[0] + '" aria-pressed="' + (m === x[0]) + '">' + x[1] + "</button>"; }).join("") + "</div></div>" +
+      '<div><h3>Appearance</h3><div class="sk-seg" role="group" aria-label="Appearance">' + [["light", L("Light", "Light (appearance)")], ["dark", L("Dark", "Dark (appearance)")], ["system", "Match device"]].map(function (x) { return '<button type="button" data-skm="' + x[0] + '" aria-pressed="' + (m === x[0]) + '">' + x[1] + "</button>"; }).join("") + "</div></div>" +
       '<div><h3>Text size</h3><div class="sk-seg" role="group" aria-label="Text size">' + SZ_LABEL.map(function (l, i) { return '<button type="button" data-skz="' + i + '" aria-pressed="' + (sz === i) + '" style="font-size:' + (12 + i * 1.5) + 'px">' + l + "</button>"; }).join("") + "</div></div>" +
       '<div class="sk-row sk-focus-row"><span>Reading focus<small>Hide the side panels so the study fills the page. Shortcut: F</small></span><button type="button" class="sk-switch" data-skf aria-pressed="' + focusOn + '" aria-label="Reading focus"></button></div>';
   }
@@ -342,7 +345,7 @@
     hideBar();
     bar = doc.createElement("div"); bar.className = "sk-hlbar"; bar.setAttribute("role", "toolbar"); bar.setAttribute("aria-label", "Highlight");
     var cur = forMark ? forMark.dataset.c : "";
-    bar.innerHTML = HLC.map(function (c) { return '<button type="button" class="c" data-c="' + c[0] + '" aria-pressed="' + (cur === c[0]) + '" aria-label="Highlight ' + c[1] + '" title="' + c[1] + '"></button>'; }).join("") +
+    bar.innerHTML = HLC.map(function (c) { return '<button type="button" class="c" data-c="' + c[0] + '" aria-pressed="' + (cur === c[0]) + '" aria-label="' + esc(tr("Highlight in {c}", { c: tr(c[1]) })) + '" title="' + esc(tr(c[1])) + '"></button>'; }).join("") +
       (forMark ? '<button type="button" class="t" data-hlx>Remove</button>' : '<button type="button" class="t" data-hlcopy>Copy</button>');
     bar.style.left = Math.max(110, Math.min(doc.documentElement.clientWidth - 110, x)) + "px"; bar.style.top = (y + scrollY) + "px";
     doc.body.appendChild(bar); barMark = forMark || null;
@@ -420,7 +423,7 @@
     var m = $(".menu-sheet"); if (!m || m.dataset.sk) return; m.dataset.sk = "1";
     var T = window.RGTopics;
     if (T) {
-      var all = $$("a", m), html = '<div class="label" style="--c:var(--accent)">You</div><div class="grid"><a href="#home" data-close>Home</a><a href="#you" data-close>Your study</a></div>';
+      var all = $$("a", m), html = '<div class="label" style="--c:var(--accent)">You</div><div class="grid"><a href="#home" data-close>' + esc(L("Home", "Home (start page)")) + '</a><a href="#you" data-close>Your study</a></div>';
       T.all().forEach(function (t) {
         var ls = all.filter(function (a) { return T.roomOf(hashOf(a)) === t.id; });
         ls.sort(function (a, b) { var ia = t.items.indexOf(hashOf(a)), ib = t.items.indexOf(hashOf(b)); return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib); });

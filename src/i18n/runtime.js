@@ -43,9 +43,20 @@
   var D = {}, U = {}, REV = {};
   function norm(s) { return s.replace(/\s+/g, " ").trim(); }
   var RUN = /[A-Za-z][A-Za-z0-9'’‘\-–—.,:;!?&\/() ]*[A-Za-z0-9.!?)…]|[A-Za-z]/g;
+  // look a fragment up as-is, then without trailing punctuation, then without wrapping brackets,
+  // quotes and arrows ("Atonement (", "← Outer", "Deeper →", "“Delight”")
+  var LEAD = " ([“\"‘'«←→·•–—)", TRAIL = " )]”\"’'»→←·•.:,;!?…–—(";
+  function unwrap(t) {
+    if (t.length > 80) return null;                       // labels only; never scan whole paragraphs
+    var a = 0, b = t.length;
+    while (a < b && LEAD.indexOf(t.charAt(a)) > -1) a++;
+    while (b > a && TRAIL.indexOf(t.charAt(b - 1)) > -1) b--;
+    return a || b < t.length ? [t.slice(0, a), t.slice(a, b), t.slice(b)] : null;
+  }
   function piece(p) {
     var t = norm(p); if (!t) return p;
     var r = U[t] || U[t.replace(/[.:,;!?…]+$/, "")] && U[t.replace(/[.:,;!?…]+$/, "")] + t.match(/[.:,;!?…]+$/)[0];
+    if (!r) { var m = unwrap(t); if (m && m[1] && U[m[1]]) r = m[0] + U[m[1]] + m[2]; }
     if (!r) return p;
     return p.match(/^\s*/)[0] + r + p.match(/\s*$/)[0];
   }
@@ -81,7 +92,8 @@
   }
 
   /* ---------- DOM pass ---------- */
-  var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, INPUT: 1, SELECT: 1, CODE: 1 };
+  // form fields: their text is the reader's own, but their placeholder / aria-label / title are interface
+  var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, INPUT: 1, CODE: 1 }, FIELD = { INPUT: 1, TEXTAREA: 1 };
   var ATTRS = ["placeholder", "aria-label", "title", "alt"];
   function trEl(el) {
     for (var i = 0; i < ATTRS.length; i++) {
@@ -93,9 +105,14 @@
   function trTree(root) {
     if (!root) return;
     if (root.nodeType === 3) { if (!skip(root.parentNode)) { var v = root.nodeValue, n = trText(v); if (n !== v) root.nodeValue = n; } return; }
+    if (root.nodeType === 1 && FIELD[root.nodeName] && !root.closest("[data-noi18n]")) { trEl(root); return; }
     if (root.nodeType !== 1 || skip(root)) return;
     trEl(root);
-    var w = document.createTreeWalker(root, 5, { acceptNode: function (x) { return x.nodeType === 1 && (SKIP[x.nodeName] || x.hasAttribute("data-noi18n")) ? 2 : 1; } }), x;
+    var w = document.createTreeWalker(root, 5, { acceptNode: function (x) {
+      if (x.nodeType !== 1) return 1;
+      if (FIELD[x.nodeName] && !x.hasAttribute("data-noi18n")) { trEl(x); return 2; }
+      return SKIP[x.nodeName] || x.hasAttribute("data-noi18n") ? 2 : 1;
+    } }), x;
     while ((x = w.nextNode())) {
       if (x.nodeType === 1) trEl(x);
       else if (/[A-Za-z]/.test(x.nodeValue)) { var nv = trText(x.nodeValue); if (nv !== x.nodeValue) x.nodeValue = nv; }
@@ -142,6 +159,8 @@
 
   window.RGen = function (s) { return REV[s] || s; };
   window.RGI18N = { lang: function () { return lang; }, t: trText };
+  // RGtr("{a} of {b}", {a: 1, b: 2}): translate the whole template, then fill in the values
+  window.RGtr = function (t, v) { var o = trText(t); return v ? o.replace(/\{(\w+)\}/g, function (m, k) { return v[k] == null ? m : v[k]; }) : o; };
 
   window.RGboot = function (start) {
     mountSwitch();
