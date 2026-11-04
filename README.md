@@ -4,6 +4,7 @@ An interactive, animated study atlas of the relational gospel: Jesus as the perf
 
 - `src/` – page template, styles, app script and content data (`src/data/*.js`)
 - `src/skin.css` + `src/skin.js` – the Rose Window skin used by the main build: Avenir Next throughout (Nunito Sans where Avenir Next is not installed), six colour schemes (Rose window, Jordan, Gethsemane, Byzantine, Sunrise, High contrast) each in light and dark, a palette menu for scheme / appearance / text size / reading focus, a highlighter (select text, pick a colour; highlights are kept in the browser and listed under Highlights), motion (page entrance, aurora, rotating rays, drawn rules, marker sweeps, count-ups, tilt, ripples), collapsible navigator with filter, "On this page" thread, previous/next pager (`[` and `]`), bottom sheets with swipe-to-close on phones, rose-window atlas map
+- `src/home.js` + `src/home.css` – the home dashboard (`#home`: greeting, heart check-in, pick up where you left off, the story as an animated flowchart, explore-by-topic with animated illustrations and topic path maps, verse for today, the guide) and `#you` (progress by topic, highlights, saved, notes); also groups every study into topics for the sidebar, phone menu and previous/next order, and adds the guide chat and the phone dock
 - `node build.js` – inlines everything into `index.html` (any static host, e.g. GitHub Pages) and `dist/artifact.html`
 
 ## Languages (English / தமிழ்)

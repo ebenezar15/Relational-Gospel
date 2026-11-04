@@ -139,6 +139,7 @@
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
     { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved"]] }
   ];
+  window.RGVIEWS = VIEWS;
   var PINNED = ["perfect-theology", "bible-narratives", "undiluted-gospel", "trinitarian-gospel", "union-sonship", "designed-for-connection", "church-now"];
   function railHTML() {
     var cur = route.view === "theme" ? "theme." + route.id : route.view;
@@ -159,7 +160,7 @@
   var route = { view: "atlas", id: null, item: null };
   function parseHash() {
     var h = decodeURIComponent((location.hash || "").slice(1));
-    if (!h) return { view: "atlas" };
+    if (!h) return { view: V.home ? "home" : "atlas" };
     var dot = h.indexOf(".");
     if (dot === -1) return { view: h };
     var type = h.slice(0, dot), id = h.slice(dot + 1);
@@ -241,9 +242,7 @@
 
   /* ================= VIEWS ================= */
   var V = {};
-
-  V.atlas = function () {
-    var steps = [
+  var steps = [
       ["read", "How to read", "Jesus is the Word; the Bible is the witness to him."],
       ["story", "How God met humanity", "From a garden to a face: the light rising through the ages."],
       ["theme.perfect-theology", "Jesus, perfect theology", "If you have seen him, you have seen the Father."],
@@ -316,7 +315,10 @@
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
       ["debate", "Debates & strawmen", "The strongest objections, answered."]
-    ];
+  ];
+  window.RGV = V; window.RGsteps = steps;
+
+  V.atlas = function () {
     return '<section class="atlas"><div class="atlas-fig"><div class="atlas-stage" id="stage"><canvas id="sky" tabindex="0" aria-label="Rose window map of the atlas. Use the arrow keys to move between lights and Enter to open one."></canvas><div class="atlas-tip" id="tip" hidden></div></div><div class="sky-cap" id="sky-cap" aria-live="polite"></div></div>' +
       '<div class="atlas-copy"><div class="label">An atlas of the relational gospel</div>' +
       "<h1>Every road on this map leads to <em>Jesus</em></h1>" +
@@ -2736,5 +2738,6 @@
   });
   var th = load("rga.theme", null); if (th) document.documentElement.setAttribute("data-theme", th);
   window.addEventListener("hashchange", render);
+  window.RGrender = render;
   render();
 })();

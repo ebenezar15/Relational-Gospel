@@ -39,8 +39,8 @@ const FONTS_MAIN = "https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wgh
 const pageMain = page
   .replace(/(<meta name="claude:viewport-fit-sides"[^>]*>)/, (m) => m + "\n" + EARLY)
   .replace(/https:\/\/fonts\.googleapis\.com\/css2\?[^"]+/, () => FONTS_MAIN)
-  .replace("</style>", () => "\n" + src("skin.css") + "</style>")
-  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("skin.js")) + "</script>\n");
+  .replace("</style>", () => "\n" + src("skin.css") + "\n" + src("home.css") + "</style>")
+  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("home.js")) + "</script>\n<script>" + safe(src("skin.js")) + "</script>\n");
 fs.writeFileSync(path.join(__dirname, "dist", "artifact.html"), pageMain);
 fs.writeFileSync(
   path.join(__dirname, "index.html"),
