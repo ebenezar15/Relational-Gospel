@@ -1453,3 +1453,31 @@ html[lang="ta"] main button, html[lang="ta"] main .chip { white-space: normal; }
 .st-dend h3 { margin: 4px 0 6px; }
 .st-dnode, .st-dend { animation: stFadeUp .35s ease both; }
 @keyframes stFadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* layers: animated concentric-ring diagram */
+.ly-wrap{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:20px;align-items:start;margin-top:12px}
+@media (max-width:760px){.ly-wrap{grid-template-columns:1fr}.ly-svg{max-width:300px;margin:0 auto}}
+.ly-svg{width:100%;height:auto;display:block;overflow:visible}
+.ly-ring{fill:color-mix(in srgb,var(--gold) calc(4% + var(--i)*2%),transparent);stroke:var(--line);stroke-width:2;cursor:pointer;transition:stroke .3s,stroke-width .3s,fill .3s}
+.ly-ring.past{stroke:var(--gold-soft,var(--gold))}
+.ly-first .ly-ring{stroke-dasharray:1000;stroke-dashoffset:1000;animation:lyDraw 1.4s ease forwards;animation-delay:calc(var(--i)*.18s)}
+.ly-ring.on{stroke:var(--gold);stroke-width:4;fill:color-mix(in srgb,var(--gold) 18%,transparent);animation:lyPulse 2.4s ease-in-out infinite}
+.ly-first .ly-ring.on{animation:lyDraw 1.4s ease forwards,lyPulse 2.4s ease-in-out 1.4s infinite;animation-delay:calc(var(--i)*.18s),1.6s}
+.ly-ring:hover{stroke:var(--accent)}
+.ly-core{fill:var(--gold);opacity:.9;pointer-events:none;animation:lyGlow 3s ease-in-out infinite}
+.ly-ctext{fill:var(--on-gold,#fff);font:700 11px var(--body,sans-serif);text-anchor:middle;pointer-events:none}
+.ly-num{fill:var(--muted);font:700 11px var(--body,sans-serif);text-anchor:middle;pointer-events:none}
+.ly-num.on{fill:var(--ink)}
+.ly-keys{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.ly-key{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px 5px 5px;font:inherit;font-size:.86rem;cursor:pointer}
+.ly-first .ly-key{opacity:0;animation:lyIn .5s ease forwards;animation-delay:calc(.3s + var(--i)*.08s)}
+.ly-key i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--bg-2);font-style:normal;font-size:.75rem}
+.ly-key.on{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 30%,transparent)}
+.ly-key.on i{background:var(--gold);color:var(--on-gold,#fff)}
+.ly-card{border:1px solid var(--line);border-radius:var(--radius,14px);background:var(--surface);padding:14px 16px;animation:lyIn .45s ease}
+.ly-card h3{margin:.2em 0 .4em}
+@keyframes lyDraw{to{stroke-dashoffset:0}}
+@keyframes lyPulse{0%,100%{stroke-opacity:1}50%{stroke-opacity:.45}}
+@keyframes lyGlow{0%,100%{opacity:.85}50%{opacity:1}}
+@keyframes lyIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ly-ring,.ly-key,.ly-card,.ly-core{animation:none!important;stroke-dashoffset:0;opacity:1}}
