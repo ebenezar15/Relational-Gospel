@@ -137,8 +137,9 @@
     { group: "Law & culture", items: [["law", "Why God gave the Law"], ["culture", "Culture decoder"], ["sayings", "The words of Jesus"], ["myths", "Myths & mistranslations"]] },
     { group: "The great themes", items: [["themes", "All themes"]] },
     { group: "Voices & frameworks", items: [["voices", "Church fathers & teachers"], ["embodied", "The Embodied Gospel"], ["models", "Frameworks compared"]] },
-    { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved"]] }
+    { group: "The conversation", items: [["religion", "What religion misses"], ["teachings", "What is taught"], ["debate", "Debates & strawmen"], ["saved", "Saved items"]] }
   ];
+  window.RGVIEWS = VIEWS;
   var PINNED = ["perfect-theology", "bible-narratives", "undiluted-gospel", "trinitarian-gospel", "union-sonship", "designed-for-connection", "church-now"];
   function railHTML() {
     var cur = route.view === "theme" ? "theme." + route.id : route.view;
@@ -159,7 +160,7 @@
   var route = { view: "atlas", id: null, item: null };
   function parseHash() {
     var h = decodeURIComponent((location.hash || "").slice(1));
-    if (!h) return { view: "atlas" };
+    if (!h) return { view: V.home ? "home" : "atlas" };
     var dot = h.indexOf(".");
     if (dot === -1) return { view: h };
     var type = h.slice(0, dot), id = h.slice(dot + 1);
@@ -241,9 +242,7 @@
 
   /* ================= VIEWS ================= */
   var V = {};
-
-  V.atlas = function () {
-    var steps = [
+  var steps = [
       ["read", "How to read", "Jesus is the Word; the Bible is the witness to him."],
       ["story", "How God met humanity", "From a garden to a face: the light rising through the ages."],
       ["theme.perfect-theology", "Jesus, perfect theology", "If you have seen him, you have seen the Father."],
@@ -316,7 +315,10 @@
       ["theme.undiluted-gospel", "The undiluted gospel", "Recovering the good news the apostles announced."],
       ["themes", "The great themes", "Incarnation to apokatastasis."],
       ["debate", "Debates & strawmen", "The strongest objections, answered."]
-    ];
+  ];
+  window.RGV = V; window.RGsteps = steps;
+
+  V.atlas = function () {
     return '<section class="atlas"><div class="atlas-fig"><div class="atlas-stage" id="stage"><canvas id="sky" tabindex="0" aria-label="Rose window map of the atlas. Use the arrow keys to move between lights and Enter to open one."></canvas><div class="atlas-tip" id="tip" hidden></div></div><div class="sky-cap" id="sky-cap" aria-live="polite"></div></div>' +
       '<div class="atlas-copy"><div class="label">An atlas of the relational gospel</div>' +
       "<h1>Every road on this map leads to <em>Jesus</em></h1>" +
@@ -337,7 +339,7 @@
         ["compare", A("compare").length + " topics, two gospels", "Baptism, tithe, forgiveness, prayer, work and more"],
         ["blessing", "Blessing, matter & spiritual life", A("bsArgs").length + " arguments answered, the Gnostic timeline, the shalom wheel, " + A("bsQA").length + " deep questions"],
         ["recover", "Habits, healing & help", A("rcCases").length + " case studies, the habit loop, two cycles, a visual map, " + A("rcQA").length + " deep questions"],
-        ["justice", "Justice, conflict & call-outs", A("jxScenes").length + " situations to practise, the 5 Ds, the revenge cycle, " + A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length + " deep questions"],
+        ["justice", "Justice, conflict & call-outs", window.RGtr("{a} situations to practise, the 5 Ds, the revenge cycle, {b} deep questions", { a: A("jxScenes").length, b: A("jxQA1").concat(A("jxQA2"), A("jxQA3")).length })],
         ["woman", "Man, woman & Genesis", A("wmQA").length + " deep questions, Genesis 1 and 2 compared, " + A("wmWomen").length + " women in God’s story"],
         ["blood", "The life is in the blood", "An animated journey of blood, " + A("blStory").length + " moments in the scarlet thread, " + A("blQA").length + " deep questions"],
         ["doxa", "Doxa: from glory to glory", dxAll().length + " parts, two glories, a glory-to-glory journey and a quiz"],
@@ -2059,7 +2061,7 @@
 
   V.saved = function () {
     var items = saved.map(function (k) { var p = k.split(":"); return { type: p[0], x: find(p[0], p[1]) }; }).filter(function (o) { return o.x; });
-    return head("Your collection", "Saved", "Tap the star on any card to keep it here. Saved items live in this browser only.") +
+    return head("Your collection", "Saved items", "Tap the star on any card to keep it here. Saved items live in this browser only.") +
       (items.length ? '<div class="grid">' + items.map(function (o) {
         if (o.type === "theme") return '<a class="card" href="#theme.' + o.x.id + '"><div class="label">Theme</div><h3>' + esc(o.x.title) + "</h3></a>";
         return card(o.type, o.x, { top: '<div class="label">' + TYPES[o.type].label + "</div>" });
@@ -2736,5 +2738,6 @@
   });
   var th = load("rga.theme", null); if (th) document.documentElement.setAttribute("data-theme", th);
   window.addEventListener("hashchange", render);
+  window.RGrender = render;
   render();
 })();

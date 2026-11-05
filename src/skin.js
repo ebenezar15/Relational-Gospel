@@ -24,11 +24,26 @@
     { c: "var(--wine)", s: "var(--wine-soft)", i: ic('<path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/>') }
   ];
   function G(i) { return GROUPS[i % GROUPS.length]; }
+  var TICON = {
+    home: ic('<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>'),
+    entrance: GROUPS[0].i, revelation: GROUPS[1].i, union: GROUPS[2].i,
+    cross: ic('<path d="M12 3v18M7 8h10"/>'),
+    healing: GROUPS[7].i,
+    kingdom: ic('<path d="M12 21v-9"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7zM12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/>'),
+    blessing: ic('<path d="M6 8h12l-1 7a5 5 0 0 1-10 0z"/><path d="M12 20v-1M9 21h6M12 3v2"/>'),
+    living: ic('<path d="M4 20c4-1 5-6 9-7s5-6 7-9"/><circle cx="6" cy="18" r="1"/><circle cx="12" cy="13" r="1"/>'),
+    library: GROUPS[5].i, council: GROUPS[6].i, themes: GROUPS[4].i,
+    you: ic('<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>'),
+    more: GROUPS[4].i
+  };
   var CHEV = ic('<path d="m9 6 6 6-6 6"/>');
   var SEARCH = ic('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>');
 
   /* ---------- toast ---------- */
   var toastT = 0;
+  function tr(t, v) { var o = window.RGI18N ? window.RGI18N.t(t) : t; return v ? o.replace(/\{(\w+)\}/g, function (m, k) { return v[k] == null ? m : v[k]; }) : o; }
+  // L("Home", "Home (start page)"): English text, or the Tamil stored under a key that is unique to this label
+  function L(en, key) { var t = tr(key); return t === key ? en : t; }
   function toast(msg) {
     var old = $(".sk-toast"); if (old) old.remove();
     var t = doc.createElement("div"); t.className = "sk-toast"; t.setAttribute("role", "status"); t.textContent = msg; doc.body.appendChild(t);
@@ -46,16 +61,30 @@
       else if (el.tagName === "A" && cur) cur.links.push(el);
     });
     if (!groups.length) return;
+    var T = window.RGTopics, here = decodeURIComponent(location.hash.slice(1)) || "home";
+    if (T) {
+      // regroup the app's links into topics, in each topic's suggested order
+      var links = []; groups.forEach(function (g) { links = links.concat(g.links); });
+      var mk = function (h, txt) { var a = doc.createElement("a"); a.href = "#" + h; a.textContent = txt; if (here === h) a.setAttribute("aria-current", "page"); return a; };
+      groups = T.all().map(function (t) {
+        var ls = links.filter(function (a) { return T.roomOf(hashOf(a)) === t.id; });
+        ls.sort(function (a, b) { var ia = t.items.indexOf(hashOf(a)), ib = t.items.indexOf(hashOf(b)); return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib); });
+        if (t.id === "you") ls.unshift(mk("you", "Progress & notes"));
+        return { name: t.name, links: ls, col: T.col(t), icon: TICON[t.id] };
+      }).filter(function (g) { return g.links.length; });
+      groups.unshift({ name: "Home", links: [mk("home", L("Home", "Home (start page)"))], home: true });
+    }
     NAV = [];
-    groups.forEach(function (g, gi) { g.links.forEach(function (a) { NAV.push({ hash: hashOf(a), text: a.textContent, group: g.name, gi: gi, cur: a.getAttribute("aria-current") === "page" }); }); });
+    groups.forEach(function (g, gi) { if (g.home) return; g.links.forEach(function (a) { NAV.push({ hash: hashOf(a), text: a.textContent, group: g.name, gi: gi, col: g.col, cur: a.getAttribute("aria-current") === "page" }); }); });
     var curG = -1; groups.forEach(function (g, gi) { if (g.links.some(function (a) { return a.getAttribute("aria-current") === "page"; })) curG = gi; });
     if (!openSet) openSet = [0, 1];
     var frag = doc.createDocumentFragment();
     var f = doc.createElement("div"); f.className = "sk-filter";
-    f.innerHTML = '<label>' + SEARCH + '<input id="sk-rail-q" type="search" placeholder="Filter regions" autocomplete="off" aria-label="Filter regions"></label>';
+    f.innerHTML = '<label>' + SEARCH + '<input id="sk-rail-q" type="search" placeholder="Filter studies" autocomplete="off" aria-label="Filter studies"></label>';
     frag.appendChild(f);
     groups.forEach(function (g, gi) {
-      var col = G(gi), box = doc.createElement("div");
+      if (g.home) { var hl = g.links[0]; hl.className = "sk-home"; hl.innerHTML = '<span class="sk-gi">' + TICON.home + "</span><span>" + esc(L("Home", "Home (start page)")) + "</span>"; frag.appendChild(hl); return; }
+      var col = g.col ? { c: g.col, s: "color-mix(in srgb, " + g.col + " 15%, transparent)", i: g.icon || G(gi).i } : G(gi), box = doc.createElement("div");
       box.className = "sk-grp" + (openSet.indexOf(gi) > -1 || gi === curG ? " open" : ""); box.dataset.gi = gi;
       box.style.setProperty("--c", col.c); box.style.setProperty("--c-soft", col.s);
       box.innerHTML = '<button type="button" class="sk-gh" aria-expanded="' + box.classList.contains("open") + '"><span class="sk-gi">' + col.i + '</span><span>' + esc(g.name) + '</span><span class="sk-gn">' + g.links.length + "</span>" + CHEV.replace("<svg", '<svg class="sk-chev"') + '</button><div class="sk-items"><div></div></div>';
@@ -63,7 +92,7 @@
       g.links.forEach(function (a) { inner.appendChild(a); });
       frag.appendChild(box);
     });
-    var none = doc.createElement("p"); none.className = "sk-none"; none.hidden = true; none.textContent = "No region matches that. Try a shorter word."; frag.appendChild(none);
+    var none = doc.createElement("p"); none.className = "sk-none"; none.hidden = true; none.textContent = "No study matches that. Try a shorter word."; frag.appendChild(none);
     rail.innerHTML = ""; rail.appendChild(frag);
     var q = $("#sk-rail-q"); q.value = filterQ; if (filterQ) applyFilter();
     q.addEventListener("input", function () { filterQ = q.value; applyFilter(); });
@@ -100,7 +129,7 @@
     // breadcrumb inside the eyebrow
     var lab = $(".view-head > .label", plate);
     if (lab && cn) {
-      var col = G(cn.gi), crumb = doc.createElement("div"); crumb.className = "label sk-crumb"; crumb.style.setProperty("--c", col.c);
+      var col = cn.col ? { c: cn.col } : G(cn.gi), crumb = doc.createElement("div"); crumb.className = "label sk-crumb"; crumb.style.setProperty("--c", col.c);
       var gs = doc.createElement("span"), ls = doc.createElement("span"); gs.innerHTML = "<i></i> "; gs.appendChild(doc.createTextNode(cn.group));
       while (lab.firstChild) ls.appendChild(lab.firstChild);
       crumb.appendChild(gs); var lt = ls.textContent.trim(); if (lt && lt.toLowerCase() !== String(cn.group).trim().toLowerCase()) crumb.appendChild(ls);
@@ -111,7 +140,7 @@
     tocLinks = []; tocSheetLinks = [];
     var old = $(".sk-toc", main); if (old) old.remove();
     main.classList.remove("sk-has-toc");
-    var isAtlas = (decodeURIComponent(location.hash.slice(1)) || "atlas") === "atlas";
+    var isAtlas = (decodeURIComponent(location.hash.slice(1)) || "atlas") === "atlas" || !!$(".rm-page", main);
     if (heads.length >= 3 && !isAtlas) {
       var toc = doc.createElement("nav"); toc.className = "sk-toc"; toc.setAttribute("aria-label", "On this page");
       toc.innerHTML = '<div class="label">On this page</div>' + heads.map(function (h, i) { h.classList.add("sk-h2"); return '<a href="#" data-sk-to="' + i + '">' + esc(h.textContent) + "</a>"; }).join("");
@@ -123,7 +152,7 @@
     // previous / next
     var pg = $(".sk-pager", main); if (pg) pg.remove();
     if (ci > -1) {
-      var prev = NAV[ci - 1], next = NAV[ci + 1], p = doc.createElement("nav"); p.className = "sk-pager"; p.setAttribute("aria-label", "Previous and next region");
+      var prev = NAV[ci - 1], next = NAV[ci + 1], p = doc.createElement("nav"); p.className = "sk-pager"; p.setAttribute("aria-label", "Previous and next study");
       p.innerHTML = (prev ? '<a class="prev" href="#' + esc(prev.hash) + '"><small><kbd>[</kbd> Previous</small><b>' + esc(prev.text) + "</b></a>" : "") +
         (next ? '<a class="next" href="#' + esc(next.hash) + '"><small>Next <kbd>]</kbd></small><b>' + esc(next.text) + "</b></a>" : "");
       plate.insertAdjacentElement("afterend", p);
@@ -142,8 +171,8 @@
   });
   doc.addEventListener("click", function (e) {
     var r = e.target.closest && e.target.closest(".ref.sk-copyable"); if (!r) return;
-    var txt = r.textContent.trim(), done = function () { toast("Copied " + txt); };
-    try { navigator.clipboard.writeText(txt).then(done, function () { selectText(r); toast("Selected " + txt + ". Press copy to keep it."); }); } catch (err) { selectText(r); }
+    var txt = r.textContent.trim(), done = function () { toast(tr("Copied {t}", { t: txt })); };
+    try { navigator.clipboard.writeText(txt).then(done, function () { selectText(r); toast(tr("Selected {t}. Press copy to keep it.", { t: txt })); }); } catch (err) { selectText(r); }
   });
   function selectText(el) { try { var rg = doc.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); } catch (e) { /* no selection API */ } }
 
@@ -247,7 +276,7 @@
   function palHTML() {
     var m = modeNow();
     return '<div><h3>Colour scheme</h3><div class="sk-sw">' + SCHEMES.map(function (s) { return '<button type="button" data-sks="' + s[0] + '" aria-pressed="' + (scheme === s[0]) + '"><i style="--sw:' + s[2] + '"></i>' + s[1] + "</button>"; }).join("") + "</div></div>" +
-      '<div><h3>Appearance</h3><div class="sk-seg" role="group" aria-label="Appearance">' + [["light", "Light"], ["dark", "Dark"], ["system", "Match device"]].map(function (x) { return '<button type="button" data-skm="' + x[0] + '" aria-pressed="' + (m === x[0]) + '">' + x[1] + "</button>"; }).join("") + "</div></div>" +
+      '<div><h3>Appearance</h3><div class="sk-seg" role="group" aria-label="Appearance">' + [["light", L("Light", "Light (appearance)")], ["dark", L("Dark", "Dark (appearance)")], ["system", "Match device"]].map(function (x) { return '<button type="button" data-skm="' + x[0] + '" aria-pressed="' + (m === x[0]) + '">' + x[1] + "</button>"; }).join("") + "</div></div>" +
       '<div><h3>Text size</h3><div class="sk-seg" role="group" aria-label="Text size">' + SZ_LABEL.map(function (l, i) { return '<button type="button" data-skz="' + i + '" aria-pressed="' + (sz === i) + '" style="font-size:' + (12 + i * 1.5) + 'px">' + l + "</button>"; }).join("") + "</div></div>" +
       '<div class="sk-row sk-focus-row"><span>Reading focus<small>Hide the side panels so the study fills the page. Shortcut: F</small></span><button type="button" class="sk-switch" data-skf aria-pressed="' + focusOn + '" aria-label="Reading focus"></button></div>';
   }
@@ -316,7 +345,7 @@
     hideBar();
     bar = doc.createElement("div"); bar.className = "sk-hlbar"; bar.setAttribute("role", "toolbar"); bar.setAttribute("aria-label", "Highlight");
     var cur = forMark ? forMark.dataset.c : "";
-    bar.innerHTML = HLC.map(function (c) { return '<button type="button" class="c" data-c="' + c[0] + '" aria-pressed="' + (cur === c[0]) + '" aria-label="Highlight ' + c[1] + '" title="' + c[1] + '"></button>'; }).join("") +
+    bar.innerHTML = HLC.map(function (c) { return '<button type="button" class="c" data-c="' + c[0] + '" aria-pressed="' + (cur === c[0]) + '" aria-label="' + esc(tr("Highlight in {c}", { c: tr(c[1]) })) + '" title="' + esc(tr(c[1])) + '"></button>'; }).join("") +
       (forMark ? '<button type="button" class="t" data-hlx>Remove</button>' : '<button type="button" class="t" data-hlcopy>Copy</button>');
     bar.style.left = Math.max(110, Math.min(doc.documentElement.clientWidth - 110, x)) + "px"; bar.style.top = (y + scrollY) + "px";
     doc.body.appendChild(bar); barMark = forMark || null;
@@ -392,12 +421,22 @@
   /* ---------- menu sheet: filter and colour dots ---------- */
   function enhanceMenu() {
     var m = $(".menu-sheet"); if (!m || m.dataset.sk) return; m.dataset.sk = "1";
+    var T = window.RGTopics;
+    if (T) {
+      var all = $$("a", m), html = '<div class="label" style="--c:var(--accent)">You</div><div class="grid"><a href="#home" data-close>' + esc(L("Home", "Home (start page)")) + '</a><a href="#you" data-close>Your study</a></div>';
+      T.all().forEach(function (t) {
+        var ls = all.filter(function (a) { return T.roomOf(hashOf(a)) === t.id; });
+        ls.sort(function (a, b) { var ia = t.items.indexOf(hashOf(a)), ib = t.items.indexOf(hashOf(b)); return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib); });
+        if (ls.length) html += '<div class="label" style="--c:' + T.col(t) + '">' + esc(t.name) + '</div><div class="grid">' + ls.map(function (a) { return a.outerHTML; }).join("") + "</div>";
+      });
+      m.innerHTML = html;
+    }
     var labs = $$(":scope > .label", m);
-    labs.forEach(function (l, i) { l.style.setProperty("--c", G(i).c); l.insertAdjacentHTML("afterbegin", "<i></i>"); });
-    var cur = decodeURIComponent(location.hash.slice(1)) || "atlas";
+    labs.forEach(function (l, i) { if (!T) l.style.setProperty("--c", G(i).c); l.insertAdjacentHTML("afterbegin", "<i></i>"); });
+    var cur = decodeURIComponent(location.hash.slice(1)) || "home";
     $$("a", m).forEach(function (a) { if (hashOf(a) === cur) a.setAttribute("aria-current", "page"); });
     var box = doc.createElement("div"); box.className = "sk-msearch";
-    box.innerHTML = '<label class="field">' + SEARCH + '<input id="sk-menu-q" type="search" placeholder="Filter regions" autocomplete="off" aria-label="Filter regions"></label>';
+    box.innerHTML = '<label class="field">' + SEARCH + '<input id="sk-menu-q" type="search" placeholder="Filter studies" autocomplete="off" aria-label="Filter studies"></label>';
     m.insertBefore(box, m.firstChild);
     var q = $("#sk-menu-q");
     q.addEventListener("input", function () {
