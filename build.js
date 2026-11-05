@@ -29,8 +29,8 @@ fs.mkdirSync(path.join(__dirname, "dist"), { recursive: true });
 // Atlas 2: same content with the Ecclesia-style skin (published to a separate link)
 const page2 = page
   .replace("family=IBM+Plex+Mono", "family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono")
-  .replace("</style>", () => src("ui2.css") + "</style>")
-  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("ui2.js")) + "</script>");
+  .replace("</style>", () => src("ui2.css") + "\n" + src("learn2.css") + "</style>")
+  .replace(/<\/script>\s*$/, () => "</script>\n<script>" + safe(src("ui2.js")) + "</script>\n<script>" + safe(src("learn2.js")) + "</script>");
 fs.writeFileSync(path.join(__dirname, "dist", "atlas2.html"), page2);
 // Main build: the Rose Window skin (Avenir Next, Nunito Sans fallback, six colour schemes) layered over the base styles.
 // A tiny early script applies the saved colour scheme before first paint.

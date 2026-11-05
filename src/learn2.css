@@ -1,0 +1,80 @@
+/* Atlas 2 learning layer */
+.l2-dash{margin:6px 0 28px}
+.l2-hero{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;padding:26px;border-radius:22px;background:radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--gold) 22%,transparent),transparent 60%),var(--surface);border:1px solid var(--line);overflow:hidden;position:relative}
+.l2-hero h2{margin:.2em 0 .4em;font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.15}
+.l2-hero p{color:var(--muted);margin:0 0 16px;max-width:52ch}
+@media (max-width:760px){.l2-hero{grid-template-columns:1fr;padding:20px}.l2-orbit{max-width:240px;margin:0 auto}}
+.l2-orbit{position:relative;aspect-ratio:1;width:100%;max-width:300px;justify-self:center}
+.l2-core{position:absolute;inset:36%;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;color:var(--on-gold,#fff);background:radial-gradient(circle at 35% 30%,var(--gold-hi,var(--gold)),var(--gold));box-shadow:0 0 0 10px color-mix(in srgb,var(--gold) 14%,transparent),0 0 40px color-mix(in srgb,var(--gold) 45%,transparent);animation:l2glow 4s ease-in-out infinite}
+.l2-orbs{position:absolute;inset:0;border-radius:50%;border:1px dashed color-mix(in srgb,var(--gold) 45%,transparent);animation:l2spin 60s linear infinite}
+.l2-orb{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);color:var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.08);transform:rotate(var(--a)) translate(calc(min(150px,40vw) - 30px)) rotate(calc(-1*var(--a)));transition:transform .3s}
+.l2-orb .l2-ico{width:24px;height:24px;animation:l2spin 60s linear infinite reverse}
+.l2-orb:hover{border-color:var(--gold)}
+.l2-ico{width:22px;height:22px;flex:none}
+.l2-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 26px}
+@media (max-width:760px){.l2-stats{grid-template-columns:1fr 1fr}.l2-daily{grid-column:1/-1}}
+.l2-stat{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:14px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.l2-stat p{margin:0;color:var(--muted);font-size:.9rem}
+.l2-daily{justify-content:center}
+.l2-ring{width:110px;height:110px}
+.l2-ring circle{fill:none;stroke-width:9;transform:rotate(-90deg);transform-origin:55px 55px}
+.l2-ring-bg{stroke:var(--bg-2)}
+.l2-ring-fg{stroke:var(--gold);stroke-linecap:round;stroke-dashoffset:var(--off);animation:l2ring 1.6s cubic-bezier(.2,.7,.2,1) both}
+.l2-ring-n{font:700 26px var(--body,sans-serif);fill:var(--ink);text-anchor:middle}
+.l2-ring-s{font:600 11px var(--body,sans-serif);fill:var(--muted);text-anchor:middle}
+.l2-h{margin:8px 0 2px}
+.l2-paths{display:grid;gap:14px;margin-top:10px}
+.l2-path{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:14px 18px 54px;position:relative;animation:l2up .6s ease both}
+.l2-path:nth-child(2){animation-delay:.08s}.l2-path:nth-child(3){animation-delay:.16s}.l2-path:nth-child(4){animation-delay:.24s}.l2-path:nth-child(5){animation-delay:.32s}
+.l2-path header{display:flex;gap:10px;align-items:center;color:var(--gold)}
+.l2-path header b{display:block;color:var(--ink)}
+.l2-path header small{color:var(--muted)}
+.l2-line{position:relative;margin:16px 38px 0;height:8px}
+.l2-line svg{position:absolute;inset:0;width:100%;height:8px;overflow:visible}
+.l2-track{stroke:var(--bg-2);stroke-width:6;stroke-linecap:round}
+.l2-fill{stroke:var(--gold);stroke-width:6;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:l2draw 1.4s .3s ease forwards}
+.l2-stop{position:absolute;top:-6px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);width:92px;text-align:center;font-size:.74rem;line-height:1.2;opacity:0;animation:l2pop .45s ease forwards;animation-delay:calc(.4s + var(--k)*.09s)}
+.l2-stop i{width:20px;height:20px;border-radius:50%;background:var(--surface);border:3px solid var(--line);transition:transform .2s,border-color .2s}
+.l2-stop.seen i{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 35%,var(--surface))}
+.l2-stop.learned i{background:var(--gold);border-color:var(--gold)}
+.l2-stop.seen{color:var(--ink)}
+.l2-stop:hover i{transform:scale(1.25);border-color:var(--accent)}
+.l2-stop span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:640px){.l2-path{padding-bottom:16px}.l2-line{height:auto;margin:12px 0 0}.l2-line svg{display:none}.l2-stop{position:static;transform:none;flex-direction:row;width:auto;text-align:left;font-size:.86rem;padding:5px 0;opacity:1;animation:none}}
+.l2-tools{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:16px}
+.l2-tools-g{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.l2-read{flex:1 1 220px}
+.l2-bar{height:10px;border-radius:99px;background:var(--bg-2);overflow:hidden;margin:6px 0 2px}
+.l2-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:99px;transition:width .6s ease}
+.l2-next{display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--gold) 8%,var(--surface));transition:transform .2s,border-color .2s}
+.l2-next:hover{transform:translateX(4px);border-color:var(--gold)}
+.l2-next small{display:block;color:var(--muted)}
+.l2-next em{margin-left:auto;font-style:normal;font-size:1.3rem;color:var(--gold)}
+.l2-modal{position:fixed;inset:0;z-index:200;background:rgba(10,8,4,.5);display:grid;place-items:center;padding:16px;animation:l2fade .25s ease}
+.l2-sheet{width:min(560px,100%);background:var(--bg);border-radius:22px;border:1px solid var(--line);padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:l2up .35s ease}
+.l2-sheet-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.l2-x{border:0;background:none;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer}
+.l2-row{display:flex;justify-content:space-between;gap:10px;margin-top:12px}
+.l2-flip{perspective:1200px;height:260px;cursor:pointer;position:relative;outline:none}
+.l2-face{position:absolute;inset:0;border-radius:18px;padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .6s cubic-bezier(.3,.7,.2,1);display:flex;flex-direction:column;gap:8px;overflow:auto;border:1px solid var(--line)}
+.l2-front{background:radial-gradient(120% 120% at 0 0,color-mix(in srgb,var(--gold) 18%,transparent),transparent 60%),var(--surface)}
+.l2-back{background:var(--surface);transform:rotateY(180deg)}
+.l2-flip.flipped .l2-front{transform:rotateY(-180deg)}
+.l2-flip.flipped .l2-back{transform:rotateY(0)}
+.l2-face small{color:var(--muted);font-weight:600}
+.l2-face p{margin:0;font-size:1.08rem}
+.l2-hint{margin-top:auto;color:var(--gold);font-size:.85rem}
+.l2-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.l2-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.l2-dots i.on{background:var(--gold)}
+.l2-burst{position:fixed;width:0;height:0;pointer-events:none;z-index:300}
+.l2-burst i{position:absolute;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--gold);transform:rotate(var(--a)) translate(0);animation:l2burst .8s ease-out forwards}
+@keyframes l2spin{to{transform:rotate(360deg)}}
+@keyframes l2glow{0%,100%{box-shadow:0 0 0 10px color-mix(in srgb,var(--gold) 14%,transparent),0 0 30px color-mix(in srgb,var(--gold) 35%,transparent)}50%{box-shadow:0 0 0 16px color-mix(in srgb,var(--gold) 8%,transparent),0 0 55px color-mix(in srgb,var(--gold) 55%,transparent)}}
+@keyframes l2ring{from{stroke-dashoffset:300}}
+@keyframes l2draw{to{stroke-dashoffset:0}}
+@keyframes l2pop{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%)}}
+@keyframes l2up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes l2fade{from{opacity:0}}
+@keyframes l2burst{to{transform:rotate(var(--a)) translate(46px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.l2-dash *,.l2-modal *,.l2-modal{animation:none!important;transition:none!important}.l2-stop{opacity:1}.l2-fill{stroke-dashoffset:0}}
