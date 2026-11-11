@@ -4,7 +4,8 @@
   var KEY = "rga.learn";
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
-  var S = load(); S.seen = S.seen || {}; S.learned = S.learned || {}; S.rev = S.rev || {};
+  var S = load(); S.seen = S.seen || {}; S.learned = S.learned || {}; S.rev = S.rev || {}; S.days = S.days || {};
+  var A2 = window.A2 = window.A2 || {};
   var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function T(t, v) { return window.RGtr ? RGtr(t, v) : t.replace(/\{(\w+)\}/g, function (m, k) { return v && v[k] != null ? v[k] : m; }); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -53,24 +54,48 @@
   /* ---------- dashboard ---------- */
   function ring(p, big, small) {
     var r = 46, c = 2 * Math.PI * r, off = c * (1 - p);
-    return '<svg class="l2-ring" viewBox="0 0 110 110"><circle cx="55" cy="55" r="' + r + '" class="l2-ring-bg"/><circle cx="55" cy="55" r="' + r + '" class="l2-ring-fg" style="stroke-dasharray:' + c.toFixed(1) + ";--off:" + off.toFixed(1) + '"/><text x="55" y="56" class="l2-ring-n">' + big + '</text><text x="55" y="73" class="l2-ring-s">' + small + "</text></svg>";
+    return '<svg class="l2-ring" viewBox="0 0 110 110"><circle cx="55" cy="55" r="' + r + '" class="l2-ring-bg"/><circle cx="55" cy="55" r="' + r + '" class="l2-ring-fg" style="stroke-dasharray:' + c.toFixed(1) + ";--off:" + off.toFixed(1) + '"/><text x="55" y="58" class="l2-ring-n">' + big + '</text><text x="55" y="75" class="l2-ring-s">' + small + "</text></svg>";
+  }
+  function dayKey(d) { return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+  function streak() { var n = 0, d = new Date(); if (!S.days[dayKey(d)]) d.setDate(d.getDate() - 1); while (S.days[dayKey(d)] && n < 3660) { n++; d.setDate(d.getDate() - 1); } return n; }
+  function weekHTML() { var out = "", d = new Date(); d.setDate(d.getDate() - 6); for (var i = 0; i < 7; i++) { out += "<i" + (S.days[dayKey(d)] ? ' class="on"' : "") + (i === 6 ? ' data-t="1"' : "") + "></i>"; d.setDate(d.getDate() + 1); } return out; }
+  function ago(ts) { var a = new Date(); a.setHours(0, 0, 0, 0); var b = new Date(ts); b.setHours(0, 0, 0, 0); var n = Math.round((a - b) / 864e5); return n <= 0 ? T("Today") : n === 1 ? T("Yesterday") : T("{n} days ago", { n: n }); }
+  function heroArt(pct) {
+    var i, rays = "", stars = "", seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    for (i = 0; i < 36; i++) rays += '<path d="M0 -' + (i % 3 === 0 ? 96 : 100) + "V-" + (i % 3 === 0 ? 122 : 110) + '" transform="rotate(' + i * 10 + ')" style="--i:' + (i % 6) + '"/>';
+    for (i = 0; i < 22; i++) { var a = rnd() * 6.283, r = 60 + rnd() * 135; stars += '<circle cx="' + (r * Math.cos(a)).toFixed(1) + '" cy="' + (r * Math.sin(a)).toFixed(1) + '" r="' + (0.8 + rnd() * 1.8).toFixed(1) + '" style="--i:' + (i % 7) + '"/>'; }
+    var tri = [0, 1, 2].map(function (k) { var an = -Math.PI / 2 + k * 2.0944; return '<circle cx="' + (22 * Math.cos(an)).toFixed(1) + '" cy="' + (22 * Math.sin(an)).toFixed(1) + '" r="36" pathLength="1" style="--i:' + k + '"/>'; }).join("");
+    return '<svg class="l2-art" viewBox="-200 -200 400 400" aria-hidden="true"><defs><radialGradient id="l2g"><stop offset="0" class="l2-g0"/><stop offset=".55" class="l2-g1"/><stop offset="1" class="l2-g2"/></radialGradient></defs>' +
+      '<circle r="198" fill="url(#l2g)"/><g class="l2-stars">' + stars + '</g><circle r="186" class="l2-o1"/><circle r="186" class="l2-arc" pathLength="100" stroke-dasharray="' + Math.max(0.01, pct * 100).toFixed(1) + ' 100" transform="rotate(-90)"/>' +
+      '<circle r="140" class="l2-o2"/><g class="l2-comet"><path d="M0 -186A186 186 0 0 1 131.500 -131.500" /><circle cx="131.500" cy="-131.500" r="5"/></g>' +
+      '<g class="l2-rays">' + rays + '</g><g class="l2-tri">' + tri + '</g><circle r="17" class="l2-sun"/><path class="l2-cross" d="M0 -8.500v17M-5.500 -3h11"/></svg>';
   }
   function pathHTML(P) {
     var ids = P.ids.filter(exists), n = ids.length, done = ids.filter(function (i) { return S.seen[i]; }).length;
     var W = 600, gap = W / (n - 1 || 1), far = -1; ids.forEach(function (id, k) { if (S.seen[id]) far = k; }); var fill = far < 0 ? 0 : Math.max(12, far / (n - 1 || 1) * 600).toFixed(0);
-    var stops = ids.map(function (id, k) { var x = (k * gap / W * 100).toFixed(2); return '<a class="l2-stop' + (S.seen[id] ? " seen" : "") + (S.learned[id] ? " learned" : "") + '" href="#' + id + '" style="left:' + x + "%;--k:" + k + '"><i></i><span>' + esc(label(id)) + "</span></a>"; }).join("");
-    return '<article class="l2-path" data-l2p="' + P.id + '"><header>' + ico(P.icon) + "<div><b>" + esc(T(P.name)) + "</b><small>" + esc(T("{a} of {b} explored", { a: done, b: n })) + '</small></div></header><div class="l2-line"><svg viewBox="0 0 600 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="600" y2="4" class="l2-track"/><line x1="0" y1="4" x2="' + fill + '" y2="4" class="l2-fill"/></svg>' + stops + "</div></article>";
+    var nx = null; ids.forEach(function (id) { if (!nx && !S.seen[id]) nx = id; });
+    var stops = ids.map(function (id, k) { var x = (k * gap / W * 100).toFixed(2); return '<a class="l2-stop' + (S.seen[id] ? " seen" : "") + (S.learned[id] ? " learned" : "") + (id === nx ? " next" : "") + '" href="#' + id + '" style="left:' + x + "%;--k:" + k + '"><i>' + (S.learned[id] ? "✓" : k + 1) + "</i><span>" + esc(label(id)) + "</span></a>"; }).join("");
+    var cta = nx ? '<a class="l2-go" href="#' + nx + '">' + (done ? "Continue path" : "Start path") + " <em>→</em></a>" : '<span class="l2-go done">✓ Path complete</span>';
+    return '<article class="l2-path" data-l2p="' + P.id + '" style="--pp:' + (n ? done / n : 0).toFixed(3) + '"><header><span class="l2-badge">' + ico(P.icon) + "</span><div><b>" + esc(T(P.name)) + "</b><small>" + esc(T("{a} of {b} explored", { a: done, b: n })) + "</small></div>" + cta + '</header><div class="l2-line"><svg viewBox="0 0 600 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="600" y2="4" class="l2-track"/><line x1="0" y1="4" x2="' + fill + '" y2="4" class="l2-fill"/></svg>' + stops + "</div></article>";
+  }
+  function recentHTML() {
+    var ids = Object.keys(S.seen).filter(exists).sort(function (a, b) { return S.seen[b] - S.seen[a]; }).slice(0, 6); if (!ids.length) return "";
+    return '<h2 class="l2-h">Recently viewed</h2><div class="l2-recent">' + ids.map(function (id, k) { return '<a class="l2-rc' + (S.learned[id] ? " learned" : "") + '" href="#' + id + '" style="--k:' + k + '"><span class="l2-rc-e">' + (A2.emblem ? A2.emblem(id, false) : "") + "</span><span><b>" + esc(label(id)) + "</b><small>" + esc(ago(S.seen[id])) + "</small></span></a>"; }).join("") + "</div>";
   }
   function dashHTML() {
     var ids = studies(), n = ids.length, seen = ids.filter(function (i) { return S.seen[i]; }).length, learned = ids.filter(function (i) { return S.learned[i]; }).length;
     var last = S.last && exists(S.last) ? S.last : null;
-    var orbit = PATHS.map(function (P, k) { var a = k / PATHS.length * 360; return '<a class="l2-orb" href="#' + P.ids.filter(exists)[0] + '" style="--a:' + a + 'deg" title="' + esc(T(P.name)) + '">' + ico(P.icon) + "</a>"; }).join("");
-    var daily = dailyCards();
+    var orbit = PATHS.map(function (P, k) { var a = -Math.PI / 2 + k / PATHS.length * Math.PI * 2; return '<a class="l2-orb" href="#' + P.ids.filter(exists)[0] + '" style="left:' + (50 + 35 * Math.cos(a)).toFixed(2) + "%;top:" + (50 + 35 * Math.sin(a)).toFixed(2) + "%;--k:" + k + '" title="' + esc(T(P.name)) + '" aria-label="' + esc(T(P.name)) + '">' + ico(P.icon) + "</a>"; }).join("");
+    var daily = dailyCards(), sk = streak();
     return '<section class="l2-dash" id="l2-dash">' +
-      '<div class="l2-hero"><div class="l2-hero-t"><div class="label">Your learning space</div><h2>Learn the relational gospel, one step at a time</h2><p>Follow a path, pick up where you left off, and review a few questions each day. Your progress stays on this device.</p>' +
-        (last ? '<a class="btn" href="#' + last + '">' + esc(T("Continue: {t}", { t: label(last) })) + " →</a>" : '<a class="btn" href="#reconcile">Start here →</a>') + '</div>' +
-        '<div class="l2-orbit" aria-hidden="true"><div class="l2-core">✝</div><div class="l2-orbs">' + orbit + "</div></div></div>" +
-      '<div class="l2-stats"><div class="l2-stat">' + ring(n ? seen / n : 0, seen, T("of {n}", { n: n })) + '<b>Studies explored</b></div><div class="l2-stat">' + ring(n ? learned / n : 0, learned, T("learned")) + '<b>Marked as learned</b></div><div class="l2-stat l2-daily"><b>Today’s review</b><p>Three questions from across the atlas, new each day.</p><button type="button" class="btn" data-l2daily' + (daily.length ? "" : " disabled") + '>Start review</button></div></div>' +
+      '<div class="l2-hero"><div class="l2-hero-t"><div class="label">Your learning space</div><h2>Learn the relational gospel, one step at a time</h2><p>Follow a path, pick up where you left off, and review a few questions each day. Your progress stays on this device.</p><div class="l2-cta">' +
+        (last ? '<a class="btn" href="#' + last + '">' + esc(T("Continue: {t}", { t: label(last) })) + " →</a>" : '<a class="btn" href="#reconcile">Start here →</a>') + '<button type="button" class="btn ghost" data-l2browse>Browse all studies</button></div></div>' +
+        '<div class="l2-orbit">' + heroArt(n ? seen / n : 0) + '<div class="l2-orbs">' + orbit + "</div></div></div>" +
+      '<div class="l2-stats"><div class="l2-stat">' + ring(n ? seen / n : 0, seen, T("of {n}", { n: n })) + '<b>Studies explored</b></div><div class="l2-stat">' + ring(n ? learned / n : 0, learned, T("learned")) + '<b>Marked as learned</b></div>' +
+        '<div class="l2-stat l2-streak"><div class="l2-flame"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.500c.800 3.300 3 4.700 4.400 6.900A6.800 6.800 0 0 1 12 20.800a6.800 6.800 0 0 1-5.300-10.900c.600.900 1.300 1.500 2.200 1.800C8.300 8.300 9.800 5 12 2.500z"/></svg><strong>' + sk + '</strong></div><div class="l2-week">' + weekHTML() + '</div><b>Day streak</b></div>' +
+        '<div class="l2-stat l2-daily"><div class="l2-deckart" aria-hidden="true"><i></i><i></i><i>?</i></div><b>Today’s review</b><p>Three questions from across the atlas, new each day.</p><button type="button" class="btn" data-l2daily' + (daily.length ? "" : " disabled") + '>Start review</button></div></div>' +
+      recentHTML() +
       '<h2 class="l2-h">Learning paths</h2><p class="note">Six studies each, in a helpful order. Filled stations are ones you have explored.</p><div class="l2-paths">' + PATHS.map(pathHTML).join("") + "</div></section>";
   }
 
@@ -78,16 +103,16 @@
   function nextInPath(id) { for (var i = 0; i < PATHS.length; i++) { var ids = PATHS[i].ids.filter(exists), k = ids.indexOf(id); if (k > -1 && k < ids.length - 1) return { path: PATHS[i], next: ids[k + 1] }; } return null; }
   function toolsHTML(id) {
     var s = RG.studies[id], q = cardsFor([id]).length, np = nextInPath(id), L = !!S.learned[id];
-    return '<section class="section l2-tools" id="l2-tools"><div class="l2-tools-g"><div class="l2-read"><div class="label">Reading progress</div><div class="l2-bar"><i id="l2-bar" style="width:0%"></i></div><small id="l2-bar-t">0%</small></div>' +
-      '<button type="button" class="btn' + (L ? "" : " ghost") + '" data-l2learn="' + id + '">' + (L ? "✓ Learned" : "Mark as learned") + "</button>" +
+    return '<section class="section l2-tools" id="l2-tools"><div class="l2-tools-g"><div class="l2-read"><svg class="l2-rr" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" class="bg"/><circle cx="32" cy="32" r="27" class="fg" id="l2-bar" pathLength="100" stroke-dasharray="0 100"/></svg><div><div class="label">Reading progress</div><strong id="l2-bar-t">0%</strong></div></div>' +
+      '<div class="l2-tools-b"><button type="button" class="btn' + (L ? "" : " ghost") + '" data-l2learn="' + id + '">' + (L ? "✓ Learned" : "Mark as learned") + "</button>" +
       (q ? '<button type="button" class="btn ghost" data-l2rev="' + id + '">' + esc(T("Review this study ({n})", { n: q })) + "</button>" : "") +
-      "</div>" + (np ? '<a class="l2-next" href="#' + np.next + '">' + ico(np.path.icon) + "<span><small>" + esc(T("Next in “{t}”", { t: T(np.path.name) })) + "</small><b>" + esc(label(np.next)) + "</b></span><em>→</em></a>" : "") + "</section>";
+      "</div></div>" + (np ? '<a class="l2-next" href="#' + np.next + '"><span class="l2-next-e">' + (A2.emblem ? A2.emblem(np.next, false) : ico(np.path.icon)) + "</span><span><small>" + esc(T("Next in “{t}”", { t: T(np.path.name) })) + "</small><b>" + esc(label(np.next)) + "</b></span><em>→</em></a>" : "") + "</section>";
   }
   var readIO = null, seenB = {};
   function trackReading(id) {
     if (readIO) readIO.disconnect(); seenB = {};
     var B = document.querySelectorAll("#main .st-b"); if (!B.length || !("IntersectionObserver" in window)) return;
-    readIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) seenB[e.target.id] = 1; }); var p = Math.round(Object.keys(seenB).length / B.length * 100), bar = document.getElementById("l2-bar"), t = document.getElementById("l2-bar-t"); if (bar) bar.style.width = p + "%"; if (t) t.textContent = p + "%"; }, { threshold: 0.35 });
+    readIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) seenB[e.target.id] = 1; }); var p = Math.round(Object.keys(seenB).length / B.length * 100), bar = document.getElementById("l2-bar"), t = document.getElementById("l2-bar-t"); if (bar) bar.setAttribute("stroke-dasharray", p + " 100"); if (t) t.textContent = p + "%"; }, { threshold: 0.35 });
     B.forEach(function (b) { readIO.observe(b); });
   }
 
@@ -99,20 +124,21 @@
     busy = true;
     try {
       if (window.RG && RG.studies && RG.studies[h] && !RG.studies[h].hidden) {
-        S.seen[h] = Date.now(); S.last = h; save();
-        if (!document.getElementById("l2-tools")) { var qa = main.querySelector('[id$="-qa"]'); var wrap = document.createElement("div"); wrap.innerHTML = toolsHTML(h); (qa && qa.parentNode === main ? main.insertBefore(wrap.firstChild, qa) : main.appendChild(wrap.firstChild)); trackReading(h); }
+        S.seen[h] = Date.now(); S.last = h; S.days[today()] = 1; save();
+        if (!document.getElementById("l2-tools")) { var plate = main.querySelector(".plate") || main, pn = plate.querySelector(".u2-pn"); var wrap = document.createElement("div"); wrap.innerHTML = toolsHTML(h); plate.insertBefore(wrap.firstChild, pn && pn.parentNode === plate ? pn : null); trackReading(h); if (A2.refresh) A2.refresh(); }
       } else if (h === "atlas" || h === "home") {
-        if (!document.getElementById("l2-dash")) { var d = document.createElement("div"); d.innerHTML = dashHTML(); var host = main.querySelector(".plate") || main; host.insertBefore(d.firstChild, host.firstElementChild); }
-      } else if (S.last !== h && document.querySelector('#rail a[href="#' + h + '"]')) { S.seen[h] = Date.now(); save(); }
+        if (!document.getElementById("l2-dash")) { var d = document.createElement("div"); d.innerHTML = dashHTML(); var host = main.querySelector(".plate") || main; host.insertBefore(d.firstChild, host.firstElementChild); if (A2.reveal) A2.reveal(); }
+      } else if (document.querySelector('#rail a[href="#' + h + '"]')) { S.seen[h] = Date.now(); S.days[today()] = 1; save(); if (A2.refresh) A2.refresh(); }
     } finally { setTimeout(function () { busy = false; }, 0); }
   }
   function refresh(sel, html) { var el = document.getElementById(sel); if (!el) return; var d = document.createElement("div"); d.innerHTML = html; el.replaceWith(d.firstChild); }
 
   document.addEventListener("click", function (e) {
     var t = e.target;
-    if (t.closest("[data-l2daily]")) { openDeck(dailyCards(), T("Today’s review")); return; }
+    if (t.closest("[data-l2daily]")) { A2.daily(); return; }
+    if (t.closest("[data-l2browse]")) { if (A2.palette) A2.palette(); return; }
     var rv = t.closest("[data-l2rev]"); if (rv) { openDeck(cardsFor([rv.dataset.l2rev]), T("Review: {t}", { t: label(rv.dataset.l2rev) })); return; }
-    var lr = t.closest("[data-l2learn]"); if (lr) { var id = lr.dataset.l2learn; if (S.learned[id]) delete S.learned[id]; else S.learned[id] = Date.now(); save(); lr.classList.toggle("ghost", !S.learned[id]); lr.textContent = S.learned[id] ? T("✓ Learned") : T("Mark as learned"); if (S.learned[id] && !RM) burst(lr); return; }
+    var lr = t.closest("[data-l2learn]"); if (lr) { var id = lr.dataset.l2learn; if (S.learned[id]) delete S.learned[id]; else S.learned[id] = Date.now(); save(); lr.classList.toggle("ghost", !S.learned[id]); lr.textContent = S.learned[id] ? T("✓ Learned") : T("Mark as learned"); if (S.learned[id] && !RM) burst(lr); if (A2.refresh) A2.refresh(); return; }
     if (t.closest("[data-l2flip]")) { t.closest("[data-l2flip]").classList.toggle("flipped"); return; }
     if (t.closest("[data-l2next]")) { if (deck && di < deck.length - 1) { di++; drawDeck(); } else closeDeck(); return; }
     if (t.closest("[data-l2prev]")) { if (deck && di > 0) { di--; drawDeck(); } return; }
@@ -124,13 +150,15 @@
   });
   function burst(el) {
     var r = el.getBoundingClientRect(), box = document.createElement("div"); box.className = "l2-burst"; box.style.left = r.left + r.width / 2 + "px"; box.style.top = r.top + r.height / 2 + "px";
-    for (var i = 0; i < 12; i++) { var s = document.createElement("i"); s.style.setProperty("--a", i * 30 + "deg"); box.appendChild(s); }
+    for (var i = 0; i < 18; i++) { var s = document.createElement("i"); s.style.setProperty("--a", i * 20 + "deg"); s.style.setProperty("--d", 34 + (i * 37 % 40) + "px"); s.className = "c" + i % 3; box.appendChild(s); }
     document.body.appendChild(box); setTimeout(function () { box.remove(); }, 900);
   }
 
+  A2.daily = function () { S.days[today()] = 1; save(); openDeck(dailyCards(), T("Today’s review")); };
+
   function init() {
     var main = document.getElementById("main"); if (!main) { setTimeout(init, 100); return; }
-    new MutationObserver(function () { setTimeout(route, 80); }).observe(main, { childList: true });
+    new MutationObserver(function () { route(); setTimeout(route, 80); }).observe(main, { childList: true });
     addEventListener("hashchange", function () { setTimeout(route, 120); });
     setTimeout(route, 300);
   }
